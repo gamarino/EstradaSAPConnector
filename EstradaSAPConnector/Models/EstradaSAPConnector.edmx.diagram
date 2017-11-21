@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3f367267f4144a7a80f4ee41e2f59c6b" Name="Diagram1" >
+        <EntityTypeShape EntityType="EstradaSAPConnector.RendicionGastos" Width="2.5" PointX="3.625" PointY="3.875" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.FacturaProveedor" Width="2.75" PointX="3.5" PointY="6.5" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.FondoFijo" Width="1.5" PointX="4.25" PointY="0.5" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.SAPCredentials" Width="2.625" PointX="10.875" PointY="3.375" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.SAPSession" Width="2.25" PointX="7.125" PointY="0.5" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.SAPRPCCall" Width="2.25" PointX="7.125" PointY="3.375" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.SAPEndPoint" Width="2.625" PointX="10.875" PointY="0.5" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPEndPointSAPSession" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPCredentialsSAPSession" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPSessionSAPRPCCall" />
+        <AssociationConnector Association="EstradaSAPConnector.FondoFijoRendicionGastos" />
+        <AssociationConnector Association="EstradaSAPConnector.RendicionGastosFacturaProveedor" />
+        <AssociationConnector Association="EstradaSAPConnector.RendicionGastosSAPSession" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.Adelantos" Width="2.125" PointX="0.5" PointY="2.5" />
+        <AssociationConnector Association="EstradaSAPConnector.FondoFijoAdelantos" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

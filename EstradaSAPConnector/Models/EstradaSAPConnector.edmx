@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="EstradaSAPConnector.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="EstradaSAPConnectorTargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="EstradaSAPConnector" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="EstradaSAPConnectorContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="RendicionGastos" EntityType="EstradaSAPConnector.RendicionGastos" />
+          <EntitySet Name="FacturaProveedors" EntityType="EstradaSAPConnector.FacturaProveedor" />
+          <EntitySet Name="FondoFijoes" EntityType="EstradaSAPConnector.FondoFijo" />
+          <EntitySet Name="SAPCredentials" EntityType="EstradaSAPConnector.SAPCredentials" />
+          <EntitySet Name="SAPSessions" EntityType="EstradaSAPConnector.SAPSession" />
+          <EntitySet Name="SAPRPCCalls" EntityType="EstradaSAPConnector.SAPRPCCall" />
+          <EntitySet Name="SAPEndPoints" EntityType="EstradaSAPConnector.SAPEndPoint" />
+          <AssociationSet Name="SAPEndPointSAPSession" Association="EstradaSAPConnector.SAPEndPointSAPSession">
+            <End Role="SAPEndPoint" EntitySet="SAPEndPoints" />
+            <End Role="SAPSession" EntitySet="SAPSessions" />
+          </AssociationSet>
+          <AssociationSet Name="SAPCredentialsSAPSession" Association="EstradaSAPConnector.SAPCredentialsSAPSession">
+            <End Role="SAPCredentials" EntitySet="SAPCredentials" />
+            <End Role="SAPSession" EntitySet="SAPSessions" />
+          </AssociationSet>
+          <AssociationSet Name="SAPSessionSAPRPCCall" Association="EstradaSAPConnector.SAPSessionSAPRPCCall">
+            <End Role="SAPSession" EntitySet="SAPSessions" />
+            <End Role="SAPRPCCall" EntitySet="SAPRPCCalls" />
+          </AssociationSet>
+          <AssociationSet Name="FondoFijoRendicionGastos" Association="EstradaSAPConnector.FondoFijoRendicionGastos">
+            <End Role="FondoFijo" EntitySet="FondoFijoes" />
+            <End Role="RendicionGastos" EntitySet="RendicionGastos" />
+          </AssociationSet>
+          <AssociationSet Name="RendicionGastosFacturaProveedor" Association="EstradaSAPConnector.RendicionGastosFacturaProveedor">
+            <End Role="RendicionGastos" EntitySet="RendicionGastos" />
+            <End Role="FacturaProveedor" EntitySet="FacturaProveedors" />
+          </AssociationSet>
+          <AssociationSet Name="RendicionGastosSAPSession" Association="EstradaSAPConnector.RendicionGastosSAPSession">
+            <End Role="RendicionGastos" EntitySet="RendicionGastos" />
+            <End Role="SAPSession" EntitySet="SAPSessions" />
+          </AssociationSet>
+          <EntitySet Name="Adelantos" EntityType="EstradaSAPConnector.Adelantos" />
+          <AssociationSet Name="FondoFijoAdelantos" Association="EstradaSAPConnector.FondoFijoAdelantos">
+            <End Role="FondoFijo" EntitySet="FondoFijoes" />
+            <End Role="Adelantos" EntitySet="Adelantos" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="RendicionGastos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="FondoFijo" Relationship="EstradaSAPConnector.FondoFijoRendicionGastos" FromRole="RendicionGastos" ToRole="FondoFijo" />
+          <NavigationProperty Name="FacturaProveedors" Relationship="EstradaSAPConnector.RendicionGastosFacturaProveedor" FromRole="RendicionGastos" ToRole="FacturaProveedor" />
+          <NavigationProperty Name="SAPSessions" Relationship="EstradaSAPConnector.RendicionGastosSAPSession" FromRole="RendicionGastos" ToRole="SAPSession" />
+        </EntityType>
+        <EntityType Name="FacturaProveedor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="RendicionGasto" Relationship="EstradaSAPConnector.RendicionGastosFacturaProveedor" FromRole="FacturaProveedor" ToRole="RendicionGastos" />
+        </EntityType>
+        <EntityType Name="FondoFijo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="RendicionGastos" Relationship="EstradaSAPConnector.FondoFijoRendicionGastos" FromRole="FondoFijo" ToRole="RendicionGastos" />
+          <NavigationProperty Name="Adelantos" Relationship="EstradaSAPConnector.FondoFijoAdelantos" FromRole="FondoFijo" ToRole="Adelantos" />
+          <Property Name="Nombre" Type="String" Nullable="false" />
+          <Property Name="Estado" Type="String" Nullable="false" />
+          <Property Name="CreadoEn" Type="String" Nullable="false" />
+          <Property Name="SAPId" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SAPCredentials">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" DefaultValue="New name" />
+          <Property Name="SAPLoginName" Type="String" Nullable="false" />
+          <Property Name="SAPLoginPassword" Type="String" Nullable="false" />
+          <NavigationProperty Name="SAPSessions" Relationship="EstradaSAPConnector.SAPCredentialsSAPSession" FromRole="SAPCredentials" ToRole="SAPSession" />
+        </EntityType>
+        <EntityType Name="SAPSession">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="SAPEndPoint" Relationship="EstradaSAPConnector.SAPEndPointSAPSession" FromRole="SAPSession" ToRole="SAPEndPoint" />
+          <NavigationProperty Name="SAPCredential" Relationship="EstradaSAPConnector.SAPCredentialsSAPSession" FromRole="SAPSession" ToRole="SAPCredentials" />
+          <NavigationProperty Name="SAPRPCCalls" Relationship="EstradaSAPConnector.SAPSessionSAPRPCCall" FromRole="SAPSession" ToRole="SAPRPCCall" />
+          <NavigationProperty Name="RendicionesGasto" Relationship="EstradaSAPConnector.RendicionGastosSAPSession" FromRole="SAPSession" ToRole="RendicionGastos" />
+        </EntityType>
+        <EntityType Name="SAPRPCCall">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Method" Type="String" Nullable="false" />
+          <Property Name="StartedOn" Type="String" Nullable="false" />
+          <Property Name="FinishedOn" Type="String" Nullable="false" />
+          <Property Name="ErrorCode" Type="String" Nullable="false" />
+          <Property Name="ErrorMsg" Type="String" Nullable="false" />
+          <Property Name="InputParameters" Type="String" Nullable="false" />
+          <Property Name="Results" Type="String" Nullable="false" />
+          <NavigationProperty Name="SAPSession" Relationship="EstradaSAPConnector.SAPSessionSAPRPCCall" FromRole="SAPRPCCall" ToRole="SAPSession" />
+        </EntityType>
+        <EntityType Name="SAPEndPoint">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="URL" Type="String" Nullable="false" />
+          <Property Name="LastConnectionOn" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="SAPSessions" Relationship="EstradaSAPConnector.SAPEndPointSAPSession" FromRole="SAPEndPoint" ToRole="SAPSession" />
+        </EntityType>
+        <Association Name="SAPEndPointSAPSession">
+          <End Type="EstradaSAPConnector.SAPEndPoint" Role="SAPEndPoint" Multiplicity="1" />
+          <End Type="EstradaSAPConnector.SAPSession" Role="SAPSession" Multiplicity="*" />
+        </Association>
+        <Association Name="SAPCredentialsSAPSession">
+          <End Type="EstradaSAPConnector.SAPCredentials" Role="SAPCredentials" Multiplicity="1" />
+          <End Type="EstradaSAPConnector.SAPSession" Role="SAPSession" Multiplicity="*" />
+        </Association>
+        <Association Name="SAPSessionSAPRPCCall">
+          <End Type="EstradaSAPConnector.SAPSession" Role="SAPSession" Multiplicity="1" />
+          <End Type="EstradaSAPConnector.SAPRPCCall" Role="SAPRPCCall" Multiplicity="*" />
+        </Association>
+        <Association Name="FondoFijoRendicionGastos">
+          <End Type="EstradaSAPConnector.FondoFijo" Role="FondoFijo" Multiplicity="1" />
+          <End Type="EstradaSAPConnector.RendicionGastos" Role="RendicionGastos" Multiplicity="*" />
+        </Association>
+        <Association Name="RendicionGastosFacturaProveedor">
+          <End Type="EstradaSAPConnector.RendicionGastos" Role="RendicionGastos" Multiplicity="1" />
+          <End Type="EstradaSAPConnector.FacturaProveedor" Role="FacturaProveedor" Multiplicity="*" />
+        </Association>
+        <Association Name="RendicionGastosSAPSession">
+          <End Type="EstradaSAPConnector.RendicionGastos" Role="RendicionGastos" Multiplicity="*" />
+          <End Type="EstradaSAPConnector.SAPSession" Role="SAPSession" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Adelantos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="FondoFijo" Relationship="EstradaSAPConnector.FondoFijoAdelantos" FromRole="Adelantos" ToRole="FondoFijo" />
+          <Property Name="SAPId" Type="String" Nullable="false" />
+          <Property Name="PedidoEl" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <Association Name="FondoFijoAdelantos">
+          <End Type="EstradaSAPConnector.FondoFijo" Role="FondoFijo" Multiplicity="1" />
+          <End Type="EstradaSAPConnector.Adelantos" Role="Adelantos" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="EstradaSAPConnector" />
+        <Alias Key="Target" Value="EstradaSAPConnector.Store" />
+        <EntityContainerMapping CdmEntityContainer="EstradaSAPConnectorContainer" StorageEntityContainer="EstradaSAPConnectorTargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace SAPConnectorLibrary
 {
-    public class Class1
+    public class SynchToSAP
     {
+        public void SynchNow()
+        {
+
+        }
     }
 }

@@ -15,63 +15,63 @@
     <EntitySet Name="SAPC_EndPoint" EntityType="EstradaSAPConnector.Store.SAPC_EndPoint" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SAPC_Adelantos" EntityType="EstradaSAPConnector.Store.SAPC_Adelantos" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SAPC_Estados" EntityType="EstradaSAPConnector.Store.SAPC_Estados" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="RendicionGastosSAPRPCCall" EntityType="EstradaSAPConnector.Store.RendicionGastosSAPRPCCall" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="AdelantosSAPRPCCall" EntityType="EstradaSAPConnector.Store.AdelantosSAPRPCCall" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="SAPEndPointSAPSession" Association="EstradaSAPConnector.Store.SAPEndPointSAPSession">
-      <End Role="SAPEndPoint" EntitySet="SAPC_EndPoint" />
-      <End Role="SAPSession" EntitySet="SAPC_Session" />
-    </AssociationSet>
-    <AssociationSet Name="SAPCredentialsSAPSession" Association="EstradaSAPConnector.Store.SAPCredentialsSAPSession">
-      <End Role="SAPCredentials" EntitySet="SAPC_Credentials" />
-      <End Role="SAPSession" EntitySet="SAPC_Session" />
-    </AssociationSet>
-    <AssociationSet Name="SAPSessionSAPRPCCall" Association="EstradaSAPConnector.Store.SAPSessionSAPRPCCall">
-      <End Role="SAPSession" EntitySet="SAPC_Session" />
-      <End Role="SAPRPCCall" EntitySet="SAPC_SAPRPCCall" />
-    </AssociationSet>
+    <EntitySet Name="SAPC_AdelantosSAPC_SAPRPCCall" EntityType="EstradaSAPConnector.Store.SAPC_AdelantosSAPC_SAPRPCCall" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SAPC_RendicionGastosSAPC_SAPRPCCall" EntityType="EstradaSAPConnector.Store.SAPC_RendicionGastosSAPC_SAPRPCCall" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FondoFijoRendicionGastos" Association="EstradaSAPConnector.Store.FondoFijoRendicionGastos">
       <End Role="FondoFijo" EntitySet="SAPC_FondoFijo" />
       <End Role="RendicionGastos" EntitySet="SAPC_RendicionGastos" />
     </AssociationSet>
-    <AssociationSet Name="RendicionGastosFacturaProveedor" Association="EstradaSAPConnector.Store.RendicionGastosFacturaProveedor">
+    <AssociationSet Name="SAPC_EstadosSAPC_FondoFijo" Association="EstradaSAPConnector.Store.SAPC_EstadosSAPC_FondoFijo">
+      <End Role="Estado" EntitySet="SAPC_Estados" />
+      <End Role="FondoFijo" EntitySet="SAPC_FondoFijo" />
+    </AssociationSet>
+    <AssociationSet Name="SAPC_EndPointSAPC_Session" Association="EstradaSAPConnector.Store.SAPC_EndPointSAPC_Session">
+      <End Role="SAPC_EndPoint" EntitySet="SAPC_EndPoint" />
+      <End Role="SAPC_Session" EntitySet="SAPC_Session" />
+    </AssociationSet>
+    <AssociationSet Name="SAPC_CredentialsSAPC_Session" Association="EstradaSAPConnector.Store.SAPC_CredentialsSAPC_Session">
+      <End Role="SAPC_Credentials" EntitySet="SAPC_Credentials" />
+      <End Role="SAPC_Session" EntitySet="SAPC_Session" />
+    </AssociationSet>
+    <AssociationSet Name="SAPC_EndPointSAPC_FondoFijo" Association="EstradaSAPConnector.Store.SAPC_EndPointSAPC_FondoFijo">
+      <End Role="SAPC_EndPoint" EntitySet="SAPC_EndPoint" />
+      <End Role="SAPC_FondoFijo" EntitySet="SAPC_FondoFijo" />
+    </AssociationSet>
+    <AssociationSet Name="SAPC_CredentialsSAPC_FondoFijo" Association="EstradaSAPConnector.Store.SAPC_CredentialsSAPC_FondoFijo">
+      <End Role="SAPC_Credentials" EntitySet="SAPC_Credentials" />
+      <End Role="SAPC_FondoFijo" EntitySet="SAPC_FondoFijo" />
+    </AssociationSet>
+    <AssociationSet Name="SAPC_SessionSAPC_SAPRPCCall" Association="EstradaSAPConnector.Store.SAPC_SessionSAPC_SAPRPCCall">
+      <End Role="SAPC_Session" EntitySet="SAPC_Session" />
+      <End Role="SAPC_SAPRPCCall" EntitySet="SAPC_SAPRPCCall" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SAPC_AdelantosSAPC_SAPRPCCall_SAPC_Adelantos" Association="EstradaSAPConnector.Store.FK_SAPC_AdelantosSAPC_SAPRPCCall_SAPC_Adelantos">
+      <End Role="SAPC_Adelantos" EntitySet="SAPC_Adelantos" />
+      <End Role="SAPC_AdelantosSAPC_SAPRPCCall" EntitySet="SAPC_AdelantosSAPC_SAPRPCCall" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SAPC_AdelantosSAPC_SAPRPCCall_SAPC_SAPRPCCall" Association="EstradaSAPConnector.Store.FK_SAPC_AdelantosSAPC_SAPRPCCall_SAPC_SAPRPCCall">
+      <End Role="SAPC_SAPRPCCall" EntitySet="SAPC_SAPRPCCall" />
+      <End Role="SAPC_AdelantosSAPC_SAPRPCCall" EntitySet="SAPC_AdelantosSAPC_SAPRPCCall" />
+    </AssociationSet>
+    <AssociationSet Name="SAPC_FondoFijoSAPC_Adelantos" Association="EstradaSAPConnector.Store.SAPC_FondoFijoSAPC_Adelantos">
+      <End Role="SAPC_FondoFijo" EntitySet="SAPC_FondoFijo" />
+      <End Role="SAPC_Adelantos" EntitySet="SAPC_Adelantos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SAPC_RendicionGastosSAPC_SAPRPCCall_SAPC_RendicionGastos" Association="EstradaSAPConnector.Store.FK_SAPC_RendicionGastosSAPC_SAPRPCCall_SAPC_RendicionGastos">
+      <End Role="SAPC_RendicionGastos" EntitySet="SAPC_RendicionGastos" />
+      <End Role="SAPC_RendicionGastosSAPC_SAPRPCCall" EntitySet="SAPC_RendicionGastosSAPC_SAPRPCCall" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SAPC_RendicionGastosSAPC_SAPRPCCall_SAPC_SAPRPCCall" Association="EstradaSAPConnector.Store.FK_SAPC_RendicionGastosSAPC_SAPRPCCall_SAPC_SAPRPCCall">
+      <End Role="SAPC_SAPRPCCall" EntitySet="SAPC_SAPRPCCall" />
+      <End Role="SAPC_RendicionGastosSAPC_SAPRPCCall" EntitySet="SAPC_RendicionGastosSAPC_SAPRPCCall" />
+    </AssociationSet>
+    <AssociationSet Name="SAPC_EstadosSAPC_RendicionGastos" Association="EstradaSAPConnector.Store.SAPC_EstadosSAPC_RendicionGastos">
+      <End Role="Estado" EntitySet="SAPC_Estados" />
+      <End Role="RendicionGastos" EntitySet="SAPC_RendicionGastos" />
+    </AssociationSet>
+    <AssociationSet Name="SAPC_RendicionGastosSAPC_FacturaProveedor" Association="EstradaSAPConnector.Store.SAPC_RendicionGastosSAPC_FacturaProveedor">
       <End Role="RendicionGastos" EntitySet="SAPC_RendicionGastos" />
       <End Role="FacturaProveedor" EntitySet="SAPC_FacturaProveedor" />
-    </AssociationSet>
-    <AssociationSet Name="FondoFijoAdelantos" Association="EstradaSAPConnector.Store.FondoFijoAdelantos">
-      <End Role="FondoFijo" EntitySet="SAPC_FondoFijo" />
-      <End Role="Adelantos" EntitySet="SAPC_Adelantos" />
-    </AssociationSet>
-    <AssociationSet Name="FK_RendicionGastosSAPRPCCall_RendicionGastos" Association="EstradaSAPConnector.Store.FK_RendicionGastosSAPRPCCall_RendicionGastos">
-      <End Role="RendicionGastos" EntitySet="SAPC_RendicionGastos" />
-      <End Role="RendicionGastosSAPRPCCall" EntitySet="RendicionGastosSAPRPCCall" />
-    </AssociationSet>
-    <AssociationSet Name="FK_RendicionGastosSAPRPCCall_SAPRPCCall" Association="EstradaSAPConnector.Store.FK_RendicionGastosSAPRPCCall_SAPRPCCall">
-      <End Role="SAPRPCCall" EntitySet="SAPC_SAPRPCCall" />
-      <End Role="RendicionGastosSAPRPCCall" EntitySet="RendicionGastosSAPRPCCall" />
-    </AssociationSet>
-    <AssociationSet Name="EstadoFondoFijoFondoFijo" Association="EstradaSAPConnector.Store.EstadoFondoFijoFondoFijo">
-      <End Role="EstadoFondoFijo" EntitySet="SAPC_Estados" />
-      <End Role="FondoFijo" EntitySet="SAPC_FondoFijo" />
-    </AssociationSet>
-    <AssociationSet Name="FK_AdelantosSAPRPCCall_Adelantos" Association="EstradaSAPConnector.Store.FK_AdelantosSAPRPCCall_Adelantos">
-      <End Role="Adelantos" EntitySet="SAPC_Adelantos" />
-      <End Role="AdelantosSAPRPCCall" EntitySet="AdelantosSAPRPCCall" />
-    </AssociationSet>
-    <AssociationSet Name="FK_AdelantosSAPRPCCall_SAPRPCCall" Association="EstradaSAPConnector.Store.FK_AdelantosSAPRPCCall_SAPRPCCall">
-      <End Role="SAPRPCCall" EntitySet="SAPC_SAPRPCCall" />
-      <End Role="AdelantosSAPRPCCall" EntitySet="AdelantosSAPRPCCall" />
-    </AssociationSet>
-    <AssociationSet Name="FondoFijoSAPCredentials" Association="EstradaSAPConnector.Store.FondoFijoSAPCredentials">
-      <End Role="FondoFijo" EntitySet="SAPC_FondoFijo" />
-      <End Role="SAPCredentials" EntitySet="SAPC_Credentials" />
-    </AssociationSet>
-    <AssociationSet Name="FondoFijoSAPEndPoint" Association="EstradaSAPConnector.Store.FondoFijoSAPEndPoint">
-      <End Role="FondoFijo" EntitySet="SAPC_FondoFijo" />
-      <End Role="SAPEndPoint" EntitySet="SAPC_EndPoint" />
-    </AssociationSet>
-    <AssociationSet Name="RendicionGastosEstadoFondoFijo" Association="EstradaSAPConnector.Store.RendicionGastosEstadoFondoFijo">
-      <End Role="RendicionGastos" EntitySet="SAPC_RendicionGastos" />
-      <End Role="EstadoFondoFijo" EntitySet="SAPC_Estados" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="SAPC_RendicionGastos">
@@ -81,14 +81,14 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
     <Property Name="FondoFijo_Id" Type="int" Nullable="false" />
-    <Property Name="EstadoFondoFijoes_Id" Type="int" Nullable="false" />
+    <Property Name="Estado_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="SAPC_FacturaProveedor">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="RendicionGasto_Id" Type="int" Nullable="false" />
+    <Property Name="RendicionGastos_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="SAPC_FondoFijo">
     <Key>
@@ -96,12 +96,11 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CreadoEn" Type="nvarchar(max)" Nullable="false" />
     <Property Name="SAPId" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="EstadoFondoFijo_Id" Type="int" Nullable="false" />
-    <Property Name="SAPCredentials_Id" Type="int" Nullable="false" />
-    <Property Name="SAPEndPoints_Id" Type="int" Nullable="false" />
+    <Property Name="Estado_Id" Type="int" Nullable="false" />
+    <Property Name="EndPoint_Id" Type="int" Nullable="false" />
+    <Property Name="Credentials_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="SAPC_Credentials">
     <Key>
@@ -117,8 +116,8 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="SAPEndPoint_Id" Type="int" Nullable="false" />
-    <Property Name="SAPCredential_Id" Type="int" Nullable="false" />
+    <Property Name="EndPoint_Id" Type="int" Nullable="false" />
+    <Property Name="Credential_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="SAPC_SAPRPCCall">
     <Key>
@@ -132,7 +131,7 @@
     <Property Name="ErrorMsg" Type="nvarchar(max)" Nullable="false" />
     <Property Name="InputParameters" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Results" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="SAPSession_Id" Type="int" Nullable="false" />
+    <Property Name="Session_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="SAPC_EndPoint">
     <Key>
@@ -161,58 +160,22 @@
     <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
     <Property Name="EntityName" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
-  <EntityType Name="RendicionGastosSAPRPCCall">
+  <EntityType Name="SAPC_AdelantosSAPC_SAPRPCCall">
     <Key>
-      <PropertyRef Name="RendicionGasto_Id" />
-      <PropertyRef Name="SAPRPCCalls_Id" />
+      <PropertyRef Name="Adelantos_Id" />
+      <PropertyRef Name="SAPRPCCall_Id" />
     </Key>
-    <Property Name="RendicionGasto_Id" Type="int" Nullable="false" />
-    <Property Name="SAPRPCCalls_Id" Type="int" Nullable="false" />
+    <Property Name="Adelantos_Id" Type="int" Nullable="false" />
+    <Property Name="SAPRPCCall_Id" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="AdelantosSAPRPCCall">
+  <EntityType Name="SAPC_RendicionGastosSAPC_SAPRPCCall">
     <Key>
-      <PropertyRef Name="Adelanto_Id" />
-      <PropertyRef Name="SAPRPCCalls_Id" />
+      <PropertyRef Name="RendicionesGastos_Id" />
+      <PropertyRef Name="SAPRPCCall_Id" />
     </Key>
-    <Property Name="Adelanto_Id" Type="int" Nullable="false" />
-    <Property Name="SAPRPCCalls_Id" Type="int" Nullable="false" />
+    <Property Name="RendicionesGastos_Id" Type="int" Nullable="false" />
+    <Property Name="SAPRPCCall_Id" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="SAPEndPointSAPSession">
-    <End Role="SAPEndPoint" Type="EstradaSAPConnector.Store.SAPC_EndPoint" Multiplicity="1" />
-    <End Role="SAPSession" Type="EstradaSAPConnector.Store.SAPC_Session" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SAPEndPoint">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="SAPSession">
-        <PropertyRef Name="SAPEndPoint_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="SAPCredentialsSAPSession">
-    <End Role="SAPCredentials" Type="EstradaSAPConnector.Store.SAPC_Credentials" Multiplicity="1" />
-    <End Role="SAPSession" Type="EstradaSAPConnector.Store.SAPC_Session" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SAPCredentials">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="SAPSession">
-        <PropertyRef Name="SAPCredential_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="SAPSessionSAPRPCCall">
-    <End Role="SAPSession" Type="EstradaSAPConnector.Store.SAPC_Session" Multiplicity="1" />
-    <End Role="SAPRPCCall" Type="EstradaSAPConnector.Store.SAPC_SAPRPCCall" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SAPSession">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="SAPRPCCall">
-        <PropertyRef Name="SAPSession_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FondoFijoRendicionGastos">
     <End Role="FondoFijo" Type="EstradaSAPConnector.Store.SAPC_FondoFijo" Multiplicity="1" />
     <End Role="RendicionGastos" Type="EstradaSAPConnector.Store.SAPC_RendicionGastos" Multiplicity="*" />
@@ -225,7 +188,103 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="RendicionGastosFacturaProveedor">
+  <Association Name="SAPC_EstadosSAPC_FondoFijo">
+    <End Role="Estado" Type="EstradaSAPConnector.Store.SAPC_Estados" Multiplicity="1" />
+    <End Role="FondoFijo" Type="EstradaSAPConnector.Store.SAPC_FondoFijo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FondoFijo">
+        <PropertyRef Name="Estado_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SAPC_EndPointSAPC_Session">
+    <End Role="SAPC_EndPoint" Type="EstradaSAPConnector.Store.SAPC_EndPoint" Multiplicity="1" />
+    <End Role="SAPC_Session" Type="EstradaSAPConnector.Store.SAPC_Session" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SAPC_EndPoint">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SAPC_Session">
+        <PropertyRef Name="EndPoint_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SAPC_CredentialsSAPC_Session">
+    <End Role="SAPC_Credentials" Type="EstradaSAPConnector.Store.SAPC_Credentials" Multiplicity="1" />
+    <End Role="SAPC_Session" Type="EstradaSAPConnector.Store.SAPC_Session" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SAPC_Credentials">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SAPC_Session">
+        <PropertyRef Name="Credential_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SAPC_EndPointSAPC_FondoFijo">
+    <End Role="SAPC_EndPoint" Type="EstradaSAPConnector.Store.SAPC_EndPoint" Multiplicity="1" />
+    <End Role="SAPC_FondoFijo" Type="EstradaSAPConnector.Store.SAPC_FondoFijo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SAPC_EndPoint">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SAPC_FondoFijo">
+        <PropertyRef Name="EndPoint_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SAPC_CredentialsSAPC_FondoFijo">
+    <End Role="SAPC_Credentials" Type="EstradaSAPConnector.Store.SAPC_Credentials" Multiplicity="1" />
+    <End Role="SAPC_FondoFijo" Type="EstradaSAPConnector.Store.SAPC_FondoFijo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SAPC_Credentials">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SAPC_FondoFijo">
+        <PropertyRef Name="Credentials_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SAPC_SessionSAPC_SAPRPCCall">
+    <End Role="SAPC_Session" Type="EstradaSAPConnector.Store.SAPC_Session" Multiplicity="1" />
+    <End Role="SAPC_SAPRPCCall" Type="EstradaSAPConnector.Store.SAPC_SAPRPCCall" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SAPC_Session">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SAPC_SAPRPCCall">
+        <PropertyRef Name="Session_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SAPC_FondoFijoSAPC_Adelantos">
+    <End Role="SAPC_FondoFijo" Type="EstradaSAPConnector.Store.SAPC_FondoFijo" Multiplicity="1" />
+    <End Role="SAPC_Adelantos" Type="EstradaSAPConnector.Store.SAPC_Adelantos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SAPC_FondoFijo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SAPC_Adelantos">
+        <PropertyRef Name="FondoFijo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SAPC_EstadosSAPC_RendicionGastos">
+    <End Role="Estado" Type="EstradaSAPConnector.Store.SAPC_Estados" Multiplicity="1" />
+    <End Role="RendicionGastos" Type="EstradaSAPConnector.Store.SAPC_RendicionGastos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RendicionGastos">
+        <PropertyRef Name="Estado_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SAPC_RendicionGastosSAPC_FacturaProveedor">
     <End Role="RendicionGastos" Type="EstradaSAPConnector.Store.SAPC_RendicionGastos" Multiplicity="1" />
     <End Role="FacturaProveedor" Type="EstradaSAPConnector.Store.SAPC_FacturaProveedor" Multiplicity="*" />
     <ReferentialConstraint>
@@ -233,115 +292,55 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="FacturaProveedor">
-        <PropertyRef Name="RendicionGasto_Id" />
+        <PropertyRef Name="RendicionGastos_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FondoFijoAdelantos">
-    <End Role="FondoFijo" Type="EstradaSAPConnector.Store.SAPC_FondoFijo" Multiplicity="1" />
-    <End Role="Adelantos" Type="EstradaSAPConnector.Store.SAPC_Adelantos" Multiplicity="*" />
+  <Association Name="FK_SAPC_AdelantosSAPC_SAPRPCCall_SAPC_Adelantos">
+    <End Role="SAPC_Adelantos" Type="EstradaSAPConnector.Store.SAPC_Adelantos" Multiplicity="1" />
+    <End Role="SAPC_AdelantosSAPC_SAPRPCCall" Type="EstradaSAPConnector.Store.SAPC_AdelantosSAPC_SAPRPCCall" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="FondoFijo">
+      <Principal Role="SAPC_Adelantos">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Adelantos">
-        <PropertyRef Name="FondoFijo_Id" />
+      <Dependent Role="SAPC_AdelantosSAPC_SAPRPCCall">
+        <PropertyRef Name="Adelantos_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="EstadoFondoFijoFondoFijo">
-    <End Role="EstadoFondoFijo" Type="EstradaSAPConnector.Store.SAPC_Estados" Multiplicity="1" />
-    <End Role="FondoFijo" Type="EstradaSAPConnector.Store.SAPC_FondoFijo" Multiplicity="*" />
+  <Association Name="FK_SAPC_AdelantosSAPC_SAPRPCCall_SAPC_SAPRPCCall">
+    <End Role="SAPC_AdelantosSAPC_SAPRPCCall" Type="EstradaSAPConnector.Store.SAPC_AdelantosSAPC_SAPRPCCall" Multiplicity="*" />
+    <End Role="SAPC_SAPRPCCall" Type="EstradaSAPConnector.Store.SAPC_SAPRPCCall" Multiplicity="1" />
     <ReferentialConstraint>
-      <Principal Role="EstadoFondoFijo">
+      <Principal Role="SAPC_SAPRPCCall">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="FondoFijo">
-        <PropertyRef Name="EstadoFondoFijo_Id" />
+      <Dependent Role="SAPC_AdelantosSAPC_SAPRPCCall">
+        <PropertyRef Name="SAPRPCCall_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FondoFijoSAPCredentials">
-    <End Role="FondoFijo" Type="EstradaSAPConnector.Store.SAPC_FondoFijo" Multiplicity="*" />
-    <End Role="SAPCredentials" Type="EstradaSAPConnector.Store.SAPC_Credentials" Multiplicity="1" />
+  <Association Name="FK_SAPC_RendicionGastosSAPC_SAPRPCCall_SAPC_RendicionGastos">
+    <End Role="SAPC_RendicionGastos" Type="EstradaSAPConnector.Store.SAPC_RendicionGastos" Multiplicity="1" />
+    <End Role="SAPC_RendicionGastosSAPC_SAPRPCCall" Type="EstradaSAPConnector.Store.SAPC_RendicionGastosSAPC_SAPRPCCall" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="SAPCredentials">
+      <Principal Role="SAPC_RendicionGastos">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="FondoFijo">
-        <PropertyRef Name="SAPCredentials_Id" />
+      <Dependent Role="SAPC_RendicionGastosSAPC_SAPRPCCall">
+        <PropertyRef Name="RendicionesGastos_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FondoFijoSAPEndPoint">
-    <End Role="FondoFijo" Type="EstradaSAPConnector.Store.SAPC_FondoFijo" Multiplicity="*" />
-    <End Role="SAPEndPoint" Type="EstradaSAPConnector.Store.SAPC_EndPoint" Multiplicity="1" />
+  <Association Name="FK_SAPC_RendicionGastosSAPC_SAPRPCCall_SAPC_SAPRPCCall">
+    <End Role="SAPC_RendicionGastosSAPC_SAPRPCCall" Type="EstradaSAPConnector.Store.SAPC_RendicionGastosSAPC_SAPRPCCall" Multiplicity="*" />
+    <End Role="SAPC_SAPRPCCall" Type="EstradaSAPConnector.Store.SAPC_SAPRPCCall" Multiplicity="1" />
     <ReferentialConstraint>
-      <Principal Role="SAPEndPoint">
+      <Principal Role="SAPC_SAPRPCCall">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="FondoFijo">
-        <PropertyRef Name="SAPEndPoints_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="RendicionGastosEstadoFondoFijo">
-    <End Role="RendicionGastos" Type="EstradaSAPConnector.Store.SAPC_RendicionGastos" Multiplicity="*" />
-    <End Role="EstadoFondoFijo" Type="EstradaSAPConnector.Store.SAPC_Estados" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="EstadoFondoFijo">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="RendicionGastos">
-        <PropertyRef Name="EstadoFondoFijoes_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_RendicionGastosSAPRPCCall_RendicionGastos">
-    <End Role="RendicionGastos" Type="EstradaSAPConnector.Store.SAPC_RendicionGastos" Multiplicity="1" />
-    <End Role="RendicionGastosSAPRPCCall" Type="EstradaSAPConnector.Store.RendicionGastosSAPRPCCall" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="RendicionGastos">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="RendicionGastosSAPRPCCall">
-        <PropertyRef Name="RendicionGasto_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_RendicionGastosSAPRPCCall_SAPRPCCall">
-    <End Role="RendicionGastosSAPRPCCall" Type="EstradaSAPConnector.Store.RendicionGastosSAPRPCCall" Multiplicity="*" />
-    <End Role="SAPRPCCall" Type="EstradaSAPConnector.Store.SAPC_SAPRPCCall" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="SAPRPCCall">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="RendicionGastosSAPRPCCall">
-        <PropertyRef Name="SAPRPCCalls_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_AdelantosSAPRPCCall_Adelantos">
-    <End Role="Adelantos" Type="EstradaSAPConnector.Store.SAPC_Adelantos" Multiplicity="1" />
-    <End Role="AdelantosSAPRPCCall" Type="EstradaSAPConnector.Store.AdelantosSAPRPCCall" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Adelantos">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="AdelantosSAPRPCCall">
-        <PropertyRef Name="Adelanto_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_AdelantosSAPRPCCall_SAPRPCCall">
-    <End Role="AdelantosSAPRPCCall" Type="EstradaSAPConnector.Store.AdelantosSAPRPCCall" Multiplicity="*" />
-    <End Role="SAPRPCCall" Type="EstradaSAPConnector.Store.SAPC_SAPRPCCall" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="SAPRPCCall">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="AdelantosSAPRPCCall">
-        <PropertyRef Name="SAPRPCCalls_Id" />
+      <Dependent Role="SAPC_RendicionGastosSAPC_SAPRPCCall">
+        <PropertyRef Name="SAPRPCCall_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -357,55 +356,55 @@
           <EntitySet Name="SAPC_Session" EntityType="EstradaSAPConnector.SAPC_Session" />
           <EntitySet Name="SAPC_SAPRPCCall" EntityType="EstradaSAPConnector.SAPC_SAPRPCCall" />
           <EntitySet Name="SAPC_EndPoint" EntityType="EstradaSAPConnector.SAPC_EndPoint" />
-          <AssociationSet Name="SAPEndPointSAPSession" Association="EstradaSAPConnector.SAPEndPointSAPSession">
-            <End Role="SAPEndPoint" EntitySet="SAPC_EndPoint" />
-            <End Role="SAPSession" EntitySet="SAPC_Session" />
-          </AssociationSet>
-          <AssociationSet Name="SAPCredentialsSAPSession" Association="EstradaSAPConnector.SAPCredentialsSAPSession">
-            <End Role="SAPCredentials" EntitySet="SAPC_Credentials" />
-            <End Role="SAPSession" EntitySet="SAPC_Session" />
-          </AssociationSet>
-          <AssociationSet Name="SAPSessionSAPRPCCall" Association="EstradaSAPConnector.SAPSessionSAPRPCCall">
-            <End Role="SAPSession" EntitySet="SAPC_Session" />
-            <End Role="SAPRPCCall" EntitySet="SAPC_SAPRPCCall" />
-          </AssociationSet>
           <AssociationSet Name="FondoFijoRendicionGastos" Association="EstradaSAPConnector.FondoFijoRendicionGastos">
             <End Role="FondoFijo" EntitySet="SAPC_FondoFijo" />
             <End Role="RendicionGastos" EntitySet="SAPC_RendicionGastos" />
           </AssociationSet>
-          <AssociationSet Name="RendicionGastosFacturaProveedor" Association="EstradaSAPConnector.RendicionGastosFacturaProveedor">
+          <EntitySet Name="SAPC_Adelantos" EntityType="EstradaSAPConnector.SAPC_Adelantos" />
+          <EntitySet Name="SAPC_Estados" EntityType="EstradaSAPConnector.SAPC_Estados" />
+          <AssociationSet Name="SAPC_EstadosSAPC_FondoFijo" Association="EstradaSAPConnector.SAPC_EstadosSAPC_FondoFijo">
+            <End Role="Estado" EntitySet="SAPC_Estados" />
+            <End Role="FondoFijo" EntitySet="SAPC_FondoFijo" />
+          </AssociationSet>
+          <AssociationSet Name="SAPC_EndPointSAPC_Session" Association="EstradaSAPConnector.SAPC_EndPointSAPC_Session">
+            <End Role="SAPC_EndPoint" EntitySet="SAPC_EndPoint" />
+            <End Role="SAPC_Session" EntitySet="SAPC_Session" />
+          </AssociationSet>
+          <AssociationSet Name="SAPC_CredentialsSAPC_Session" Association="EstradaSAPConnector.SAPC_CredentialsSAPC_Session">
+            <End Role="SAPC_Credentials" EntitySet="SAPC_Credentials" />
+            <End Role="SAPC_Session" EntitySet="SAPC_Session" />
+          </AssociationSet>
+          <AssociationSet Name="SAPC_EndPointSAPC_FondoFijo" Association="EstradaSAPConnector.SAPC_EndPointSAPC_FondoFijo">
+            <End Role="SAPC_EndPoint" EntitySet="SAPC_EndPoint" />
+            <End Role="SAPC_FondoFijo" EntitySet="SAPC_FondoFijo" />
+          </AssociationSet>
+          <AssociationSet Name="SAPC_CredentialsSAPC_FondoFijo" Association="EstradaSAPConnector.SAPC_CredentialsSAPC_FondoFijo">
+            <End Role="SAPC_Credentials" EntitySet="SAPC_Credentials" />
+            <End Role="SAPC_FondoFijo" EntitySet="SAPC_FondoFijo" />
+          </AssociationSet>
+          <AssociationSet Name="SAPC_SessionSAPC_SAPRPCCall" Association="EstradaSAPConnector.SAPC_SessionSAPC_SAPRPCCall">
+            <End Role="SAPC_Session" EntitySet="SAPC_Session" />
+            <End Role="SAPC_SAPRPCCall" EntitySet="SAPC_SAPRPCCall" />
+          </AssociationSet>
+          <AssociationSet Name="SAPC_AdelantosSAPC_SAPRPCCall" Association="EstradaSAPConnector.SAPC_AdelantosSAPC_SAPRPCCall">
+            <End Role="SAPC_Adelantos" EntitySet="SAPC_Adelantos" />
+            <End Role="SAPC_SAPRPCCall" EntitySet="SAPC_SAPRPCCall" />
+          </AssociationSet>
+          <AssociationSet Name="SAPC_FondoFijoSAPC_Adelantos" Association="EstradaSAPConnector.SAPC_FondoFijoSAPC_Adelantos">
+            <End Role="SAPC_FondoFijo" EntitySet="SAPC_FondoFijo" />
+            <End Role="SAPC_Adelantos" EntitySet="SAPC_Adelantos" />
+          </AssociationSet>
+          <AssociationSet Name="SAPC_RendicionGastosSAPC_SAPRPCCall" Association="EstradaSAPConnector.SAPC_RendicionGastosSAPC_SAPRPCCall">
+            <End Role="SAPC_RendicionGastos" EntitySet="SAPC_RendicionGastos" />
+            <End Role="SAPC_SAPRPCCall" EntitySet="SAPC_SAPRPCCall" />
+          </AssociationSet>
+          <AssociationSet Name="SAPC_EstadosSAPC_RendicionGastos" Association="EstradaSAPConnector.SAPC_EstadosSAPC_RendicionGastos">
+            <End Role="Estado" EntitySet="SAPC_Estados" />
+            <End Role="RendicionGastos" EntitySet="SAPC_RendicionGastos" />
+          </AssociationSet>
+          <AssociationSet Name="SAPC_RendicionGastosSAPC_FacturaProveedor" Association="EstradaSAPConnector.SAPC_RendicionGastosSAPC_FacturaProveedor">
             <End Role="RendicionGastos" EntitySet="SAPC_RendicionGastos" />
             <End Role="FacturaProveedor" EntitySet="SAPC_FacturaProveedor" />
-          </AssociationSet>
-          <EntitySet Name="SAPC_Adelantos" EntityType="EstradaSAPConnector.SAPC_Adelantos" />
-          <AssociationSet Name="FondoFijoAdelantos" Association="EstradaSAPConnector.FondoFijoAdelantos">
-            <End Role="FondoFijo" EntitySet="SAPC_FondoFijo" />
-            <End Role="Adelantos" EntitySet="SAPC_Adelantos" />
-          </AssociationSet>
-          <AssociationSet Name="RendicionGastosSAPRPCCall" Association="EstradaSAPConnector.RendicionGastosSAPRPCCall">
-            <End Role="RendicionGastos" EntitySet="SAPC_RendicionGastos" />
-            <End Role="SAPRPCCall" EntitySet="SAPC_SAPRPCCall" />
-          </AssociationSet>
-          <EntitySet Name="SAPC_Estados" EntityType="EstradaSAPConnector.SAPC_Estados" />
-          <AssociationSet Name="EstadoFondoFijoFondoFijo" Association="EstradaSAPConnector.EstadoFondoFijoFondoFijo">
-            <End Role="EstadoFondoFijo" EntitySet="SAPC_Estados" />
-            <End Role="FondoFijo" EntitySet="SAPC_FondoFijo" />
-          </AssociationSet>
-          <AssociationSet Name="AdelantosSAPRPCCall" Association="EstradaSAPConnector.AdelantosSAPRPCCall">
-            <End Role="Adelantos" EntitySet="SAPC_Adelantos" />
-            <End Role="SAPRPCCall" EntitySet="SAPC_SAPRPCCall" />
-          </AssociationSet>
-          <AssociationSet Name="FondoFijoSAPCredentials" Association="EstradaSAPConnector.FondoFijoSAPCredentials">
-            <End Role="FondoFijo" EntitySet="SAPC_FondoFijo" />
-            <End Role="SAPCredentials" EntitySet="SAPC_Credentials" />
-          </AssociationSet>
-          <AssociationSet Name="FondoFijoSAPEndPoint" Association="EstradaSAPConnector.FondoFijoSAPEndPoint">
-            <End Role="FondoFijo" EntitySet="SAPC_FondoFijo" />
-            <End Role="SAPEndPoint" EntitySet="SAPC_EndPoint" />
-          </AssociationSet>
-          <AssociationSet Name="RendicionGastosEstadoFondoFijo" Association="EstradaSAPConnector.RendicionGastosEstadoFondoFijo">
-            <End Role="RendicionGastos" EntitySet="SAPC_RendicionGastos" />
-            <End Role="EstadoFondoFijo" EntitySet="SAPC_Estados" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="SAPC_RendicionGastos">
@@ -414,32 +413,31 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="FondoFijo" Relationship="EstradaSAPConnector.FondoFijoRendicionGastos" FromRole="RendicionGastos" ToRole="FondoFijo" />
-          <NavigationProperty Name="FacturaProveedors" Relationship="EstradaSAPConnector.RendicionGastosFacturaProveedor" FromRole="RendicionGastos" ToRole="FacturaProveedor" />
           <Property Name="Username" Type="String" Nullable="false" />
-          <NavigationProperty Name="SAPRPCCalls" Relationship="EstradaSAPConnector.RendicionGastosSAPRPCCall" FromRole="RendicionGastos" ToRole="SAPRPCCall" />
-          <NavigationProperty Name="EstadoFondoFijoes" Relationship="EstradaSAPConnector.RendicionGastosEstadoFondoFijo" FromRole="RendicionGastos" ToRole="EstadoFondoFijo" />
+          <NavigationProperty Name="SAPRPCCall" Relationship="EstradaSAPConnector.SAPC_RendicionGastosSAPC_SAPRPCCall" FromRole="SAPC_RendicionGastos" ToRole="SAPC_SAPRPCCall" />
+          <NavigationProperty Name="Estado" Relationship="EstradaSAPConnector.SAPC_EstadosSAPC_RendicionGastos" FromRole="RendicionGastos" ToRole="Estado" />
+          <NavigationProperty Name="FacturasProveedor" Relationship="EstradaSAPConnector.SAPC_RendicionGastosSAPC_FacturaProveedor" FromRole="RendicionGastos" ToRole="FacturaProveedor" />
           </EntityType>
         <EntityType Name="SAPC_FacturaProveedor">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="RendicionGasto" Relationship="EstradaSAPConnector.RendicionGastosFacturaProveedor" FromRole="FacturaProveedor" ToRole="RendicionGastos" />
+          <NavigationProperty Name="RendicionGastos" Relationship="EstradaSAPConnector.SAPC_RendicionGastosSAPC_FacturaProveedor" FromRole="FacturaProveedor" ToRole="RendicionGastos" />
         </EntityType>
         <EntityType Name="SAPC_FondoFijo">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="RendicionGastos" Relationship="EstradaSAPConnector.FondoFijoRendicionGastos" FromRole="FondoFijo" ToRole="RendicionGastos" />
-          <NavigationProperty Name="Adelantos" Relationship="EstradaSAPConnector.FondoFijoAdelantos" FromRole="FondoFijo" ToRole="Adelantos" />
+          <NavigationProperty Name="RendicionesGastos" Relationship="EstradaSAPConnector.FondoFijoRendicionGastos" FromRole="FondoFijo" ToRole="RendicionGastos" />
           <Property Name="Nombre" Type="String" Nullable="false" />
-          <Property Name="Estado" Type="String" Nullable="false" />
           <Property Name="CreadoEn" Type="String" Nullable="false" />
           <Property Name="SAPId" Type="String" Nullable="false" />
-          <NavigationProperty Name="EstadoFondoFijo" Relationship="EstradaSAPConnector.EstadoFondoFijoFondoFijo" FromRole="FondoFijo" ToRole="EstadoFondoFijo" />
-          <NavigationProperty Name="SAPCredentials" Relationship="EstradaSAPConnector.FondoFijoSAPCredentials" FromRole="FondoFijo" ToRole="SAPCredentials" />
-          <NavigationProperty Name="SAPEndPoints" Relationship="EstradaSAPConnector.FondoFijoSAPEndPoint" FromRole="FondoFijo" ToRole="SAPEndPoint" />
+          <NavigationProperty Name="Estado" Relationship="EstradaSAPConnector.SAPC_EstadosSAPC_FondoFijo" FromRole="FondoFijo" ToRole="Estado" />
+          <NavigationProperty Name="EndPoint" Relationship="EstradaSAPConnector.SAPC_EndPointSAPC_FondoFijo" FromRole="SAPC_FondoFijo" ToRole="SAPC_EndPoint" />
+          <NavigationProperty Name="Credentials" Relationship="EstradaSAPConnector.SAPC_CredentialsSAPC_FondoFijo" FromRole="SAPC_FondoFijo" ToRole="SAPC_Credentials" />
+          <NavigationProperty Name="Adelantos" Relationship="EstradaSAPConnector.SAPC_FondoFijoSAPC_Adelantos" FromRole="SAPC_FondoFijo" ToRole="SAPC_Adelantos" />
         </EntityType>
         <EntityType Name="SAPC_Credentials">
           <Key>
@@ -449,17 +447,17 @@
           <Property Name="Name" Type="String" Nullable="false" DefaultValue="New name" />
           <Property Name="SAPLoginName" Type="String" Nullable="false" />
           <Property Name="SAPLoginPassword" Type="String" Nullable="false" />
-          <NavigationProperty Name="SAPSessions" Relationship="EstradaSAPConnector.SAPCredentialsSAPSession" FromRole="SAPCredentials" ToRole="SAPSession" />
-          <NavigationProperty Name="FondoFijo" Relationship="EstradaSAPConnector.FondoFijoSAPCredentials" FromRole="SAPCredentials" ToRole="FondoFijo" />
+          <NavigationProperty Name="Sessions" Relationship="EstradaSAPConnector.SAPC_CredentialsSAPC_Session" FromRole="SAPC_Credentials" ToRole="SAPC_Session" />
+          <NavigationProperty Name="FondosFijos" Relationship="EstradaSAPConnector.SAPC_CredentialsSAPC_FondoFijo" FromRole="SAPC_Credentials" ToRole="SAPC_FondoFijo" />
         </EntityType>
         <EntityType Name="SAPC_Session">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="SAPEndPoint" Relationship="EstradaSAPConnector.SAPEndPointSAPSession" FromRole="SAPSession" ToRole="SAPEndPoint" />
-          <NavigationProperty Name="SAPCredential" Relationship="EstradaSAPConnector.SAPCredentialsSAPSession" FromRole="SAPSession" ToRole="SAPCredentials" />
-          <NavigationProperty Name="SAPRPCCalls" Relationship="EstradaSAPConnector.SAPSessionSAPRPCCall" FromRole="SAPSession" ToRole="SAPRPCCall" />
+          <NavigationProperty Name="EndPoint" Relationship="EstradaSAPConnector.SAPC_EndPointSAPC_Session" FromRole="SAPC_Session" ToRole="SAPC_EndPoint" />
+          <NavigationProperty Name="Credential" Relationship="EstradaSAPConnector.SAPC_CredentialsSAPC_Session" FromRole="SAPC_Session" ToRole="SAPC_Credentials" />
+          <NavigationProperty Name="SAPRPCCalls" Relationship="EstradaSAPConnector.SAPC_SessionSAPC_SAPRPCCall" FromRole="SAPC_Session" ToRole="SAPC_SAPRPCCall" />
         </EntityType>
         <EntityType Name="SAPC_SAPRPCCall">
           <Key>
@@ -473,9 +471,9 @@
           <Property Name="ErrorMsg" Type="String" Nullable="false" />
           <Property Name="InputParameters" Type="String" Nullable="false" />
           <Property Name="Results" Type="String" Nullable="false" />
-          <NavigationProperty Name="SAPSession" Relationship="EstradaSAPConnector.SAPSessionSAPRPCCall" FromRole="SAPRPCCall" ToRole="SAPSession" />
-          <NavigationProperty Name="RendicionGasto" Relationship="EstradaSAPConnector.RendicionGastosSAPRPCCall" FromRole="SAPRPCCall" ToRole="RendicionGastos" />
-          <NavigationProperty Name="Adelanto" Relationship="EstradaSAPConnector.AdelantosSAPRPCCall" FromRole="SAPRPCCall" ToRole="Adelantos" />
+          <NavigationProperty Name="Session" Relationship="EstradaSAPConnector.SAPC_SessionSAPC_SAPRPCCall" FromRole="SAPC_SAPRPCCall" ToRole="SAPC_Session" />
+          <NavigationProperty Name="Adelantos" Relationship="EstradaSAPConnector.SAPC_AdelantosSAPC_SAPRPCCall" FromRole="SAPC_SAPRPCCall" ToRole="SAPC_Adelantos" />
+          <NavigationProperty Name="RendicionesGastos" Relationship="EstradaSAPConnector.SAPC_RendicionGastosSAPC_SAPRPCCall" FromRole="SAPC_SAPRPCCall" ToRole="SAPC_RendicionGastos" />
         </EntityType>
         <EntityType Name="SAPC_EndPoint">
           <Key>
@@ -485,47 +483,23 @@
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="URL" Type="String" Nullable="false" />
           <Property Name="LastConnectionOn" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="SAPSessions" Relationship="EstradaSAPConnector.SAPEndPointSAPSession" FromRole="SAPEndPoint" ToRole="SAPSession" />
-          <NavigationProperty Name="FondoFijo" Relationship="EstradaSAPConnector.FondoFijoSAPEndPoint" FromRole="SAPEndPoint" ToRole="FondoFijo" />
+          <NavigationProperty Name="Sessions" Relationship="EstradaSAPConnector.SAPC_EndPointSAPC_Session" FromRole="SAPC_EndPoint" ToRole="SAPC_Session" />
+          <NavigationProperty Name="FondosFijos" Relationship="EstradaSAPConnector.SAPC_EndPointSAPC_FondoFijo" FromRole="SAPC_EndPoint" ToRole="SAPC_FondoFijo" />
         </EntityType>
-        <Association Name="SAPEndPointSAPSession">
-          <End Type="EstradaSAPConnector.SAPC_EndPoint" Role="SAPEndPoint" Multiplicity="1" />
-          <End Type="EstradaSAPConnector.SAPC_Session" Role="SAPSession" Multiplicity="*" />
-        </Association>
-        <Association Name="SAPCredentialsSAPSession">
-          <End Type="EstradaSAPConnector.SAPC_Credentials" Role="SAPCredentials" Multiplicity="1" />
-          <End Type="EstradaSAPConnector.SAPC_Session" Role="SAPSession" Multiplicity="*" />
-        </Association>
-        <Association Name="SAPSessionSAPRPCCall">
-          <End Type="EstradaSAPConnector.SAPC_Session" Role="SAPSession" Multiplicity="1" />
-          <End Type="EstradaSAPConnector.SAPC_SAPRPCCall" Role="SAPRPCCall" Multiplicity="*" />
-        </Association>
         <Association Name="FondoFijoRendicionGastos">
           <End Type="EstradaSAPConnector.SAPC_FondoFijo" Role="FondoFijo" Multiplicity="1" />
           <End Type="EstradaSAPConnector.SAPC_RendicionGastos" Role="RendicionGastos" Multiplicity="*" />
-        </Association>
-        <Association Name="RendicionGastosFacturaProveedor">
-          <End Type="EstradaSAPConnector.SAPC_RendicionGastos" Role="RendicionGastos" Multiplicity="1" />
-          <End Type="EstradaSAPConnector.SAPC_FacturaProveedor" Role="FacturaProveedor" Multiplicity="*" />
         </Association>
         <EntityType Name="SAPC_Adelantos">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="FondoFijo" Relationship="EstradaSAPConnector.FondoFijoAdelantos" FromRole="Adelantos" ToRole="FondoFijo" />
           <Property Name="SAPId" Type="String" Nullable="false" />
           <Property Name="PedidoEl" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="SAPRPCCalls" Relationship="EstradaSAPConnector.AdelantosSAPRPCCall" FromRole="Adelantos" ToRole="SAPRPCCall" />
+          <NavigationProperty Name="SAPRPCCall" Relationship="EstradaSAPConnector.SAPC_AdelantosSAPC_SAPRPCCall" FromRole="SAPC_Adelantos" ToRole="SAPC_SAPRPCCall" />
+          <NavigationProperty Name="FondoFijo" Relationship="EstradaSAPConnector.SAPC_FondoFijoSAPC_Adelantos" FromRole="SAPC_Adelantos" ToRole="SAPC_FondoFijo" />
         </EntityType>
-        <Association Name="FondoFijoAdelantos">
-          <End Type="EstradaSAPConnector.SAPC_FondoFijo" Role="FondoFijo" Multiplicity="1" />
-          <End Type="EstradaSAPConnector.SAPC_Adelantos" Role="Adelantos" Multiplicity="*" />
-        </Association>
-        <Association Name="RendicionGastosSAPRPCCall">
-          <End Type="EstradaSAPConnector.SAPC_RendicionGastos" Role="RendicionGastos" Multiplicity="*" />
-          <End Type="EstradaSAPConnector.SAPC_SAPRPCCall" Role="SAPRPCCall" Multiplicity="*" />
-        </Association>
         <EntityType Name="SAPC_Estados">
           <Key>
             <PropertyRef Name="Id" />
@@ -533,29 +507,53 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Codigo" Type="String" Nullable="false" />
           <Property Name="Nombre" Type="String" Nullable="false" />
-          <NavigationProperty Name="FondoFijoes" Relationship="EstradaSAPConnector.EstadoFondoFijoFondoFijo" FromRole="EstadoFondoFijo" ToRole="FondoFijo" />
           <Property Name="EntityName" Type="String" Nullable="false" />
-          <NavigationProperty Name="RendicionGasto" Relationship="EstradaSAPConnector.RendicionGastosEstadoFondoFijo" FromRole="EstadoFondoFijo" ToRole="RendicionGastos" />
+          <NavigationProperty Name="FondosFijos" Relationship="EstradaSAPConnector.SAPC_EstadosSAPC_FondoFijo" FromRole="Estado" ToRole="FondoFijo" />
+          <NavigationProperty Name="RendicionesGastos" Relationship="EstradaSAPConnector.SAPC_EstadosSAPC_RendicionGastos" FromRole="Estado" ToRole="RendicionGastos" />
         </EntityType>
-        <Association Name="EstadoFondoFijoFondoFijo">
-          <End Type="EstradaSAPConnector.SAPC_Estados" Role="EstadoFondoFijo" Multiplicity="1" />
+        <Association Name="SAPC_EstadosSAPC_FondoFijo">
+          <End Type="EstradaSAPConnector.SAPC_Estados" Role="Estado" Multiplicity="1" />
           <End Type="EstradaSAPConnector.SAPC_FondoFijo" Role="FondoFijo" Multiplicity="*" />
         </Association>
-        <Association Name="AdelantosSAPRPCCall">
-          <End Type="EstradaSAPConnector.SAPC_Adelantos" Role="Adelantos" Multiplicity="*" />
-          <End Type="EstradaSAPConnector.SAPC_SAPRPCCall" Role="SAPRPCCall" Multiplicity="*" />
+        <Association Name="SAPC_EndPointSAPC_Session">
+          <End Type="EstradaSAPConnector.SAPC_EndPoint" Role="SAPC_EndPoint" Multiplicity="1" />
+          <End Type="EstradaSAPConnector.SAPC_Session" Role="SAPC_Session" Multiplicity="*" />
         </Association>
-        <Association Name="FondoFijoSAPCredentials">
-          <End Type="EstradaSAPConnector.SAPC_FondoFijo" Role="FondoFijo" Multiplicity="*" />
-          <End Type="EstradaSAPConnector.SAPC_Credentials" Role="SAPCredentials" Multiplicity="1" />
+        <Association Name="SAPC_CredentialsSAPC_Session">
+          <End Type="EstradaSAPConnector.SAPC_Credentials" Role="SAPC_Credentials" Multiplicity="1" />
+          <End Type="EstradaSAPConnector.SAPC_Session" Role="SAPC_Session" Multiplicity="*" />
         </Association>
-        <Association Name="FondoFijoSAPEndPoint">
-          <End Type="EstradaSAPConnector.SAPC_FondoFijo" Role="FondoFijo" Multiplicity="*" />
-          <End Type="EstradaSAPConnector.SAPC_EndPoint" Role="SAPEndPoint" Multiplicity="1" />
+        <Association Name="SAPC_EndPointSAPC_FondoFijo">
+          <End Type="EstradaSAPConnector.SAPC_EndPoint" Role="SAPC_EndPoint" Multiplicity="1" />
+          <End Type="EstradaSAPConnector.SAPC_FondoFijo" Role="SAPC_FondoFijo" Multiplicity="*" />
         </Association>
-        <Association Name="RendicionGastosEstadoFondoFijo">
+        <Association Name="SAPC_CredentialsSAPC_FondoFijo">
+          <End Type="EstradaSAPConnector.SAPC_Credentials" Role="SAPC_Credentials" Multiplicity="1" />
+          <End Type="EstradaSAPConnector.SAPC_FondoFijo" Role="SAPC_FondoFijo" Multiplicity="*" />
+        </Association>
+        <Association Name="SAPC_SessionSAPC_SAPRPCCall">
+          <End Type="EstradaSAPConnector.SAPC_Session" Role="SAPC_Session" Multiplicity="1" />
+          <End Type="EstradaSAPConnector.SAPC_SAPRPCCall" Role="SAPC_SAPRPCCall" Multiplicity="*" />
+        </Association>
+        <Association Name="SAPC_AdelantosSAPC_SAPRPCCall">
+          <End Type="EstradaSAPConnector.SAPC_Adelantos" Role="SAPC_Adelantos" Multiplicity="*" />
+          <End Type="EstradaSAPConnector.SAPC_SAPRPCCall" Role="SAPC_SAPRPCCall" Multiplicity="*" />
+        </Association>
+        <Association Name="SAPC_FondoFijoSAPC_Adelantos">
+          <End Type="EstradaSAPConnector.SAPC_FondoFijo" Role="SAPC_FondoFijo" Multiplicity="1" />
+          <End Type="EstradaSAPConnector.SAPC_Adelantos" Role="SAPC_Adelantos" Multiplicity="*" />
+        </Association>
+        <Association Name="SAPC_RendicionGastosSAPC_SAPRPCCall">
+          <End Type="EstradaSAPConnector.SAPC_RendicionGastos" Role="SAPC_RendicionGastos" Multiplicity="*" />
+          <End Type="EstradaSAPConnector.SAPC_SAPRPCCall" Role="SAPC_SAPRPCCall" Multiplicity="*" />
+        </Association>
+        <Association Name="SAPC_EstadosSAPC_RendicionGastos">
+          <End Type="EstradaSAPConnector.SAPC_Estados" Role="Estado" Multiplicity="1" />
           <End Type="EstradaSAPConnector.SAPC_RendicionGastos" Role="RendicionGastos" Multiplicity="*" />
-          <End Type="EstradaSAPConnector.SAPC_Estados" Role="EstadoFondoFijo" Multiplicity="1" />
+        </Association>
+        <Association Name="SAPC_RendicionGastosSAPC_FacturaProveedor">
+          <End Type="EstradaSAPConnector.SAPC_RendicionGastos" Role="RendicionGastos" Multiplicity="1" />
+          <End Type="EstradaSAPConnector.SAPC_FacturaProveedor" Role="FacturaProveedor" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -583,7 +581,6 @@
         <MappingFragment StoreEntitySet="SAPC_FondoFijo">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="CreadoEn" ColumnName="CreadoEn" />
           <ScalarProperty Name="SAPId" ColumnName="SAPId" />
         </MappingFragment>
@@ -649,30 +646,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="SAPEndPointSAPSession" TypeName="EstradaSAPConnector.SAPEndPointSAPSession" StoreEntitySet="SAPC_Session">
-      <EndProperty Name="SAPEndPoint">
-        <ScalarProperty Name="Id" ColumnName="SAPEndPoint_Id" />
-      </EndProperty>
-      <EndProperty Name="SAPSession">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="SAPCredentialsSAPSession" TypeName="EstradaSAPConnector.SAPCredentialsSAPSession" StoreEntitySet="SAPC_Session">
-      <EndProperty Name="SAPCredentials">
-        <ScalarProperty Name="Id" ColumnName="SAPCredential_Id" />
-      </EndProperty>
-      <EndProperty Name="SAPSession">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="SAPSessionSAPRPCCall" TypeName="EstradaSAPConnector.SAPSessionSAPRPCCall" StoreEntitySet="SAPC_SAPRPCCall">
-      <EndProperty Name="SAPSession">
-        <ScalarProperty Name="Id" ColumnName="SAPSession_Id" />
-      </EndProperty>
-      <EndProperty Name="SAPRPCCall">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="FondoFijoRendicionGastos" TypeName="EstradaSAPConnector.FondoFijoRendicionGastos" StoreEntitySet="SAPC_RendicionGastos">
       <EndProperty Name="FondoFijo">
         <ScalarProperty Name="Id" ColumnName="FondoFijo_Id" />
@@ -681,67 +654,91 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="RendicionGastosFacturaProveedor" TypeName="EstradaSAPConnector.RendicionGastosFacturaProveedor" StoreEntitySet="SAPC_FacturaProveedor">
-      <EndProperty Name="RendicionGastos">
-        <ScalarProperty Name="Id" ColumnName="RendicionGasto_Id" />
+    <AssociationSetMapping Name="SAPC_EstadosSAPC_FondoFijo" TypeName="EstradaSAPConnector.SAPC_EstadosSAPC_FondoFijo" StoreEntitySet="SAPC_FondoFijo">
+      <EndProperty Name="Estado">
+        <ScalarProperty Name="Id" ColumnName="Estado_Id" />
       </EndProperty>
-      <EndProperty Name="FacturaProveedor">
+      <EndProperty Name="FondoFijo">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="FondoFijoAdelantos" TypeName="EstradaSAPConnector.FondoFijoAdelantos" StoreEntitySet="SAPC_Adelantos">
-      <EndProperty Name="FondoFijo">
+    <AssociationSetMapping Name="SAPC_EndPointSAPC_Session" TypeName="EstradaSAPConnector.SAPC_EndPointSAPC_Session" StoreEntitySet="SAPC_Session">
+      <EndProperty Name="SAPC_EndPoint">
+        <ScalarProperty Name="Id" ColumnName="EndPoint_Id" />
+      </EndProperty>
+      <EndProperty Name="SAPC_Session">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SAPC_CredentialsSAPC_Session" TypeName="EstradaSAPConnector.SAPC_CredentialsSAPC_Session" StoreEntitySet="SAPC_Session">
+      <EndProperty Name="SAPC_Credentials">
+        <ScalarProperty Name="Id" ColumnName="Credential_Id" />
+      </EndProperty>
+      <EndProperty Name="SAPC_Session">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SAPC_EndPointSAPC_FondoFijo" TypeName="EstradaSAPConnector.SAPC_EndPointSAPC_FondoFijo" StoreEntitySet="SAPC_FondoFijo">
+      <EndProperty Name="SAPC_EndPoint">
+        <ScalarProperty Name="Id" ColumnName="EndPoint_Id" />
+      </EndProperty>
+      <EndProperty Name="SAPC_FondoFijo">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SAPC_CredentialsSAPC_FondoFijo" TypeName="EstradaSAPConnector.SAPC_CredentialsSAPC_FondoFijo" StoreEntitySet="SAPC_FondoFijo">
+      <EndProperty Name="SAPC_Credentials">
+        <ScalarProperty Name="Id" ColumnName="Credentials_Id" />
+      </EndProperty>
+      <EndProperty Name="SAPC_FondoFijo">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SAPC_SessionSAPC_SAPRPCCall" TypeName="EstradaSAPConnector.SAPC_SessionSAPC_SAPRPCCall" StoreEntitySet="SAPC_SAPRPCCall">
+      <EndProperty Name="SAPC_Session">
+        <ScalarProperty Name="Id" ColumnName="Session_Id" />
+      </EndProperty>
+      <EndProperty Name="SAPC_SAPRPCCall">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SAPC_AdelantosSAPC_SAPRPCCall" TypeName="EstradaSAPConnector.SAPC_AdelantosSAPC_SAPRPCCall" StoreEntitySet="SAPC_AdelantosSAPC_SAPRPCCall">
+      <EndProperty Name="SAPC_Adelantos">
+        <ScalarProperty Name="Id" ColumnName="Adelantos_Id" />
+      </EndProperty>
+      <EndProperty Name="SAPC_SAPRPCCall">
+        <ScalarProperty Name="Id" ColumnName="SAPRPCCall_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SAPC_FondoFijoSAPC_Adelantos" TypeName="EstradaSAPConnector.SAPC_FondoFijoSAPC_Adelantos" StoreEntitySet="SAPC_Adelantos">
+      <EndProperty Name="SAPC_FondoFijo">
         <ScalarProperty Name="Id" ColumnName="FondoFijo_Id" />
       </EndProperty>
-      <EndProperty Name="Adelantos">
+      <EndProperty Name="SAPC_Adelantos">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="RendicionGastosSAPRPCCall" TypeName="EstradaSAPConnector.RendicionGastosSAPRPCCall" StoreEntitySet="RendicionGastosSAPRPCCall">
-      <EndProperty Name="RendicionGastos">
-        <ScalarProperty Name="Id" ColumnName="RendicionGasto_Id" />
+    <AssociationSetMapping Name="SAPC_RendicionGastosSAPC_SAPRPCCall" TypeName="EstradaSAPConnector.SAPC_RendicionGastosSAPC_SAPRPCCall" StoreEntitySet="SAPC_RendicionGastosSAPC_SAPRPCCall">
+      <EndProperty Name="SAPC_RendicionGastos">
+        <ScalarProperty Name="Id" ColumnName="RendicionesGastos_Id" />
       </EndProperty>
-      <EndProperty Name="SAPRPCCall">
-        <ScalarProperty Name="Id" ColumnName="SAPRPCCalls_Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="EstadoFondoFijoFondoFijo" TypeName="EstradaSAPConnector.EstadoFondoFijoFondoFijo" StoreEntitySet="SAPC_FondoFijo">
-      <EndProperty Name="EstadoFondoFijo">
-        <ScalarProperty Name="Id" ColumnName="EstadoFondoFijo_Id" />
-      </EndProperty>
-      <EndProperty Name="FondoFijo">
-        <ScalarProperty Name="Id" ColumnName="Id" />
+      <EndProperty Name="SAPC_SAPRPCCall">
+        <ScalarProperty Name="Id" ColumnName="SAPRPCCall_Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="AdelantosSAPRPCCall" TypeName="EstradaSAPConnector.AdelantosSAPRPCCall" StoreEntitySet="AdelantosSAPRPCCall">
-      <EndProperty Name="Adelantos">
-        <ScalarProperty Name="Id" ColumnName="Adelanto_Id" />
-      </EndProperty>
-      <EndProperty Name="SAPRPCCall">
-        <ScalarProperty Name="Id" ColumnName="SAPRPCCalls_Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FondoFijoSAPCredentials" TypeName="EstradaSAPConnector.FondoFijoSAPCredentials" StoreEntitySet="SAPC_FondoFijo">
-      <EndProperty Name="SAPCredentials">
-        <ScalarProperty Name="Id" ColumnName="SAPCredentials_Id" />
-      </EndProperty>
-      <EndProperty Name="FondoFijo">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FondoFijoSAPEndPoint" TypeName="EstradaSAPConnector.FondoFijoSAPEndPoint" StoreEntitySet="SAPC_FondoFijo">
-      <EndProperty Name="SAPEndPoint">
-        <ScalarProperty Name="Id" ColumnName="SAPEndPoints_Id" />
-      </EndProperty>
-      <EndProperty Name="FondoFijo">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="RendicionGastosEstadoFondoFijo" TypeName="EstradaSAPConnector.RendicionGastosEstadoFondoFijo" StoreEntitySet="SAPC_RendicionGastos">
-      <EndProperty Name="EstadoFondoFijo">
-        <ScalarProperty Name="Id" ColumnName="EstadoFondoFijoes_Id" />
+    <AssociationSetMapping Name="SAPC_EstadosSAPC_RendicionGastos" TypeName="EstradaSAPConnector.SAPC_EstadosSAPC_RendicionGastos" StoreEntitySet="SAPC_RendicionGastos">
+      <EndProperty Name="Estado">
+        <ScalarProperty Name="Id" ColumnName="Estado_Id" />
       </EndProperty>
       <EndProperty Name="RendicionGastos">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SAPC_RendicionGastosSAPC_FacturaProveedor" TypeName="EstradaSAPConnector.SAPC_RendicionGastosSAPC_FacturaProveedor" StoreEntitySet="SAPC_FacturaProveedor">
+      <EndProperty Name="RendicionGastos">
+        <ScalarProperty Name="Id" ColumnName="RendicionGastos_Id" />
+      </EndProperty>
+      <EndProperty Name="FacturaProveedor">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>

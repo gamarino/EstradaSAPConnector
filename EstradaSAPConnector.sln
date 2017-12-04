@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstradaSAPConnector.Tests", "EstradaSAPConnector.Tests\EstradaSAPConnector.Tests.csproj", "{0D784490-4D4D-42FA-B744-77F6C6F1D234}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAPConnectorLibrary", "SAPConnectorLibrary\SAPConnectorLibrary.csproj", "{788C20B2-ABC1-46DD-B9BB-386D56715E04}"
 EndProject
 Global
@@ -19,22 +17,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0D784490-4D4D-42FA-B744-77F6C6F1D234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0D784490-4D4D-42FA-B744-77F6C6F1D234}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0D784490-4D4D-42FA-B744-77F6C6F1D234}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{0D784490-4D4D-42FA-B744-77F6C6F1D234}.Debug|ARM.Build.0 = Debug|Any CPU
-		{0D784490-4D4D-42FA-B744-77F6C6F1D234}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{0D784490-4D4D-42FA-B744-77F6C6F1D234}.Debug|x64.Build.0 = Debug|Any CPU
-		{0D784490-4D4D-42FA-B744-77F6C6F1D234}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{0D784490-4D4D-42FA-B744-77F6C6F1D234}.Debug|x86.Build.0 = Debug|Any CPU
-		{0D784490-4D4D-42FA-B744-77F6C6F1D234}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0D784490-4D4D-42FA-B744-77F6C6F1D234}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0D784490-4D4D-42FA-B744-77F6C6F1D234}.Release|ARM.ActiveCfg = Release|Any CPU
-		{0D784490-4D4D-42FA-B744-77F6C6F1D234}.Release|ARM.Build.0 = Release|Any CPU
-		{0D784490-4D4D-42FA-B744-77F6C6F1D234}.Release|x64.ActiveCfg = Release|Any CPU
-		{0D784490-4D4D-42FA-B744-77F6C6F1D234}.Release|x64.Build.0 = Release|Any CPU
-		{0D784490-4D4D-42FA-B744-77F6C6F1D234}.Release|x86.ActiveCfg = Release|Any CPU
-		{0D784490-4D4D-42FA-B744-77F6C6F1D234}.Release|x86.Build.0 = Release|Any CPU
 		{788C20B2-ABC1-46DD-B9BB-386D56715E04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{788C20B2-ABC1-46DD-B9BB-386D56715E04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{788C20B2-ABC1-46DD-B9BB-386D56715E04}.Debug|ARM.ActiveCfg = Debug|Any CPU

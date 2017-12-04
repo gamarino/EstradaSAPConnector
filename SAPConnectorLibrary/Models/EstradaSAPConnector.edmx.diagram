@@ -5,31 +5,33 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="3f367267f4144a7a80f4ee41e2f59c6b" Name="Diagram1" >
-        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_RendicionGastos" Width="2.5" PointX="3.625" PointY="4.375" />
-        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_FacturaProveedor" Width="2.75" PointX="3.5" PointY="7.125" />
-        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_FondoFijo" Width="1.5" PointX="4.25" PointY="0.5" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_RendicionGastos" Width="2.5" PointX="3.875" PointY="4.375" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_FacturaProveedor" Width="2.75" PointX="3.75" PointY="7.125" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_FondoFijo" Width="2.375" PointX="4" PointY="0.5" />
         <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Credentials" Width="2.625" PointX="10.875" PointY="3.375" />
         <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Session" Width="2.25" PointX="7.125" PointY="0.5" />
         <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_SAPRPCCall" Width="2.25" PointX="7.125" PointY="3.375" />
         <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_EndPoint" Width="2.625" PointX="10.875" PointY="0.5" />
-        <AssociationConnector Association="EstradaSAPConnector.SAPEndPointSAPSession" />
-        <AssociationConnector Association="EstradaSAPConnector.SAPCredentialsSAPSession" />
-        <AssociationConnector Association="EstradaSAPConnector.SAPSessionSAPRPCCall" />
         <AssociationConnector Association="EstradaSAPConnector.FondoFijoRendicionGastos" />
-        <AssociationConnector Association="EstradaSAPConnector.RendicionGastosFacturaProveedor" />
         <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Adelantos" Width="2.125" PointX="1.25" PointY="3.125" />
-        <AssociationConnector Association="EstradaSAPConnector.FondoFijoAdelantos" ManuallyRouted="true" >
-          <ConnectorPoint PointX="4.25" PointY="2.956281995813554" />
-          <ConnectorPoint PointX="2.3125" PointY="2.956281995813554" />
-          <ConnectorPoint PointX="2.3125" PointY="3.125" />
-        </AssociationConnector>
-        <AssociationConnector Association="EstradaSAPConnector.RendicionGastosSAPRPCCall" />
         <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Estados" Width="2.25" PointX="0.5" PointY="0.5" />
-        <AssociationConnector Association="EstradaSAPConnector.EstadoFondoFijoFondoFijo" />
-        <AssociationConnector Association="EstradaSAPConnector.AdelantosSAPRPCCall" />
-        <AssociationConnector Association="EstradaSAPConnector.FondoFijoSAPCredentials" />
-        <AssociationConnector Association="EstradaSAPConnector.FondoFijoSAPEndPoint" />
-        <AssociationConnector Association="EstradaSAPConnector.RendicionGastosEstadoFondoFijo" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPC_EstadosSAPC_FondoFijo" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPC_EndPointSAPC_Session" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPC_CredentialsSAPC_Session" ManuallyRouted="true" >
+          <ConnectorPoint PointX="11.175655514988556" PointY="3.375" />
+          <ConnectorPoint PointX="11.175655514988556" PointY="2.9225878906249996" />
+          <ConnectorPoint PointX="10.177083333333334" PointY="2.9225878906249996" />
+          <ConnectorPoint PointX="10.177083333333334" PointY="1.8722407695312502" />
+          <ConnectorPoint PointX="9.375" PointY="1.8722407695312502" />
+        </AssociationConnector>
+        <AssociationConnector Association="EstradaSAPConnector.SAPC_EndPointSAPC_FondoFijo" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPC_CredentialsSAPC_FondoFijo" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPC_SessionSAPC_SAPRPCCall" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPC_AdelantosSAPC_SAPRPCCall" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPC_FondoFijoSAPC_Adelantos" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPC_RendicionGastosSAPC_SAPRPCCall" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPC_EstadosSAPC_RendicionGastos" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPC_RendicionGastosSAPC_FacturaProveedor" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -47,32 +47,62 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Models\AccountBindingModels.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EstradaSAPConnector.Context.cs">
-      <DependentUpon>EstradaSAPConnector.Context.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>EstradaSAPConnector.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EstradaSAPConnector.cs">
-      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SAPC_Adelantos.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_Credentials.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_EndPoint.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_Estados.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_FacturaProveedor.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_FondoFijo.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_RendicionGastos.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_SAPRPCCall.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_Session.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SynchToSAP.cs" />
     <Compile Include="Models\EstradaSAPConnector.Designer.cs">
       <DependentUpon>EstradaSAPConnector.edmx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Models\EstradaSAPConnector.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EstradaSAPConnector.Context.cs</LastGenOutput>
+      <DependentUpon>EstradaSAPConnector.edmx</DependentUpon>
+    </Content>
     <Content Include="Models\EstradaSAPConnector.edmx.sql" />
     <Content Include="Models\EstradaSAPConnector.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EstradaSAPConnector.cs</LastGenOutput>
+      <DependentUpon>EstradaSAPConnector.edmx</DependentUpon>
     </Content>
     <None Include="App.config" />
     <EntityDeploy Include="Models\EstradaSAPConnector.edmx">
@@ -83,12 +113,6 @@
       <DependentUpon>EstradaSAPConnector.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Models\EstradaSAPConnector.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>EstradaSAPConnector.Context.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

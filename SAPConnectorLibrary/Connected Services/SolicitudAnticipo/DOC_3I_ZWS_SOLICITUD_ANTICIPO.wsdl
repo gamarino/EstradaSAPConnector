@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsoap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="urn:sap-com:document:sap:rfc:functions" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" targetNamespace="urn:sap-com:document:sap:rfc:functions" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>
+    <sidl:sidl xmlns:sidl="http://www.sap.com/2007/03/sidl" />
+  </wsdl:documentation>
+  <wsp:UsingPolicy wsdl:required="true" />
+  <wsp:Policy wsu:Id="IF_IF_ZWS_SOLICITUD_ANTICIPO">
+    <sapsession:Session xmlns:sapsession="http://www.sap.com/webas/630/soap/features/session/">
+      <sapsession:enableSession>false</sapsession:enableSession>
+    </sapsession:Session>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ZFI_RFC_SOLICITUD_ANTICIPO">
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" targetNamespace="urn:sap-com:document:sap:rfc:functions">
+      <xsd:simpleType name="char1">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char10">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char16">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="16" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char2">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char220">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="220" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char4">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char50">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="50" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="cuky5">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="5" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="curr13.2">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="13" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="date">
+        <xsd:restriction base="xsd:date">
+          <xsd:pattern value="[0-9]{4}-[0-9]{2}-[0-9]{2}" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric3">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ZFI_RFC_ANTICIPOS">
+        <xsd:sequence>
+          <xsd:element name="FECHA_DOC" type="tns:date" />
+          <xsd:element name="CLASE_DOC" type="tns:char2" />
+          <xsd:element name="SOCIEDAD" type="tns:char4" />
+          <xsd:element name="MONEDA" type="tns:cuky5" />
+          <xsd:element name="REFERENCIA" type="tns:char16" />
+          <xsd:element name="TIENDA" type="tns:char4" />
+          <xsd:element name="TEXTO_CAB" type="tns:char50" />
+          <xsd:element name="CTA_CONTABLE1" type="tns:char10" />
+          <xsd:element name="IND_CME" type="tns:char1" />
+          <xsd:element name="IMPORTE" type="tns:curr13.2" />
+          <xsd:element name="FECHA_VTO" type="tns:date" />
+          <xsd:element name="TEXTO_POS" type="tns:char50" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TABLE_OF_ZFI_RFC_ANTICIPOS">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZFI_RFC_ANTICIPOS" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ZFI_RFC_SOLICITUD_ANTICIPO">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="T_DETALLE" type="tns:TABLE_OF_ZFI_RFC_ANTICIPOS" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZFI_RFC_SOLICITUD_ANTICIPOResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MENSAJE" type="tns:char220" />
+            <xsd:element name="NRO_DOC" type="tns:char10" />
+            <xsd:element name="RESULTADO" type="tns:numeric3" />
+            <xsd:element name="T_DETALLE" type="tns:TABLE_OF_ZFI_RFC_ANTICIPOS" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ZFI_RFC_SOLICITUD_ANTICIPO">
+    <wsdl:part name="parameters" element="tns:ZFI_RFC_SOLICITUD_ANTICIPO" />
+  </wsdl:message>
+  <wsdl:message name="ZFI_RFC_SOLICITUD_ANTICIPOResponse">
+    <wsdl:part name="parameter" element="tns:ZFI_RFC_SOLICITUD_ANTICIPOResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ZWS_SOLICITUD_ANTICIPO">
+    <wsp:Policy>
+      <wsp:PolicyReference URI="#IF_IF_ZWS_SOLICITUD_ANTICIPO" />
+    </wsp:Policy>
+    <wsdl:operation name="ZFI_RFC_SOLICITUD_ANTICIPO">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ZFI_RFC_SOLICITUD_ANTICIPO" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZFI_RFC_SOLICITUD_ANTICIPO" />
+      <wsdl:output message="tns:ZFI_RFC_SOLICITUD_ANTICIPOResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

@@ -39,6 +39,10 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,6 +51,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\Comprobantes_ABC\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\Comprobantes_NO_ABC\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\SolicitudAnticipo\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Models\EstradaSAPConnector.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -93,6 +112,24 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\Comprobantes_ABC\configuration91.svcinfo" />
+    <None Include="Connected Services\Comprobantes_ABC\configuration.svcinfo" />
+    <None Include="Connected Services\Comprobantes_ABC\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\Comprobantes_NO_ABC\configuration91.svcinfo" />
+    <None Include="Connected Services\Comprobantes_NO_ABC\configuration.svcinfo" />
+    <None Include="Connected Services\Comprobantes_NO_ABC\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\SolicitudAnticipo\configuration91.svcinfo" />
+    <None Include="Connected Services\SolicitudAnticipo\configuration.svcinfo" />
+    <None Include="Connected Services\SolicitudAnticipo\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Models\EstradaSAPConnector.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EstradaSAPConnector.Context.cs</LastGenOutput>
@@ -112,10 +149,45 @@
     <Content Include="Models\EstradaSAPConnector.edmx.diagram">
       <DependentUpon>EstradaSAPConnector.edmx</DependentUpon>
     </Content>
+    <None Include="Connected Services\Comprobantes_ABC\DOC_3I_ZWS_COMPROBANTES_ABC.wsdl" />
+    <None Include="Connected Services\Comprobantes_ABC\SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Comprobantes_ABC\SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Comprobantes_NO_ABC\DOC_3I_ZWS_COMPROBANTES_NO_ABC.wsdl" />
+    <None Include="Connected Services\Comprobantes_NO_ABC\SAPConnectorLibrary.Comprobantes_NO_ABC.ZFI_RFC_COMPROBANTES_NO_ABCResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Comprobantes_NO_ABC\SAPConnectorLibrary.Comprobantes_NO_ABC.ZFI_RFC_COMPROBANTES_NO_ABCResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SolicitudAnticipo\DOC_3I_ZWS_SOLICITUD_ANTICIPO.wsdl" />
+    <None Include="Connected Services\SolicitudAnticipo\SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SolicitudAnticipo\SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="packages.config" />
+    <None Include="ServiceDescriptors\DOC_3I_ZWS_COMPROBANTES_ABC.wsdl" />
+    <None Include="ServiceDescriptors\DOC_3I_ZWS_COMPROBANTES_NO_ABC.wsdl" />
+    <None Include="ServiceDescriptors\DOC_3I_ZWS_SOLICITUD_ANTICIPO.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\Comprobantes_ABC\" />
+    <WCFMetadataStorage Include="Connected Services\Comprobantes_NO_ABC\" />
+    <WCFMetadataStorage Include="Connected Services\SolicitudAnticipo\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

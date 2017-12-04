@@ -17,9 +17,16 @@
         <AssociationConnector Association="EstradaSAPConnector.SAPSessionSAPRPCCall" />
         <AssociationConnector Association="EstradaSAPConnector.FondoFijoRendicionGastos" />
         <AssociationConnector Association="EstradaSAPConnector.RendicionGastosFacturaProveedor" />
-        <AssociationConnector Association="EstradaSAPConnector.RendicionGastosSAPSession" />
         <EntityTypeShape EntityType="EstradaSAPConnector.Adelantos" Width="2.125" PointX="0.5" PointY="2.5" />
         <AssociationConnector Association="EstradaSAPConnector.FondoFijoAdelantos" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.EstadoRendicion" Width="1.5" PointX="1.125" PointY="5.25" />
+        <AssociationConnector Association="EstradaSAPConnector.EstadosRendicionGastos" />
+        <AssociationConnector Association="EstradaSAPConnector.RendicionGastosSAPRPCCall" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.EstadoFondoFijo" Width="1.5" PointX="2.125" PointY="0.5" />
+        <AssociationConnector Association="EstradaSAPConnector.EstadoFondoFijoFondoFijo" />
+        <AssociationConnector Association="EstradaSAPConnector.AdelantosSAPRPCCall" />
+        <AssociationConnector Association="EstradaSAPConnector.FondoFijoSAPCredentials" />
+        <AssociationConnector Association="EstradaSAPConnector.FondoFijoSAPEndPoint" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

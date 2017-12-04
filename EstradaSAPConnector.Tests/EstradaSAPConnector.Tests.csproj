@@ -114,12 +114,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\EstradaSAPConnector\EstradaSAPConnector.csproj">
-      <Project>{1A4D4B70-07E6-4A4D-9321-338BA71244CF}</Project>
-      <Name>EstradaSAPConnector</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

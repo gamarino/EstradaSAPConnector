@@ -370,6 +370,7 @@
           <NavigationProperty Name="RPCCalls" Relationship="EstradaSAPConnector.SAPC_RendicionGastosSAPC_SAPRPCCall" FromRole="SAPC_RendicionGastos" ToRole="SAPC_SAPRPCCall" />
           <NavigationProperty Name="Estado" Relationship="EstradaSAPConnector.SAPC_EstadosSAPC_RendicionGastos" FromRole="RendicionGastos" ToRole="Estado" />
           <NavigationProperty Name="FacturasProveedor" Relationship="EstradaSAPConnector.SAPC_RendicionGastosSAPC_FacturaProveedor" FromRole="RendicionGastos" ToRole="FacturaProveedor" />
+          <Property Name="SAPNroDoc" Type="String" Nullable="false" />
           </EntityType>
         <EntityType Name="SAPC_FacturaProveedor">
           <Key>

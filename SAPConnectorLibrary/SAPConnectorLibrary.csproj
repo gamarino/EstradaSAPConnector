@@ -40,6 +40,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.IdentityModel" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Services" />
@@ -122,15 +123,15 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Connected Services\SolicitudAnticipo\configuration91.svcinfo" />
-    <None Include="Connected Services\SolicitudAnticipo\configuration.svcinfo" />
-    <None Include="Connected Services\SolicitudAnticipo\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <None Include="Connected Services\Comprobantes_ABC\configuration91.svcinfo" />
     <None Include="Connected Services\Comprobantes_ABC\configuration.svcinfo" />
     <None Include="Connected Services\Comprobantes_ABC\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\SolicitudAnticipo\configuration91.svcinfo" />
+    <None Include="Connected Services\SolicitudAnticipo\configuration.svcinfo" />
+    <None Include="Connected Services\SolicitudAnticipo\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

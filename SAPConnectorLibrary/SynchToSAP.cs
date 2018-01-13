@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,7 +30,6 @@ namespace SAPConnectorLibrary
         static string RENDICION_RECHAZADA = "xx";
 
         static List<string> DOCUMENTOS_ABC = new List<string> { "001", "006", "002", "007" };
-        static List<string> DOCUMENTOS_NO_ABC = new List<string> {"001", "006", "002", "007"};
 
         Models.EstradaSAPConnectorContainer context;
         SessionContext session;
@@ -96,6 +96,7 @@ namespace SAPConnectorLibrary
 
                 // TODO Llamada a SAP
 
+
                 call.Results = "Resultados";
 
                 if (resultado != OK)
@@ -128,18 +129,66 @@ namespace SAPConnectorLibrary
 
             try
             {
-                call.InputParameters = "Input parameters";
+                Comprobantes_ABC.ZWS_COMPROBANTES_ABCClient client = new Comprobantes_ABC.ZWS_COMPROBANTES_ABCClient();
 
-                // TODO Llamada a SAP
+                client.ClientCredentials.UserName.UserName = session.Session.EndPoint.LoginName;
+                client.ClientCredentials.UserName.Password = session.Session.EndPoint.LoginPassword;
+                client.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode = System.ServiceModel.Security.X509CertificateValidationMode.PeerOrChainTrust;
 
-                call.Results = "Resultados";
+                Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABC1 request = new Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABC1
+                {
+                    ACREEDOR = "",
+                    CAE = "",
+                    CAE_VTO = new DateTime(),
+                    CALLE = "",
+                    CLASE_DOC = "",
+                    CPOSTAL = "",
+                    CUIT = "",
+                    FECHACONT = new DateTime(),
+                    FECHACONTSpecified = true,
+                    FECHAFACTURA = new DateTime(),
+                    IMPORTE = new Decimal(0.0),
+                    MONEDA = "",
+                    NOMBRE = "",
+                    PAIS = "",
+                    POBLACION = "",
+                    REFERENCIA = "",
+                    SOCIEDAD = "",
+                    TEXTO = "",
+                    TIENDA = ""
+                };
 
-                if (resultado != OK)
+                List<Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABC> comp = new List<Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABC>();
+                foreach (var factura in rendicion.FacturasProveedor)
+                {
+                    if (DOCUMENTOS_ABC.Contains(factura.TipoDocumento))
+                    {
+                        comp.Add(new Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABC
+                        {
+                            CECO = "",
+                            CTA_CONTABLE = "",
+                            IMPORTE = new Decimal(0.0),
+                            IND_IMP = "",
+                        });
+                    }
+                }
+
+                request.T_DETALLE = comp.ToArray();
+
+                Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCResponse response = client.ZFI_RFC_COMPROBANTES_ABC(request);
+
+                call.InputParameters = request.ToString();
+                call.Results = response.MENSAJE;
+
+                if (response.RESULTADO != "OK")
                 {
                     rendicion.Estado = estadoRENDICION_RECHAZADA;
                 }
                 else
+                {
+                    rendicion.SAPNroDoc = response.NRO_DOC;
                     rendicion.Estado = estadoRENDICION_PROCESADA;
+                }
             }
             catch (Exception e)
             {
@@ -164,17 +213,59 @@ namespace SAPConnectorLibrary
 
             try
             {
-                call.InputParameters = "Input parameters";
+                Comprobantes_NO_ABC.ZWS_COMPROBANTES_NO_ABCClient client = new Comprobantes_NO_ABC.ZWS_COMPROBANTES_NO_ABCClient();
 
-                // TODO Llamada a SAP
+                client.ClientCredentials.UserName.UserName = session.Session.EndPoint.LoginName;
+                client.ClientCredentials.UserName.Password = session.Session.EndPoint.LoginPassword;
+                client.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode = System.ServiceModel.Security.X509CertificateValidationMode.PeerOrChainTrust;
 
-                call.Results = "Resultados";
-                if (resultado != OK)
+                Comprobantes_NO_ABC.ZFI_RFC_COMPROBANTES_NO_ABC1 request = new Comprobantes_NO_ABC.ZFI_RFC_COMPROBANTES_NO_ABC1
+                {
+                    FECHACONT = new DateTime(),
+                    FECHACONTSpecified = true,
+                    MONEDA = "",
+                    REFERENCIA = "",
+                    SOCIEDAD = "",
+                    TIENDA = "",
+                    CLASE_DOC = "",
+                    FECHADOCUMENTO = new DateTime(),
+                };
+
+                List<Comprobantes_NO_ABC.ZFI_RFC_COMPROBANTES_NO_ABC> comp = new List<Comprobantes_NO_ABC.ZFI_RFC_COMPROBANTES_NO_ABC>();
+
+                foreach (var factura in rendicion.FacturasProveedor)
+                {
+                    if (!DOCUMENTOS_ABC.Contains(factura.TipoDocumento))
+                    {
+                        comp.Add(new Comprobantes_NO_ABC.ZFI_RFC_COMPROBANTES_NO_ABC
+                        {
+                            CECO = "",
+                            IMPORTE = new Decimal(0.0),
+                            IND_IMP = "",
+                            CLAVE_CT = "",
+                            CTA_CONTABLE1 = "",
+                            TEXTO = "",
+                            TEXTOS = ""
+                        });
+                    }
+                }
+
+                request.CUENTAS = comp.ToArray();
+
+                Comprobantes_NO_ABC.ZFI_RFC_COMPROBANTES_NO_ABCResponse response = client.ZFI_RFC_COMPROBANTES_NO_ABC(request);
+
+                call.InputParameters = request.ToString();
+                call.Results = response.MENSAJE;
+
+                if (response.RESULTADO != "OK")
                 {
                     rendicion.Estado = estadoRENDICION_RECHAZADA;
                 }
                 else
+                {
+                    rendicion.SAPNroDoc = response.NRO_DOC;
                     rendicion.Estado = estadoRENDICION_PROCESADA;
+                }
             }
             catch (Exception e)
             {
@@ -184,7 +275,7 @@ namespace SAPConnectorLibrary
             }
             finally
             {
-                context.SAPC_SAPRPCCall.Add(call);
+                session.Context.SAPC_SAPRPCCall.Add(call);
             }
         }
 
@@ -216,7 +307,7 @@ namespace SAPConnectorLibrary
 
                 // Tomar rendiciones NO ABC a procesar
                 var rendicionesNoABC = from f in context.SAPC_FacturaProveedor
-                                       where DOCUMENTOS_ABC.Contains(f.TipoDocumento) &&
+                                       where !DOCUMENTOS_ABC.Contains(f.TipoDocumento) &&
                                              f.RendicionGastos.Estado.Codigo == RENDICION_A_PROCESAR &&
                                              f.RendicionGastos.FondoFijo.Estado.Codigo == FONDO_ACTIVO
                                        group f by f.RendicionGastos into r

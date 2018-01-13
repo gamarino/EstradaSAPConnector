@@ -18,15 +18,18 @@ namespace SAPConnectorLibrary.Models
         public SAPC_Adelantos()
         {
             this.RPCCalls = new HashSet<SAPC_SAPRPCCall>();
+            this.AdelantosEmpleados = new HashSet<SAPC_Adelanto_Empleado>();
         }
     
         public int Id { get; set; }
-        public string SAPId { get; set; }
-        public System.DateTime PedidoEl { get; set; }
+        public string SAPNroDoc { get; set; }
+        public System.DateTime Fecha { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SAPC_SAPRPCCall> RPCCalls { get; set; }
         public virtual SAPC_FondoFijo FondoFijo { get; set; }
         public virtual SAPC_Estados Estado { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SAPC_Adelanto_Empleado> AdelantosEmpleados { get; set; }
     }
 }

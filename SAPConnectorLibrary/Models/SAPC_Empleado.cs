@@ -12,24 +12,20 @@ namespace SAPConnectorLibrary.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SAPC_RendicionGastos
+    public partial class SAPC_Empleado
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SAPC_RendicionGastos()
+        public SAPC_Empleado()
         {
-            this.RPCCalls = new HashSet<SAPC_SAPRPCCall>();
-            this.FacturasProveedor = new HashSet<SAPC_FacturaProveedor>();
+            this.Adelantos = new HashSet<SAPC_Adelanto_Empleado>();
         }
     
         public int Id { get; set; }
-        public string Username { get; set; }
-        public string SAPNroDoc { get; set; }
+        public string Nombre { get; set; }
+        public string DNI { get; set; }
+        public string CtaContable { get; set; }
     
-        public virtual SAPC_FondoFijo FondoFijo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SAPC_SAPRPCCall> RPCCalls { get; set; }
-        public virtual SAPC_Estados Estado { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SAPC_FacturaProveedor> FacturasProveedor { get; set; }
+        public virtual ICollection<SAPC_Adelanto_Empleado> Adelantos { get; set; }
     }
 }

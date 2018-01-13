@@ -12,30 +12,23 @@ namespace SAPConnectorLibrary.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SAPC_EndPoint
+    public partial class SAPC_Proveedor
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SAPC_EndPoint()
+        public SAPC_Proveedor()
         {
-            this.Sessions = new HashSet<SAPC_Session>();
-            this.FondosFijos = new HashSet<SAPC_FondoFijo>();
-            this.RPCCalls = new HashSet<SAPC_SAPRPCCall>();
+            this.Comprobantes = new HashSet<SAPC_Comprobante>();
+            this.FacturasProveedor = new HashSet<SAPC_FacturaProveedor>();
         }
     
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string URLAdelantos { get; set; }
-        public System.DateTime LastConnectionOn { get; set; }
-        public string URLRendicionABC { get; set; }
-        public string URLRendicionNoABC { get; set; }
-        public string LoginName { get; set; }
-        public string LoginPassword { get; set; }
+        public string Nombre { get; set; }
+        public string CUIT { get; set; }
+        public string CtaContable { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SAPC_Session> Sessions { get; set; }
+        public virtual ICollection<SAPC_Comprobante> Comprobantes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SAPC_FondoFijo> FondosFijos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SAPC_SAPRPCCall> RPCCalls { get; set; }
+        public virtual ICollection<SAPC_FacturaProveedor> FacturasProveedor { get; set; }
     }
 }

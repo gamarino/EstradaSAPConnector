@@ -12,21 +12,13 @@ namespace SAPConnectorLibrary.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SAPC_FacturaProveedor
+    public partial class SAPC_Comprobante
     {
         public int Id { get; set; }
-        public string TipoDocumento { get; set; }
+        public System.DateTime Fecha { get; set; }
         public decimal Importe { get; set; }
-        public decimal Fecha { get; set; }
-        public short PtoVenta { get; set; }
-        public decimal NumeroDocumento { get; set; }
-        public decimal BaseIVA21 { get; set; }
-        public decimal BaseIVA105 { get; set; }
-        public decimal BaseIVA27 { get; set; }
-        public decimal BaseIVA0 { get; set; }
-        public decimal Percepciones { get; set; }
     
-        public virtual SAPC_RendicionABC RendicionGastos { get; set; }
+        public virtual SAPC_RendicionComp RendicionComp { get; set; }
         public virtual SAPC_Proveedor Proveedor { get; set; }
         public virtual SAPC_CECO CECO { get; set; }
     }

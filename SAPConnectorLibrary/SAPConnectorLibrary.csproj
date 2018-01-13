@@ -80,6 +80,18 @@
     <Compile Include="Models\SAPC_Adelantos.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SAPC_Adelanto_Empleado.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_CECO.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_Comprobante.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_Empleado.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SAPC_EndPoint.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
@@ -92,7 +104,13 @@
     <Compile Include="Models\SAPC_FondoFijo.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SAPC_RendicionGastos.cs">
+    <Compile Include="Models\SAPC_Proveedor.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_RendicionABC.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_RendicionComp.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SAPC_SAPRPCCall.cs">

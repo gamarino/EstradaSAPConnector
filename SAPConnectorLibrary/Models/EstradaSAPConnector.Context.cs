@@ -25,7 +25,7 @@ namespace SAPConnectorLibrary.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<SAPC_RendicionGastos> SAPC_RendicionGastos { get; set; }
+        public virtual DbSet<SAPC_RendicionABC> SAPC_RendicionABC { get; set; }
         public virtual DbSet<SAPC_FacturaProveedor> SAPC_FacturaProveedor { get; set; }
         public virtual DbSet<SAPC_FondoFijo> SAPC_FondoFijo { get; set; }
         public virtual DbSet<SAPC_Session> SAPC_Session { get; set; }
@@ -33,5 +33,11 @@ namespace SAPConnectorLibrary.Models
         public virtual DbSet<SAPC_EndPoint> SAPC_EndPoint { get; set; }
         public virtual DbSet<SAPC_Adelantos> SAPC_Adelantos { get; set; }
         public virtual DbSet<SAPC_Estados> SAPC_Estados { get; set; }
+        public virtual DbSet<SAPC_Adelanto_Empleado> SAPC_Adelanto_Empleado { get; set; }
+        public virtual DbSet<SAPC_RendicionComp> SAPC_RendicionComp { get; set; }
+        public virtual DbSet<SAPC_Comprobante> SAPC_Comprobante { get; set; }
+        public virtual DbSet<SAPC_Proveedor> SAPC_Proveedor { get; set; }
+        public virtual DbSet<SAPC_Empleado> SAPC_Empleado { get; set; }
+        public virtual DbSet<SAPC_CECO> SAPC_CECO { get; set; }
     }
 }

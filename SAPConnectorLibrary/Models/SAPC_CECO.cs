@@ -12,30 +12,22 @@ namespace SAPConnectorLibrary.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SAPC_EndPoint
+    public partial class SAPC_CECO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SAPC_EndPoint()
+        public SAPC_CECO()
         {
-            this.Sessions = new HashSet<SAPC_Session>();
-            this.FondosFijos = new HashSet<SAPC_FondoFijo>();
-            this.RPCCalls = new HashSet<SAPC_SAPRPCCall>();
+            this.SAPC_FacturaProveedor = new HashSet<SAPC_FacturaProveedor>();
+            this.SAPC_Comprobante = new HashSet<SAPC_Comprobante>();
         }
     
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string URLAdelantos { get; set; }
-        public System.DateTime LastConnectionOn { get; set; }
-        public string URLRendicionABC { get; set; }
-        public string URLRendicionNoABC { get; set; }
-        public string LoginName { get; set; }
-        public string LoginPassword { get; set; }
+        public string Nombre { get; set; }
+        public string CodCECO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SAPC_Session> Sessions { get; set; }
+        public virtual ICollection<SAPC_FacturaProveedor> SAPC_FacturaProveedor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SAPC_FondoFijo> FondosFijos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SAPC_SAPRPCCall> RPCCalls { get; set; }
+        public virtual ICollection<SAPC_Comprobante> SAPC_Comprobante { get; set; }
     }
 }

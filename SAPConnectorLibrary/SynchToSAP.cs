@@ -78,7 +78,7 @@ namespace SAPConnectorLibrary
 
         void SAPLogin()
         {
-            // TODO Login SAP
+            // TODO Login SAP  
         }
 
         void SAPPushAdelanto(Models.SAPC_Adelantos adelanto)

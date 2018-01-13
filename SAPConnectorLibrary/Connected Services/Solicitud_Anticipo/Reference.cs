@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SAPConnectorLibrary.SolicitudAnticipo {
+namespace SAPConnectorLibrary.Solicitud_Anticipo {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="urn:sap-com:document:sap:rfc:functions", ConfigurationName="SolicitudAnticipo.ZWS_SOLICITUD_ANTICIPO")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="urn:sap-com:document:sap:rfc:functions", ConfigurationName="Solicitud_Anticipo.ZWS_SOLICITUD_ANTICIPO")]
     public interface ZWS_SOLICITUD_ANTICIPO {
         
         // CODEGEN: Generating message contract since the operation ZFI_RFC_SOLICITUD_ANTICIPO is neither RPC nor document wrapped.
@@ -20,12 +20,12 @@ namespace SAPConnectorLibrary.SolicitudAnticipo {
             "NTICIPORequest", ReplyAction="urn:sap-com:document:sap:rfc:functions:ZWS_SOLICITUD_ANTICIPO:ZFI_RFC_SOLICITUD_A" +
             "NTICIPOResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse1 ZFI_RFC_SOLICITUD_ANTICIPO(SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPORequest request);
+        SAPConnectorLibrary.Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse1 ZFI_RFC_SOLICITUD_ANTICIPO(SAPConnectorLibrary.Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPORequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:sap-com:document:sap:rfc:functions:ZWS_SOLICITUD_ANTICIPO:ZFI_RFC_SOLICITUD_A" +
             "NTICIPORequest", ReplyAction="urn:sap-com:document:sap:rfc:functions:ZWS_SOLICITUD_ANTICIPO:ZFI_RFC_SOLICITUD_A" +
             "NTICIPOResponse")]
-        System.Threading.Tasks.Task<SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse1> ZFI_RFC_SOLICITUD_ANTICIPOAsync(SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPORequest request);
+        System.Threading.Tasks.Task<SAPConnectorLibrary.Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse1> ZFI_RFC_SOLICITUD_ANTICIPOAsync(SAPConnectorLibrary.Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPORequest request);
     }
     
     /// <remarks/>
@@ -329,12 +329,12 @@ namespace SAPConnectorLibrary.SolicitudAnticipo {
     public partial class ZFI_RFC_SOLICITUD_ANTICIPORequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:sap-com:document:sap:rfc:functions", Order=0)]
-        public SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPO ZFI_RFC_SOLICITUD_ANTICIPO;
+        public SAPConnectorLibrary.Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPO ZFI_RFC_SOLICITUD_ANTICIPO;
         
         public ZFI_RFC_SOLICITUD_ANTICIPORequest() {
         }
         
-        public ZFI_RFC_SOLICITUD_ANTICIPORequest(SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPO ZFI_RFC_SOLICITUD_ANTICIPO) {
+        public ZFI_RFC_SOLICITUD_ANTICIPORequest(SAPConnectorLibrary.Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPO ZFI_RFC_SOLICITUD_ANTICIPO) {
             this.ZFI_RFC_SOLICITUD_ANTICIPO = ZFI_RFC_SOLICITUD_ANTICIPO;
         }
     }
@@ -346,23 +346,23 @@ namespace SAPConnectorLibrary.SolicitudAnticipo {
     public partial class ZFI_RFC_SOLICITUD_ANTICIPOResponse1 {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:sap-com:document:sap:rfc:functions", Order=0)]
-        public SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse ZFI_RFC_SOLICITUD_ANTICIPOResponse;
+        public SAPConnectorLibrary.Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse ZFI_RFC_SOLICITUD_ANTICIPOResponse;
         
         public ZFI_RFC_SOLICITUD_ANTICIPOResponse1() {
         }
         
-        public ZFI_RFC_SOLICITUD_ANTICIPOResponse1(SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse ZFI_RFC_SOLICITUD_ANTICIPOResponse) {
+        public ZFI_RFC_SOLICITUD_ANTICIPOResponse1(SAPConnectorLibrary.Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse ZFI_RFC_SOLICITUD_ANTICIPOResponse) {
             this.ZFI_RFC_SOLICITUD_ANTICIPOResponse = ZFI_RFC_SOLICITUD_ANTICIPOResponse;
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ZWS_SOLICITUD_ANTICIPOChannel : SAPConnectorLibrary.SolicitudAnticipo.ZWS_SOLICITUD_ANTICIPO, System.ServiceModel.IClientChannel {
+    public interface ZWS_SOLICITUD_ANTICIPOChannel : SAPConnectorLibrary.Solicitud_Anticipo.ZWS_SOLICITUD_ANTICIPO, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ZWS_SOLICITUD_ANTICIPOClient : System.ServiceModel.ClientBase<SAPConnectorLibrary.SolicitudAnticipo.ZWS_SOLICITUD_ANTICIPO>, SAPConnectorLibrary.SolicitudAnticipo.ZWS_SOLICITUD_ANTICIPO {
+    public partial class ZWS_SOLICITUD_ANTICIPOClient : System.ServiceModel.ClientBase<SAPConnectorLibrary.Solicitud_Anticipo.ZWS_SOLICITUD_ANTICIPO>, SAPConnectorLibrary.Solicitud_Anticipo.ZWS_SOLICITUD_ANTICIPO {
         
         public ZWS_SOLICITUD_ANTICIPOClient() {
         }
@@ -384,26 +384,26 @@ namespace SAPConnectorLibrary.SolicitudAnticipo {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse1 SAPConnectorLibrary.SolicitudAnticipo.ZWS_SOLICITUD_ANTICIPO.ZFI_RFC_SOLICITUD_ANTICIPO(SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPORequest request) {
+        SAPConnectorLibrary.Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse1 SAPConnectorLibrary.Solicitud_Anticipo.ZWS_SOLICITUD_ANTICIPO.ZFI_RFC_SOLICITUD_ANTICIPO(SAPConnectorLibrary.Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPORequest request) {
             return base.Channel.ZFI_RFC_SOLICITUD_ANTICIPO(request);
         }
         
-        public SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse ZFI_RFC_SOLICITUD_ANTICIPO(SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPO ZFI_RFC_SOLICITUD_ANTICIPO1) {
-            SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPORequest inValue = new SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPORequest();
+        public SAPConnectorLibrary.Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse ZFI_RFC_SOLICITUD_ANTICIPO(SAPConnectorLibrary.Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPO ZFI_RFC_SOLICITUD_ANTICIPO1) {
+            SAPConnectorLibrary.Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPORequest inValue = new SAPConnectorLibrary.Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPORequest();
             inValue.ZFI_RFC_SOLICITUD_ANTICIPO = ZFI_RFC_SOLICITUD_ANTICIPO1;
-            SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse1 retVal = ((SAPConnectorLibrary.SolicitudAnticipo.ZWS_SOLICITUD_ANTICIPO)(this)).ZFI_RFC_SOLICITUD_ANTICIPO(inValue);
+            SAPConnectorLibrary.Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse1 retVal = ((SAPConnectorLibrary.Solicitud_Anticipo.ZWS_SOLICITUD_ANTICIPO)(this)).ZFI_RFC_SOLICITUD_ANTICIPO(inValue);
             return retVal.ZFI_RFC_SOLICITUD_ANTICIPOResponse;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse1> SAPConnectorLibrary.SolicitudAnticipo.ZWS_SOLICITUD_ANTICIPO.ZFI_RFC_SOLICITUD_ANTICIPOAsync(SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPORequest request) {
+        System.Threading.Tasks.Task<SAPConnectorLibrary.Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse1> SAPConnectorLibrary.Solicitud_Anticipo.ZWS_SOLICITUD_ANTICIPO.ZFI_RFC_SOLICITUD_ANTICIPOAsync(SAPConnectorLibrary.Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPORequest request) {
             return base.Channel.ZFI_RFC_SOLICITUD_ANTICIPOAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse1> ZFI_RFC_SOLICITUD_ANTICIPOAsync(SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPO ZFI_RFC_SOLICITUD_ANTICIPO) {
-            SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPORequest inValue = new SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPORequest();
+        public System.Threading.Tasks.Task<SAPConnectorLibrary.Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse1> ZFI_RFC_SOLICITUD_ANTICIPOAsync(SAPConnectorLibrary.Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPO ZFI_RFC_SOLICITUD_ANTICIPO) {
+            SAPConnectorLibrary.Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPORequest inValue = new SAPConnectorLibrary.Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPORequest();
             inValue.ZFI_RFC_SOLICITUD_ANTICIPO = ZFI_RFC_SOLICITUD_ANTICIPO;
-            return ((SAPConnectorLibrary.SolicitudAnticipo.ZWS_SOLICITUD_ANTICIPO)(this)).ZFI_RFC_SOLICITUD_ANTICIPOAsync(inValue);
+            return ((SAPConnectorLibrary.Solicitud_Anticipo.ZWS_SOLICITUD_ANTICIPO)(this)).ZFI_RFC_SOLICITUD_ANTICIPOAsync(inValue);
         }
     }
 }

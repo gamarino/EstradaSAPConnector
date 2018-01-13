@@ -15,6 +15,7 @@ namespace SAPConnectorLibrary.Models
     public partial class SAPC_FacturaProveedor
     {
         public int Id { get; set; }
+        public string TipoDocumento { get; set; }
     
         public virtual SAPC_RendicionGastos RendicionGastos { get; set; }
     }

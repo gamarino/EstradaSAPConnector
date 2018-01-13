@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6dbfe360-be1b-4fc1-81fc-b714c4e48a79" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="40406dba-36b1-40cf-bc2b-2797494f568e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,10 +19,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="\\Vboxsvr\numa\Innovaction\DOC_3I_ZWS_COMPROBANTES_NO_ABC.wsdl" Protocol="file" SourceId="1" />
+    <MetadataSource Address="file:///C:/Users/GustavoMarino/Documents/Visual%20Studio%202017/Projects/EstradaSAPConnector/SAPConnectorLibrary/ServiceDescriptors/DOC_3I_ZWS_COMPROBANTES_NO_ABC.wsdl" Protocol="file" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="DOC_3I_ZWS_COMPROBANTES_NO_ABC.wsdl" MetadataType="Wsdl" ID="896af69e-ef7e-42a0-8ffd-a10a2e76822e" SourceId="1" SourceUrl="file://vboxsvr/numa/Innovaction/DOC_3I_ZWS_COMPROBANTES_NO_ABC.wsdl" />
+    <MetadataFile FileName="DOC_3I_ZWS_COMPROBANTES_NO_ABC.wsdl" MetadataType="Wsdl" ID="ef9fc53b-8f06-4e4b-bd26-355e76e51fef" SourceId="1" SourceUrl="file:///C:/Users/GustavoMarino/Documents/Visual Studio 2017/Projects/EstradaSAPConnector/SAPConnectorLibrary/ServiceDescriptors/DOC_3I_ZWS_COMPROBANTES_NO_ABC.wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

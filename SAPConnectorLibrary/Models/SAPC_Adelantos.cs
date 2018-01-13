@@ -17,7 +17,7 @@ namespace SAPConnectorLibrary.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SAPC_Adelantos()
         {
-            this.SAPRPCCall = new HashSet<SAPC_SAPRPCCall>();
+            this.RPCCalls = new HashSet<SAPC_SAPRPCCall>();
         }
     
         public int Id { get; set; }
@@ -25,7 +25,8 @@ namespace SAPConnectorLibrary.Models
         public System.DateTime PedidoEl { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SAPC_SAPRPCCall> SAPRPCCall { get; set; }
+        public virtual ICollection<SAPC_SAPRPCCall> RPCCalls { get; set; }
         public virtual SAPC_FondoFijo FondoFijo { get; set; }
+        public virtual SAPC_Estados Estado { get; set; }
     }
 }

@@ -121,13 +121,7 @@
     <wsdl:part name="parameter" element="tns:ZFI_RFC_SOLICITUD_ANTICIPOResponse" />
   </wsdl:message>
   <wsdl:portType name="ZWS_SOLICITUD_ANTICIPO">
-    <wsp:Policy>
-      <wsp:PolicyReference URI="#IF_IF_ZWS_SOLICITUD_ANTICIPO" />
-    </wsp:Policy>
     <wsdl:operation name="ZFI_RFC_SOLICITUD_ANTICIPO">
-      <wsp:Policy>
-        <wsp:PolicyReference URI="#OP_IF_OP_ZFI_RFC_SOLICITUD_ANTICIPO" />
-      </wsp:Policy>
       <wsdl:input message="tns:ZFI_RFC_SOLICITUD_ANTICIPO" />
       <wsdl:output message="tns:ZFI_RFC_SOLICITUD_ANTICIPOResponse" />
     </wsdl:operation>

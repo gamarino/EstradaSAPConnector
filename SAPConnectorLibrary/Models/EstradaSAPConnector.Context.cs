@@ -28,7 +28,6 @@ namespace SAPConnectorLibrary.Models
         public virtual DbSet<SAPC_RendicionGastos> SAPC_RendicionGastos { get; set; }
         public virtual DbSet<SAPC_FacturaProveedor> SAPC_FacturaProveedor { get; set; }
         public virtual DbSet<SAPC_FondoFijo> SAPC_FondoFijo { get; set; }
-        public virtual DbSet<SAPC_Credentials> SAPC_Credentials { get; set; }
         public virtual DbSet<SAPC_Session> SAPC_Session { get; set; }
         public virtual DbSet<SAPC_SAPRPCCall> SAPC_SAPRPCCall { get; set; }
         public virtual DbSet<SAPC_EndPoint> SAPC_EndPoint { get; set; }

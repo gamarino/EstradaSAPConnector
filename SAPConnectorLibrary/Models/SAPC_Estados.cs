@@ -19,6 +19,7 @@ namespace SAPConnectorLibrary.Models
         {
             this.FondosFijos = new HashSet<SAPC_FondoFijo>();
             this.RendicionesGastos = new HashSet<SAPC_RendicionGastos>();
+            this.Adelantos = new HashSet<SAPC_Adelantos>();
         }
     
         public int Id { get; set; }
@@ -30,5 +31,7 @@ namespace SAPConnectorLibrary.Models
         public virtual ICollection<SAPC_FondoFijo> FondosFijos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SAPC_RendicionGastos> RendicionesGastos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SAPC_Adelantos> Adelantos { get; set; }
     }
 }

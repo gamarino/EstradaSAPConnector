@@ -17,14 +17,17 @@ namespace SAPConnectorLibrary.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SAPC_Session()
         {
-            this.SAPRPCCalls = new HashSet<SAPC_SAPRPCCall>();
+            this.RPCCalls = new HashSet<SAPC_SAPRPCCall>();
         }
     
         public int Id { get; set; }
+        public System.DateTime StartedOn { get; set; }
+        public System.DateTime FinishedOn { get; set; }
+        public string ErrorMessage { get; set; }
+        public string ErrorCode { get; set; }
     
         public virtual SAPC_EndPoint EndPoint { get; set; }
-        public virtual SAPC_Credentials Credential { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SAPC_SAPRPCCall> SAPRPCCalls { get; set; }
+        public virtual ICollection<SAPC_SAPRPCCall> RPCCalls { get; set; }
     }
 }

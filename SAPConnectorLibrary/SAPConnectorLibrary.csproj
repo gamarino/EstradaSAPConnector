@@ -159,6 +159,8 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Data\dbo.SAPC_Estados.data.sql" />
+    <Content Include="Data\TestData.sql" />
     <Content Include="Models\EstradaSAPConnector.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EstradaSAPConnector.Context.cs</LastGenOutput>
@@ -170,7 +172,9 @@
       <LastGenOutput>EstradaSAPConnector.cs</LastGenOutput>
       <DependentUpon>EstradaSAPConnector.edmx</DependentUpon>
     </Content>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="Models\EstradaSAPConnector.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>EstradaSAPConnector.Designer.cs</LastGenOutput>

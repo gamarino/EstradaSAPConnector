@@ -17,16 +17,16 @@ namespace SAPConnectorLibrary.Models
         public int Id { get; set; }
         public string TipoDocumento { get; set; }
         public decimal ImporteNeto { get; set; }
-        public decimal Fecha { get; set; }
-        public short PtoVenta { get; set; }
+        public System.DateTime Fecha { get; set; }
+        public decimal PtoVenta { get; set; }
         public decimal NumeroDocumento { get; set; }
         public decimal BaseIVA21 { get; set; }
         public decimal BaseIVA105 { get; set; }
         public decimal BaseIVA27 { get; set; }
         public decimal BaseIVA0 { get; set; }
-        public string ImporteTotalAPagar { get; set; }
-        public string Percepcion1Importe { get; set; }
-        public string Percepcion2Importe { get; set; }
+        public decimal ImporteTotalAPagar { get; set; }
+        public decimal Percepcion1Importe { get; set; }
+        public decimal Percepcion2Importe { get; set; }
     
         public virtual SAPC_RendicionABC RendicionGastos { get; set; }
         public virtual SAPC_Proveedor Proveedor { get; set; }

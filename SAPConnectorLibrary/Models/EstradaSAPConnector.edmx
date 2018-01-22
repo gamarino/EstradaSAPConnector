@@ -151,7 +151,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="SAPNroDoc" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SAPNroDoc" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Fecha" Type="nvarchar(max)" Nullable="false" />
     <Property Name="FondoFijo_Id" Type="int" Nullable="false" />
     <Property Name="Estado_Id" Type="int" Nullable="false" />
@@ -163,16 +163,16 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TipoDocumento" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ImporteNeto" Type="decimal" Nullable="false" />
-    <Property Name="Fecha" Type="decimal" Nullable="false" />
-    <Property Name="PtoVenta" Type="smallint" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="PtoVenta" Type="decimal" Nullable="false" />
     <Property Name="NumeroDocumento" Type="decimal" Nullable="false" />
     <Property Name="BaseIVA21" Type="decimal" Nullable="false" />
     <Property Name="BaseIVA105" Type="decimal" Nullable="false" />
     <Property Name="BaseIVA27" Type="decimal" Nullable="false" />
     <Property Name="BaseIVA0" Type="decimal" Nullable="false" />
-    <Property Name="ImporteTotalAPagar" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Percepcion1Importe" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Percepcion2Importe" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ImporteTotalAPagar" Type="decimal" Nullable="false" />
+    <Property Name="Percepcion1Importe" Type="decimal" Nullable="false" />
+    <Property Name="Percepcion2Importe" Type="decimal" Nullable="false" />
     <Property Name="RendicionGastos_Id" Type="int" Nullable="false" />
     <Property Name="Proveedor_Id" Type="int" Nullable="false" />
     <Property Name="CECO_Id" Type="int" Nullable="false" />
@@ -235,7 +235,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="SAPNroDoc" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SAPNroDoc" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Fecha" Type="datetime" Nullable="false" />
     <Property Name="FondoFijo_Id" Type="int" Nullable="false" />
     <Property Name="Estado_Id" Type="int" Nullable="false" />
@@ -266,7 +266,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="SAPNroDoc" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SAPNroDoc" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Fecha" Type="nvarchar(max)" Nullable="false" />
     <Property Name="FondoFijo_Id" Type="int" Nullable="false" />
     <Property Name="Estado_Id" Type="int" Nullable="false" />
@@ -848,7 +848,7 @@
           <NavigationProperty Name="RPCCalls" Relationship="EstradaSAPConnector.SAPC_RendicionGastosSAPC_SAPRPCCall" FromRole="SAPC_RendicionGastos" ToRole="SAPC_SAPRPCCall" />
           <NavigationProperty Name="Estado" Relationship="EstradaSAPConnector.SAPC_EstadosSAPC_RendicionGastos" FromRole="RendicionGastos" ToRole="Estado" />
           <NavigationProperty Name="FacturasProveedor" Relationship="EstradaSAPConnector.SAPC_RendicionGastosSAPC_FacturaProveedor" FromRole="RendicionGastos" ToRole="FacturaProveedor" />
-          <Property Name="SAPNroDoc" Type="String" Nullable="false" />
+          <Property Name="SAPNroDoc" Type="String" Nullable="true" />
           <Property Name="Fecha" Type="String" Nullable="false" />
           </EntityType>
         <EntityType Name="SAPC_FacturaProveedor">
@@ -860,17 +860,17 @@
           <Property Name="TipoDocumento" Type="String" Nullable="false" />
           <NavigationProperty Name="Proveedor" Relationship="EstradaSAPConnector.SAPC_ProveedorSAPC_FacturaProveedor" FromRole="SAPC_FacturaProveedor" ToRole="SAPC_Proveedor" />
           <Property Name="ImporteNeto" Type="Decimal" Nullable="false" />
-          <Property Name="Fecha" Type="Decimal" Nullable="false" />
-          <Property Name="PtoVenta" Type="Int16" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" />
+          <Property Name="PtoVenta" Type="Decimal" Nullable="false" />
           <Property Name="NumeroDocumento" Type="Decimal" Nullable="false" />
           <Property Name="BaseIVA21" Type="Decimal" Nullable="false" />
           <Property Name="BaseIVA105" Type="Decimal" Nullable="false" />
           <Property Name="BaseIVA27" Type="Decimal" Nullable="false" />
           <Property Name="BaseIVA0" Type="Decimal" Nullable="false" />
           <NavigationProperty Name="CECO" Relationship="EstradaSAPConnector.CECOSAPC_FacturaProveedor" FromRole="SAPC_FacturaProveedor" ToRole="CECO" />
-          <Property Name="ImporteTotalAPagar" Type="String" Nullable="false" />
-          <Property Name="Percepcion1Importe" Type="String" Nullable="false" />
-          <Property Name="Percepcion2Importe" Type="String" Nullable="false" />
+          <Property Name="ImporteTotalAPagar" Type="Decimal" Nullable="false" />
+          <Property Name="Percepcion1Importe" Type="Decimal" Nullable="false" />
+          <Property Name="Percepcion2Importe" Type="Decimal" Nullable="false" />
           <NavigationProperty Name="Percepcion1" Relationship="EstradaSAPConnector.PercepcionesSAPC_FacturaProveedor" FromRole="SAPC_FacturaProveedor" ToRole="Percepciones" />
           <NavigationProperty Name="Percepcion2" Relationship="EstradaSAPConnector.PercepcionesSAPC_FacturaProveedor1" FromRole="SAPC_FacturaProveedor" ToRole="Percepciones" />
           <NavigationProperty Name="RendidoPor" Relationship="EstradaSAPConnector.SAPC_EmpleadoSAPC_FacturaProveedor" FromRole="SAPC_FacturaProveedor" ToRole="SAPC_Empleado" />
@@ -944,7 +944,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SAPNroDoc" Type="String" Nullable="false" />
+          <Property Name="SAPNroDoc" Type="String" Nullable="true" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="RPCCalls" Relationship="EstradaSAPConnector.SAPC_AdelantosSAPC_SAPRPCCall" FromRole="SAPC_Adelantos" ToRole="SAPC_SAPRPCCall" />
           <NavigationProperty Name="FondoFijo" Relationship="EstradaSAPConnector.SAPC_FondoFijoSAPC_Adelantos" FromRole="SAPC_Adelantos" ToRole="SAPC_FondoFijo" />
@@ -1025,7 +1025,7 @@
           <NavigationProperty Name="RPCCalls" Relationship="EstradaSAPConnector.SAPC_RendicionCompSAPC_SAPRPCCall" FromRole="SAPC_RendicionComp" ToRole="SAPC_SAPRPCCall" />
           <NavigationProperty Name="FondoFijo" Relationship="EstradaSAPConnector.SAPC_FondoFijoSAPC_RendicionComp" FromRole="SAPC_RendicionComp" ToRole="SAPC_FondoFijo" />
           <NavigationProperty Name="Estado" Relationship="EstradaSAPConnector.SAPC_EstadosSAPC_RendicionComp" FromRole="SAPC_RendicionComp" ToRole="SAPC_Estados" />
-          <Property Name="SAPNroDoc" Type="String" Nullable="false" />
+          <Property Name="SAPNroDoc" Type="String" Nullable="true" />
           <Property Name="Fecha" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="SAPC_Comprobante">

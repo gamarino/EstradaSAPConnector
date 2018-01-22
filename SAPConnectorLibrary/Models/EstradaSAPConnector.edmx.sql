@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 01/22/2018 12:53:40
+-- Date Created: 01/22/2018 15:12:40
 -- Generated from EDMX file: C:\Users\GustavoMarino\Documents\Visual Studio 2017\Projects\EstradaSAPConnector\SAPConnectorLibrary\Models\EstradaSAPConnector.edmx
 -- --------------------------------------------------
 
@@ -177,7 +177,7 @@ GO
 -- Creating table 'SAPC_RendicionABC'
 CREATE TABLE [dbo].[SAPC_RendicionABC] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [SAPNroDoc] nvarchar(max)  NOT NULL,
+    [SAPNroDoc] nvarchar(max)  NULL,
     [Fecha] nvarchar(max)  NOT NULL,
     [FondoFijo_Id] int  NOT NULL,
     [Estado_Id] int  NOT NULL
@@ -189,16 +189,16 @@ CREATE TABLE [dbo].[SAPC_FacturaProveedor] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [TipoDocumento] nvarchar(max)  NOT NULL,
     [ImporteNeto] decimal(18,0)  NOT NULL,
-    [Fecha] decimal(18,0)  NOT NULL,
-    [PtoVenta] smallint  NOT NULL,
+    [Fecha] datetime  NOT NULL,
+    [PtoVenta] decimal(18,0)  NOT NULL,
     [NumeroDocumento] decimal(18,0)  NOT NULL,
     [BaseIVA21] decimal(18,0)  NOT NULL,
     [BaseIVA105] decimal(18,0)  NOT NULL,
     [BaseIVA27] decimal(18,0)  NOT NULL,
     [BaseIVA0] decimal(18,0)  NOT NULL,
-    [ImporteTotalAPagar] nvarchar(max)  NOT NULL,
-    [Percepcion1Importe] nvarchar(max)  NOT NULL,
-    [Percepcion2Importe] nvarchar(max)  NOT NULL,
+    [ImporteTotalAPagar] decimal(18,0)  NOT NULL,
+    [Percepcion1Importe] decimal(18,0)  NOT NULL,
+    [Percepcion2Importe] decimal(18,0)  NOT NULL,
     [RendicionGastos_Id] int  NOT NULL,
     [Proveedor_Id] int  NOT NULL,
     [CECO_Id] int  NOT NULL,
@@ -261,7 +261,7 @@ GO
 -- Creating table 'SAPC_Adelantos'
 CREATE TABLE [dbo].[SAPC_Adelantos] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [SAPNroDoc] nvarchar(max)  NOT NULL,
+    [SAPNroDoc] nvarchar(max)  NULL,
     [Fecha] datetime  NOT NULL,
     [FondoFijo_Id] int  NOT NULL,
     [Estado_Id] int  NOT NULL
@@ -292,7 +292,7 @@ GO
 -- Creating table 'SAPC_RendicionComp'
 CREATE TABLE [dbo].[SAPC_RendicionComp] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [SAPNroDoc] nvarchar(max)  NOT NULL,
+    [SAPNroDoc] nvarchar(max)  NULL,
     [Fecha] nvarchar(max)  NOT NULL,
     [FondoFijo_Id] int  NOT NULL,
     [Estado_Id] int  NOT NULL

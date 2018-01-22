@@ -1,0 +1,17 @@
+﻿SET IDENTITY_INSERT [dbo].[SAPC_Estados] ON
+INSERT INTO [dbo].[SAPC_Estados] ([Id], [Codigo], [Nombre], [EntityName]) VALUES (1, N'SAPC_Adelanto_EnCarga', N'En carga', N'SAPC_Adelantos')
+INSERT INTO [dbo].[SAPC_Estados] ([Id], [Codigo], [Nombre], [EntityName]) VALUES (3, N'SAPC_Adelanto_Aprobado', N'Aprobado, a enviar a SAP', N'SAPC_Adelantos')
+INSERT INTO [dbo].[SAPC_Estados] ([Id], [Codigo], [Nombre], [EntityName]) VALUES (4, N'SAPC_Adelanto_Sincronizado', N'Sincronizado con SAP', N'SAPC_Adelantos')
+INSERT INTO [dbo].[SAPC_Estados] ([Id], [Codigo], [Nombre], [EntityName]) VALUES (5, N'SAPC_Adelanto_Rechazado', N'Rechazado por SAP', N'SAPC_Adelantos')
+INSERT INTO [dbo].[SAPC_Estados] ([Id], [Codigo], [Nombre], [EntityName]) VALUES (6, N'SAPC_Adelanto_ParaAprobar', N'Para aprobar', N'SAPC_Adelantos')
+INSERT INTO [dbo].[SAPC_Estados] ([Id], [Codigo], [Nombre], [EntityName]) VALUES (8, N'SAPC_Comprobantes_EnCarga', N'En carga', N'SAPC_Comprobantes')
+INSERT INTO [dbo].[SAPC_Estados] ([Id], [Codigo], [Nombre], [EntityName]) VALUES (9, N'SAPC_Comprobantes_ParaAprobar', N'Para aprobar', N'SAPC_Comprobantes')
+INSERT INTO [dbo].[SAPC_Estados] ([Id], [Codigo], [Nombre], [EntityName]) VALUES (10, N'SAPC_Comprobantes_Aprobado', N'Aprobado, a enviar a SAP', N'SAPC_Comprobantes')
+INSERT INTO [dbo].[SAPC_Estados] ([Id], [Codigo], [Nombre], [EntityName]) VALUES (12, N'SAPC_Comprobantes_Sincronizado', N'Sincronizado con SAP', N'SAPC_Comprobantes')
+INSERT INTO [dbo].[SAPC_Estados] ([Id], [Codigo], [Nombre], [EntityName]) VALUES (13, N'SAPC_Comrpobanates_Rechazado', N'Rechazado por SAP', N'SAPC_Comprobantes')
+INSERT INTO [dbo].[SAPC_Estados] ([Id], [Codigo], [Nombre], [EntityName]) VALUES (14, N'SAPC_RendicionABC_EnCarga', N'En carga', N'SAPC_RendicionABC')
+INSERT INTO [dbo].[SAPC_Estados] ([Id], [Codigo], [Nombre], [EntityName]) VALUES (15, N'SAPC_RendicionABC_ParaAprobar', N'Para aprobar', N'SAPC_RendicionABC')
+INSERT INTO [dbo].[SAPC_Estados] ([Id], [Codigo], [Nombre], [EntityName]) VALUES (16, N'SAPC_RendicionABC_Aprobado', N'Aprobado, a enviar a SAP', N'SAPC_RendicionABC')
+INSERT INTO [dbo].[SAPC_Estados] ([Id], [Codigo], [Nombre], [EntityName]) VALUES (17, N'SAPC_RendicionABC_Sincronizado', N'Sincronizado con SAP', N'SAPC_RendicionABC')
+INSERT INTO [dbo].[SAPC_Estados] ([Id], [Codigo], [Nombre], [EntityName]) VALUES (18, N'SAPC_RendicionABC_Rechazado', N'Rechazado por SAP', N'SAPC_RendicionABC')
+SET IDENTITY_INSERT [dbo].[SAPC_Estados] OFF

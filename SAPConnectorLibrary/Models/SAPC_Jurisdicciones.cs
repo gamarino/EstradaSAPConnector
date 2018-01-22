@@ -12,10 +12,18 @@ namespace SAPConnectorLibrary.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SAPC_CECO
+    public partial class SAPC_Jurisdicciones
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public SAPC_Jurisdicciones()
+        {
+            this.Percepciones = new HashSet<SAPC_Percepciones>();
+        }
+    
         public int Id { get; set; }
         public string Nombre { get; set; }
-        public string CodCECO { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SAPC_Percepciones> Percepciones { get; set; }
     }
 }

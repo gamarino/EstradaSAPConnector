@@ -104,6 +104,12 @@
     <Compile Include="Models\SAPC_FondoFijo.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SAPC_Jurisdicciones.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_Percepciones.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SAPC_Proveedor.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>

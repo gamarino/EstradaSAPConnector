@@ -213,7 +213,7 @@ namespace SAPConnectorLibrary
                     {
                         CECO = "???",
                         CTA_CONTABLE = factura.Proveedor.CtaContable,
-                        IMPORTE = factura.Importe,
+                        IMPORTE = factura.ImporteNeto,
                         IND_IMP = "????",
                     });
                 }

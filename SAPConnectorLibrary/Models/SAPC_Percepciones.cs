@@ -12,10 +12,12 @@ namespace SAPConnectorLibrary.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SAPC_CECO
+    public partial class SAPC_Percepciones
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
-        public string CodCECO { get; set; }
+        public string CtaContable { get; set; }
+    
+        public virtual SAPC_Jurisdicciones Jurisdiccion { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace SAPConnectorLibrary.Models
     {
         public int Id { get; set; }
         public string TipoDocumento { get; set; }
-        public decimal Importe { get; set; }
+        public decimal ImporteNeto { get; set; }
         public decimal Fecha { get; set; }
         public short PtoVenta { get; set; }
         public decimal NumeroDocumento { get; set; }
@@ -24,10 +24,15 @@ namespace SAPConnectorLibrary.Models
         public decimal BaseIVA105 { get; set; }
         public decimal BaseIVA27 { get; set; }
         public decimal BaseIVA0 { get; set; }
-        public decimal Percepciones { get; set; }
+        public string ImporteTotalAPagar { get; set; }
+        public string Percepcion1Importe { get; set; }
+        public string Percepcion2Importe { get; set; }
     
         public virtual SAPC_RendicionABC RendicionGastos { get; set; }
         public virtual SAPC_Proveedor Proveedor { get; set; }
         public virtual SAPC_CECO CECO { get; set; }
+        public virtual SAPC_Percepciones Percepcion1 { get; set; }
+        public virtual SAPC_Percepciones Percepcion2 { get; set; }
+        public virtual SAPC_Empleado RendidoPor { get; set; }
     }
 }

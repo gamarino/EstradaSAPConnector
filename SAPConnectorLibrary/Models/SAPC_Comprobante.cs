@@ -21,5 +21,6 @@ namespace SAPConnectorLibrary.Models
         public virtual SAPC_RendicionComp RendicionComp { get; set; }
         public virtual SAPC_Proveedor Proveedor { get; set; }
         public virtual SAPC_CECO CECO { get; set; }
+        public virtual SAPC_Empleado RendidoPor { get; set; }
     }
 }

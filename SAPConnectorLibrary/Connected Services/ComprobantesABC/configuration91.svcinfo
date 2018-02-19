@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="W0hINU6pFJyyqNJF7LjTNnxsmCo=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="RPOTLvjmgX6m6AuusWE9SRFuF48=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="customBinding" name="zws_solicitud_anticipo">
+    <bindingConfiguration bindingType="customBinding" name="zws_comprobantes_abc">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>zws_solicitud_anticipo</serializedValue>
+          <serializedValue>zws_comprobantes_abc</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -158,10 +158,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="customBinding" name="zws_solicitud_anticipo_SOAP12">
+    <bindingConfiguration bindingType="customBinding" name="zws_comprobantes_abc_SOAP12">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>zws_solicitud_anticipo_SOAP12</serializedValue>
+          <serializedValue>zws_comprobantes_abc_SOAP12</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -317,10 +317,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="zws_solicitud_anticipo" contract="SolicitudAnticipo.ZWS_SOLICITUD_ANTICIPO" bindingType="customBinding" address="http://estradades.ad.aesa.com.ar:8000/sap/bc/srt/rfc/sap/zws_solicitud_anticipo/200/zws_solicitud_anticipo/zws_solicitud_anticipo" bindingConfiguration="zws_solicitud_anticipo">
+    <endpoint name="zws_comprobantes_abc" contract="ComprobantesABC.ZWS_COMPROBANTES_ABC" bindingType="customBinding" address="http://estradades.ad.aesa.com.ar:8000/sap/bc/srt/rfc/sap/zws_comprobantes_abc/200/zws_comprobantes_abc/zws_comprobantes_abc" bindingConfiguration="zws_comprobantes_abc">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://estradades.ad.aesa.com.ar:8000/sap/bc/srt/rfc/sap/zws_solicitud_anticipo/200/zws_solicitud_anticipo/zws_solicitud_anticipo</serializedValue>
+          <serializedValue>http://estradades.ad.aesa.com.ar:8000/sap/bc/srt/rfc/sap/zws_comprobantes_abc/200/zws_comprobantes_abc/zws_comprobantes_abc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -329,10 +329,10 @@
           <serializedValue>customBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>zws_solicitud_anticipo</serializedValue>
+          <serializedValue>zws_comprobantes_abc</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>SolicitudAnticipo.ZWS_SOLICITUD_ANTICIPO</serializedValue>
+          <serializedValue>ComprobantesABC.ZWS_COMPROBANTES_ABC</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -392,7 +392,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>zws_solicitud_anticipo</serializedValue>
+          <serializedValue>zws_comprobantes_abc</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -402,10 +402,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="zws_solicitud_anticipo_SOAP12" contract="SolicitudAnticipo.ZWS_SOLICITUD_ANTICIPO" bindingType="customBinding" address="http://estradades.ad.aesa.com.ar:8000/sap/bc/srt/rfc/sap/zws_solicitud_anticipo/200/zws_solicitud_anticipo/zws_solicitud_anticipo" bindingConfiguration="zws_solicitud_anticipo_SOAP12">
+    <endpoint name="zws_comprobantes_abc_SOAP12" contract="ComprobantesABC.ZWS_COMPROBANTES_ABC" bindingType="customBinding" address="http://estradades.ad.aesa.com.ar:8000/sap/bc/srt/rfc/sap/zws_comprobantes_abc/200/zws_comprobantes_abc/zws_comprobantes_abc" bindingConfiguration="zws_comprobantes_abc_SOAP12">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://estradades.ad.aesa.com.ar:8000/sap/bc/srt/rfc/sap/zws_solicitud_anticipo/200/zws_solicitud_anticipo/zws_solicitud_anticipo</serializedValue>
+          <serializedValue>http://estradades.ad.aesa.com.ar:8000/sap/bc/srt/rfc/sap/zws_comprobantes_abc/200/zws_comprobantes_abc/zws_comprobantes_abc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -414,10 +414,10 @@
           <serializedValue>customBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>zws_solicitud_anticipo_SOAP12</serializedValue>
+          <serializedValue>zws_comprobantes_abc_SOAP12</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>SolicitudAnticipo.ZWS_SOLICITUD_ANTICIPO</serializedValue>
+          <serializedValue>ComprobantesABC.ZWS_COMPROBANTES_ABC</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -477,7 +477,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>zws_solicitud_anticipo_SOAP12</serializedValue>
+          <serializedValue>zws_comprobantes_abc_SOAP12</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

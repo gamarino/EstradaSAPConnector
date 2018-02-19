@@ -16,20 +16,16 @@ namespace SAPConnectorLibrary.SolicitudAnticipo {
     public interface ZWS_SOLICITUD_ANTICIPO {
         
         // CODEGEN: Generating message contract since the operation ZFI_RFC_SOLICITUD_ANTICIPO is neither RPC nor document wrapped.
-        [System.ServiceModel.OperationContractAttribute(Action="urn:sap-com:document:sap:rfc:functions:ZWS_SOLICITUD_ANTICIPO:ZFI_RFC_SOLICITUD_A" +
-            "NTICIPORequest", ReplyAction="urn:sap-com:document:sap:rfc:functions:ZWS_SOLICITUD_ANTICIPO:ZFI_RFC_SOLICITUD_A" +
-            "NTICIPOResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse1 ZFI_RFC_SOLICITUD_ANTICIPO(SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPORequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="urn:sap-com:document:sap:rfc:functions:ZWS_SOLICITUD_ANTICIPO:ZFI_RFC_SOLICITUD_A" +
-            "NTICIPORequest", ReplyAction="urn:sap-com:document:sap:rfc:functions:ZWS_SOLICITUD_ANTICIPO:ZFI_RFC_SOLICITUD_A" +
-            "NTICIPOResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         System.Threading.Tasks.Task<SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse1> ZFI_RFC_SOLICITUD_ANTICIPOAsync(SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPORequest request);
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -62,7 +58,7 @@ namespace SAPConnectorLibrary.SolicitudAnticipo {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -248,7 +244,7 @@ namespace SAPConnectorLibrary.SolicitudAnticipo {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]

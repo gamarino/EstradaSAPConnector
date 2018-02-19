@@ -52,12 +52,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\Comprobantes_ABC\Reference.cs">
+    <Compile Include="Connected Services\ComprobantesABC\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Connected Services\Comprobantes_NO_ABC\Reference.cs">
+    <Compile Include="Connected Services\ComprobantesNoABC\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\DatosProveedores\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -134,24 +139,38 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\Comprobantes_ABC\DOC_3I_ZWS_COMPROBANTES_ABC.wsdl" />
-    <None Include="Connected Services\Comprobantes_ABC\SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCResponse.datasource">
+    <None Include="Connected Services\ComprobantesABC\SAPConnectorLibrary.ComprobantesABC.ZFI_RFC_COMPROBANTES_ABCResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\Comprobantes_ABC\SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCResponse1.datasource">
+    <None Include="Connected Services\ComprobantesNoABC\SAPConnectorLibrary.ComprobantesNoABC.ZFI_RFC_COMPROBANTES_NO_ABCResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\Comprobantes_NO_ABC\configuration91.svcinfo" />
-    <None Include="Connected Services\Comprobantes_NO_ABC\configuration.svcinfo" />
-    <None Include="Connected Services\Comprobantes_NO_ABC\Reference.svcmap">
+    <None Include="Connected Services\ComprobantesNoABC\SAPConnectorLibrary.ComprobantesNoABC.ZFI_RFC_COMPROBANTES_NO_ABCResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ComprobantesABC\configuration91.svcinfo" />
+    <None Include="Connected Services\ComprobantesABC\configuration.svcinfo" />
+    <None Include="Connected Services\ComprobantesABC\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Connected Services\Comprobantes_ABC\configuration91.svcinfo" />
-    <None Include="Connected Services\Comprobantes_ABC\configuration.svcinfo" />
-    <None Include="Connected Services\Comprobantes_ABC\Reference.svcmap">
+    <None Include="Connected Services\ComprobantesNoABC\configuration91.svcinfo" />
+    <None Include="Connected Services\ComprobantesNoABC\configuration.svcinfo" />
+    <None Include="Connected Services\ComprobantesNoABC\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\DatosProveedores\configuration91.svcinfo" />
+    <None Include="Connected Services\DatosProveedores\configuration.svcinfo" />
+    <None Include="Connected Services\DatosProveedores\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\DatosProveedores\SAPConnectorLibrary.DatosProveedores.ZFI_RFC_DATOS_PROVEEDORESResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DatosProveedores\SAPConnectorLibrary.DatosProveedores.ZFI_RFC_DATOS_PROVEEDORESResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\SolicitudAnticipo\configuration91.svcinfo" />
     <None Include="Connected Services\SolicitudAnticipo\configuration.svcinfo" />
@@ -182,26 +201,21 @@
     <Content Include="Models\EstradaSAPConnector.edmx.diagram">
       <DependentUpon>EstradaSAPConnector.edmx</DependentUpon>
     </Content>
-    <None Include="Connected Services\Comprobantes_NO_ABC\DOC_3I_ZWS_COMPROBANTES_NO_ABC.wsdl" />
-    <None Include="Connected Services\Comprobantes_NO_ABC\SAPConnectorLibrary.Comprobantes_NO_ABC.ZFI_RFC_COMPROBANTES_NO_ABCResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\Comprobantes_NO_ABC\SAPConnectorLibrary.Comprobantes_NO_ABC.ZFI_RFC_COMPROBANTES_NO_ABCResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SolicitudAnticipo\DOC_3I_ZWS_SOLICITUD_ANTICIPO.wsdl" />
+    <None Include="Connected Services\ComprobantesABC\ZWS_COMPROBANTES_ABC.wsdl" />
+    <None Include="Connected Services\ComprobantesNoABC\ZWS_COMPROBANTES_NO_ABC.wsdl" />
+    <None Include="Connected Services\DatosProveedores\ZWS_DATOS_PROVEEDORES.wsdl" />
     <None Include="Connected Services\SolicitudAnticipo\SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\SolicitudAnticipo\SAPConnectorLibrary.SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\SolicitudAnticipo\ZWS_SOLICITUD_ANTICIPO.wsdl" />
     <None Include="packages.config" />
-    <None Include="ServiceDescriptors\DOC_3I_ZWS_COMPROBANTES_ABC.wsdl" />
-    <None Include="ServiceDescriptors\DOC_3I_ZWS_COMPROBANTES_NO_ABC.wsdl" />
-    <None Include="ServiceDescriptors\DOC_3I_ZWS_SOLICITUD_ANTICIPO.wsdl">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="ServiceDescriptors\ZWS_COMPROBANTES_ABC.wsdl" />
+    <None Include="ServiceDescriptors\ZWS_COMPROBANTES_NO_ABC.wsdl" />
+    <None Include="ServiceDescriptors\ZWS_DATOS_PROVEEDORES.WSDL" />
+    <None Include="ServiceDescriptors\ZWS_SOLICITUD_ANTICIPO.WSDL" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -213,8 +227,9 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\Comprobantes_ABC\" />
-    <WCFMetadataStorage Include="Connected Services\Comprobantes_NO_ABC\" />
+    <WCFMetadataStorage Include="Connected Services\ComprobantesABC\" />
+    <WCFMetadataStorage Include="Connected Services\ComprobantesNoABC\" />
+    <WCFMetadataStorage Include="Connected Services\DatosProveedores\" />
     <WCFMetadataStorage Include="Connected Services\SolicitudAnticipo\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

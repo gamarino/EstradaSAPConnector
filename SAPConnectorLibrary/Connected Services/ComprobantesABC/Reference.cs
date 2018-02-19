@@ -8,28 +8,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SAPConnectorLibrary.Comprobantes_ABC {
+namespace SAPConnectorLibrary.ComprobantesABC {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="urn:sap-com:document:sap:rfc:functions", ConfigurationName="Comprobantes_ABC.ZWS_COMPROBANTES_ABC")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="urn:sap-com:document:sap:rfc:functions", ConfigurationName="ComprobantesABC.ZWS_COMPROBANTES_ABC")]
     public interface ZWS_COMPROBANTES_ABC {
         
         // CODEGEN: Generating message contract since the operation ZFI_RFC_COMPROBANTES_ABC is neither RPC nor document wrapped.
-        [System.ServiceModel.OperationContractAttribute(Action="urn:sap-com:document:sap:rfc:functions:ZWS_COMPROBANTES_ABC:ZFI_RFC_COMPROBANTES_" +
-            "ABCRequest", ReplyAction="urn:sap-com:document:sap:rfc:functions:ZWS_COMPROBANTES_ABC:ZFI_RFC_COMPROBANTES_" +
-            "ABCResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCResponse1 ZFI_RFC_COMPROBANTES_ABC(SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="urn:sap-com:document:sap:rfc:functions:ZWS_COMPROBANTES_ABC:ZFI_RFC_COMPROBANTES_" +
-            "ABCRequest", ReplyAction="urn:sap-com:document:sap:rfc:functions:ZWS_COMPROBANTES_ABC:ZFI_RFC_COMPROBANTES_" +
-            "ABCResponse")]
-        System.Threading.Tasks.Task<SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCResponse1> ZFI_RFC_COMPROBANTES_ABCAsync(SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCRequest request);
+        SAPConnectorLibrary.ComprobantesABC.ZFI_RFC_COMPROBANTES_ABCResponse1 ZFI_RFC_COMPROBANTES_ABC(SAPConnectorLibrary.ComprobantesABC.ZFI_RFC_COMPROBANTES_ABCRequest request);
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -328,7 +321,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -402,7 +395,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -483,12 +476,12 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
     public partial class ZFI_RFC_COMPROBANTES_ABCRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:sap-com:document:sap:rfc:functions", Order=0)]
-        public SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABC1 ZFI_RFC_COMPROBANTES_ABC;
+        public SAPConnectorLibrary.ComprobantesABC.ZFI_RFC_COMPROBANTES_ABC1 ZFI_RFC_COMPROBANTES_ABC;
         
         public ZFI_RFC_COMPROBANTES_ABCRequest() {
         }
         
-        public ZFI_RFC_COMPROBANTES_ABCRequest(SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABC1 ZFI_RFC_COMPROBANTES_ABC) {
+        public ZFI_RFC_COMPROBANTES_ABCRequest(SAPConnectorLibrary.ComprobantesABC.ZFI_RFC_COMPROBANTES_ABC1 ZFI_RFC_COMPROBANTES_ABC) {
             this.ZFI_RFC_COMPROBANTES_ABC = ZFI_RFC_COMPROBANTES_ABC;
         }
     }
@@ -500,23 +493,23 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
     public partial class ZFI_RFC_COMPROBANTES_ABCResponse1 {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:sap-com:document:sap:rfc:functions", Order=0)]
-        public SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCResponse ZFI_RFC_COMPROBANTES_ABCResponse;
+        public SAPConnectorLibrary.ComprobantesABC.ZFI_RFC_COMPROBANTES_ABCResponse ZFI_RFC_COMPROBANTES_ABCResponse;
         
         public ZFI_RFC_COMPROBANTES_ABCResponse1() {
         }
         
-        public ZFI_RFC_COMPROBANTES_ABCResponse1(SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCResponse ZFI_RFC_COMPROBANTES_ABCResponse) {
+        public ZFI_RFC_COMPROBANTES_ABCResponse1(SAPConnectorLibrary.ComprobantesABC.ZFI_RFC_COMPROBANTES_ABCResponse ZFI_RFC_COMPROBANTES_ABCResponse) {
             this.ZFI_RFC_COMPROBANTES_ABCResponse = ZFI_RFC_COMPROBANTES_ABCResponse;
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ZWS_COMPROBANTES_ABCChannel : SAPConnectorLibrary.Comprobantes_ABC.ZWS_COMPROBANTES_ABC, System.ServiceModel.IClientChannel {
+    public interface ZWS_COMPROBANTES_ABCChannel : SAPConnectorLibrary.ComprobantesABC.ZWS_COMPROBANTES_ABC, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ZWS_COMPROBANTES_ABCClient : System.ServiceModel.ClientBase<SAPConnectorLibrary.Comprobantes_ABC.ZWS_COMPROBANTES_ABC>, SAPConnectorLibrary.Comprobantes_ABC.ZWS_COMPROBANTES_ABC {
+    public partial class ZWS_COMPROBANTES_ABCClient : System.ServiceModel.ClientBase<SAPConnectorLibrary.ComprobantesABC.ZWS_COMPROBANTES_ABC>, SAPConnectorLibrary.ComprobantesABC.ZWS_COMPROBANTES_ABC {
         
         public ZWS_COMPROBANTES_ABCClient() {
         }
@@ -538,26 +531,15 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCResponse1 SAPConnectorLibrary.Comprobantes_ABC.ZWS_COMPROBANTES_ABC.ZFI_RFC_COMPROBANTES_ABC(SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCRequest request) {
+        SAPConnectorLibrary.ComprobantesABC.ZFI_RFC_COMPROBANTES_ABCResponse1 SAPConnectorLibrary.ComprobantesABC.ZWS_COMPROBANTES_ABC.ZFI_RFC_COMPROBANTES_ABC(SAPConnectorLibrary.ComprobantesABC.ZFI_RFC_COMPROBANTES_ABCRequest request) {
             return base.Channel.ZFI_RFC_COMPROBANTES_ABC(request);
         }
         
-        public SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCResponse ZFI_RFC_COMPROBANTES_ABC(SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABC1 ZFI_RFC_COMPROBANTES_ABC1) {
-            SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCRequest inValue = new SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCRequest();
+        public SAPConnectorLibrary.ComprobantesABC.ZFI_RFC_COMPROBANTES_ABCResponse ZFI_RFC_COMPROBANTES_ABC(SAPConnectorLibrary.ComprobantesABC.ZFI_RFC_COMPROBANTES_ABC1 ZFI_RFC_COMPROBANTES_ABC1) {
+            SAPConnectorLibrary.ComprobantesABC.ZFI_RFC_COMPROBANTES_ABCRequest inValue = new SAPConnectorLibrary.ComprobantesABC.ZFI_RFC_COMPROBANTES_ABCRequest();
             inValue.ZFI_RFC_COMPROBANTES_ABC = ZFI_RFC_COMPROBANTES_ABC1;
-            SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCResponse1 retVal = ((SAPConnectorLibrary.Comprobantes_ABC.ZWS_COMPROBANTES_ABC)(this)).ZFI_RFC_COMPROBANTES_ABC(inValue);
+            SAPConnectorLibrary.ComprobantesABC.ZFI_RFC_COMPROBANTES_ABCResponse1 retVal = ((SAPConnectorLibrary.ComprobantesABC.ZWS_COMPROBANTES_ABC)(this)).ZFI_RFC_COMPROBANTES_ABC(inValue);
             return retVal.ZFI_RFC_COMPROBANTES_ABCResponse;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCResponse1> SAPConnectorLibrary.Comprobantes_ABC.ZWS_COMPROBANTES_ABC.ZFI_RFC_COMPROBANTES_ABCAsync(SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCRequest request) {
-            return base.Channel.ZFI_RFC_COMPROBANTES_ABCAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCResponse1> ZFI_RFC_COMPROBANTES_ABCAsync(SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABC1 ZFI_RFC_COMPROBANTES_ABC) {
-            SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCRequest inValue = new SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCRequest();
-            inValue.ZFI_RFC_COMPROBANTES_ABC = ZFI_RFC_COMPROBANTES_ABC;
-            return ((SAPConnectorLibrary.Comprobantes_ABC.ZWS_COMPROBANTES_ABC)(this)).ZFI_RFC_COMPROBANTES_ABCAsync(inValue);
         }
     }
 }

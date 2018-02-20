@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 02/20/2018 09:47:54
+-- Date Created: 02/20/2018 19:50:02
 -- Generated from EDMX file: C:\Users\GustavoMarino\Documents\Visual Studio 2017\Projects\EstradaSAPConnector\SAPConnectorLibrary\Models\EstradaSAPConnector.edmx
 -- --------------------------------------------------
 
@@ -80,9 +80,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_SAPC_ProveedorSAPC_FacturaProveedor]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SAPC_FacturaProveedor] DROP CONSTRAINT [FK_SAPC_ProveedorSAPC_FacturaProveedor];
 GO
-IF OBJECT_ID(N'[dbo].[FK_EmpleadoSAPC_Adelanto_Empleado]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SAPC_Adelanto_Empleado] DROP CONSTRAINT [FK_EmpleadoSAPC_Adelanto_Empleado];
-GO
 IF OBJECT_ID(N'[dbo].[FK_CECOSAPC_FacturaProveedor]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SAPC_FacturaProveedor] DROP CONSTRAINT [FK_CECOSAPC_FacturaProveedor];
 GO
@@ -110,8 +107,11 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_SAPC_EmpleadoSAPC_RendicionComp]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SAPC_RendicionComp] DROP CONSTRAINT [FK_SAPC_EmpleadoSAPC_RendicionComp];
 GO
-IF OBJECT_ID(N'[dbo].[FK_SAPC_Adelanto_EmpleadoSAPC_Estados]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SAPC_Estados] DROP CONSTRAINT [FK_SAPC_Adelanto_EmpleadoSAPC_Estados];
+IF OBJECT_ID(N'[dbo].[FK_SAPC_AdelantosSAPC_Empleado]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SAPC_Adelantos] DROP CONSTRAINT [FK_SAPC_AdelantosSAPC_Empleado];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SAPC_EndPointSAPC_Empleado]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SAPC_Empleado] DROP CONSTRAINT [FK_SAPC_EndPointSAPC_Empleado];
 GO
 
 -- --------------------------------------------------
@@ -142,17 +142,14 @@ GO
 IF OBJECT_ID(N'[dbo].[SAPC_Estados]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SAPC_Estados];
 GO
-IF OBJECT_ID(N'[dbo].[SAPC_Adelanto_Empleado]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SAPC_Adelanto_Empleado];
-GO
 IF OBJECT_ID(N'[dbo].[SAPC_RendicionComp]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SAPC_RendicionComp];
 GO
 IF OBJECT_ID(N'[dbo].[SAPC_Comprobante]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SAPC_Comprobante];
 GO
-IF OBJECT_ID(N'[dbo].[SAPC_Proveedor]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SAPC_Proveedor];
+IF OBJECT_ID(N'[dbo].[SAPC_Proveedores]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SAPC_Proveedores];
 GO
 IF OBJECT_ID(N'[dbo].[SAPC_Empleado]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SAPC_Empleado];
@@ -271,8 +268,9 @@ CREATE TABLE [dbo].[SAPC_Adelantos] (
     [SAPNroDoc] nvarchar(max)  NULL,
     [Fecha] datetime  NOT NULL,
     [Importe] decimal(18,0)  NOT NULL,
-    [FondoFijo_Id] int  NOT NULL,
-    [Estado_Id] int  NOT NULL
+    [FondoFijo_Id] int  NULL,
+    [Estado_Id] int  NOT NULL,
+    [PedidoPorEmpleado_Id] int  NULL
 );
 GO
 
@@ -281,20 +279,7 @@ CREATE TABLE [dbo].[SAPC_Estados] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Codigo] nvarchar(max)  NOT NULL,
     [Nombre] nvarchar(max)  NOT NULL,
-    [EntityName] nvarchar(max)  NOT NULL,
-    [SAPC_Adelanto_EmpleadoSAPC_Estados_SAPC_Estados_Id] int  NOT NULL
-);
-GO
-
--- Creating table 'SAPC_Adelanto_Empleado'
-CREATE TABLE [dbo].[SAPC_Adelanto_Empleado] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Fecha] datetime  NOT NULL,
-    [FechaVto] datetime  NOT NULL,
-    [Importe] decimal(18,0)  NOT NULL,
-    [Referencia] nvarchar(max)  NOT NULL,
-    [SAPNroDoc] nvarchar(max)  NOT NULL,
-    [Empleado_Id] int  NOT NULL
+    [EntityName] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -321,12 +306,21 @@ CREATE TABLE [dbo].[SAPC_Comprobante] (
 );
 GO
 
--- Creating table 'SAPC_Proveedor'
-CREATE TABLE [dbo].[SAPC_Proveedor] (
+-- Creating table 'SAPC_Proveedores'
+CREATE TABLE [dbo].[SAPC_Proveedores] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Nombre] nvarchar(max)  NOT NULL,
     [CUIT] nvarchar(max)  NOT NULL,
-    [CtaContable] nvarchar(max)  NOT NULL
+    [CtaContable] nvarchar(max)  NOT NULL,
+    [SAPId] nvarchar(max)  NOT NULL,
+    [Calle] nvarchar(max)  NOT NULL,
+    [CPostal] nvarchar(max)  NOT NULL,
+    [Flag] bit  NOT NULL,
+    [Pais] nvarchar(max)  NOT NULL,
+    [Poblacion] nvarchar(max)  NOT NULL,
+    [Telefono] nvarchar(max)  NOT NULL,
+    [UltimaActualizacion] datetime  NOT NULL,
+    [Mail] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -335,7 +329,8 @@ CREATE TABLE [dbo].[SAPC_Empleado] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Nombre] nvarchar(max)  NOT NULL,
     [DNI] nvarchar(max)  NOT NULL,
-    [CtaContable] nvarchar(max)  NOT NULL
+    [CtaContable] nvarchar(max)  NOT NULL,
+    [SAPEndPoint_Id] int  NOT NULL
 );
 GO
 
@@ -436,12 +431,6 @@ ADD CONSTRAINT [PK_SAPC_Estados]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'SAPC_Adelanto_Empleado'
-ALTER TABLE [dbo].[SAPC_Adelanto_Empleado]
-ADD CONSTRAINT [PK_SAPC_Adelanto_Empleado]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
 -- Creating primary key on [Id] in table 'SAPC_RendicionComp'
 ALTER TABLE [dbo].[SAPC_RendicionComp]
 ADD CONSTRAINT [PK_SAPC_RendicionComp]
@@ -454,9 +443,9 @@ ADD CONSTRAINT [PK_SAPC_Comprobante]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'SAPC_Proveedor'
-ALTER TABLE [dbo].[SAPC_Proveedor]
-ADD CONSTRAINT [PK_SAPC_Proveedor]
+-- Creating primary key on [Id] in table 'SAPC_Proveedores'
+ALTER TABLE [dbo].[SAPC_Proveedores]
+ADD CONSTRAINT [PK_SAPC_Proveedores]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -777,7 +766,7 @@ GO
 ALTER TABLE [dbo].[SAPC_Comprobante]
 ADD CONSTRAINT [FK_SAPC_ProveedorSAPC_Comprobante]
     FOREIGN KEY ([Proveedor_Id])
-    REFERENCES [dbo].[SAPC_Proveedor]
+    REFERENCES [dbo].[SAPC_Proveedores]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
@@ -792,7 +781,7 @@ GO
 ALTER TABLE [dbo].[SAPC_FacturaProveedor]
 ADD CONSTRAINT [FK_SAPC_ProveedorSAPC_FacturaProveedor]
     FOREIGN KEY ([Proveedor_Id])
-    REFERENCES [dbo].[SAPC_Proveedor]
+    REFERENCES [dbo].[SAPC_Proveedores]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
@@ -801,21 +790,6 @@ GO
 CREATE INDEX [IX_FK_SAPC_ProveedorSAPC_FacturaProveedor]
 ON [dbo].[SAPC_FacturaProveedor]
     ([Proveedor_Id]);
-GO
-
--- Creating foreign key on [Empleado_Id] in table 'SAPC_Adelanto_Empleado'
-ALTER TABLE [dbo].[SAPC_Adelanto_Empleado]
-ADD CONSTRAINT [FK_EmpleadoSAPC_Adelanto_Empleado]
-    FOREIGN KEY ([Empleado_Id])
-    REFERENCES [dbo].[SAPC_Empleado]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_EmpleadoSAPC_Adelanto_Empleado'
-CREATE INDEX [IX_FK_EmpleadoSAPC_Adelanto_Empleado]
-ON [dbo].[SAPC_Adelanto_Empleado]
-    ([Empleado_Id]);
 GO
 
 -- Creating foreign key on [CECO_Id] in table 'SAPC_FacturaProveedor'
@@ -953,19 +927,34 @@ ON [dbo].[SAPC_RendicionComp]
     ([RendidoPor_Id]);
 GO
 
--- Creating foreign key on [SAPC_Adelanto_EmpleadoSAPC_Estados_SAPC_Estados_Id] in table 'SAPC_Estados'
-ALTER TABLE [dbo].[SAPC_Estados]
-ADD CONSTRAINT [FK_SAPC_Adelanto_EmpleadoSAPC_Estados]
-    FOREIGN KEY ([SAPC_Adelanto_EmpleadoSAPC_Estados_SAPC_Estados_Id])
-    REFERENCES [dbo].[SAPC_Adelanto_Empleado]
+-- Creating foreign key on [PedidoPorEmpleado_Id] in table 'SAPC_Adelantos'
+ALTER TABLE [dbo].[SAPC_Adelantos]
+ADD CONSTRAINT [FK_SAPC_AdelantosSAPC_Empleado]
+    FOREIGN KEY ([PedidoPorEmpleado_Id])
+    REFERENCES [dbo].[SAPC_Empleado]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_Adelanto_EmpleadoSAPC_Estados'
-CREATE INDEX [IX_FK_SAPC_Adelanto_EmpleadoSAPC_Estados]
-ON [dbo].[SAPC_Estados]
-    ([SAPC_Adelanto_EmpleadoSAPC_Estados_SAPC_Estados_Id]);
+-- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_AdelantosSAPC_Empleado'
+CREATE INDEX [IX_FK_SAPC_AdelantosSAPC_Empleado]
+ON [dbo].[SAPC_Adelantos]
+    ([PedidoPorEmpleado_Id]);
+GO
+
+-- Creating foreign key on [SAPEndPoint_Id] in table 'SAPC_Empleado'
+ALTER TABLE [dbo].[SAPC_Empleado]
+ADD CONSTRAINT [FK_SAPC_EndPointSAPC_Empleado]
+    FOREIGN KEY ([SAPEndPoint_Id])
+    REFERENCES [dbo].[SAPC_EndPoint]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_EndPointSAPC_Empleado'
+CREATE INDEX [IX_FK_SAPC_EndPointSAPC_Empleado]
+ON [dbo].[SAPC_Empleado]
+    ([SAPEndPoint_Id]);
 GO
 
 -- --------------------------------------------------

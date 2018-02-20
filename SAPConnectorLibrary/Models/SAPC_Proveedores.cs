@@ -12,10 +12,10 @@ namespace SAPConnectorLibrary.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SAPC_Proveedor
+    public partial class SAPC_Proveedores
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SAPC_Proveedor()
+        public SAPC_Proveedores()
         {
             this.Comprobantes = new HashSet<SAPC_Comprobante>();
             this.FacturasProveedor = new HashSet<SAPC_FacturaProveedor>();
@@ -25,6 +25,15 @@ namespace SAPConnectorLibrary.Models
         public string Nombre { get; set; }
         public string CUIT { get; set; }
         public string CtaContable { get; set; }
+        public string SAPId { get; set; }
+        public string Calle { get; set; }
+        public string CPostal { get; set; }
+        public bool Flag { get; set; }
+        public string Pais { get; set; }
+        public string Poblacion { get; set; }
+        public string Telefono { get; set; }
+        public System.DateTime UltimaActualizacion { get; set; }
+        public string Mail { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SAPC_Comprobante> Comprobantes { get; set; }

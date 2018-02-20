@@ -29,5 +29,6 @@ namespace SAPConnectorLibrary.Models
         public virtual ICollection<SAPC_SAPRPCCall> RPCCalls { get; set; }
         public virtual SAPC_FondoFijo FondoFijo { get; set; }
         public virtual SAPC_Estados Estado { get; set; }
+        public virtual SAPC_Empleado PedidoPorEmpleado { get; set; }
     }
 }

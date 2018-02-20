@@ -20,6 +20,7 @@ namespace SAPConnectorLibrary.Models
             this.Sessions = new HashSet<SAPC_Session>();
             this.FondosFijos = new HashSet<SAPC_FondoFijo>();
             this.RPCCalls = new HashSet<SAPC_SAPRPCCall>();
+            this.Empleados = new HashSet<SAPC_Empleado>();
         }
     
         public int Id { get; set; }
@@ -30,6 +31,7 @@ namespace SAPConnectorLibrary.Models
         public string URLRendicionNoABC { get; set; }
         public string LoginName { get; set; }
         public string LoginPassword { get; set; }
+        public string URLProveedores { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SAPC_Session> Sessions { get; set; }
@@ -37,5 +39,7 @@ namespace SAPConnectorLibrary.Models
         public virtual ICollection<SAPC_FondoFijo> FondosFijos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SAPC_SAPRPCCall> RPCCalls { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SAPC_Empleado> Empleados { get; set; }
     }
 }

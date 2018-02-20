@@ -19,7 +19,7 @@ namespace SAPConnectorLibrary.Models
         public decimal Importe { get; set; }
     
         public virtual SAPC_RendicionComp RendicionComp { get; set; }
-        public virtual SAPC_Proveedor Proveedor { get; set; }
+        public virtual SAPC_Proveedores Proveedor { get; set; }
         public virtual SAPC_CECO CECO { get; set; }
     }
 }

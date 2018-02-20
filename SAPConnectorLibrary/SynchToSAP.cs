@@ -115,27 +115,26 @@ namespace SAPConnectorLibrary
                 SolicitudAnticipo.ZWS_SOLICITUD_ANTICIPOClient client = new SolicitudAnticipo.ZWS_SOLICITUD_ANTICIPOClient(binding, address);
 
                 List<SolicitudAnticipo.ZFI_RFC_ANTICIPOS> comp = new List<SolicitudAnticipo.ZFI_RFC_ANTICIPOS>();
-                foreach (var ae in adelanto.AdelantosEmpleados) {
-                    comp.Add(new SolicitudAnticipo.ZFI_RFC_ANTICIPOS
-                    {
-                        CTA_CONTABLE1 = ae.Empleado.CtaContable,
-                        CLASE_DOC = "?????",
-                        FECHA_DOC = ae.Fecha,
-                        FECHA_VTO = ae.FechaVto,
-                        IMPORTE = ae.Importe,
-                        IND_CME = "?????",
-                        MONEDA = "???",
-                        REFERENCIA = ae.Referencia,
-                        SOCIEDAD = "????",
-                        TEXTO_CAB = "????",
-                        TEXTO_POS = "????",
-                        TIENDA = "???",
-                    });
-                }
+                comp.Add(new SolicitudAnticipo.ZFI_RFC_ANTICIPOS
+                {
+                    CTA_CONTABLE1 = "????",
+                    CLASE_DOC = "?????",
+                    FECHA_DOC = adelanto.Fecha,
+                    FECHA_VTO = adelanto.Fecha, // Fecha + 30 días
+                    IMPORTE = adelanto.Importe,
+                    IND_CME = "?????",
+                    MONEDA = "???",
+                    REFERENCIA = "????",
+                    SOCIEDAD = "????",
+                    TEXTO_CAB = "????",
+                    TEXTO_POS = "????",
+                    TIENDA = "???",
+                });
 
                 SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPO request = new SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPO
                 {
                     T_DETALLE = comp.ToArray(),
+                    
                 };
 
                 SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse response = client.ZFI_RFC_SOLICITUD_ANTICIPO(request);
@@ -178,12 +177,12 @@ namespace SAPConnectorLibrary
             {
                 BasicHttpBinding binding = new BasicHttpBinding();
                 EndpointAddress address = new EndpointAddress(session.Session.EndPoint.URLAdelantos);
-                Comprobantes_ABC.ZWS_COMPROBANTES_ABCClient client = new Comprobantes_ABC.ZWS_COMPROBANTES_ABCClient(binding, address);
+                ComprobantesABC.ZWS_COMPROBANTES_ABCClient client = new ComprobantesABC.ZWS_COMPROBANTES_ABCClient(binding, address);
 
 
                 // TODO Esto no tiene sentido. Como está planteado cada rendición contempla una sola factura!!!!
 
-                Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABC1 request = new Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABC1
+                ComprobantesABC.ZFI_RFC_COMPROBANTES_ABC1 request = new ComprobantesABC.ZFI_RFC_COMPROBANTES_ABC1
                 {
                     ACREEDOR = "",
                     CAE = "",
@@ -206,10 +205,10 @@ namespace SAPConnectorLibrary
                     TIENDA = ""
                 };
 
-                List<Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABC> comp = new List<Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABC>();
+                List<ComprobantesABC.ZFI_RFC_COMPROBANTES_ABC> comp = new List<ComprobantesABC.ZFI_RFC_COMPROBANTES_ABC>();
                 foreach (var factura in rendicion.FacturasProveedor)
                 {
-                    comp.Add(new Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABC
+                    comp.Add(new ComprobantesABC.ZFI_RFC_COMPROBANTES_ABC
                     {
                         CECO = "???",
                         CTA_CONTABLE = factura.Proveedor.CtaContable,
@@ -220,7 +219,7 @@ namespace SAPConnectorLibrary
 
                 request.T_DETALLE = comp.ToArray();
 
-                Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCResponse response = client.ZFI_RFC_COMPROBANTES_ABC(request);
+                ComprobantesABC.ZFI_RFC_COMPROBANTES_ABCResponse response = client.ZFI_RFC_COMPROBANTES_ABC(request);
 
                 call.InputParameters = request.ToString();
                 call.Results = response.MENSAJE;
@@ -260,11 +259,11 @@ namespace SAPConnectorLibrary
             {
                 BasicHttpBinding binding = new BasicHttpBinding();
                 EndpointAddress address = new EndpointAddress(session.Session.EndPoint.URLAdelantos);
-                Comprobantes_NO_ABC.ZWS_COMPROBANTES_NO_ABCClient client = new Comprobantes_NO_ABC.ZWS_COMPROBANTES_NO_ABCClient(binding, address);
+                ComprobantesNoABC.ZWS_COMPROBANTES_NO_ABCClient client = new ComprobantesNoABC.ZWS_COMPROBANTES_NO_ABCClient(binding, address);
 
                 // TODO Esto no tiene sentido. Cada rendición sería un solo comprobante!!!
 
-                Comprobantes_NO_ABC.ZFI_RFC_COMPROBANTES_NO_ABC1 request = new Comprobantes_NO_ABC.ZFI_RFC_COMPROBANTES_NO_ABC1
+                ComprobantesNoABC.ZFI_RFC_COMPROBANTES_NO_ABC1 request = new ComprobantesNoABC.ZFI_RFC_COMPROBANTES_NO_ABC1
                 {
                     FECHACONT = new DateTime(),
                     FECHACONTSpecified = true,
@@ -276,11 +275,11 @@ namespace SAPConnectorLibrary
                     FECHADOCUMENTO = new DateTime(),
                 };
 
-                List<Comprobantes_NO_ABC.ZFI_RFC_COMPROBANTES_NO_ABC> comp = new List<Comprobantes_NO_ABC.ZFI_RFC_COMPROBANTES_NO_ABC>();
+                List<ComprobantesNoABC.ZFI_RFC_COMPROBANTES_NO_ABC> comp = new List<ComprobantesNoABC.ZFI_RFC_COMPROBANTES_NO_ABC>();
 
                 foreach (var comprobante in rendicion.Comprobantes)
                 {
-                    comp.Add(new Comprobantes_NO_ABC.ZFI_RFC_COMPROBANTES_NO_ABC
+                    comp.Add(new ComprobantesNoABC.ZFI_RFC_COMPROBANTES_NO_ABC
                     {
                         CECO = "",
                         IMPORTE = new Decimal(0.0),
@@ -294,7 +293,7 @@ namespace SAPConnectorLibrary
 
                 request.CUENTAS = comp.ToArray();
 
-                Comprobantes_NO_ABC.ZFI_RFC_COMPROBANTES_NO_ABCResponse response = client.ZFI_RFC_COMPROBANTES_NO_ABC(request);
+                ComprobantesNoABC.ZFI_RFC_COMPROBANTES_NO_ABCResponse response = client.ZFI_RFC_COMPROBANTES_NO_ABC(request);
 
                 call.InputParameters = request.ToString();
                 call.Results = response.MENSAJE;

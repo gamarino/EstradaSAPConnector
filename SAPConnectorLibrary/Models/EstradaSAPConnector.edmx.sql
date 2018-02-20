@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 01/22/2018 15:12:40
+-- Date Created: 02/20/2018 09:47:54
 -- Generated from EDMX file: C:\Users\GustavoMarino\Documents\Visual Studio 2017\Projects\EstradaSAPConnector\SAPConnectorLibrary\Models\EstradaSAPConnector.edmx
 -- --------------------------------------------------
 
@@ -56,9 +56,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_SAPC_EstadosSAPC_Adelantos]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SAPC_Adelantos] DROP CONSTRAINT [FK_SAPC_EstadosSAPC_Adelantos];
 GO
-IF OBJECT_ID(N'[dbo].[FK_SAPC_Adelanto_EmpleadoSAPC_Adelantos]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SAPC_Adelanto_Empleado] DROP CONSTRAINT [FK_SAPC_Adelanto_EmpleadoSAPC_Adelantos];
-GO
 IF OBJECT_ID(N'[dbo].[FK_SAPC_ComprobanteSAPC_RendicionComp]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SAPC_Comprobante] DROP CONSTRAINT [FK_SAPC_ComprobanteSAPC_RendicionComp];
 GO
@@ -106,6 +103,15 @@ IF OBJECT_ID(N'[dbo].[FK_SAPC_EmpleadoSAPC_FacturaProveedor]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_SAPC_EmpleadoSAPC_Comprobante]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SAPC_Comprobante] DROP CONSTRAINT [FK_SAPC_EmpleadoSAPC_Comprobante];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SAPC_EmpleadoSAPC_RendicionABC]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SAPC_RendicionABC] DROP CONSTRAINT [FK_SAPC_EmpleadoSAPC_RendicionABC];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SAPC_EmpleadoSAPC_RendicionComp]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SAPC_RendicionComp] DROP CONSTRAINT [FK_SAPC_EmpleadoSAPC_RendicionComp];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SAPC_Adelanto_EmpleadoSAPC_Estados]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SAPC_Estados] DROP CONSTRAINT [FK_SAPC_Adelanto_EmpleadoSAPC_Estados];
 GO
 
 -- --------------------------------------------------
@@ -179,8 +185,9 @@ CREATE TABLE [dbo].[SAPC_RendicionABC] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [SAPNroDoc] nvarchar(max)  NULL,
     [Fecha] nvarchar(max)  NOT NULL,
-    [FondoFijo_Id] int  NOT NULL,
-    [Estado_Id] int  NOT NULL
+    [FondoFijo_Id] int  NULL,
+    [Estado_Id] int  NOT NULL,
+    [RendidoPor_Id] int  NULL
 );
 GO
 
@@ -204,7 +211,7 @@ CREATE TABLE [dbo].[SAPC_FacturaProveedor] (
     [CECO_Id] int  NOT NULL,
     [Percepcion1_Id] int  NULL,
     [Percepcion2_Id] int  NULL,
-    [RendidoPor_Id] int  NOT NULL
+    [SAPC_EmpleadoSAPC_FacturaProveedor_SAPC_FacturaProveedor_Id] int  NOT NULL
 );
 GO
 
@@ -263,6 +270,7 @@ CREATE TABLE [dbo].[SAPC_Adelantos] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [SAPNroDoc] nvarchar(max)  NULL,
     [Fecha] datetime  NOT NULL,
+    [Importe] decimal(18,0)  NOT NULL,
     [FondoFijo_Id] int  NOT NULL,
     [Estado_Id] int  NOT NULL
 );
@@ -273,7 +281,8 @@ CREATE TABLE [dbo].[SAPC_Estados] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Codigo] nvarchar(max)  NOT NULL,
     [Nombre] nvarchar(max)  NOT NULL,
-    [EntityName] nvarchar(max)  NOT NULL
+    [EntityName] nvarchar(max)  NOT NULL,
+    [SAPC_Adelanto_EmpleadoSAPC_Estados_SAPC_Estados_Id] int  NOT NULL
 );
 GO
 
@@ -284,7 +293,7 @@ CREATE TABLE [dbo].[SAPC_Adelanto_Empleado] (
     [FechaVto] datetime  NOT NULL,
     [Importe] decimal(18,0)  NOT NULL,
     [Referencia] nvarchar(max)  NOT NULL,
-    [Adelanto_Id] int  NOT NULL,
+    [SAPNroDoc] nvarchar(max)  NOT NULL,
     [Empleado_Id] int  NOT NULL
 );
 GO
@@ -294,8 +303,9 @@ CREATE TABLE [dbo].[SAPC_RendicionComp] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [SAPNroDoc] nvarchar(max)  NULL,
     [Fecha] nvarchar(max)  NOT NULL,
-    [FondoFijo_Id] int  NOT NULL,
-    [Estado_Id] int  NOT NULL
+    [FondoFijo_Id] int  NULL,
+    [Estado_Id] int  NOT NULL,
+    [RendidoPor_Id] int  NULL
 );
 GO
 
@@ -307,7 +317,7 @@ CREATE TABLE [dbo].[SAPC_Comprobante] (
     [RendicionComp_Id] int  NOT NULL,
     [Proveedor_Id] int  NOT NULL,
     [CECO_Id] int  NOT NULL,
-    [RendidoPor_Id] int  NOT NULL
+    [SAPC_EmpleadoSAPC_Comprobante_SAPC_Comprobante_Id] int  NOT NULL
 );
 GO
 
@@ -679,21 +689,6 @@ ON [dbo].[SAPC_Adelantos]
     ([Estado_Id]);
 GO
 
--- Creating foreign key on [Adelanto_Id] in table 'SAPC_Adelanto_Empleado'
-ALTER TABLE [dbo].[SAPC_Adelanto_Empleado]
-ADD CONSTRAINT [FK_SAPC_Adelanto_EmpleadoSAPC_Adelantos]
-    FOREIGN KEY ([Adelanto_Id])
-    REFERENCES [dbo].[SAPC_Adelantos]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_Adelanto_EmpleadoSAPC_Adelantos'
-CREATE INDEX [IX_FK_SAPC_Adelanto_EmpleadoSAPC_Adelantos]
-ON [dbo].[SAPC_Adelanto_Empleado]
-    ([Adelanto_Id]);
-GO
-
 -- Creating foreign key on [RendicionComp_Id] in table 'SAPC_Comprobante'
 ALTER TABLE [dbo].[SAPC_Comprobante]
 ADD CONSTRAINT [FK_SAPC_ComprobanteSAPC_RendicionComp]
@@ -898,10 +893,10 @@ ON [dbo].[SAPC_Percepciones]
     ([Jurisdiccion_Id]);
 GO
 
--- Creating foreign key on [RendidoPor_Id] in table 'SAPC_FacturaProveedor'
+-- Creating foreign key on [SAPC_EmpleadoSAPC_FacturaProveedor_SAPC_FacturaProveedor_Id] in table 'SAPC_FacturaProveedor'
 ALTER TABLE [dbo].[SAPC_FacturaProveedor]
 ADD CONSTRAINT [FK_SAPC_EmpleadoSAPC_FacturaProveedor]
-    FOREIGN KEY ([RendidoPor_Id])
+    FOREIGN KEY ([SAPC_EmpleadoSAPC_FacturaProveedor_SAPC_FacturaProveedor_Id])
     REFERENCES [dbo].[SAPC_Empleado]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -910,13 +905,13 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_EmpleadoSAPC_FacturaProveedor'
 CREATE INDEX [IX_FK_SAPC_EmpleadoSAPC_FacturaProveedor]
 ON [dbo].[SAPC_FacturaProveedor]
-    ([RendidoPor_Id]);
+    ([SAPC_EmpleadoSAPC_FacturaProveedor_SAPC_FacturaProveedor_Id]);
 GO
 
--- Creating foreign key on [RendidoPor_Id] in table 'SAPC_Comprobante'
+-- Creating foreign key on [SAPC_EmpleadoSAPC_Comprobante_SAPC_Comprobante_Id] in table 'SAPC_Comprobante'
 ALTER TABLE [dbo].[SAPC_Comprobante]
 ADD CONSTRAINT [FK_SAPC_EmpleadoSAPC_Comprobante]
-    FOREIGN KEY ([RendidoPor_Id])
+    FOREIGN KEY ([SAPC_EmpleadoSAPC_Comprobante_SAPC_Comprobante_Id])
     REFERENCES [dbo].[SAPC_Empleado]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -925,7 +920,52 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_EmpleadoSAPC_Comprobante'
 CREATE INDEX [IX_FK_SAPC_EmpleadoSAPC_Comprobante]
 ON [dbo].[SAPC_Comprobante]
+    ([SAPC_EmpleadoSAPC_Comprobante_SAPC_Comprobante_Id]);
+GO
+
+-- Creating foreign key on [RendidoPor_Id] in table 'SAPC_RendicionABC'
+ALTER TABLE [dbo].[SAPC_RendicionABC]
+ADD CONSTRAINT [FK_SAPC_EmpleadoSAPC_RendicionABC]
+    FOREIGN KEY ([RendidoPor_Id])
+    REFERENCES [dbo].[SAPC_Empleado]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_EmpleadoSAPC_RendicionABC'
+CREATE INDEX [IX_FK_SAPC_EmpleadoSAPC_RendicionABC]
+ON [dbo].[SAPC_RendicionABC]
     ([RendidoPor_Id]);
+GO
+
+-- Creating foreign key on [RendidoPor_Id] in table 'SAPC_RendicionComp'
+ALTER TABLE [dbo].[SAPC_RendicionComp]
+ADD CONSTRAINT [FK_SAPC_EmpleadoSAPC_RendicionComp]
+    FOREIGN KEY ([RendidoPor_Id])
+    REFERENCES [dbo].[SAPC_Empleado]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_EmpleadoSAPC_RendicionComp'
+CREATE INDEX [IX_FK_SAPC_EmpleadoSAPC_RendicionComp]
+ON [dbo].[SAPC_RendicionComp]
+    ([RendidoPor_Id]);
+GO
+
+-- Creating foreign key on [SAPC_Adelanto_EmpleadoSAPC_Estados_SAPC_Estados_Id] in table 'SAPC_Estados'
+ALTER TABLE [dbo].[SAPC_Estados]
+ADD CONSTRAINT [FK_SAPC_Adelanto_EmpleadoSAPC_Estados]
+    FOREIGN KEY ([SAPC_Adelanto_EmpleadoSAPC_Estados_SAPC_Estados_Id])
+    REFERENCES [dbo].[SAPC_Adelanto_Empleado]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_Adelanto_EmpleadoSAPC_Estados'
+CREATE INDEX [IX_FK_SAPC_Adelanto_EmpleadoSAPC_Estados]
+ON [dbo].[SAPC_Estados]
+    ([SAPC_Adelanto_EmpleadoSAPC_Estados_SAPC_Estados_Id]);
 GO
 
 -- --------------------------------------------------

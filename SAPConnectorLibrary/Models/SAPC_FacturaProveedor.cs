@@ -33,6 +33,5 @@ namespace SAPConnectorLibrary.Models
         public virtual SAPC_CECO CECO { get; set; }
         public virtual SAPC_Percepciones Percepcion1 { get; set; }
         public virtual SAPC_Percepciones Percepcion2 { get; set; }
-        public virtual SAPC_Empleado RendidoPor { get; set; }
     }
 }

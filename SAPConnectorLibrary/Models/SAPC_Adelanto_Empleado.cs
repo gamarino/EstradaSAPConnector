@@ -14,13 +14,21 @@ namespace SAPConnectorLibrary.Models
     
     public partial class SAPC_Adelanto_Empleado
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public SAPC_Adelanto_Empleado()
+        {
+            this.Estado = new HashSet<SAPC_Estados>();
+        }
+    
         public int Id { get; set; }
         public System.DateTime Fecha { get; set; }
         public System.DateTime FechaVto { get; set; }
         public decimal Importe { get; set; }
         public string Referencia { get; set; }
+        public string SAPNroDoc { get; set; }
     
-        public virtual SAPC_Adelantos Adelanto { get; set; }
         public virtual SAPC_Empleado Empleado { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SAPC_Estados> Estado { get; set; }
     }
 }

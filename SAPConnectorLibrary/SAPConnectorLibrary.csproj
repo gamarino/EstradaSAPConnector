@@ -139,6 +139,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Models\EstradaSAPConnector.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EstradaSAPConnector.Context.cs</LastGenOutput>
+      <DependentUpon>EstradaSAPConnector.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\EstradaSAPConnector.edmx.sql" />
+    <Content Include="Models\EstradaSAPConnector.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EstradaSAPConnector.cs</LastGenOutput>
+      <DependentUpon>EstradaSAPConnector.edmx</DependentUpon>
+    </Content>
     <None Include="Connected Services\ComprobantesABC\SAPConnectorLibrary.ComprobantesABC.ZFI_RFC_COMPROBANTES_ABCResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -180,17 +191,6 @@
     </None>
     <Content Include="Data\dbo.SAPC_Estados.data.sql" />
     <Content Include="Data\TestData.sql" />
-    <Content Include="Models\EstradaSAPConnector.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>EstradaSAPConnector.Context.cs</LastGenOutput>
-      <DependentUpon>EstradaSAPConnector.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\EstradaSAPConnector.edmx.sql" />
-    <Content Include="Models\EstradaSAPConnector.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>EstradaSAPConnector.cs</LastGenOutput>
-      <DependentUpon>EstradaSAPConnector.edmx</DependentUpon>
-    </Content>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>

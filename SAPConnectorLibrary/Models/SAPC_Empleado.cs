@@ -20,6 +20,8 @@ namespace SAPConnectorLibrary.Models
             this.Adelantos = new HashSet<SAPC_Adelanto_Empleado>();
             this.FacturasProveedor = new HashSet<SAPC_FacturaProveedor>();
             this.Comprobantes = new HashSet<SAPC_Comprobante>();
+            this.RendicionesABC = new HashSet<SAPC_RendicionABC>();
+            this.RendicionesComp = new HashSet<SAPC_RendicionComp>();
         }
     
         public int Id { get; set; }
@@ -33,5 +35,9 @@ namespace SAPConnectorLibrary.Models
         public virtual ICollection<SAPC_FacturaProveedor> FacturasProveedor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SAPC_Comprobante> Comprobantes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SAPC_RendicionABC> RendicionesABC { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SAPC_RendicionComp> RendicionesComp { get; set; }
     }
 }

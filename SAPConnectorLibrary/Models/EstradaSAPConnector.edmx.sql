@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/19/2018 22:06:45
+-- Date Created: 06/19/2018 22:41:39
 -- Generated from EDMX file: C:\Users\GustavoMarino\Documents\Visual Studio 2017\Projects\EstradaSAPConnector\SAPConnectorLibrary\Models\EstradaSAPConnector.edmx
 -- --------------------------------------------------
 
@@ -242,7 +242,8 @@ CREATE TABLE [dbo].[SAPC_EndPoint] (
     [URLRendicionNoABC] nvarchar(max)  NOT NULL,
     [LoginName] nvarchar(max)  NOT NULL,
     [LoginPassword] nvarchar(max)  NOT NULL,
-    [URLProveedores] nvarchar(max)  NOT NULL
+    [URLProveedores] nvarchar(max)  NOT NULL,
+    [UltActProveedores] datetime  NOT NULL
 );
 GO
 

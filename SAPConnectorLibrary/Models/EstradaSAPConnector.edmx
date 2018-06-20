@@ -216,6 +216,7 @@
     <Property Name="LoginName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="LoginPassword" Type="nvarchar(max)" Nullable="false" />
     <Property Name="URLProveedores" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UltActProveedores" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="SAPC_Adelantos">
     <Key>
@@ -884,6 +885,7 @@
           <NavigationProperty Name="RPCCalls" Relationship="EstradaSAPConnector.SAPC_EndPointSAPC_SAPRPCCall" FromRole="SAPC_EndPoint" ToRole="SAPC_SAPRPCCall" />
           <NavigationProperty Name="Empleados" Relationship="EstradaSAPConnector.SAPC_EndPointSAPC_Empleado" FromRole="SAPC_EndPoint" ToRole="SAPC_Empleado" />
           <Property Name="URLProveedores" Type="String" Nullable="false" />
+          <Property Name="UltActProveedores" Type="DateTime" Nullable="false" />
         </EntityType>
         <Association Name="FondoFijoRendicionGastos">
           <End Type="EstradaSAPConnector.SAPC_FondoFijo" Role="FondoFijo" Multiplicity="0..1" />
@@ -1190,6 +1192,7 @@
           <ScalarProperty Name="LoginName" ColumnName="LoginName" />
           <ScalarProperty Name="LoginPassword" ColumnName="LoginPassword" />
           <ScalarProperty Name="URLProveedores" ColumnName="URLProveedores" />
+          <ScalarProperty Name="UltActProveedores" ColumnName="UltActProveedores" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

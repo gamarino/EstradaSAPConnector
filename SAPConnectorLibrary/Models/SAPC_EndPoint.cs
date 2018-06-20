@@ -32,6 +32,7 @@ namespace SAPConnectorLibrary.Models
         public string LoginName { get; set; }
         public string LoginPassword { get; set; }
         public string URLProveedores { get; set; }
+        public System.DateTime UltActProveedores { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SAPC_Session> Sessions { get; set; }

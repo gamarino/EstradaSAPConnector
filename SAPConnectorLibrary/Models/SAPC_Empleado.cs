@@ -17,9 +17,11 @@ namespace SAPConnectorLibrary.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SAPC_Empleado()
         {
-            this.FacturasProveedor = new HashSet<SAPC_FacturaProveedor>();
+            this.FacturasProveedor = new HashSet<SAPC_RendicionABC>();
             this.RendicionesABC = new HashSet<SAPC_RendicionABC>();
             this.Adelantos = new HashSet<SAPC_Adelantos>();
+            this.Comprobantes = new HashSet<SAPC_Comprobantes>();
+            this.SAPC_FacturaProveedor = new HashSet<SAPC_FacturaProveedor>();
         }
     
         public int Id { get; set; }
@@ -29,11 +31,15 @@ namespace SAPConnectorLibrary.Models
         public string NroEmpleado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SAPC_FacturaProveedor> FacturasProveedor { get; set; }
+        public virtual ICollection<SAPC_RendicionABC> FacturasProveedor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SAPC_RendicionABC> RendicionesABC { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SAPC_Adelantos> Adelantos { get; set; }
-        public virtual SAPC_EndPoint SAPEndPoint { get; set; }
+        public virtual SAPC_EndPoint EndPoint { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SAPC_Comprobantes> Comprobantes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SAPC_FacturaProveedor> SAPC_FacturaProveedor { get; set; }
     }
 }

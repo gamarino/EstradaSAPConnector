@@ -19,6 +19,7 @@ namespace SAPConnectorLibrary.Models
         {
             this.RendicionesGastos = new HashSet<SAPC_RendicionABC>();
             this.Adelantos = new HashSet<SAPC_Adelantos>();
+            this.Comprobantes = new HashSet<SAPC_Comprobantes>();
         }
     
         public int Id { get; set; }
@@ -32,5 +33,7 @@ namespace SAPConnectorLibrary.Models
         public virtual SAPC_EndPoint EndPoint { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SAPC_Adelantos> Adelantos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SAPC_Comprobantes> Comprobantes { get; set; }
     }
 }

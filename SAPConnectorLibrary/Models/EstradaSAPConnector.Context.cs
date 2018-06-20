@@ -36,12 +36,14 @@ namespace SAPConnectorLibrary.Models
         public virtual DbSet<SAPC_Proveedores> SAPC_Proveedores { get; set; }
         public virtual DbSet<SAPC_Empleado> SAPC_Empleado { get; set; }
         public virtual DbSet<SAPC_CECO> SAPC_CECO { get; set; }
-        public virtual DbSet<SAPC_Inputaciones> SAPC_Inputaciones { get; set; }
+        public virtual DbSet<SAPC_InputacionesFacturas> SAPC_InputacionesFacturas { get; set; }
         public virtual DbSet<SAPC_Sociedades> SAPC_Sociedades { get; set; }
         public virtual DbSet<SAPC_ClaseDoc> SAPC_ClaseDoc { get; set; }
         public virtual DbSet<SAPC_Monedas> SAPC_Monedas { get; set; }
         public virtual DbSet<SAPC_Paises> SAPC_Paises { get; set; }
         public virtual DbSet<SAPC_Results> SAPC_Results { get; set; }
         public virtual DbSet<SAPC_Poblaciones> SAPC_Poblaciones { get; set; }
+        public virtual DbSet<SAPC_Comprobantes> SAPC_Comprobantes { get; set; }
+        public virtual DbSet<SAPC_InputacionesComprobantes> SAPC_InputacionesComprobantes { get; set; }
     }
 }

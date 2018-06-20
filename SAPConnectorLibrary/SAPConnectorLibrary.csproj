@@ -91,6 +91,9 @@
     <Compile Include="Models\SAPC_ClaseDoc.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SAPC_Comprobantes.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SAPC_Empleado.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
@@ -106,7 +109,10 @@
     <Compile Include="Models\SAPC_FondoFijo.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SAPC_Inputaciones.cs">
+    <Compile Include="Models\SAPC_InputacionesComprobantes.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_InputacionesFacturas.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SAPC_Monedas.cs">
@@ -145,6 +151,25 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\Datos_Proveedores\SAPConnectorLibrary.Datos_Proveedores.ZFI_RFC_DATOS_PROVEEDORESResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Datos_Proveedores\SAPConnectorLibrary.Datos_Proveedores.ZFI_RFC_DATOS_PROVEEDORESResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Datos_Proveedores\ZWS_DATOS_PROVEEDORES.wsdl" />
+    <None Include="Connected Services\Solicitud_Anticipo\configuration91.svcinfo" />
+    <None Include="Connected Services\Solicitud_Anticipo\configuration.svcinfo" />
+    <None Include="Connected Services\Solicitud_Anticipo\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\Datos_Proveedores\configuration91.svcinfo" />
+    <None Include="Connected Services\Datos_Proveedores\configuration.svcinfo" />
+    <None Include="Connected Services\Datos_Proveedores\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="ServiceDescriptors\ZWS_COMPROBANTES_ABC.xml" />
     <Content Include="ServiceDescriptors\ZWS_COMPROBANTES_NO_ABC.xml" />
     <Content Include="ServiceDescriptors\ZWS_DATOS_PROVEEDORES.xml" />
@@ -165,18 +190,6 @@
     <None Include="Connected Services\Comprobantes_ABC\configuration91.svcinfo" />
     <None Include="Connected Services\Comprobantes_ABC\configuration.svcinfo" />
     <None Include="Connected Services\Comprobantes_ABC\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Connected Services\Datos_Proveedores\configuration91.svcinfo" />
-    <None Include="Connected Services\Datos_Proveedores\configuration.svcinfo" />
-    <None Include="Connected Services\Datos_Proveedores\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Connected Services\Solicitud_Anticipo\configuration91.svcinfo" />
-    <None Include="Connected Services\Solicitud_Anticipo\configuration.svcinfo" />
-    <None Include="Connected Services\Solicitud_Anticipo\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -210,13 +223,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\Comprobantes_NO_ABC\ZWS_COMPROBANTES_NO_ABC.wsdl" />
-    <None Include="Connected Services\Datos_Proveedores\SAPConnectorLibrary.Datos_Proveedores.ZFI_RFC_DATOS_PROVEEDORESResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\Datos_Proveedores\SAPConnectorLibrary.Datos_Proveedores.ZFI_RFC_DATOS_PROVEEDORESResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\Datos_Proveedores\ZWS_DATOS_PROVEEDORES.wsdl" />
     <None Include="Connected Services\Solicitud_Anticipo\SAPConnectorLibrary.Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -224,6 +230,8 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\Solicitud_Anticipo\ZWS_SOLICITUD_ANTICIPO.wsdl" />
+    <None Include="Documentación\ANE042203-Script_de_prueba.doc" />
+    <None Include="Documentación\Diseño_WS.xlsx" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

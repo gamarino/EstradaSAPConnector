@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3f367267f4144a7a80f4ee41e2f59c6b" Name="Diagram1" ZoomLevel="61" >
+      <Diagram DiagramId="3f367267f4144a7a80f4ee41e2f59c6b" Name="Diagram1" ZoomLevel="59" >
         <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_RendicionABC" Width="2.5" PointX="5.625" PointY="6.375" />
         <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_FacturaProveedor" Width="2.5" PointX="4.375" PointY="10.75" />
-        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_FondoFijo" Width="2.375" PointX="5.625" PointY="0.5" />
-        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Session" Width="2.625" PointX="16.25" PointY="0.5" />
-        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_SAPRPCCall" Width="2.625" PointX="10.875" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_EndPoint" Width="2.625" PointX="10.875" PointY="0.5" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_FondoFijo" Width="2.375" PointX="8.875" PointY="0.5" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Session" Width="2.625" PointX="20.75" PointY="0.5" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_SAPRPCCall" Width="2.625" PointX="15.375" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_EndPoint" Width="2.625" PointX="15.375" PointY="0.5" />
         <AssociationConnector Association="EstradaSAPConnector.FondoFijoRendicionGastos" />
         <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Adelantos" Width="2.125" PointX="1.875" PointY="7.375" />
         <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Estados" Width="2.25" PointX="0.5" PointY="0.5" />
@@ -28,31 +28,45 @@
         <AssociationConnector Association="EstradaSAPConnector.SAPC_RendicionGastosSAPC_FacturaProveedor" />
         <AssociationConnector Association="EstradaSAPConnector.SAPC_EstadosSAPC_Adelantos" />
         <AssociationConnector Association="EstradaSAPConnector.SAPC_EndPointSAPC_SAPRPCCall" />
-        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Proveedores" Width="2.625" PointX="10.875" PointY="9.25" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Proveedores" Width="2.625" PointX="15.375" PointY="9.25" />
         <AssociationConnector Association="EstradaSAPConnector.SAPC_ProveedorSAPC_FacturaProveedor" />
-        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Empleado" Width="2.625" PointX="10.875" PointY="13.625" />
-        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_CECO" Width="2.625" PointX="10.875" PointY="18.125" />
-        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Inputaciones" Width="2.625" PointX="4.25" PointY="17.5" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Empleado" Width="2.625" PointX="15.375" PointY="13.625" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_CECO" Width="2.625" PointX="11.25" PointY="20.125" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_InputacionesFacturas" Width="2.625" PointX="4.25" PointY="17.5" />
         <AssociationConnector Association="EstradaSAPConnector.InputacionesSAPC_FacturaProveedor" />
-        <AssociationConnector Association="EstradaSAPConnector.SAPC_EmpleadoSAPC_FacturaProveedor" />
         <AssociationConnector Association="EstradaSAPConnector.SAPC_EmpleadoSAPC_RendicionABC" />
         <AssociationConnector Association="EstradaSAPConnector.SAPC_AdelantosSAPC_Empleado" />
         <AssociationConnector Association="EstradaSAPConnector.SAPC_EndPointSAPC_Empleado" />
         <AssociationConnector Association="EstradaSAPConnector.SAPC_FacturaProveedorSAPC_Estados" />
         <AssociationConnector Association="EstradaSAPConnector.SAPC_FacturaProveedorSAPC_SAPRPCCall" />
-        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Sociedades" Width="2.625" PointX="16.25" PointY="8.125" />
-        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_ClaseDoc" Width="2.625" PointX="16.25" PointY="15.625" />
-        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Monedas" Width="2.625" PointX="16.25" PointY="17.875" />
-        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Paises" Width="2.625" PointX="16.25" PointY="12.625" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Sociedades" Width="2.625" PointX="20.75" PointY="8.125" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_ClaseDoc" Width="2.625" PointX="20.75" PointY="15.625" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Monedas" Width="2.625" PointX="20.75" PointY="17.875" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Paises" Width="2.625" PointX="20.75" PointY="12.625" />
         <AssociationConnector Association="EstradaSAPConnector.SAPC_SociedadesSAPC_FacturaProveedor" />
         <AssociationConnector Association="EstradaSAPConnector.SAPC_ClaseDocSAPC_FacturaProveedor" />
         <AssociationConnector Association="EstradaSAPConnector.SAPC_MonedasSAPC_FacturaProveedor" />
         <AssociationConnector Association="EstradaSAPConnector.SAPC_CECOSAPC_Inputaciones" />
-        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Results" Width="2.625" PointX="16.25" PointY="6" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Results" Width="2.625" PointX="20.75" PointY="6" />
         <AssociationConnector Association="EstradaSAPConnector.SAPC_SAPRPCCallSAPC_Results" />
-        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Poblaciones" Width="2.625" PointX="16.25" PointY="10.375" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Poblaciones" Width="2.625" PointX="20.75" PointY="10.375" />
         <AssociationConnector Association="EstradaSAPConnector.SAPC_PaisesSAPC_Poblaciones" />
         <AssociationConnector Association="EstradaSAPConnector.SAPC_PoblacionesSAPC_Proveedores" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Comprobantes" Width="2.5" PointX="10.5" PointY="6.375" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_InputacionesComprobantes" Width="2.375" PointX="11.375" PointY="13" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPC_ClaseDocSAPC_Comprobantes" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPC_SociedadesSAPC_Comprobantes" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPC_MonedasSAPC_Comprobantes" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPC_ComprobantesSAPC_InputacionesComprobantes" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPC_FondoFijoSAPC_Comprobantes" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPC_EmpleadoSAPC_Comprobantes" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPC_SAPRPCCallSAPC_Comprobantes" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPC_CECOSAPC_InputacionesComprobantes" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPC_EstadosSAPC_Comprobantes" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPC_ClaseDocSAPC_Adelantos" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPC_SociedadesSAPC_Adelantos" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPC_MonedasSAPC_Adelantos" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPC_EmpleadoSAPC_FacturaProveedor" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

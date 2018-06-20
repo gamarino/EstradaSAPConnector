@@ -25,11 +25,20 @@ namespace SAPConnectorLibrary.Models
         public System.DateTime Fecha { get; set; }
         public decimal Importe { get; set; }
         public System.DateTime FechaVto { get; set; }
+        public System.DateTime FechaCont { get; set; }
+        public string Referencia { get; set; }
+        public string Tienda { get; set; }
+        public string TextoCab { get; set; }
+        public string CtaContable { get; set; }
+        public string TextoPOS { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SAPC_SAPRPCCall> RPCCalls { get; set; }
         public virtual SAPC_FondoFijo FondoFijo { get; set; }
         public virtual SAPC_Estados Estado { get; set; }
         public virtual SAPC_Empleado PedidoPorEmpleado { get; set; }
+        public virtual SAPC_ClaseDoc ClaseDoc { get; set; }
+        public virtual SAPC_Sociedades Sociedad { get; set; }
+        public virtual SAPC_Monedas Moneda { get; set; }
     }
 }

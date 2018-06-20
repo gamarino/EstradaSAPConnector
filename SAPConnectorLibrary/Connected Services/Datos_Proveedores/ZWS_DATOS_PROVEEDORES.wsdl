@@ -80,6 +80,12 @@
           <xsd:pattern value="\d*" />
         </xsd:restriction>
       </xsd:simpleType>
+      <xsd:simpleType name="numeric8">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="8" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
       <xsd:complexType name="ZFI_RFC_PROVEEDORES">
         <xsd:sequence>
           <xsd:element name="PROVEEDOR" type="tns:char10" />
@@ -92,6 +98,7 @@
           <xsd:element name="CPOSTAL" type="tns:char10" />
           <xsd:element name="PAIS" type="tns:char3" />
           <xsd:element name="FLAG" type="tns:char1" />
+          <xsd:element name="PERNR" type="tns:numeric8" />
         </xsd:sequence>
       </xsd:complexType>
       <xsd:complexType name="TABLE_OF_ZFI_RFC_PROVEEDORES">

@@ -12,11 +12,12 @@ namespace SAPConnectorLibrary.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SAPC_Inputaciones
+    public partial class SAPC_InputacionesFacturas
     {
         public int Id { get; set; }
         public string CtaContable { get; set; }
         public decimal Importe { get; set; }
+        public string IndImp { get; set; }
     
         public virtual SAPC_CECO CECO { get; set; }
     }

@@ -23,7 +23,7 @@ namespace SAPConnectorLibrary.Models
     
         public int Id { get; set; }
         public string SAPNroDoc { get; set; }
-        public string Fecha { get; set; }
+        public System.DateTime Fecha { get; set; }
     
         public virtual SAPC_FondoFijo FondoFijo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

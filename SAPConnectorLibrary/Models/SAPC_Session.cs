@@ -21,8 +21,8 @@ namespace SAPConnectorLibrary.Models
         }
     
         public int Id { get; set; }
-        public System.DateTime StartedOn { get; set; }
-        public System.DateTime FinishedOn { get; set; }
+        public System.DateTime Comienzo { get; set; }
+        public System.DateTime Final { get; set; }
         public string ErrorMessage { get; set; }
         public string ErrorCode { get; set; }
     

@@ -24,6 +24,7 @@ namespace SAPConnectorLibrary.Models
         public string SAPNroDoc { get; set; }
         public System.DateTime Fecha { get; set; }
         public decimal Importe { get; set; }
+        public System.DateTime FechaVto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SAPC_SAPRPCCall> RPCCalls { get; set; }

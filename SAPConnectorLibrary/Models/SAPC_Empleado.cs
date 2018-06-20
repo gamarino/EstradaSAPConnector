@@ -18,9 +18,7 @@ namespace SAPConnectorLibrary.Models
         public SAPC_Empleado()
         {
             this.FacturasProveedor = new HashSet<SAPC_FacturaProveedor>();
-            this.Comprobantes = new HashSet<SAPC_Comprobante>();
             this.RendicionesABC = new HashSet<SAPC_RendicionABC>();
-            this.RendicionesComp = new HashSet<SAPC_RendicionComp>();
             this.Adelantos = new HashSet<SAPC_Adelantos>();
         }
     
@@ -28,15 +26,12 @@ namespace SAPConnectorLibrary.Models
         public string Nombre { get; set; }
         public string DNI { get; set; }
         public string CtaContable { get; set; }
+        public string NroEmpleado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SAPC_FacturaProveedor> FacturasProveedor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SAPC_Comprobante> Comprobantes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SAPC_RendicionABC> RendicionesABC { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SAPC_RendicionComp> RendicionesComp { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SAPC_Adelantos> Adelantos { get; set; }
         public virtual SAPC_EndPoint SAPEndPoint { get; set; }

@@ -32,9 +32,9 @@ namespace SAPConnectorLibrary
         static string RENDICION_PROCESADA = "Procesado";
         static string RENDICION_RECHAZADA = "Rechazado";
 
-        static string RENDCOMP_A_PROCESAR = "AProcesar";
-        static string RENDCOMP_PROCESADA = "Procesado";
-        static string RENDCOMP_RECHAZADA = "Rechazado";
+        static string FACTURA_A_PROCESAR = "AProcesar";
+        static string FACTURA_PROCESADA = "Procesado";
+        static string FACTURA_RECHAZADA = "Rechazado";
 
         Models.EstradaSAPConnectorContainer context;
         SessionContext session;
@@ -42,11 +42,11 @@ namespace SAPConnectorLibrary
         Models.SAPC_Estados estadoRENDICION_PROCESADA;
         Models.SAPC_Estados estadoRENDICION_RECHAZADA;
 
-        Models.SAPC_Estados estadoRENDCOMP_PROCESADA;
-        Models.SAPC_Estados estadoRENDCOMP_RECHAZADA;
-
         Models.SAPC_Estados estadoADELANTO_PROCESADO;
         Models.SAPC_Estados estadoADELANTO_RECHAZADO;
+
+        Models.SAPC_Estados estadoFACTURA_PROCESADA;
+        Models.SAPC_Estados estadoFACTURA_RECHAZADA;
 
 
         SessionContext CreateSession(int endPointId)
@@ -68,6 +68,14 @@ namespace SAPConnectorLibrary
                                        .Where(e => e.Codigo == ADELANTO_RECHAZADO &&
                                                    e.EntityName == "SAPC_Adelantos")
                                        .FirstOrDefault();
+            estadoFACTURA_PROCESADA = context.SAPC_Estados
+                                       .Where(e => e.Codigo == FACTURA_PROCESADA &&
+                                                   e.EntityName == "SAPC_FacturaProveedor")
+                                       .FirstOrDefault();
+            estadoFACTURA_RECHAZADA = context.SAPC_Estados
+                                       .Where(e => e.Codigo == FACTURA_RECHAZADA &&
+                                                   e.EntityName == "SAPC_FacturaProveedor")
+                                       .FirstOrDefault();
             estadoRENDICION_PROCESADA = context.SAPC_Estados
                                         .Where(e => e.Codigo == RENDICION_PROCESADA &&
                                                     e.EntityName == "SAPC_RendicionABC")
@@ -75,14 +83,6 @@ namespace SAPConnectorLibrary
             estadoRENDICION_RECHAZADA = context.SAPC_Estados
                                         .Where(e => e.Codigo == RENDICION_RECHAZADA &&
                                                     e.EntityName == "SAPC_RendicionABC")
-                                        .FirstOrDefault();
-            estadoRENDCOMP_PROCESADA = context.SAPC_Estados
-                                        .Where(e => e.Codigo == RENDCOMP_PROCESADA &&
-                                                    e.EntityName == "SAPC_RendicionComp")
-                                        .FirstOrDefault();
-            estadoRENDCOMP_RECHAZADA = context.SAPC_Estados
-                                        .Where(e => e.Codigo == RENDCOMP_RECHAZADA &&
-                                                    e.EntityName == "SAPC_RendicionComp")
                                         .FirstOrDefault();
 
             return new SessionContext
@@ -112,10 +112,10 @@ namespace SAPConnectorLibrary
             {
                 BasicHttpBinding binding = new BasicHttpBinding();
                 EndpointAddress address = new EndpointAddress(session.Session.EndPoint.URLAdelantos);
-                SolicitudAnticipo.ZWS_SOLICITUD_ANTICIPOClient client = new SolicitudAnticipo.ZWS_SOLICITUD_ANTICIPOClient(binding, address);
+                Solicitud_Anticipo.ZWS_SOLICITUD_ANTICIPOClient client = new Solicitud_Anticipo.ZWS_SOLICITUD_ANTICIPOClient(binding, address);
 
-                List<SolicitudAnticipo.ZFI_RFC_ANTICIPOS> comp = new List<SolicitudAnticipo.ZFI_RFC_ANTICIPOS>();
-                comp.Add(new SolicitudAnticipo.ZFI_RFC_ANTICIPOS
+                List<Solicitud_Anticipo.ZFI_RFC_ANTICIPOS> comp = new List<Solicitud_Anticipo.ZFI_RFC_ANTICIPOS>();
+                comp.Add(new Solicitud_Anticipo.ZFI_RFC_ANTICIPOS
                 {
                     CTA_CONTABLE1 = "????",
                     CLASE_DOC = "?????",
@@ -131,13 +131,13 @@ namespace SAPConnectorLibrary
                     TIENDA = "???",
                 });
 
-                SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPO request = new SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPO
+                Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPO request = new Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPO
                 {
                     T_DETALLE = comp.ToArray(),
                     
                 };
 
-                SolicitudAnticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse response = client.ZFI_RFC_SOLICITUD_ANTICIPO(request);
+                Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse response = client.ZFI_RFC_SOLICITUD_ANTICIPO(request);
 
                 call.InputParameters = request.ToString();
                 call.Results = response.MENSAJE;
@@ -177,12 +177,12 @@ namespace SAPConnectorLibrary
             {
                 BasicHttpBinding binding = new BasicHttpBinding();
                 EndpointAddress address = new EndpointAddress(session.Session.EndPoint.URLAdelantos);
-                ComprobantesABC.ZWS_COMPROBANTES_ABCClient client = new ComprobantesABC.ZWS_COMPROBANTES_ABCClient(binding, address);
+                Comprobantes_ABC.ZWS_COMPROBANTES_ABCClient client = new Comprobantes_ABC.ZWS_COMPROBANTES_ABCClient(binding, address);
 
 
                 // TODO Esto no tiene sentido. Como está planteado cada rendición contempla una sola factura!!!!
 
-                ComprobantesABC.ZFI_RFC_COMPROBANTES_ABC1 request = new ComprobantesABC.ZFI_RFC_COMPROBANTES_ABC1
+                Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABC1 request = new Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABC1
                 {
                     ACREEDOR = "",
                     CAE = "",
@@ -205,10 +205,10 @@ namespace SAPConnectorLibrary
                     TIENDA = ""
                 };
 
-                List<ComprobantesABC.ZFI_RFC_COMPROBANTES_ABC> comp = new List<ComprobantesABC.ZFI_RFC_COMPROBANTES_ABC>();
+                List<Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABC> comp = new List<Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABC>();
                 foreach (var factura in rendicion.FacturasProveedor)
                 {
-                    comp.Add(new ComprobantesABC.ZFI_RFC_COMPROBANTES_ABC
+                    comp.Add(new Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABC
                     {
                         CECO = "???",
                         CTA_CONTABLE = factura.Proveedor.CtaContable,
@@ -219,7 +219,7 @@ namespace SAPConnectorLibrary
 
                 request.T_DETALLE = comp.ToArray();
 
-                ComprobantesABC.ZFI_RFC_COMPROBANTES_ABCResponse response = client.ZFI_RFC_COMPROBANTES_ABC(request);
+                Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCResponse response = client.ZFI_RFC_COMPROBANTES_ABC(request);
 
                 call.InputParameters = request.ToString();
                 call.Results = response.MENSAJE;
@@ -246,11 +246,12 @@ namespace SAPConnectorLibrary
             }
         }
 
-        void SAPPushRendicionNoABC(Models.SAPC_RendicionComp rendicion)
+
+        void SAPPushFactura(Models.SAPC_FacturaProveedor factura)
         {
             Models.SAPC_SAPRPCCall call = new Models.SAPC_SAPRPCCall
             {
-                Method = "RendicionNoABC",
+                Method = "RendicionABC",
                 ErrorCode = "",
                 ErrorMsg = ""
             };
@@ -259,53 +260,56 @@ namespace SAPConnectorLibrary
             {
                 BasicHttpBinding binding = new BasicHttpBinding();
                 EndpointAddress address = new EndpointAddress(session.Session.EndPoint.URLAdelantos);
-                ComprobantesNoABC.ZWS_COMPROBANTES_NO_ABCClient client = new ComprobantesNoABC.ZWS_COMPROBANTES_NO_ABCClient(binding, address);
+                Comprobantes_ABC.ZWS_COMPROBANTES_ABCClient client = new Comprobantes_ABC.ZWS_COMPROBANTES_ABCClient(binding, address);
 
-                // TODO Esto no tiene sentido. Cada rendición sería un solo comprobante!!!
 
-                ComprobantesNoABC.ZFI_RFC_COMPROBANTES_NO_ABC1 request = new ComprobantesNoABC.ZFI_RFC_COMPROBANTES_NO_ABC1
+                Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABC1 request = new Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABC1
                 {
+                    ACREEDOR = "",
+                    CAE = "",
+                    CAE_VTO = new DateTime(),
+                    CALLE = "",
+                    CLASE_DOC = "",
+                    CPOSTAL = "",
+                    CUIT = "",
                     FECHACONT = new DateTime(),
                     FECHACONTSpecified = true,
+                    FECHAFACTURA = new DateTime(),
+                    IMPORTE = new Decimal(0.0),
                     MONEDA = "",
+                    NOMBRE = "",
+                    PAIS = "",
+                    POBLACION = "",
                     REFERENCIA = "",
                     SOCIEDAD = "",
-                    TIENDA = "",
-                    CLASE_DOC = "",
-                    FECHADOCUMENTO = new DateTime(),
+                    TEXTO = "",
+                    TIENDA = ""
                 };
 
-                List<ComprobantesNoABC.ZFI_RFC_COMPROBANTES_NO_ABC> comp = new List<ComprobantesNoABC.ZFI_RFC_COMPROBANTES_NO_ABC>();
-
-                foreach (var comprobante in rendicion.Comprobantes)
+                List<Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABC> comp = new List<Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABC>();
+                comp.Add(new Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABC
                 {
-                    comp.Add(new ComprobantesNoABC.ZFI_RFC_COMPROBANTES_NO_ABC
-                    {
-                        CECO = "",
-                        IMPORTE = new Decimal(0.0),
-                        IND_IMP = "",
-                        CLAVE_CT = "",
-                        CTA_CONTABLE1 = "",
-                        TEXTO = "",
-                        TEXTOS = ""
-                    });
-                }
+                    CECO = "???",
+                    CTA_CONTABLE = factura.Proveedor.CtaContable,
+                    IMPORTE = factura.ImporteNeto,
+                    IND_IMP = "????",
+                });
 
-                request.CUENTAS = comp.ToArray();
+                request.T_DETALLE = comp.ToArray();
 
-                ComprobantesNoABC.ZFI_RFC_COMPROBANTES_NO_ABCResponse response = client.ZFI_RFC_COMPROBANTES_NO_ABC(request);
+                Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCResponse response = client.ZFI_RFC_COMPROBANTES_ABC(request);
 
                 call.InputParameters = request.ToString();
                 call.Results = response.MENSAJE;
 
                 if (response.RESULTADO != "OK")
                 {
-                    rendicion.Estado = estadoRENDICION_RECHAZADA;
+                    factura.Estado = estadoRENDICION_RECHAZADA;
                 }
                 else
                 {
-                    rendicion.SAPNroDoc = response.NRO_DOC;
-                    rendicion.Estado = estadoRENDICION_PROCESADA;
+                    factura.SAPNroDoc = response.NRO_DOC;
+                    factura.Estado = estadoFACTURA_PROCESADA;
                 }
             }
             catch (Exception e)
@@ -327,21 +331,21 @@ namespace SAPConnectorLibrary
                 BasicHttpBinding binding = new BasicHttpBinding();
                 EndpointAddress address = new EndpointAddress(session.Session.EndPoint.URLProveedores);
 
-                DatosProveedores.ZWS_DATOS_PROVEEDORES client = new DatosProveedores.ZWS_DATOS_PROVEEDORESClient(binding, address);
+                Datos_Proveedores.ZWS_DATOS_PROVEEDORES client = new Datos_Proveedores.ZWS_DATOS_PROVEEDORESClient(binding, address);
 
                 DateTime lastUpdate = context.SAPC_Proveedores.Max(p => p.UltimaActualizacion);
                 DateTime now = new DateTime();
 
-                DatosProveedores.ZFI_RFC_DATOS_PROVEEDORESRequest request = new DatosProveedores.ZFI_RFC_DATOS_PROVEEDORESRequest
+                Datos_Proveedores.ZFI_RFC_DATOS_PROVEEDORESRequest request = new Datos_Proveedores.ZFI_RFC_DATOS_PROVEEDORESRequest
                 {
-                      ZFI_RFC_DATOS_PROVEEDORES = new DatosProveedores.ZFI_RFC_DATOS_PROVEEDORES
+                      ZFI_RFC_DATOS_PROVEEDORES = new Datos_Proveedores.ZFI_RFC_DATOS_PROVEEDORES
                       {
                           FECHA_CREACION = lastUpdate != null ? lastUpdate : new DateTime(0),
                           FECHA_CREACIONSpecified = (lastUpdate != null ? true : false),
                       }
                 };
 
-                DatosProveedores.ZFI_RFC_DATOS_PROVEEDORESResponse1 r1 = client.ZFI_RFC_DATOS_PROVEEDORES(request);
+                Datos_Proveedores.ZFI_RFC_DATOS_PROVEEDORESResponse1 r1 = client.ZFI_RFC_DATOS_PROVEEDORES(request);
                 var response = r1.ZFI_RFC_DATOS_PROVEEDORESResponse;
                 if (response.RESULTADO != "OK")
                 {
@@ -422,72 +426,26 @@ namespace SAPConnectorLibrary
                                                        into g
                                                        select g;
 
-                // Tomar rendiciones ABC a procesar
-                var rendicionesABC = from r in context.SAPC_RendicionABC
-                                     where r.Estado.Codigo == RENDICION_A_PROCESAR &&
-                                           r.FondoFijo.Estado.Codigo == FONDO_ACTIVO &&
-                                           r.FondoFijo != null
-                                     select r;
+                // Tomar facturas a procesar
+                var facturas = from a in context.SAPC_FacturaProveedor
+                                where a.Estado.Codigo == FACTURA_A_PROCESAR 
+                                select a;
 
-                var rendicionesABCPorEndpoint = from rabc in rendicionesABC
-                                                group rabc by rabc.FondoFijo.EndPoint.Id
-                                                into g select g;
-
-                var rendicionesABCPorEmpleado = from r in context.SAPC_RendicionABC
-                                     where r.Estado.Codigo == RENDICION_A_PROCESAR &&
-                                           r.RendidoPor != null
-                                     select r;
-
-                var rendicionesABCPorEmpleadoPorEndpoint = from rabc in rendicionesABCPorEmpleado
-                                                group rabc by rabc.RendidoPor.SAPEndPoint.Id
-                                                into g
-                                                select g;
-
-                // Tomar rendiciones NO ABC a procesar
-                var rendicionesNoABC = from r in context.SAPC_RendicionComp
-                                                  where r.Estado.Codigo == RENDCOMP_A_PROCESAR &&
-                                                        r.FondoFijo.Estado.Codigo == FONDO_ACTIVO &&
-                                                        r.FondoFijo != null
-                                                  select r;
-
-                var rendicionesNoABCPorEndpoint = from rnabc in rendicionesNoABC
-                                                  group rnabc by rnabc.RendidoPor.SAPEndPoint.Id
-                                                  into g
-                                                  select g;
-
-                var rendicionesNoABCPorEmpleado = from r in context.SAPC_RendicionComp
-                                       where r.Estado.Codigo == RENDCOMP_A_PROCESAR &&
-                                             r.RendidoPor != null
-                                       select r;
-
-                var rendicionesNoABCPorEmpleadoPorEndpoint = from rnabc in rendicionesNoABCPorEmpleado
-                                                  group rnabc by rnabc.RendidoPor.SAPEndPoint.Id
-                                                  into g select g;
+                var facturasPorEndpoint = from aep in facturas
+                                           group aep by aep.RendicionGastos.FondoFijo.EndPoint.Id
+                                           into g
+                                           select g;
 
                 ISet< int > endPoints = new HashSet<int> { };
                 foreach (var endPointGroup in adelantosPorEndpoint)
                 {
                     endPoints.Add(endPointGroup.Key);
                 }
+                foreach (var endPointGroup in facturasPorEndpoint)
+                {
+                    endPoints.Add(endPointGroup.Key);
+                }
                 foreach (var endPointGroup in adelantosPorEmpleadoPorEndpoint)
-                {
-                    endPoints.Add(endPointGroup.Key);
-                }
-
-                foreach (var endPointGroup in rendicionesABCPorEndpoint)
-                {
-                    endPoints.Add(endPointGroup.Key);
-                }
-                foreach (var endPointGroup in rendicionesABCPorEmpleadoPorEndpoint)
-                {
-                    endPoints.Add(endPointGroup.Key);
-                }
-
-                foreach (var endPointGroup in rendicionesNoABCPorEndpoint)
-                {
-                    endPoints.Add(endPointGroup.Key);
-                }
-                foreach (var endPointGroup in rendicionesNoABCPorEmpleadoPorEndpoint)
                 {
                     endPoints.Add(endPointGroup.Key);
                 }
@@ -512,29 +470,13 @@ namespace SAPConnectorLibrary
                                 if (adelanto.PedidoPorEmpleado.SAPEndPoint.Id == endPoint)
                                     this.SAPPushAdelanto(adelanto);
 
-                            foreach (var r in rendicionesABCPorEndpoint.ElementAt(endPoint))
-                                if (r.FondoFijo.EndPoint.Id == endPoint)
-                                    this.SAPPushRendicionABC(r);
-
-                            foreach (var r in rendicionesABCPorEmpleadoPorEndpoint.ElementAt(endPoint))
-                                if (r.RendidoPor.SAPEndPoint.Id == endPoint)
-                                    this.SAPPushRendicionABC(r);
-
-                            foreach (var r in rendicionesNoABCPorEndpoint.ElementAt(endPoint))
-                                if (r.FondoFijo.EndPoint.Id == endPoint)
-                                    this.SAPPushRendicionNoABC(r);
-
-                            foreach (var r in rendicionesNoABCPorEmpleadoPorEndpoint.ElementAt(endPoint))
-                                if (r.RendidoPor.SAPEndPoint.Id == endPoint)
-                                    this.SAPPushRendicionNoABC(r);
-
-                            session.Session.ErrorCode = "";
-                            session.Session.ErrorMessage = "";
-
-                            this.SAPSynchVendors();
+                            foreach (var factura in facturasPorEndpoint.ElementAt(endPoint))
+                                if (factura.RendicionGastos.FondoFijo.EndPoint.Id == endPoint)
+                                    this.SAPPushFactura(factura);
 
                         }
-                        catch (Exception e) {
+                        catch (Exception e)
+                        {
                             if (session != null)
                             {
                                 session.Session.ErrorCode = "Unexpected exception";
@@ -545,7 +487,79 @@ namespace SAPConnectorLibrary
                         {
                             if (session != null)
                                 session.Session.FinishedOn = DateTime.UtcNow;
-                                session.Close();
+                            session.Close();
+                            session = null;
+                        }
+                    }
+                }
+
+                // Tomar rendiciones ABC a procesar, luego de procesar las facturas
+                var rendicionesABC = from r in context.SAPC_RendicionABC
+                                                where r.Estado.Codigo == RENDICION_A_PROCESAR &&
+                                                    r.FondoFijo.Estado.Codigo == FONDO_ACTIVO &&
+                                                    r.FondoFijo != null
+                                                select r;
+
+                var rendicionesABCPorEndpoint = from rabc in rendicionesABC
+                                                group rabc by rabc.FondoFijo.EndPoint.Id
+                                                into g
+                                                select g;
+
+                var rendicionesABCPorEmpleado = from r in context.SAPC_RendicionABC
+                                                where r.Estado.Codigo == RENDICION_A_PROCESAR &&
+                                                        r.RendidoPor != null
+                                                select r;
+
+                var rendicionesABCPorEmpleadoPorEndpoint = from rabc in rendicionesABCPorEmpleado
+                                                            group rabc by rabc.RendidoPor.SAPEndPoint.Id
+                                                            into g
+                                                            select g;
+
+                foreach (var endPointGroup in rendicionesABCPorEndpoint)
+                {
+                    endPoints.Add(endPointGroup.Key);
+                }
+                foreach (var endPointGroup in rendicionesABCPorEmpleadoPorEndpoint)
+                {
+                    endPoints.Add(endPointGroup.Key);
+                }
+
+                if (endPoints.Count > 0) { 
+                    foreach (int endPoint in endPoints)
+                    {
+                        try
+                        {
+                            session = this.CreateSession(endPoint);
+
+                            this.SAPLogin();
+
+                            foreach (var r in rendicionesABCPorEndpoint.ElementAt(endPoint))
+                                if (r.FondoFijo.EndPoint.Id == endPoint)
+                                    this.SAPPushRendicionABC(r);
+
+                            foreach (var r in rendicionesABCPorEmpleadoPorEndpoint.ElementAt(endPoint))
+                                if (r.RendidoPor.SAPEndPoint.Id == endPoint)
+                                    this.SAPPushRendicionABC(r);
+
+                            session.Session.ErrorCode = "";
+                            session.Session.ErrorMessage = "";
+
+                            this.SAPSynchVendors();
+
+                        }
+                        catch (Exception e)
+                        {
+                            if (session != null)
+                            {
+                                session.Session.ErrorCode = "Unexpected exception";
+                                session.Session.ErrorMessage = string.Format("Unexpected exception: {0}", e);
+                            }
+                        }
+                        finally
+                        {
+                            if (session != null)
+                                session.Session.FinishedOn = DateTime.UtcNow;
+                            session.Close();
                             session = null;
                         }
                     }

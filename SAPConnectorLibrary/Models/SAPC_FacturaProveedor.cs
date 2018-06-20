@@ -14,24 +14,31 @@ namespace SAPConnectorLibrary.Models
     
     public partial class SAPC_FacturaProveedor
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public SAPC_FacturaProveedor()
+        {
+            this.Inputaciones = new HashSet<SAPC_Inputaciones>();
+            this.RPCCalls = new HashSet<SAPC_SAPRPCCall>();
+        }
+    
         public int Id { get; set; }
-        public string TipoDocumento { get; set; }
-        public decimal ImporteNeto { get; set; }
-        public System.DateTime Fecha { get; set; }
-        public decimal PtoVenta { get; set; }
-        public decimal NumeroDocumento { get; set; }
-        public decimal BaseIVA21 { get; set; }
-        public decimal BaseIVA105 { get; set; }
-        public decimal BaseIVA27 { get; set; }
-        public decimal BaseIVA0 { get; set; }
-        public decimal ImporteTotalAPagar { get; set; }
-        public decimal Percepcion1Importe { get; set; }
-        public decimal Percepcion2Importe { get; set; }
+        public System.DateTime FechaContable { get; set; }
+        public string FechaFactura { get; set; }
+        public string Referencia { get; set; }
+        public decimal Importe { get; set; }
+        public string Texto { get; set; }
+        public string CAE { get; set; }
+        public System.DateTime CAEVto { get; set; }
     
         public virtual SAPC_RendicionABC RendicionGastos { get; set; }
         public virtual SAPC_Proveedores Proveedor { get; set; }
-        public virtual SAPC_CECO CECO { get; set; }
-        public virtual SAPC_Percepciones Percepcion1 { get; set; }
-        public virtual SAPC_Percepciones Percepcion2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SAPC_Inputaciones> Inputaciones { get; set; }
+        public virtual SAPC_Estados Estado { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SAPC_SAPRPCCall> RPCCalls { get; set; }
+        public virtual SAPC_Sociedades Sociedad { get; set; }
+        public virtual SAPC_ClaseDoc ClaseDoc { get; set; }
+        public virtual SAPC_Monedas Moneda { get; set; }
     }
 }

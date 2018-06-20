@@ -24,7 +24,7 @@ namespace SAPConnectorLibrary.Models
         }
     
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Nombre { get; set; }
         public string URLAdelantos { get; set; }
         public Nullable<System.DateTime> LastConnectionOn { get; set; }
         public string URLRendicionABC { get; set; }

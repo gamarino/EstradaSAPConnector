@@ -33,12 +33,15 @@ namespace SAPConnectorLibrary.Models
         public virtual DbSet<SAPC_EndPoint> SAPC_EndPoint { get; set; }
         public virtual DbSet<SAPC_Adelantos> SAPC_Adelantos { get; set; }
         public virtual DbSet<SAPC_Estados> SAPC_Estados { get; set; }
-        public virtual DbSet<SAPC_RendicionComp> SAPC_RendicionComp { get; set; }
-        public virtual DbSet<SAPC_Comprobante> SAPC_Comprobante { get; set; }
         public virtual DbSet<SAPC_Proveedores> SAPC_Proveedores { get; set; }
         public virtual DbSet<SAPC_Empleado> SAPC_Empleado { get; set; }
         public virtual DbSet<SAPC_CECO> SAPC_CECO { get; set; }
-        public virtual DbSet<SAPC_Percepciones> SAPC_Percepciones { get; set; }
-        public virtual DbSet<SAPC_Jurisdicciones> SAPC_Jurisdicciones { get; set; }
+        public virtual DbSet<SAPC_Inputaciones> SAPC_Inputaciones { get; set; }
+        public virtual DbSet<SAPC_Sociedades> SAPC_Sociedades { get; set; }
+        public virtual DbSet<SAPC_ClaseDoc> SAPC_ClaseDoc { get; set; }
+        public virtual DbSet<SAPC_Monedas> SAPC_Monedas { get; set; }
+        public virtual DbSet<SAPC_Paises> SAPC_Paises { get; set; }
+        public virtual DbSet<SAPC_Results> SAPC_Results { get; set; }
+        public virtual DbSet<SAPC_Poblaciones> SAPC_Poblaciones { get; set; }
     }
 }

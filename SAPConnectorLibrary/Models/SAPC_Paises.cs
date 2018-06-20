@@ -12,28 +12,19 @@ namespace SAPConnectorLibrary.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SAPC_Proveedores
+    public partial class SAPC_Paises
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SAPC_Proveedores()
+        public SAPC_Paises()
         {
-            this.FacturasProveedor = new HashSet<SAPC_FacturaProveedor>();
+            this.Poblaciones = new HashSet<SAPC_Poblaciones>();
         }
     
         public int Id { get; set; }
+        public string Codigo { get; set; }
         public string Nombre { get; set; }
-        public string CUIT { get; set; }
-        public string CtaContable { get; set; }
-        public string SAPId { get; set; }
-        public string Calle { get; set; }
-        public string CPostal { get; set; }
-        public bool Flag { get; set; }
-        public string Telefono { get; set; }
-        public System.DateTime UltimaActualizacion { get; set; }
-        public string Mail { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SAPC_FacturaProveedor> FacturasProveedor { get; set; }
-        public virtual SAPC_Poblaciones Poblacion { get; set; }
+        public virtual ICollection<SAPC_Poblaciones> Poblaciones { get; set; }
     }
 }

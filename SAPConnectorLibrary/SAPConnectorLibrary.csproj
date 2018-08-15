@@ -82,16 +82,118 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\InnovActionWFAccionEstado.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InnovActionWFAnticipoDeGasto.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InnovActionWFAntiRendRelationship.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InnovActionWFAprobadore.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InnovActionWFCaso.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InnovActionWFCCAprobadore.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InnovActionWFEmailAccount.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InnovActionWFEstadoRolOwner.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InnovActionWFFile.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InnovActionWFInst.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InnovActionWFInstHist.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InnovActionWFLicVariasExa.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InnovActionWFLicVariasFall.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InnovActionWFLicVariasMat.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InnovActionWFLicVariasMud.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InnovActionWFLicVariasNac.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InnovActionWFLicVariasOtro.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InnovActionWFLicVariasTipo.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InnovActionWFPageDomain.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InnovActionWFPedidoVacacione.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InnovActionWFReintegroDeGasto.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InnovActionWFRendicionDeGasto.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InnovActionWFRoleAprobador.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InnovActionWFState.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InnovActionWFStockDia.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InnovActionWFVariable.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SAPC_Adelantos.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SAPC_AnticipoGastos.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_Aprobadores.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_BotonesWF.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_BotonesWFTipos.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SAPC_CECO.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_CeCo_UserID.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SAPC_ClaseDoc.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SAPC_Comprobantes.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_Credentials.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_CuentasContables.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_EmailTemplates.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SAPC_Empleado.cs">
@@ -106,13 +208,22 @@
     <Compile Include="Models\SAPC_FacturaProveedor.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SAPC_Facturas.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SAPC_FondoFijo.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_HistFacturas.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SAPC_InputacionesComprobantes.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SAPC_InputacionesFacturas.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_JefeAprobadores.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SAPC_Monedas.cs">
@@ -127,7 +238,22 @@
     <Compile Include="Models\SAPC_Proveedores.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SAPC_Rechazos.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_ReintegroGastos.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SAPC_RendicionABC.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_RendicionFF.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_RendicionG.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_RendicionGastosSAPC_SAPRPCCall1.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SAPC_Results.cs">
@@ -140,6 +266,9 @@
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SAPC_Sociedades.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_TipoFacturas.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
     <Compile Include="SynchToSAP.cs" />
@@ -204,7 +333,6 @@
       <LastGenOutput>EstradaSAPConnector.cs</LastGenOutput>
       <DependentUpon>EstradaSAPConnector.edmx</DependentUpon>
     </Content>
-    <Content Include="Data\dbo.SAPC_Estados.data.sql" />
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>

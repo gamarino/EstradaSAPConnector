@@ -12,38 +12,42 @@ namespace SAPConnectorLibrary.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SAPC_Adelantos
+    public partial class SAPC_Comprobante
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SAPC_Adelantos()
+        public SAPC_Comprobante()
         {
+            this.Inputaciones = new HashSet<SAPC_InputacionesComprobantes>();
             this.RPCCalls = new HashSet<SAPC_SAPRPCCall>();
-            this.SAPC_SAPRPCCall = new HashSet<SAPC_SAPRPCCall>();
         }
     
         public int Id { get; set; }
-        public string SAPNroDoc { get; set; }
-        public System.DateTime Fecha { get; set; }
-        public decimal Importe { get; set; }
-        public System.DateTime FechaVto { get; set; }
         public System.DateTime FechaCont { get; set; }
+        public System.DateTime FechaDocumento { get; set; }
         public string Referencia { get; set; }
         public string Tienda { get; set; }
-        public string TextoCab { get; set; }
-        public string CtaContable { get; set; }
-        public string TextoPOS { get; set; }
-        public string SAPId { get; set; }
-        public System.DateTime PedidoEl { get; set; }
+        public string SAPNroDoc { get; set; }
+        public string DocComp1 { get; set; }
+        public string DocComp2 { get; set; }
+        public string DocComp3 { get; set; }
+        public string DocComp4 { get; set; }
+        public string DocComp5 { get; set; }
+        public string DocComp6 { get; set; }
+        public string DocComp7 { get; set; }
+        public string DocComp8 { get; set; }
+        public string DocComp9 { get; set; }
+        public string DocComp10 { get; set; }
+        public string DocComp11 { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SAPC_SAPRPCCall> RPCCalls { get; set; }
-        public virtual SAPC_FondoFijo FondoFijo { get; set; }
-        public virtual SAPC_Estados Estado { get; set; }
-        public virtual SAPC_Empleado PedidoPorEmpleado { get; set; }
         public virtual SAPC_ClaseDoc ClaseDoc { get; set; }
         public virtual SAPC_Sociedades Sociedad { get; set; }
         public virtual SAPC_Monedas Moneda { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SAPC_SAPRPCCall> SAPC_SAPRPCCall { get; set; }
+        public virtual ICollection<SAPC_InputacionesComprobantes> Inputaciones { get; set; }
+        public virtual SAPC_Empleado Empleado { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SAPC_SAPRPCCall> RPCCalls { get; set; }
+        public virtual SAPC_Estados Estado { get; set; }
+        public virtual SAPC_Rendicion Rendicion { get; set; }
     }
 }

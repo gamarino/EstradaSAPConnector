@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/20/2018 14:40:06
+-- Date Created: 12/03/2018 22:19:15
 -- Generated from EDMX file: C:\Users\GustavoMarino\Documents\Visual Studio 2017\Projects\EstradaSAPConnector\SAPConnectorLibrary\Models\EstradaSAPConnector.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [SAPConnector];
+USE [estrada];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -18,7 +18,7 @@ GO
 -- --------------------------------------------------
 
 IF OBJECT_ID(N'[dbo].[FK_FondoFijoRendicionGastos]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SAPC_RendicionABC] DROP CONSTRAINT [FK_FondoFijoRendicionGastos];
+    ALTER TABLE [dbo].[SAPC_Rendicion] DROP CONSTRAINT [FK_FondoFijoRendicionGastos];
 GO
 IF OBJECT_ID(N'[dbo].[FK_SAPC_EstadosSAPC_FondoFijo]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SAPC_FondoFijo] DROP CONSTRAINT [FK_SAPC_EstadosSAPC_FondoFijo];
@@ -38,11 +38,11 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_SAPC_FondoFijoSAPC_Adelantos]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SAPC_Adelantos] DROP CONSTRAINT [FK_SAPC_FondoFijoSAPC_Adelantos];
 GO
-IF OBJECT_ID(N'[dbo].[FK_SAPC_RendicionGastosSAPC_SAPRPCCall]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SAPC_SAPRPCCall] DROP CONSTRAINT [FK_SAPC_RendicionGastosSAPC_SAPRPCCall];
+IF OBJECT_ID(N'[dbo].[FK_SAPC_RendicionSAPC_SAPRPCCall]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SAPC_SAPRPCCall] DROP CONSTRAINT [FK_SAPC_RendicionSAPC_SAPRPCCall];
 GO
 IF OBJECT_ID(N'[dbo].[FK_SAPC_EstadosSAPC_RendicionGastos]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SAPC_RendicionABC] DROP CONSTRAINT [FK_SAPC_EstadosSAPC_RendicionGastos];
+    ALTER TABLE [dbo].[SAPC_Rendicion] DROP CONSTRAINT [FK_SAPC_EstadosSAPC_RendicionGastos];
 GO
 IF OBJECT_ID(N'[dbo].[FK_SAPC_RendicionGastosSAPC_FacturaProveedor]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SAPC_FacturaProveedor] DROP CONSTRAINT [FK_SAPC_RendicionGastosSAPC_FacturaProveedor];
@@ -60,7 +60,7 @@ IF OBJECT_ID(N'[dbo].[FK_InputacionesSAPC_FacturaProveedor]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SAPC_InputacionesFacturas] DROP CONSTRAINT [FK_InputacionesSAPC_FacturaProveedor];
 GO
 IF OBJECT_ID(N'[dbo].[FK_SAPC_EmpleadoSAPC_RendicionABC]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SAPC_RendicionABC] DROP CONSTRAINT [FK_SAPC_EmpleadoSAPC_RendicionABC];
+    ALTER TABLE [dbo].[SAPC_Rendicion] DROP CONSTRAINT [FK_SAPC_EmpleadoSAPC_RendicionABC];
 GO
 IF OBJECT_ID(N'[dbo].[FK_SAPC_AdelantosSAPC_Empleado]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SAPC_Adelantos] DROP CONSTRAINT [FK_SAPC_AdelantosSAPC_Empleado];
@@ -96,22 +96,19 @@ IF OBJECT_ID(N'[dbo].[FK_SAPC_PoblacionesSAPC_Proveedores]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SAPC_Proveedores] DROP CONSTRAINT [FK_SAPC_PoblacionesSAPC_Proveedores];
 GO
 IF OBJECT_ID(N'[dbo].[FK_SAPC_ClaseDocSAPC_Comprobantes]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SAPC_Comprobantes] DROP CONSTRAINT [FK_SAPC_ClaseDocSAPC_Comprobantes];
+    ALTER TABLE [dbo].[SAPC_Comprobante] DROP CONSTRAINT [FK_SAPC_ClaseDocSAPC_Comprobantes];
 GO
 IF OBJECT_ID(N'[dbo].[FK_SAPC_SociedadesSAPC_Comprobantes]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SAPC_Comprobantes] DROP CONSTRAINT [FK_SAPC_SociedadesSAPC_Comprobantes];
+    ALTER TABLE [dbo].[SAPC_Comprobante] DROP CONSTRAINT [FK_SAPC_SociedadesSAPC_Comprobantes];
 GO
 IF OBJECT_ID(N'[dbo].[FK_SAPC_MonedasSAPC_Comprobantes]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SAPC_Comprobantes] DROP CONSTRAINT [FK_SAPC_MonedasSAPC_Comprobantes];
+    ALTER TABLE [dbo].[SAPC_Comprobante] DROP CONSTRAINT [FK_SAPC_MonedasSAPC_Comprobantes];
 GO
 IF OBJECT_ID(N'[dbo].[FK_SAPC_ComprobantesSAPC_InputacionesComprobantes]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SAPC_InputacionesComprobantes] DROP CONSTRAINT [FK_SAPC_ComprobantesSAPC_InputacionesComprobantes];
 GO
-IF OBJECT_ID(N'[dbo].[FK_SAPC_FondoFijoSAPC_Comprobantes]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SAPC_Comprobantes] DROP CONSTRAINT [FK_SAPC_FondoFijoSAPC_Comprobantes];
-GO
 IF OBJECT_ID(N'[dbo].[FK_SAPC_EmpleadoSAPC_Comprobantes]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SAPC_Comprobantes] DROP CONSTRAINT [FK_SAPC_EmpleadoSAPC_Comprobantes];
+    ALTER TABLE [dbo].[SAPC_Comprobante] DROP CONSTRAINT [FK_SAPC_EmpleadoSAPC_Comprobantes];
 GO
 IF OBJECT_ID(N'[dbo].[FK_SAPC_SAPRPCCallSAPC_Comprobantes_SAPC_SAPRPCCall]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SAPC_SAPRPCCallSAPC_Comprobantes] DROP CONSTRAINT [FK_SAPC_SAPRPCCallSAPC_Comprobantes_SAPC_SAPRPCCall];
@@ -123,7 +120,7 @@ IF OBJECT_ID(N'[dbo].[FK_SAPC_CECOSAPC_InputacionesComprobantes]', 'F') IS NOT N
     ALTER TABLE [dbo].[SAPC_InputacionesComprobantes] DROP CONSTRAINT [FK_SAPC_CECOSAPC_InputacionesComprobantes];
 GO
 IF OBJECT_ID(N'[dbo].[FK_SAPC_EstadosSAPC_Comprobantes]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SAPC_Comprobantes] DROP CONSTRAINT [FK_SAPC_EstadosSAPC_Comprobantes];
+    ALTER TABLE [dbo].[SAPC_Comprobante] DROP CONSTRAINT [FK_SAPC_EstadosSAPC_Comprobantes];
 GO
 IF OBJECT_ID(N'[dbo].[FK_SAPC_ClaseDocSAPC_Adelantos]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SAPC_Adelantos] DROP CONSTRAINT [FK_SAPC_ClaseDocSAPC_Adelantos];
@@ -137,13 +134,79 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_SAPC_EmpleadoSAPC_FacturaProveedor]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SAPC_FacturaProveedor] DROP CONSTRAINT [FK_SAPC_EmpleadoSAPC_FacturaProveedor];
 GO
+IF OBJECT_ID(N'[dbo].[FK_InnovActionWFAccionEstado_InnovACtionWFCasos]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[InnovActionWFAccionEstadoes] DROP CONSTRAINT [FK_InnovActionWFAccionEstado_InnovACtionWFCasos];
+GO
+IF OBJECT_ID(N'[dbo].[FK_InnovACtionWFCasos_InnovACtionWFCasos]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[InnovActionWFCasos] DROP CONSTRAINT [FK_InnovACtionWFCasos_InnovACtionWFCasos];
+GO
+IF OBJECT_ID(N'[dbo].[FK_InnovActionWFInst_InnovActionWFCasos]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[InnovActionWFInsts] DROP CONSTRAINT [FK_InnovActionWFInst_InnovActionWFCasos];
+GO
+IF OBJECT_ID(N'[dbo].[FK_InnovActionWFRoleAprobador_InnovActionWFCasos]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[InnovActionWFRoleAprobadors] DROP CONSTRAINT [FK_InnovActionWFRoleAprobador_InnovActionWFCasos];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SAPC_BotonesWF_InnovActionWFCasos]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SAPC_BotonesWF] DROP CONSTRAINT [FK_SAPC_BotonesWF_InnovActionWFCasos];
+GO
+IF OBJECT_ID(N'[dbo].[FK_InnovActionWFInst_InnovActionWFInst]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[InnovActionWFInsts] DROP CONSTRAINT [FK_InnovActionWFInst_InnovActionWFInst];
+GO
+IF OBJECT_ID(N'[dbo].[FK_InnovActionWFInstHist_InnovActionWFInst]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[InnovActionWFInstHists] DROP CONSTRAINT [FK_InnovActionWFInstHist_InnovActionWFInst];
+GO
+IF OBJECT_ID(N'[dbo].[FK_InnovActionWFVariables_InnovActionWFInst]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[InnovActionWFVariables] DROP CONSTRAINT [FK_InnovActionWFVariables_InnovActionWFInst];
+GO
+IF OBJECT_ID(N'[dbo].[FK_InnovActionWFVariables_InnovActionWFInstHist]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[InnovActionWFVariables] DROP CONSTRAINT [FK_InnovActionWFVariables_InnovActionWFInstHist];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SAPC_AnticipoGastos_SAPC_Rechazos]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SAPC_AnticipoGastos] DROP CONSTRAINT [FK_SAPC_AnticipoGastos_SAPC_Rechazos];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SAPC_BotonesWF_SAPC_BotonesWFTipos]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SAPC_BotonesWF] DROP CONSTRAINT [FK_SAPC_BotonesWF_SAPC_BotonesWFTipos];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SAPC_CeCo_Username_SAPC_CeCo_Username]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SAPC_CeCo_UserID] DROP CONSTRAINT [FK_SAPC_CeCo_Username_SAPC_CeCo_Username];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SAPC_CredentialsSAPC_FondoFijo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SAPC_FondoFijo] DROP CONSTRAINT [FK_SAPC_CredentialsSAPC_FondoFijo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SAPC_HistFacturas_SAPC_FacturaRendicion]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SAPC_HistFacturas] DROP CONSTRAINT [FK_SAPC_HistFacturas_SAPC_FacturaRendicion];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SAPC_RendicionGastos_SAPC_FondoFijo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SAPC_RendicionFF] DROP CONSTRAINT [FK_SAPC_RendicionGastos_SAPC_FondoFijo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SAPC_ReintegroGastos_SAPC_Rechazos]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SAPC_ReintegroGastos] DROP CONSTRAINT [FK_SAPC_ReintegroGastos_SAPC_Rechazos];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SAPC_RendicionG_SAPC_Rechazos]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SAPC_RendicionG] DROP CONSTRAINT [FK_SAPC_RendicionG_SAPC_Rechazos];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SAPC_RendicionGastos_SAPC_Rechazos]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SAPC_RendicionFF] DROP CONSTRAINT [FK_SAPC_RendicionGastos_SAPC_Rechazos];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SAPC_RendicionGastosSAPC_SAPRPCCall_SAPC_SAPRPCCall]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SAPC_RendicionGastosSAPC_SAPRPCCall1] DROP CONSTRAINT [FK_SAPC_RendicionGastosSAPC_SAPRPCCall_SAPC_SAPRPCCall];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SAPC_AdelantosSAPC_SAPRPCCall1_SAPC_Adelantos]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SAPC_AdelantosSAPC_SAPRPCCall1] DROP CONSTRAINT [FK_SAPC_AdelantosSAPC_SAPRPCCall1_SAPC_Adelantos];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SAPC_AdelantosSAPC_SAPRPCCall1_SAPC_SAPRPCCall]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SAPC_AdelantosSAPC_SAPRPCCall1] DROP CONSTRAINT [FK_SAPC_AdelantosSAPC_SAPRPCCall1_SAPC_SAPRPCCall];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SAPC_ComprobantesSAPC_Rendicion]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SAPC_Comprobante] DROP CONSTRAINT [FK_SAPC_ComprobantesSAPC_Rendicion];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[SAPC_RendicionABC]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SAPC_RendicionABC];
+IF OBJECT_ID(N'[dbo].[SAPC_Rendicion]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SAPC_Rendicion];
 GO
 IF OBJECT_ID(N'[dbo].[SAPC_FacturaProveedor]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SAPC_FacturaProveedor];
@@ -196,25 +259,158 @@ GO
 IF OBJECT_ID(N'[dbo].[SAPC_Poblaciones]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SAPC_Poblaciones];
 GO
-IF OBJECT_ID(N'[dbo].[SAPC_Comprobantes]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SAPC_Comprobantes];
+IF OBJECT_ID(N'[dbo].[SAPC_Comprobante]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SAPC_Comprobante];
 GO
 IF OBJECT_ID(N'[dbo].[SAPC_InputacionesComprobantes]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SAPC_InputacionesComprobantes];
 GO
+IF OBJECT_ID(N'[dbo].[InnovActionWFAccionEstadoes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InnovActionWFAccionEstadoes];
+GO
+IF OBJECT_ID(N'[dbo].[InnovActionWFAnticipoDeGastos]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InnovActionWFAnticipoDeGastos];
+GO
+IF OBJECT_ID(N'[dbo].[InnovActionWFAntiRendRelationships]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InnovActionWFAntiRendRelationships];
+GO
+IF OBJECT_ID(N'[dbo].[InnovActionWFAprobadores]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InnovActionWFAprobadores];
+GO
+IF OBJECT_ID(N'[dbo].[InnovActionWFCasos]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InnovActionWFCasos];
+GO
+IF OBJECT_ID(N'[dbo].[InnovActionWFCCAprobadores]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InnovActionWFCCAprobadores];
+GO
+IF OBJECT_ID(N'[dbo].[InnovActionWFEmailAccounts]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InnovActionWFEmailAccounts];
+GO
+IF OBJECT_ID(N'[dbo].[InnovActionWFEstadoRolOwners]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InnovActionWFEstadoRolOwners];
+GO
+IF OBJECT_ID(N'[dbo].[InnovActionWFFiles]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InnovActionWFFiles];
+GO
+IF OBJECT_ID(N'[dbo].[InnovActionWFInsts]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InnovActionWFInsts];
+GO
+IF OBJECT_ID(N'[dbo].[InnovActionWFInstHists]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InnovActionWFInstHists];
+GO
+IF OBJECT_ID(N'[dbo].[InnovActionWFLicVariasExas]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InnovActionWFLicVariasExas];
+GO
+IF OBJECT_ID(N'[dbo].[InnovActionWFLicVariasFalls]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InnovActionWFLicVariasFalls];
+GO
+IF OBJECT_ID(N'[dbo].[InnovActionWFLicVariasMats]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InnovActionWFLicVariasMats];
+GO
+IF OBJECT_ID(N'[dbo].[InnovActionWFLicVariasMuds]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InnovActionWFLicVariasMuds];
+GO
+IF OBJECT_ID(N'[dbo].[InnovActionWFLicVariasNacs]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InnovActionWFLicVariasNacs];
+GO
+IF OBJECT_ID(N'[dbo].[InnovActionWFLicVariasOtros]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InnovActionWFLicVariasOtros];
+GO
+IF OBJECT_ID(N'[dbo].[InnovActionWFLicVariasTipoes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InnovActionWFLicVariasTipoes];
+GO
+IF OBJECT_ID(N'[dbo].[InnovActionWFPageDomains]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InnovActionWFPageDomains];
+GO
+IF OBJECT_ID(N'[dbo].[InnovActionWFPedidoVacaciones]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InnovActionWFPedidoVacaciones];
+GO
+IF OBJECT_ID(N'[dbo].[InnovActionWFReintegroDeGastos]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InnovActionWFReintegroDeGastos];
+GO
+IF OBJECT_ID(N'[dbo].[InnovActionWFRendicionDeGastos]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InnovActionWFRendicionDeGastos];
+GO
+IF OBJECT_ID(N'[dbo].[InnovActionWFRoleAprobadors]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InnovActionWFRoleAprobadors];
+GO
+IF OBJECT_ID(N'[dbo].[InnovActionWFStates]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InnovActionWFStates];
+GO
+IF OBJECT_ID(N'[dbo].[InnovActionWFStockDias]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InnovActionWFStockDias];
+GO
+IF OBJECT_ID(N'[dbo].[InnovActionWFVariables]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InnovActionWFVariables];
+GO
+IF OBJECT_ID(N'[dbo].[SAPC_AnticipoGastos]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SAPC_AnticipoGastos];
+GO
+IF OBJECT_ID(N'[dbo].[SAPC_Aprobadores]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SAPC_Aprobadores];
+GO
+IF OBJECT_ID(N'[dbo].[SAPC_BotonesWFTipos]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SAPC_BotonesWFTipos];
+GO
+IF OBJECT_ID(N'[dbo].[SAPC_CeCo_UserID]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SAPC_CeCo_UserID];
+GO
+IF OBJECT_ID(N'[dbo].[SAPC_Credentials]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SAPC_Credentials];
+GO
+IF OBJECT_ID(N'[dbo].[SAPC_CuentasContables]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SAPC_CuentasContables];
+GO
+IF OBJECT_ID(N'[dbo].[SAPC_EmailTemplates]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SAPC_EmailTemplates];
+GO
+IF OBJECT_ID(N'[dbo].[SAPC_Facturas]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SAPC_Facturas];
+GO
+IF OBJECT_ID(N'[dbo].[SAPC_HistFacturas]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SAPC_HistFacturas];
+GO
+IF OBJECT_ID(N'[dbo].[SAPC_JefeAprobadores]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SAPC_JefeAprobadores];
+GO
+IF OBJECT_ID(N'[dbo].[SAPC_Rechazos]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SAPC_Rechazos];
+GO
+IF OBJECT_ID(N'[dbo].[SAPC_ReintegroGastos]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SAPC_ReintegroGastos];
+GO
+IF OBJECT_ID(N'[dbo].[SAPC_RendicionFF]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SAPC_RendicionFF];
+GO
+IF OBJECT_ID(N'[dbo].[SAPC_RendicionG]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SAPC_RendicionG];
+GO
+IF OBJECT_ID(N'[dbo].[SAPC_RendicionGastosSAPC_SAPRPCCall1]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SAPC_RendicionGastosSAPC_SAPRPCCall1];
+GO
+IF OBJECT_ID(N'[dbo].[SAPC_TipoFacturas]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SAPC_TipoFacturas];
+GO
+IF OBJECT_ID(N'[dbo].[SAPC_BotonesWF]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SAPC_BotonesWF];
+GO
 IF OBJECT_ID(N'[dbo].[SAPC_SAPRPCCallSAPC_Comprobantes]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SAPC_SAPRPCCallSAPC_Comprobantes];
+GO
+IF OBJECT_ID(N'[dbo].[SAPC_AdelantosSAPC_SAPRPCCall1]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SAPC_AdelantosSAPC_SAPRPCCall1];
 GO
 
 -- --------------------------------------------------
 -- Creating all tables
 -- --------------------------------------------------
 
--- Creating table 'SAPC_RendicionABC'
-CREATE TABLE [dbo].[SAPC_RendicionABC] (
+-- Creating table 'SAPC_Rendicion'
+CREATE TABLE [dbo].[SAPC_Rendicion] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [SAPNroDoc] nvarchar(max)  NULL,
     [Fecha] datetime  NOT NULL,
+    [Error] nvarchar(max)  NOT NULL,
     [FondoFijo_Id] int  NULL,
     [Estado_Id] int  NOT NULL,
     [RendidoPor_Id] int  NULL
@@ -233,7 +429,7 @@ CREATE TABLE [dbo].[SAPC_FacturaProveedor] (
     [CAEVto] datetime  NOT NULL,
     [SAPNroDoc] nvarchar(max)  NOT NULL,
     [Tienda] nvarchar(max)  NOT NULL,
-    [RendicionGastos_Id] int  NOT NULL,
+    [Rendicion_Id] int  NOT NULL,
     [Proveedor_Id] int  NOT NULL,
     [Estado_Id] int  NOT NULL,
     [Sociedad_Id] int  NOT NULL,
@@ -247,8 +443,11 @@ GO
 CREATE TABLE [dbo].[SAPC_FondoFijo] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Nombre] nvarchar(max)  NOT NULL,
-    [CreadoEn] datetime  NOT NULL,
+    [CreadoEn] datetime  NULL,
     [SAPId] nvarchar(max)  NOT NULL,
+    [Credentials_Id] int  NULL,
+    [UserIDTitular] int  NULL,
+    [UserIDSuplente] int  NULL,
     [Estado_Id] int  NOT NULL,
     [EndPoint_Id] int  NOT NULL
 );
@@ -274,6 +473,7 @@ CREATE TABLE [dbo].[SAPC_SAPRPCCall] (
     [ErrorCode] nvarchar(max)  NOT NULL,
     [ErrorMsg] nvarchar(max)  NOT NULL,
     [InputParameters] nvarchar(max)  NOT NULL,
+    [Results1] nvarchar(max)  NOT NULL,
     [Session_Id] int  NOT NULL,
     [Adelanto_Id] int  NULL,
     [RendicionGastos_Id] int  NULL,
@@ -309,6 +509,8 @@ CREATE TABLE [dbo].[SAPC_Adelantos] (
     [TextoCab] nvarchar(max)  NOT NULL,
     [CtaContable] nvarchar(max)  NOT NULL,
     [TextoPOS] nvarchar(max)  NOT NULL,
+    [SAPId] nvarchar(max)  NOT NULL,
+    [PedidoEl] datetime  NOT NULL,
     [FondoFijo_Id] int  NULL,
     [Estado_Id] int  NOT NULL,
     [PedidoPorEmpleado_Id] int  NULL,
@@ -423,8 +625,8 @@ CREATE TABLE [dbo].[SAPC_Poblaciones] (
 );
 GO
 
--- Creating table 'SAPC_Comprobantes'
-CREATE TABLE [dbo].[SAPC_Comprobantes] (
+-- Creating table 'SAPC_Comprobante'
+CREATE TABLE [dbo].[SAPC_Comprobante] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [FechaCont] datetime  NOT NULL,
     [FechaDocumento] datetime  NOT NULL,
@@ -445,9 +647,9 @@ CREATE TABLE [dbo].[SAPC_Comprobantes] (
     [ClaseDoc_Id] int  NOT NULL,
     [Sociedad_Id] int  NOT NULL,
     [Moneda_Id] int  NOT NULL,
-    [FondoFijo_Id] int  NULL,
     [Empleado_Id] int  NOT NULL,
-    [Estado_Id] int  NOT NULL
+    [Estado_Id] int  NOT NULL,
+    [Rendicion_Id] int  NOT NULL
 );
 GO
 
@@ -465,6 +667,460 @@ CREATE TABLE [dbo].[SAPC_InputacionesComprobantes] (
 );
 GO
 
+-- Creating table 'InnovActionWFAccionEstadoes'
+CREATE TABLE [dbo].[InnovActionWFAccionEstadoes] (
+    [AccionEstado_ID] int IDENTITY(1,1) NOT NULL,
+    [Accion] varchar(50)  NOT NULL,
+    [StateCode] int  NOT NULL,
+    [StoreProcedure] varchar(2000)  NOT NULL,
+    [CasoID] int  NOT NULL,
+    [EstadoInicial] bit  NOT NULL
+);
+GO
+
+-- Creating table 'InnovActionWFAnticipoDeGastos'
+CREATE TABLE [dbo].[InnovActionWFAnticipoDeGastos] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [InstanceID] int  NULL
+);
+GO
+
+-- Creating table 'InnovActionWFAntiRendRelationships'
+CREATE TABLE [dbo].[InnovActionWFAntiRendRelationships] (
+    [IDRelationship] int IDENTITY(1,1) NOT NULL,
+    [InstanceIDAnti] int  NOT NULL,
+    [InstanceIDRend] int  NOT NULL
+);
+GO
+
+-- Creating table 'InnovActionWFAprobadores'
+CREATE TABLE [dbo].[InnovActionWFAprobadores] (
+    [IdAprobador] int IDENTITY(1,1) NOT NULL,
+    [UserGenerator] int  NOT NULL,
+    [UserAprobador] int  NOT NULL
+);
+GO
+
+-- Creating table 'InnovActionWFCasos'
+CREATE TABLE [dbo].[InnovActionWFCasos] (
+    [CasoID] int IDENTITY(1,1) NOT NULL,
+    [Caso] varchar(250)  NULL
+);
+GO
+
+-- Creating table 'InnovActionWFCCAprobadores'
+CREATE TABLE [dbo].[InnovActionWFCCAprobadores] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [UserID] int  NULL,
+    [CentroDeCostos] varchar(25)  NULL
+);
+GO
+
+-- Creating table 'InnovActionWFEmailAccounts'
+CREATE TABLE [dbo].[InnovActionWFEmailAccounts] (
+    [IDEmail] int IDENTITY(1,1) NOT NULL,
+    [Email] varchar(50)  NULL
+);
+GO
+
+-- Creating table 'InnovActionWFEstadoRolOwners'
+CREATE TABLE [dbo].[InnovActionWFEstadoRolOwners] (
+    [EstadoRolOwner_iD] int IDENTITY(1,1) NOT NULL,
+    [State_ID] int  NULL,
+    [Role_Id] int  NULL
+);
+GO
+
+-- Creating table 'InnovActionWFFiles'
+CREATE TABLE [dbo].[InnovActionWFFiles] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [FilePath] varchar(max)  NULL,
+    [FileName] varchar(max)  NULL,
+    [FolderGUID] uniqueidentifier  NULL
+);
+GO
+
+-- Creating table 'InnovActionWFInsts'
+CREATE TABLE [dbo].[InnovActionWFInsts] (
+    [InstanceID] int IDENTITY(1,1) NOT NULL,
+    [CasoID] int  NOT NULL,
+    [UserIDOwner] int  NOT NULL,
+    [StateCode] int  NOT NULL,
+    [FechaCreacion] datetime  NULL,
+    [FechaModificacion] datetime  NULL,
+    [InstGUID] uniqueidentifier  NULL
+);
+GO
+
+-- Creating table 'InnovActionWFInstHists'
+CREATE TABLE [dbo].[InnovActionWFInstHists] (
+    [HistoryID] int IDENTITY(1,1) NOT NULL,
+    [InstanceID] int  NOT NULL,
+    [UserIDSignedBy] int  NOT NULL,
+    [UserIDNextSigner] int  NULL,
+    [RoleIDNextSigner] int  NULL,
+    [GroupID] int  NULL,
+    [StateID] int  NOT NULL,
+    [Create_tstamp] datetime  NOT NULL,
+    [Description] varchar(max)  NULL,
+    [Remindersent] bit  NULL,
+    [Systemurl] varchar(max)  NULL,
+    [FolderGUID] uniqueidentifier  NULL,
+    [HistGuid] uniqueidentifier  NULL
+);
+GO
+
+-- Creating table 'InnovActionWFLicVariasExas'
+CREATE TABLE [dbo].[InnovActionWFLicVariasExas] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [InstanceID] int  NULL
+);
+GO
+
+-- Creating table 'InnovActionWFLicVariasFalls'
+CREATE TABLE [dbo].[InnovActionWFLicVariasFalls] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [InstanceID] int  NULL
+);
+GO
+
+-- Creating table 'InnovActionWFLicVariasMats'
+CREATE TABLE [dbo].[InnovActionWFLicVariasMats] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [InstanceID] int  NULL
+);
+GO
+
+-- Creating table 'InnovActionWFLicVariasMuds'
+CREATE TABLE [dbo].[InnovActionWFLicVariasMuds] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [InstanceID] int  NULL
+);
+GO
+
+-- Creating table 'InnovActionWFLicVariasNacs'
+CREATE TABLE [dbo].[InnovActionWFLicVariasNacs] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [InstanceID] int  NULL
+);
+GO
+
+-- Creating table 'InnovActionWFLicVariasOtros'
+CREATE TABLE [dbo].[InnovActionWFLicVariasOtros] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [InstanceID] int  NULL
+);
+GO
+
+-- Creating table 'InnovActionWFLicVariasTipoes'
+CREATE TABLE [dbo].[InnovActionWFLicVariasTipoes] (
+    [IDTipoLicencia] int IDENTITY(1,1) NOT NULL,
+    [TipoLicencia] varchar(100)  NULL
+);
+GO
+
+-- Creating table 'InnovActionWFPageDomains'
+CREATE TABLE [dbo].[InnovActionWFPageDomains] (
+    [Domain] varchar(100)  NULL,
+    [InnovActionWFPageDomainID] bigint IDENTITY(1,1) NOT NULL
+);
+GO
+
+-- Creating table 'InnovActionWFPedidoVacaciones'
+CREATE TABLE [dbo].[InnovActionWFPedidoVacaciones] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [InstanceID] int  NULL
+);
+GO
+
+-- Creating table 'InnovActionWFReintegroDeGastos'
+CREATE TABLE [dbo].[InnovActionWFReintegroDeGastos] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [InstanceID] int  NULL
+);
+GO
+
+-- Creating table 'InnovActionWFRendicionDeGastos'
+CREATE TABLE [dbo].[InnovActionWFRendicionDeGastos] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [InstanceID] int  NULL
+);
+GO
+
+-- Creating table 'InnovActionWFRoleAprobadors'
+CREATE TABLE [dbo].[InnovActionWFRoleAprobadors] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [RoleID] int  NOT NULL,
+    [CasoID] int  NOT NULL,
+    [StateCode] int  NOT NULL
+);
+GO
+
+-- Creating table 'InnovActionWFStates'
+CREATE TABLE [dbo].[InnovActionWFStates] (
+    [StateID] int IDENTITY(1,1) NOT NULL,
+    [StateCode] int  NOT NULL,
+    [StateName] varchar(50)  NOT NULL,
+    [CasoID] int  NOT NULL
+);
+GO
+
+-- Creating table 'InnovActionWFStockDias'
+CREATE TABLE [dbo].[InnovActionWFStockDias] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [UserID] int  NULL,
+    [StockDias] int  NULL
+);
+GO
+
+-- Creating table 'InnovActionWFVariables'
+CREATE TABLE [dbo].[InnovActionWFVariables] (
+    [ValueID] int IDENTITY(1,1) NOT NULL,
+    [InstanceID] int  NULL,
+    [HistoryID] int  NULL,
+    [text] varchar(max)  NULL,
+    [value] varchar(max)  NULL,
+    [timestamp] datetime  NULL
+);
+GO
+
+-- Creating table 'SAPC_AnticipoGastos'
+CREATE TABLE [dbo].[SAPC_AnticipoGastos] (
+    [AnticipoGastosID] int IDENTITY(1,1) NOT NULL,
+    [InstanceID] int  NULL,
+    [UserID] int  NOT NULL,
+    [Descripcion] varchar(1000)  NULL,
+    [FechaCreacion] datetime  NOT NULL,
+    [FechaAdelanto] datetime  NULL,
+    [Adelanto] decimal(18,2)  NULL,
+    [Saldo] decimal(18,2)  NULL,
+    [FirmaJefe] int  NULL,
+    [FirmaSegundaAprob] int  NULL,
+    [FirmaTerceraAprobCentral] int  NULL,
+    [FirmaIFContabilidad] int  NULL,
+    [FirmaTerceraAprobAdmin] int  NULL,
+    [FirmaIFAdministracion] int  NULL,
+    [AnticipoGastosGUID] varchar(36)  NULL,
+    [IsDeleted] bit  NULL,
+    [ModificadoPor] int  NULL,
+    [FechaModificacion] datetime  NOT NULL,
+    [RechazoID] int  NULL,
+    [RechazoTexto] varchar(500)  NULL,
+    [RechazadoPor] int  NULL
+);
+GO
+
+-- Creating table 'SAPC_Aprobadores'
+CREATE TABLE [dbo].[SAPC_Aprobadores] (
+    [AprobadorID] int IDENTITY(1,1) NOT NULL,
+    [UserID] int  NOT NULL,
+    [Jefe] int  NULL,
+    [SegundaAprob] int  NULL,
+    [TerceraAprobCentral] int  NULL,
+    [IFContabilidad] int  NULL,
+    [TerceraAprobAdmin] int  NULL,
+    [IFAdministracion] int  NULL
+);
+GO
+
+-- Creating table 'SAPC_BotonesWFTipos'
+CREATE TABLE [dbo].[SAPC_BotonesWFTipos] (
+    [TipoBotonID] int IDENTITY(1,1) NOT NULL,
+    [Tipo] varchar(100)  NOT NULL
+);
+GO
+
+-- Creating table 'SAPC_CeCo_UserID'
+CREATE TABLE [dbo].[SAPC_CeCo_UserID] (
+    [UsernameCeCoID] int IDENTITY(1,1) NOT NULL,
+    [UserID] int  NOT NULL,
+    [CeCoID] int  NOT NULL
+);
+GO
+
+-- Creating table 'SAPC_Credentials'
+CREATE TABLE [dbo].[SAPC_Credentials] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Name] nvarchar(max)  NOT NULL,
+    [SAPLoginName] nvarchar(max)  NOT NULL,
+    [SAPLoginPassword] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'SAPC_CuentasContables'
+CREATE TABLE [dbo].[SAPC_CuentasContables] (
+    [CuentaID] int IDENTITY(1,1) NOT NULL,
+    [Nombre] varchar(100)  NOT NULL,
+    [CodSAP] varchar(100)  NOT NULL
+);
+GO
+
+-- Creating table 'SAPC_EmailTemplates'
+CREATE TABLE [dbo].[SAPC_EmailTemplates] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [Template] varchar(max)  NULL,
+    [StateCode] int  NULL
+);
+GO
+
+-- Creating table 'SAPC_Facturas'
+CREATE TABLE [dbo].[SAPC_Facturas] (
+    [FacturaID] int IDENTITY(1,1) NOT NULL,
+    [InstanceID] int  NULL,
+    [TipoFacturaID] int  NOT NULL,
+    [Referencia] varchar(13)  NOT NULL,
+    [Fecha] datetime  NOT NULL,
+    [ProveedorID] int  NOT NULL,
+    [Concepto] varchar(2000)  NOT NULL,
+    [NetoGravado] decimal(18,2)  NULL,
+    [IVA27] decimal(18,2)  NULL,
+    [IVA21] decimal(18,2)  NULL,
+    [IVA105] decimal(18,2)  NULL,
+    [IVA5] decimal(18,2)  NULL,
+    [IVA25] decimal(18,2)  NULL,
+    [IVA0] decimal(18,2)  NULL,
+    [PerDeIVA] decimal(18,2)  NULL,
+    [PerIngresosBrutos] decimal(18,2)  NULL,
+    [NoGravados] decimal(18,2)  NULL,
+    [Total] decimal(18,2)  NOT NULL,
+    [CuentaID] int  NOT NULL,
+    [FechaContabilizacion] datetime  NOT NULL,
+    [CeCoID] int  NOT NULL,
+    [IsDeleted] bit  NOT NULL,
+    [ModificadoPor] int  NULL,
+    [FechaModificacion] datetime  NULL,
+    [StateCode] int  NULL
+);
+GO
+
+-- Creating table 'SAPC_HistFacturas'
+CREATE TABLE [dbo].[SAPC_HistFacturas] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [Referencia] varchar(13)  NOT NULL,
+    [CUIT] varchar(500)  NOT NULL,
+    [FacturaID] int  NULL
+);
+GO
+
+-- Creating table 'SAPC_JefeAprobadores'
+CREATE TABLE [dbo].[SAPC_JefeAprobadores] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [UserIDEmp] int  NOT NULL,
+    [UserIDJefe] int  NOT NULL
+);
+GO
+
+-- Creating table 'SAPC_Rechazos'
+CREATE TABLE [dbo].[SAPC_Rechazos] (
+    [RechazoID] int IDENTITY(1,1) NOT NULL,
+    [Descripcion] varchar(200)  NOT NULL
+);
+GO
+
+-- Creating table 'SAPC_ReintegroGastos'
+CREATE TABLE [dbo].[SAPC_ReintegroGastos] (
+    [ReintegroGastosID] int IDENTITY(1,1) NOT NULL,
+    [InstanceID] int  NULL,
+    [UserID] int  NOT NULL,
+    [Descripcion] varchar(1000)  NULL,
+    [FechaCreacion] datetime  NOT NULL,
+    [FechaAdelanto] datetime  NULL,
+    [Adelanto] decimal(18,2)  NULL,
+    [Saldo] decimal(18,2)  NULL,
+    [FirmaJefe] int  NULL,
+    [FirmaSegundaAprob] int  NULL,
+    [FirmaTerceraAprobCentral] int  NULL,
+    [FirmaIFContabilidad] int  NULL,
+    [FirmaTerceraAprobAdmin] int  NULL,
+    [FirmaIFAdministracion] int  NULL,
+    [ReintegroGastosGUID] varchar(36)  NULL,
+    [IsDeleted] bit  NULL,
+    [ModificadoPor] int  NULL,
+    [FechaModificacion] datetime  NOT NULL,
+    [RechazoID] int  NULL,
+    [RechazoTexto] varchar(500)  NULL,
+    [RechazadoPor] int  NULL
+);
+GO
+
+-- Creating table 'SAPC_RendicionFF'
+CREATE TABLE [dbo].[SAPC_RendicionFF] (
+    [RendicionID] int IDENTITY(1,1) NOT NULL,
+    [InstanceID] int  NULL,
+    [UserID] int  NOT NULL,
+    [FondoFijoID] int  NOT NULL,
+    [Descripcion] varchar(1000)  NULL,
+    [FechaCreacion] datetime  NOT NULL,
+    [FechaAdelanto] datetime  NULL,
+    [Adelanto] decimal(18,2)  NULL,
+    [Saldo] decimal(18,2)  NULL,
+    [FirmaJefe] int  NULL,
+    [FirmaAdministracion] int  NULL,
+    [FirmaContabilidad] int  NULL,
+    [RendicionGUID] varchar(36)  NULL,
+    [IsDeleted] bit  NULL,
+    [ModificadoPor] int  NULL,
+    [FechaModificacion] datetime  NOT NULL,
+    [RechazoID] int  NULL,
+    [RechazoTexto] varchar(500)  NULL,
+    [RechazadoPor] int  NULL
+);
+GO
+
+-- Creating table 'SAPC_RendicionG'
+CREATE TABLE [dbo].[SAPC_RendicionG] (
+    [RendicionGID] int IDENTITY(1,1) NOT NULL,
+    [InstanceID] int  NULL,
+    [UserID] int  NOT NULL,
+    [Descripcion] varchar(1000)  NULL,
+    [FechaCreacion] datetime  NOT NULL,
+    [FechaAdelanto] datetime  NULL,
+    [Adelanto] decimal(18,2)  NULL,
+    [Saldo] decimal(18,2)  NULL,
+    [FirmaJefe] int  NULL,
+    [FirmaSegundaAprob] int  NULL,
+    [FirmaTerceraAprobCentral] int  NULL,
+    [FirmaIFContabilidad] int  NULL,
+    [FirmaTerceraAprobAdmin] int  NULL,
+    [FirmaIFAdministracion] int  NULL,
+    [RendicionGGUID] varchar(36)  NULL,
+    [IsDeleted] bit  NULL,
+    [ModificadoPor] int  NULL,
+    [FechaModificacion] datetime  NOT NULL,
+    [RechazoID] int  NULL,
+    [RechazoTexto] varchar(500)  NULL,
+    [RechazadoPor] int  NULL
+);
+GO
+
+-- Creating table 'SAPC_RendicionGastosSAPC_SAPRPCCall1'
+CREATE TABLE [dbo].[SAPC_RendicionGastosSAPC_SAPRPCCall1] (
+    [RendicionesGastos_Id] int  NOT NULL,
+    [SAPRPCCall_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'SAPC_TipoFacturas'
+CREATE TABLE [dbo].[SAPC_TipoFacturas] (
+    [TipoFacturaID] int IDENTITY(1,1) NOT NULL,
+    [Nombre] varchar(50)  NOT NULL,
+    [CodSAP] varchar(50)  NOT NULL
+);
+GO
+
+-- Creating table 'SAPC_BotonesWF'
+CREATE TABLE [dbo].[SAPC_BotonesWF] (
+    [BotonID] int IDENTITY(1,1) NOT NULL,
+    [CasoID] int  NOT NULL,
+    [Color] varchar(50)  NULL,
+    [Accion] varchar(150)  NULL,
+    [Texto] varchar(50)  NOT NULL,
+    [FontAwesome] varchar(50)  NULL,
+    [Estilo] varchar(150)  NULL,
+    [TipoBotonID] int  NULL
+);
+GO
+
 -- Creating table 'SAPC_SAPRPCCallSAPC_Comprobantes'
 CREATE TABLE [dbo].[SAPC_SAPRPCCallSAPC_Comprobantes] (
     [RPCCalls_Id] int  NOT NULL,
@@ -472,13 +1128,20 @@ CREATE TABLE [dbo].[SAPC_SAPRPCCallSAPC_Comprobantes] (
 );
 GO
 
+-- Creating table 'SAPC_AdelantosSAPC_SAPRPCCall1'
+CREATE TABLE [dbo].[SAPC_AdelantosSAPC_SAPRPCCall1] (
+    [SAPC_Adelantos_Id] int  NOT NULL,
+    [SAPC_SAPRPCCall_Id] int  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
 
--- Creating primary key on [Id] in table 'SAPC_RendicionABC'
-ALTER TABLE [dbo].[SAPC_RendicionABC]
-ADD CONSTRAINT [PK_SAPC_RendicionABC]
+-- Creating primary key on [Id] in table 'SAPC_Rendicion'
+ALTER TABLE [dbo].[SAPC_Rendicion]
+ADD CONSTRAINT [PK_SAPC_Rendicion]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -584,9 +1247,9 @@ ADD CONSTRAINT [PK_SAPC_Poblaciones]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'SAPC_Comprobantes'
-ALTER TABLE [dbo].[SAPC_Comprobantes]
-ADD CONSTRAINT [PK_SAPC_Comprobantes]
+-- Creating primary key on [Id] in table 'SAPC_Comprobante'
+ALTER TABLE [dbo].[SAPC_Comprobante]
+ADD CONSTRAINT [PK_SAPC_Comprobante]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -596,18 +1259,282 @@ ADD CONSTRAINT [PK_SAPC_InputacionesComprobantes]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
+-- Creating primary key on [AccionEstado_ID] in table 'InnovActionWFAccionEstadoes'
+ALTER TABLE [dbo].[InnovActionWFAccionEstadoes]
+ADD CONSTRAINT [PK_InnovActionWFAccionEstadoes]
+    PRIMARY KEY CLUSTERED ([AccionEstado_ID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'InnovActionWFAnticipoDeGastos'
+ALTER TABLE [dbo].[InnovActionWFAnticipoDeGastos]
+ADD CONSTRAINT [PK_InnovActionWFAnticipoDeGastos]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [IDRelationship] in table 'InnovActionWFAntiRendRelationships'
+ALTER TABLE [dbo].[InnovActionWFAntiRendRelationships]
+ADD CONSTRAINT [PK_InnovActionWFAntiRendRelationships]
+    PRIMARY KEY CLUSTERED ([IDRelationship] ASC);
+GO
+
+-- Creating primary key on [IdAprobador] in table 'InnovActionWFAprobadores'
+ALTER TABLE [dbo].[InnovActionWFAprobadores]
+ADD CONSTRAINT [PK_InnovActionWFAprobadores]
+    PRIMARY KEY CLUSTERED ([IdAprobador] ASC);
+GO
+
+-- Creating primary key on [CasoID] in table 'InnovActionWFCasos'
+ALTER TABLE [dbo].[InnovActionWFCasos]
+ADD CONSTRAINT [PK_InnovActionWFCasos]
+    PRIMARY KEY CLUSTERED ([CasoID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'InnovActionWFCCAprobadores'
+ALTER TABLE [dbo].[InnovActionWFCCAprobadores]
+ADD CONSTRAINT [PK_InnovActionWFCCAprobadores]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [IDEmail] in table 'InnovActionWFEmailAccounts'
+ALTER TABLE [dbo].[InnovActionWFEmailAccounts]
+ADD CONSTRAINT [PK_InnovActionWFEmailAccounts]
+    PRIMARY KEY CLUSTERED ([IDEmail] ASC);
+GO
+
+-- Creating primary key on [EstadoRolOwner_iD] in table 'InnovActionWFEstadoRolOwners'
+ALTER TABLE [dbo].[InnovActionWFEstadoRolOwners]
+ADD CONSTRAINT [PK_InnovActionWFEstadoRolOwners]
+    PRIMARY KEY CLUSTERED ([EstadoRolOwner_iD] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'InnovActionWFFiles'
+ALTER TABLE [dbo].[InnovActionWFFiles]
+ADD CONSTRAINT [PK_InnovActionWFFiles]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [InstanceID] in table 'InnovActionWFInsts'
+ALTER TABLE [dbo].[InnovActionWFInsts]
+ADD CONSTRAINT [PK_InnovActionWFInsts]
+    PRIMARY KEY CLUSTERED ([InstanceID] ASC);
+GO
+
+-- Creating primary key on [HistoryID] in table 'InnovActionWFInstHists'
+ALTER TABLE [dbo].[InnovActionWFInstHists]
+ADD CONSTRAINT [PK_InnovActionWFInstHists]
+    PRIMARY KEY CLUSTERED ([HistoryID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'InnovActionWFLicVariasExas'
+ALTER TABLE [dbo].[InnovActionWFLicVariasExas]
+ADD CONSTRAINT [PK_InnovActionWFLicVariasExas]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'InnovActionWFLicVariasFalls'
+ALTER TABLE [dbo].[InnovActionWFLicVariasFalls]
+ADD CONSTRAINT [PK_InnovActionWFLicVariasFalls]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'InnovActionWFLicVariasMats'
+ALTER TABLE [dbo].[InnovActionWFLicVariasMats]
+ADD CONSTRAINT [PK_InnovActionWFLicVariasMats]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'InnovActionWFLicVariasMuds'
+ALTER TABLE [dbo].[InnovActionWFLicVariasMuds]
+ADD CONSTRAINT [PK_InnovActionWFLicVariasMuds]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'InnovActionWFLicVariasNacs'
+ALTER TABLE [dbo].[InnovActionWFLicVariasNacs]
+ADD CONSTRAINT [PK_InnovActionWFLicVariasNacs]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'InnovActionWFLicVariasOtros'
+ALTER TABLE [dbo].[InnovActionWFLicVariasOtros]
+ADD CONSTRAINT [PK_InnovActionWFLicVariasOtros]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [IDTipoLicencia] in table 'InnovActionWFLicVariasTipoes'
+ALTER TABLE [dbo].[InnovActionWFLicVariasTipoes]
+ADD CONSTRAINT [PK_InnovActionWFLicVariasTipoes]
+    PRIMARY KEY CLUSTERED ([IDTipoLicencia] ASC);
+GO
+
+-- Creating primary key on [InnovActionWFPageDomainID] in table 'InnovActionWFPageDomains'
+ALTER TABLE [dbo].[InnovActionWFPageDomains]
+ADD CONSTRAINT [PK_InnovActionWFPageDomains]
+    PRIMARY KEY CLUSTERED ([InnovActionWFPageDomainID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'InnovActionWFPedidoVacaciones'
+ALTER TABLE [dbo].[InnovActionWFPedidoVacaciones]
+ADD CONSTRAINT [PK_InnovActionWFPedidoVacaciones]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'InnovActionWFReintegroDeGastos'
+ALTER TABLE [dbo].[InnovActionWFReintegroDeGastos]
+ADD CONSTRAINT [PK_InnovActionWFReintegroDeGastos]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'InnovActionWFRendicionDeGastos'
+ALTER TABLE [dbo].[InnovActionWFRendicionDeGastos]
+ADD CONSTRAINT [PK_InnovActionWFRendicionDeGastos]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'InnovActionWFRoleAprobadors'
+ALTER TABLE [dbo].[InnovActionWFRoleAprobadors]
+ADD CONSTRAINT [PK_InnovActionWFRoleAprobadors]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [StateID] in table 'InnovActionWFStates'
+ALTER TABLE [dbo].[InnovActionWFStates]
+ADD CONSTRAINT [PK_InnovActionWFStates]
+    PRIMARY KEY CLUSTERED ([StateID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'InnovActionWFStockDias'
+ALTER TABLE [dbo].[InnovActionWFStockDias]
+ADD CONSTRAINT [PK_InnovActionWFStockDias]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [ValueID] in table 'InnovActionWFVariables'
+ALTER TABLE [dbo].[InnovActionWFVariables]
+ADD CONSTRAINT [PK_InnovActionWFVariables]
+    PRIMARY KEY CLUSTERED ([ValueID] ASC);
+GO
+
+-- Creating primary key on [AnticipoGastosID] in table 'SAPC_AnticipoGastos'
+ALTER TABLE [dbo].[SAPC_AnticipoGastos]
+ADD CONSTRAINT [PK_SAPC_AnticipoGastos]
+    PRIMARY KEY CLUSTERED ([AnticipoGastosID] ASC);
+GO
+
+-- Creating primary key on [AprobadorID] in table 'SAPC_Aprobadores'
+ALTER TABLE [dbo].[SAPC_Aprobadores]
+ADD CONSTRAINT [PK_SAPC_Aprobadores]
+    PRIMARY KEY CLUSTERED ([AprobadorID] ASC);
+GO
+
+-- Creating primary key on [TipoBotonID] in table 'SAPC_BotonesWFTipos'
+ALTER TABLE [dbo].[SAPC_BotonesWFTipos]
+ADD CONSTRAINT [PK_SAPC_BotonesWFTipos]
+    PRIMARY KEY CLUSTERED ([TipoBotonID] ASC);
+GO
+
+-- Creating primary key on [UsernameCeCoID] in table 'SAPC_CeCo_UserID'
+ALTER TABLE [dbo].[SAPC_CeCo_UserID]
+ADD CONSTRAINT [PK_SAPC_CeCo_UserID]
+    PRIMARY KEY CLUSTERED ([UsernameCeCoID] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'SAPC_Credentials'
+ALTER TABLE [dbo].[SAPC_Credentials]
+ADD CONSTRAINT [PK_SAPC_Credentials]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [CuentaID] in table 'SAPC_CuentasContables'
+ALTER TABLE [dbo].[SAPC_CuentasContables]
+ADD CONSTRAINT [PK_SAPC_CuentasContables]
+    PRIMARY KEY CLUSTERED ([CuentaID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'SAPC_EmailTemplates'
+ALTER TABLE [dbo].[SAPC_EmailTemplates]
+ADD CONSTRAINT [PK_SAPC_EmailTemplates]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [FacturaID] in table 'SAPC_Facturas'
+ALTER TABLE [dbo].[SAPC_Facturas]
+ADD CONSTRAINT [PK_SAPC_Facturas]
+    PRIMARY KEY CLUSTERED ([FacturaID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'SAPC_HistFacturas'
+ALTER TABLE [dbo].[SAPC_HistFacturas]
+ADD CONSTRAINT [PK_SAPC_HistFacturas]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'SAPC_JefeAprobadores'
+ALTER TABLE [dbo].[SAPC_JefeAprobadores]
+ADD CONSTRAINT [PK_SAPC_JefeAprobadores]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [RechazoID] in table 'SAPC_Rechazos'
+ALTER TABLE [dbo].[SAPC_Rechazos]
+ADD CONSTRAINT [PK_SAPC_Rechazos]
+    PRIMARY KEY CLUSTERED ([RechazoID] ASC);
+GO
+
+-- Creating primary key on [ReintegroGastosID] in table 'SAPC_ReintegroGastos'
+ALTER TABLE [dbo].[SAPC_ReintegroGastos]
+ADD CONSTRAINT [PK_SAPC_ReintegroGastos]
+    PRIMARY KEY CLUSTERED ([ReintegroGastosID] ASC);
+GO
+
+-- Creating primary key on [RendicionID] in table 'SAPC_RendicionFF'
+ALTER TABLE [dbo].[SAPC_RendicionFF]
+ADD CONSTRAINT [PK_SAPC_RendicionFF]
+    PRIMARY KEY CLUSTERED ([RendicionID] ASC);
+GO
+
+-- Creating primary key on [RendicionGID] in table 'SAPC_RendicionG'
+ALTER TABLE [dbo].[SAPC_RendicionG]
+ADD CONSTRAINT [PK_SAPC_RendicionG]
+    PRIMARY KEY CLUSTERED ([RendicionGID] ASC);
+GO
+
+-- Creating primary key on [RendicionesGastos_Id], [SAPRPCCall_Id] in table 'SAPC_RendicionGastosSAPC_SAPRPCCall1'
+ALTER TABLE [dbo].[SAPC_RendicionGastosSAPC_SAPRPCCall1]
+ADD CONSTRAINT [PK_SAPC_RendicionGastosSAPC_SAPRPCCall1]
+    PRIMARY KEY CLUSTERED ([RendicionesGastos_Id], [SAPRPCCall_Id] ASC);
+GO
+
+-- Creating primary key on [TipoFacturaID] in table 'SAPC_TipoFacturas'
+ALTER TABLE [dbo].[SAPC_TipoFacturas]
+ADD CONSTRAINT [PK_SAPC_TipoFacturas]
+    PRIMARY KEY CLUSTERED ([TipoFacturaID] ASC);
+GO
+
+-- Creating primary key on [BotonID], [CasoID], [Texto] in table 'SAPC_BotonesWF'
+ALTER TABLE [dbo].[SAPC_BotonesWF]
+ADD CONSTRAINT [PK_SAPC_BotonesWF]
+    PRIMARY KEY CLUSTERED ([BotonID], [CasoID], [Texto] ASC);
+GO
+
 -- Creating primary key on [RPCCalls_Id], [Comprobantes_Id] in table 'SAPC_SAPRPCCallSAPC_Comprobantes'
 ALTER TABLE [dbo].[SAPC_SAPRPCCallSAPC_Comprobantes]
 ADD CONSTRAINT [PK_SAPC_SAPRPCCallSAPC_Comprobantes]
     PRIMARY KEY CLUSTERED ([RPCCalls_Id], [Comprobantes_Id] ASC);
 GO
 
+-- Creating primary key on [SAPC_Adelantos_Id], [SAPC_SAPRPCCall_Id] in table 'SAPC_AdelantosSAPC_SAPRPCCall1'
+ALTER TABLE [dbo].[SAPC_AdelantosSAPC_SAPRPCCall1]
+ADD CONSTRAINT [PK_SAPC_AdelantosSAPC_SAPRPCCall1]
+    PRIMARY KEY CLUSTERED ([SAPC_Adelantos_Id], [SAPC_SAPRPCCall_Id] ASC);
+GO
+
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [FondoFijo_Id] in table 'SAPC_RendicionABC'
-ALTER TABLE [dbo].[SAPC_RendicionABC]
+-- Creating foreign key on [FondoFijo_Id] in table 'SAPC_Rendicion'
+ALTER TABLE [dbo].[SAPC_Rendicion]
 ADD CONSTRAINT [FK_FondoFijoRendicionGastos]
     FOREIGN KEY ([FondoFijo_Id])
     REFERENCES [dbo].[SAPC_FondoFijo]
@@ -617,7 +1544,7 @@ GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_FondoFijoRendicionGastos'
 CREATE INDEX [IX_FK_FondoFijoRendicionGastos]
-ON [dbo].[SAPC_RendicionABC]
+ON [dbo].[SAPC_Rendicion]
     ([FondoFijo_Id]);
 GO
 
@@ -713,21 +1640,21 @@ GO
 
 -- Creating foreign key on [RendicionGastos_Id] in table 'SAPC_SAPRPCCall'
 ALTER TABLE [dbo].[SAPC_SAPRPCCall]
-ADD CONSTRAINT [FK_SAPC_RendicionGastosSAPC_SAPRPCCall]
+ADD CONSTRAINT [FK_SAPC_RendicionSAPC_SAPRPCCall]
     FOREIGN KEY ([RendicionGastos_Id])
-    REFERENCES [dbo].[SAPC_RendicionABC]
+    REFERENCES [dbo].[SAPC_Rendicion]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_RendicionGastosSAPC_SAPRPCCall'
-CREATE INDEX [IX_FK_SAPC_RendicionGastosSAPC_SAPRPCCall]
+-- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_RendicionSAPC_SAPRPCCall'
+CREATE INDEX [IX_FK_SAPC_RendicionSAPC_SAPRPCCall]
 ON [dbo].[SAPC_SAPRPCCall]
     ([RendicionGastos_Id]);
 GO
 
--- Creating foreign key on [Estado_Id] in table 'SAPC_RendicionABC'
-ALTER TABLE [dbo].[SAPC_RendicionABC]
+-- Creating foreign key on [Estado_Id] in table 'SAPC_Rendicion'
+ALTER TABLE [dbo].[SAPC_Rendicion]
 ADD CONSTRAINT [FK_SAPC_EstadosSAPC_RendicionGastos]
     FOREIGN KEY ([Estado_Id])
     REFERENCES [dbo].[SAPC_Estados]
@@ -737,15 +1664,15 @@ GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_EstadosSAPC_RendicionGastos'
 CREATE INDEX [IX_FK_SAPC_EstadosSAPC_RendicionGastos]
-ON [dbo].[SAPC_RendicionABC]
+ON [dbo].[SAPC_Rendicion]
     ([Estado_Id]);
 GO
 
--- Creating foreign key on [RendicionGastos_Id] in table 'SAPC_FacturaProveedor'
+-- Creating foreign key on [Rendicion_Id] in table 'SAPC_FacturaProveedor'
 ALTER TABLE [dbo].[SAPC_FacturaProveedor]
 ADD CONSTRAINT [FK_SAPC_RendicionGastosSAPC_FacturaProveedor]
-    FOREIGN KEY ([RendicionGastos_Id])
-    REFERENCES [dbo].[SAPC_RendicionABC]
+    FOREIGN KEY ([Rendicion_Id])
+    REFERENCES [dbo].[SAPC_Rendicion]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
@@ -753,7 +1680,7 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_RendicionGastosSAPC_FacturaProveedor'
 CREATE INDEX [IX_FK_SAPC_RendicionGastosSAPC_FacturaProveedor]
 ON [dbo].[SAPC_FacturaProveedor]
-    ([RendicionGastos_Id]);
+    ([Rendicion_Id]);
 GO
 
 -- Creating foreign key on [Estado_Id] in table 'SAPC_Adelantos'
@@ -816,8 +1743,8 @@ ON [dbo].[SAPC_InputacionesFacturas]
     ([InputacionesSAPC_FacturaProveedor_Percepciones_Id]);
 GO
 
--- Creating foreign key on [RendidoPor_Id] in table 'SAPC_RendicionABC'
-ALTER TABLE [dbo].[SAPC_RendicionABC]
+-- Creating foreign key on [RendidoPor_Id] in table 'SAPC_Rendicion'
+ALTER TABLE [dbo].[SAPC_Rendicion]
 ADD CONSTRAINT [FK_SAPC_EmpleadoSAPC_RendicionABC]
     FOREIGN KEY ([RendidoPor_Id])
     REFERENCES [dbo].[SAPC_Empleado]
@@ -827,7 +1754,7 @@ GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_EmpleadoSAPC_RendicionABC'
 CREATE INDEX [IX_FK_SAPC_EmpleadoSAPC_RendicionABC]
-ON [dbo].[SAPC_RendicionABC]
+ON [dbo].[SAPC_Rendicion]
     ([RendidoPor_Id]);
 GO
 
@@ -996,8 +1923,8 @@ ON [dbo].[SAPC_Proveedores]
     ([Poblacion_Id]);
 GO
 
--- Creating foreign key on [ClaseDoc_Id] in table 'SAPC_Comprobantes'
-ALTER TABLE [dbo].[SAPC_Comprobantes]
+-- Creating foreign key on [ClaseDoc_Id] in table 'SAPC_Comprobante'
+ALTER TABLE [dbo].[SAPC_Comprobante]
 ADD CONSTRAINT [FK_SAPC_ClaseDocSAPC_Comprobantes]
     FOREIGN KEY ([ClaseDoc_Id])
     REFERENCES [dbo].[SAPC_ClaseDoc]
@@ -1007,12 +1934,12 @@ GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_ClaseDocSAPC_Comprobantes'
 CREATE INDEX [IX_FK_SAPC_ClaseDocSAPC_Comprobantes]
-ON [dbo].[SAPC_Comprobantes]
+ON [dbo].[SAPC_Comprobante]
     ([ClaseDoc_Id]);
 GO
 
--- Creating foreign key on [Sociedad_Id] in table 'SAPC_Comprobantes'
-ALTER TABLE [dbo].[SAPC_Comprobantes]
+-- Creating foreign key on [Sociedad_Id] in table 'SAPC_Comprobante'
+ALTER TABLE [dbo].[SAPC_Comprobante]
 ADD CONSTRAINT [FK_SAPC_SociedadesSAPC_Comprobantes]
     FOREIGN KEY ([Sociedad_Id])
     REFERENCES [dbo].[SAPC_Sociedades]
@@ -1022,12 +1949,12 @@ GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_SociedadesSAPC_Comprobantes'
 CREATE INDEX [IX_FK_SAPC_SociedadesSAPC_Comprobantes]
-ON [dbo].[SAPC_Comprobantes]
+ON [dbo].[SAPC_Comprobante]
     ([Sociedad_Id]);
 GO
 
--- Creating foreign key on [Moneda_Id] in table 'SAPC_Comprobantes'
-ALTER TABLE [dbo].[SAPC_Comprobantes]
+-- Creating foreign key on [Moneda_Id] in table 'SAPC_Comprobante'
+ALTER TABLE [dbo].[SAPC_Comprobante]
 ADD CONSTRAINT [FK_SAPC_MonedasSAPC_Comprobantes]
     FOREIGN KEY ([Moneda_Id])
     REFERENCES [dbo].[SAPC_Monedas]
@@ -1037,7 +1964,7 @@ GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_MonedasSAPC_Comprobantes'
 CREATE INDEX [IX_FK_SAPC_MonedasSAPC_Comprobantes]
-ON [dbo].[SAPC_Comprobantes]
+ON [dbo].[SAPC_Comprobante]
     ([Moneda_Id]);
 GO
 
@@ -1045,7 +1972,7 @@ GO
 ALTER TABLE [dbo].[SAPC_InputacionesComprobantes]
 ADD CONSTRAINT [FK_SAPC_ComprobantesSAPC_InputacionesComprobantes]
     FOREIGN KEY ([Comprobante_Id])
-    REFERENCES [dbo].[SAPC_Comprobantes]
+    REFERENCES [dbo].[SAPC_Comprobante]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
@@ -1056,23 +1983,8 @@ ON [dbo].[SAPC_InputacionesComprobantes]
     ([Comprobante_Id]);
 GO
 
--- Creating foreign key on [FondoFijo_Id] in table 'SAPC_Comprobantes'
-ALTER TABLE [dbo].[SAPC_Comprobantes]
-ADD CONSTRAINT [FK_SAPC_FondoFijoSAPC_Comprobantes]
-    FOREIGN KEY ([FondoFijo_Id])
-    REFERENCES [dbo].[SAPC_FondoFijo]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_FondoFijoSAPC_Comprobantes'
-CREATE INDEX [IX_FK_SAPC_FondoFijoSAPC_Comprobantes]
-ON [dbo].[SAPC_Comprobantes]
-    ([FondoFijo_Id]);
-GO
-
--- Creating foreign key on [Empleado_Id] in table 'SAPC_Comprobantes'
-ALTER TABLE [dbo].[SAPC_Comprobantes]
+-- Creating foreign key on [Empleado_Id] in table 'SAPC_Comprobante'
+ALTER TABLE [dbo].[SAPC_Comprobante]
 ADD CONSTRAINT [FK_SAPC_EmpleadoSAPC_Comprobantes]
     FOREIGN KEY ([Empleado_Id])
     REFERENCES [dbo].[SAPC_Empleado]
@@ -1082,7 +1994,7 @@ GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_EmpleadoSAPC_Comprobantes'
 CREATE INDEX [IX_FK_SAPC_EmpleadoSAPC_Comprobantes]
-ON [dbo].[SAPC_Comprobantes]
+ON [dbo].[SAPC_Comprobante]
     ([Empleado_Id]);
 GO
 
@@ -1099,7 +2011,7 @@ GO
 ALTER TABLE [dbo].[SAPC_SAPRPCCallSAPC_Comprobantes]
 ADD CONSTRAINT [FK_SAPC_SAPRPCCallSAPC_Comprobantes_SAPC_Comprobantes]
     FOREIGN KEY ([Comprobantes_Id])
-    REFERENCES [dbo].[SAPC_Comprobantes]
+    REFERENCES [dbo].[SAPC_Comprobante]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
@@ -1125,8 +2037,8 @@ ON [dbo].[SAPC_InputacionesComprobantes]
     ([CECO_Id]);
 GO
 
--- Creating foreign key on [Estado_Id] in table 'SAPC_Comprobantes'
-ALTER TABLE [dbo].[SAPC_Comprobantes]
+-- Creating foreign key on [Estado_Id] in table 'SAPC_Comprobante'
+ALTER TABLE [dbo].[SAPC_Comprobante]
 ADD CONSTRAINT [FK_SAPC_EstadosSAPC_Comprobantes]
     FOREIGN KEY ([Estado_Id])
     REFERENCES [dbo].[SAPC_Estados]
@@ -1136,7 +2048,7 @@ GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_EstadosSAPC_Comprobantes'
 CREATE INDEX [IX_FK_SAPC_EstadosSAPC_Comprobantes]
-ON [dbo].[SAPC_Comprobantes]
+ON [dbo].[SAPC_Comprobante]
     ([Estado_Id]);
 GO
 
@@ -1198,6 +2110,312 @@ GO
 CREATE INDEX [IX_FK_SAPC_EmpleadoSAPC_FacturaProveedor]
 ON [dbo].[SAPC_FacturaProveedor]
     ([SAPC_Empleado_Id]);
+GO
+
+-- Creating foreign key on [CasoID] in table 'InnovActionWFAccionEstadoes'
+ALTER TABLE [dbo].[InnovActionWFAccionEstadoes]
+ADD CONSTRAINT [FK_InnovActionWFAccionEstado_InnovACtionWFCasos]
+    FOREIGN KEY ([CasoID])
+    REFERENCES [dbo].[InnovActionWFCasos]
+        ([CasoID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_InnovActionWFAccionEstado_InnovACtionWFCasos'
+CREATE INDEX [IX_FK_InnovActionWFAccionEstado_InnovACtionWFCasos]
+ON [dbo].[InnovActionWFAccionEstadoes]
+    ([CasoID]);
+GO
+
+-- Creating foreign key on [CasoID] in table 'InnovActionWFCasos'
+ALTER TABLE [dbo].[InnovActionWFCasos]
+ADD CONSTRAINT [FK_InnovACtionWFCasos_InnovACtionWFCasos]
+    FOREIGN KEY ([CasoID])
+    REFERENCES [dbo].[InnovActionWFCasos]
+        ([CasoID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [CasoID] in table 'InnovActionWFInsts'
+ALTER TABLE [dbo].[InnovActionWFInsts]
+ADD CONSTRAINT [FK_InnovActionWFInst_InnovActionWFCasos]
+    FOREIGN KEY ([CasoID])
+    REFERENCES [dbo].[InnovActionWFCasos]
+        ([CasoID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_InnovActionWFInst_InnovActionWFCasos'
+CREATE INDEX [IX_FK_InnovActionWFInst_InnovActionWFCasos]
+ON [dbo].[InnovActionWFInsts]
+    ([CasoID]);
+GO
+
+-- Creating foreign key on [CasoID] in table 'InnovActionWFRoleAprobadors'
+ALTER TABLE [dbo].[InnovActionWFRoleAprobadors]
+ADD CONSTRAINT [FK_InnovActionWFRoleAprobador_InnovActionWFCasos]
+    FOREIGN KEY ([CasoID])
+    REFERENCES [dbo].[InnovActionWFCasos]
+        ([CasoID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_InnovActionWFRoleAprobador_InnovActionWFCasos'
+CREATE INDEX [IX_FK_InnovActionWFRoleAprobador_InnovActionWFCasos]
+ON [dbo].[InnovActionWFRoleAprobadors]
+    ([CasoID]);
+GO
+
+-- Creating foreign key on [CasoID] in table 'SAPC_BotonesWF'
+ALTER TABLE [dbo].[SAPC_BotonesWF]
+ADD CONSTRAINT [FK_SAPC_BotonesWF_InnovActionWFCasos]
+    FOREIGN KEY ([CasoID])
+    REFERENCES [dbo].[InnovActionWFCasos]
+        ([CasoID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_BotonesWF_InnovActionWFCasos'
+CREATE INDEX [IX_FK_SAPC_BotonesWF_InnovActionWFCasos]
+ON [dbo].[SAPC_BotonesWF]
+    ([CasoID]);
+GO
+
+-- Creating foreign key on [InstanceID] in table 'InnovActionWFInsts'
+ALTER TABLE [dbo].[InnovActionWFInsts]
+ADD CONSTRAINT [FK_InnovActionWFInst_InnovActionWFInst]
+    FOREIGN KEY ([InstanceID])
+    REFERENCES [dbo].[InnovActionWFInsts]
+        ([InstanceID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [InstanceID] in table 'InnovActionWFInstHists'
+ALTER TABLE [dbo].[InnovActionWFInstHists]
+ADD CONSTRAINT [FK_InnovActionWFInstHist_InnovActionWFInst]
+    FOREIGN KEY ([InstanceID])
+    REFERENCES [dbo].[InnovActionWFInsts]
+        ([InstanceID])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_InnovActionWFInstHist_InnovActionWFInst'
+CREATE INDEX [IX_FK_InnovActionWFInstHist_InnovActionWFInst]
+ON [dbo].[InnovActionWFInstHists]
+    ([InstanceID]);
+GO
+
+-- Creating foreign key on [InstanceID] in table 'InnovActionWFVariables'
+ALTER TABLE [dbo].[InnovActionWFVariables]
+ADD CONSTRAINT [FK_InnovActionWFVariables_InnovActionWFInst]
+    FOREIGN KEY ([InstanceID])
+    REFERENCES [dbo].[InnovActionWFInsts]
+        ([InstanceID])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_InnovActionWFVariables_InnovActionWFInst'
+CREATE INDEX [IX_FK_InnovActionWFVariables_InnovActionWFInst]
+ON [dbo].[InnovActionWFVariables]
+    ([InstanceID]);
+GO
+
+-- Creating foreign key on [HistoryID] in table 'InnovActionWFVariables'
+ALTER TABLE [dbo].[InnovActionWFVariables]
+ADD CONSTRAINT [FK_InnovActionWFVariables_InnovActionWFInstHist]
+    FOREIGN KEY ([HistoryID])
+    REFERENCES [dbo].[InnovActionWFInstHists]
+        ([HistoryID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_InnovActionWFVariables_InnovActionWFInstHist'
+CREATE INDEX [IX_FK_InnovActionWFVariables_InnovActionWFInstHist]
+ON [dbo].[InnovActionWFVariables]
+    ([HistoryID]);
+GO
+
+-- Creating foreign key on [RechazoID] in table 'SAPC_AnticipoGastos'
+ALTER TABLE [dbo].[SAPC_AnticipoGastos]
+ADD CONSTRAINT [FK_SAPC_AnticipoGastos_SAPC_Rechazos]
+    FOREIGN KEY ([RechazoID])
+    REFERENCES [dbo].[SAPC_Rechazos]
+        ([RechazoID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_AnticipoGastos_SAPC_Rechazos'
+CREATE INDEX [IX_FK_SAPC_AnticipoGastos_SAPC_Rechazos]
+ON [dbo].[SAPC_AnticipoGastos]
+    ([RechazoID]);
+GO
+
+-- Creating foreign key on [TipoBotonID] in table 'SAPC_BotonesWF'
+ALTER TABLE [dbo].[SAPC_BotonesWF]
+ADD CONSTRAINT [FK_SAPC_BotonesWF_SAPC_BotonesWFTipos]
+    FOREIGN KEY ([TipoBotonID])
+    REFERENCES [dbo].[SAPC_BotonesWFTipos]
+        ([TipoBotonID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_BotonesWF_SAPC_BotonesWFTipos'
+CREATE INDEX [IX_FK_SAPC_BotonesWF_SAPC_BotonesWFTipos]
+ON [dbo].[SAPC_BotonesWF]
+    ([TipoBotonID]);
+GO
+
+-- Creating foreign key on [UsernameCeCoID] in table 'SAPC_CeCo_UserID'
+ALTER TABLE [dbo].[SAPC_CeCo_UserID]
+ADD CONSTRAINT [FK_SAPC_CeCo_Username_SAPC_CeCo_Username]
+    FOREIGN KEY ([UsernameCeCoID])
+    REFERENCES [dbo].[SAPC_CeCo_UserID]
+        ([UsernameCeCoID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [Credentials_Id] in table 'SAPC_FondoFijo'
+ALTER TABLE [dbo].[SAPC_FondoFijo]
+ADD CONSTRAINT [FK_SAPC_CredentialsSAPC_FondoFijo]
+    FOREIGN KEY ([Credentials_Id])
+    REFERENCES [dbo].[SAPC_Credentials]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_CredentialsSAPC_FondoFijo'
+CREATE INDEX [IX_FK_SAPC_CredentialsSAPC_FondoFijo]
+ON [dbo].[SAPC_FondoFijo]
+    ([Credentials_Id]);
+GO
+
+-- Creating foreign key on [FacturaID] in table 'SAPC_HistFacturas'
+ALTER TABLE [dbo].[SAPC_HistFacturas]
+ADD CONSTRAINT [FK_SAPC_HistFacturas_SAPC_FacturaRendicion]
+    FOREIGN KEY ([FacturaID])
+    REFERENCES [dbo].[SAPC_Facturas]
+        ([FacturaID])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_HistFacturas_SAPC_FacturaRendicion'
+CREATE INDEX [IX_FK_SAPC_HistFacturas_SAPC_FacturaRendicion]
+ON [dbo].[SAPC_HistFacturas]
+    ([FacturaID]);
+GO
+
+-- Creating foreign key on [FondoFijoID] in table 'SAPC_RendicionFF'
+ALTER TABLE [dbo].[SAPC_RendicionFF]
+ADD CONSTRAINT [FK_SAPC_RendicionGastos_SAPC_FondoFijo]
+    FOREIGN KEY ([FondoFijoID])
+    REFERENCES [dbo].[SAPC_FondoFijo]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_RendicionGastos_SAPC_FondoFijo'
+CREATE INDEX [IX_FK_SAPC_RendicionGastos_SAPC_FondoFijo]
+ON [dbo].[SAPC_RendicionFF]
+    ([FondoFijoID]);
+GO
+
+-- Creating foreign key on [RechazoID] in table 'SAPC_ReintegroGastos'
+ALTER TABLE [dbo].[SAPC_ReintegroGastos]
+ADD CONSTRAINT [FK_SAPC_ReintegroGastos_SAPC_Rechazos]
+    FOREIGN KEY ([RechazoID])
+    REFERENCES [dbo].[SAPC_Rechazos]
+        ([RechazoID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_ReintegroGastos_SAPC_Rechazos'
+CREATE INDEX [IX_FK_SAPC_ReintegroGastos_SAPC_Rechazos]
+ON [dbo].[SAPC_ReintegroGastos]
+    ([RechazoID]);
+GO
+
+-- Creating foreign key on [RechazoID] in table 'SAPC_RendicionG'
+ALTER TABLE [dbo].[SAPC_RendicionG]
+ADD CONSTRAINT [FK_SAPC_RendicionG_SAPC_Rechazos]
+    FOREIGN KEY ([RechazoID])
+    REFERENCES [dbo].[SAPC_Rechazos]
+        ([RechazoID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_RendicionG_SAPC_Rechazos'
+CREATE INDEX [IX_FK_SAPC_RendicionG_SAPC_Rechazos]
+ON [dbo].[SAPC_RendicionG]
+    ([RechazoID]);
+GO
+
+-- Creating foreign key on [RechazoID] in table 'SAPC_RendicionFF'
+ALTER TABLE [dbo].[SAPC_RendicionFF]
+ADD CONSTRAINT [FK_SAPC_RendicionGastos_SAPC_Rechazos]
+    FOREIGN KEY ([RechazoID])
+    REFERENCES [dbo].[SAPC_Rechazos]
+        ([RechazoID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_RendicionGastos_SAPC_Rechazos'
+CREATE INDEX [IX_FK_SAPC_RendicionGastos_SAPC_Rechazos]
+ON [dbo].[SAPC_RendicionFF]
+    ([RechazoID]);
+GO
+
+-- Creating foreign key on [SAPRPCCall_Id] in table 'SAPC_RendicionGastosSAPC_SAPRPCCall1'
+ALTER TABLE [dbo].[SAPC_RendicionGastosSAPC_SAPRPCCall1]
+ADD CONSTRAINT [FK_SAPC_RendicionGastosSAPC_SAPRPCCall_SAPC_SAPRPCCall]
+    FOREIGN KEY ([SAPRPCCall_Id])
+    REFERENCES [dbo].[SAPC_SAPRPCCall]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_RendicionGastosSAPC_SAPRPCCall_SAPC_SAPRPCCall'
+CREATE INDEX [IX_FK_SAPC_RendicionGastosSAPC_SAPRPCCall_SAPC_SAPRPCCall]
+ON [dbo].[SAPC_RendicionGastosSAPC_SAPRPCCall1]
+    ([SAPRPCCall_Id]);
+GO
+
+-- Creating foreign key on [SAPC_Adelantos_Id] in table 'SAPC_AdelantosSAPC_SAPRPCCall1'
+ALTER TABLE [dbo].[SAPC_AdelantosSAPC_SAPRPCCall1]
+ADD CONSTRAINT [FK_SAPC_AdelantosSAPC_SAPRPCCall1_SAPC_Adelantos]
+    FOREIGN KEY ([SAPC_Adelantos_Id])
+    REFERENCES [dbo].[SAPC_Adelantos]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [SAPC_SAPRPCCall_Id] in table 'SAPC_AdelantosSAPC_SAPRPCCall1'
+ALTER TABLE [dbo].[SAPC_AdelantosSAPC_SAPRPCCall1]
+ADD CONSTRAINT [FK_SAPC_AdelantosSAPC_SAPRPCCall1_SAPC_SAPRPCCall]
+    FOREIGN KEY ([SAPC_SAPRPCCall_Id])
+    REFERENCES [dbo].[SAPC_SAPRPCCall]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_AdelantosSAPC_SAPRPCCall1_SAPC_SAPRPCCall'
+CREATE INDEX [IX_FK_SAPC_AdelantosSAPC_SAPRPCCall1_SAPC_SAPRPCCall]
+ON [dbo].[SAPC_AdelantosSAPC_SAPRPCCall1]
+    ([SAPC_SAPRPCCall_Id]);
+GO
+
+-- Creating foreign key on [Rendicion_Id] in table 'SAPC_Comprobante'
+ALTER TABLE [dbo].[SAPC_Comprobante]
+ADD CONSTRAINT [FK_SAPC_ComprobantesSAPC_Rendicion]
+    FOREIGN KEY ([Rendicion_Id])
+    REFERENCES [dbo].[SAPC_Rendicion]
+        ([Id])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_ComprobantesSAPC_Rendicion'
+CREATE INDEX [IX_FK_SAPC_ComprobantesSAPC_Rendicion]
+ON [dbo].[SAPC_Comprobante]
+    ([Rendicion_Id]);
 GO
 
 -- --------------------------------------------------

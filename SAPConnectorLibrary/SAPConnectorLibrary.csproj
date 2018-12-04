@@ -184,7 +184,7 @@
     <Compile Include="Models\SAPC_ClaseDoc.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SAPC_Comprobantes.cs">
+    <Compile Include="Models\SAPC_Comprobante.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SAPC_Credentials.cs">
@@ -244,7 +244,7 @@
     <Compile Include="Models\SAPC_ReintegroGastos.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SAPC_RendicionABC.cs">
+    <Compile Include="Models\SAPC_Rendicion.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SAPC_RendicionFF.cs">
@@ -299,6 +299,16 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Models\EstradaSAPConnector.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EstradaSAPConnector.Context.cs</LastGenOutput>
+      <DependentUpon>EstradaSAPConnector.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\EstradaSAPConnector.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EstradaSAPConnector.cs</LastGenOutput>
+      <DependentUpon>EstradaSAPConnector.edmx</DependentUpon>
+    </Content>
     <Content Include="ServiceDescriptors\ZWS_COMPROBANTES_ABC.xml" />
     <Content Include="ServiceDescriptors\ZWS_COMPROBANTES_NO_ABC.xml" />
     <Content Include="ServiceDescriptors\ZWS_DATOS_PROVEEDORES.xml" />
@@ -322,17 +332,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Models\EstradaSAPConnector.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>EstradaSAPConnector.Context.cs</LastGenOutput>
-      <DependentUpon>EstradaSAPConnector.edmx</DependentUpon>
-    </Content>
     <Content Include="Models\EstradaSAPConnector.edmx.sql" />
-    <Content Include="Models\EstradaSAPConnector.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>EstradaSAPConnector.cs</LastGenOutput>
-      <DependentUpon>EstradaSAPConnector.edmx</DependentUpon>
-    </Content>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>

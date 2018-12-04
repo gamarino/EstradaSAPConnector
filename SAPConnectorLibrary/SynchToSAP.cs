@@ -47,7 +47,7 @@ namespace SAPConnectorLibrary
         static readonly string FACTURA_PROCESADA = "SAPC_FacturaProveedor_Sincronizado";
         static readonly string FACTURA_RECHAZADA = "SAPC_FacturaProveedor_Rechazado";
 
-        Models.EstradaSAPConnectorContainer dbContext;
+        Models.EstradaSAPConnectorContainer context;
         SessionContext session;
 
         Models.SAPC_Estados estadoRENDICION_APROBADA;
@@ -69,67 +69,67 @@ namespace SAPConnectorLibrary
 
         SessionContext CreateSession(int endPointId)
         {
-            Models.SAPC_EndPoint endPoint = this.dbContext.SAPC_EndPoint.Find(endPointId);
+            Models.SAPC_EndPoint endPoint = this.context.SAPC_EndPoint.Find(endPointId);
             Models.SAPC_Session newSession = new Models.SAPC_Session
             {
                 EndPoint = endPoint,
                 Comienzo = DateTime.UtcNow
             };
 
-            this.dbContext.SAPC_Session.Add(newSession);
+            this.context.SAPC_Session.Add(newSession);
 
-            estadoADELANTO_A_PROCESAR = this.dbContext.SAPC_Estados
+            estadoADELANTO_A_PROCESAR = this.context.SAPC_Estados
                                        .Where(e => e.Codigo == ADELANTO_A_PROCESAR &&
                                                    e.EntityName == "SAPC_Adelantos")
                                        .FirstOrDefault();
-            estadoADELANTO_PROCESADO = this.dbContext.SAPC_Estados
+            estadoADELANTO_PROCESADO = this.context.SAPC_Estados
                                        .Where(e => e.Codigo == ADELANTO_PROCESADO &&
                                                    e.EntityName == "SAPC_Adelantos")
                                        .FirstOrDefault();
-            estadoADELANTO_RECHAZADO = this.dbContext.SAPC_Estados
+            estadoADELANTO_RECHAZADO = this.context.SAPC_Estados
                                        .Where(e => e.Codigo == ADELANTO_RECHAZADO &&
                                                    e.EntityName == "SAPC_Adelantos")
                                        .FirstOrDefault();
 
-            estadoFACTURA_A_PROCESAR = this.dbContext.SAPC_Estados
+            estadoFACTURA_A_PROCESAR = this.context.SAPC_Estados
                                        .Where(e => e.Codigo == FACTURA_A_PROCESAR &&
                                                    e.EntityName == "SAPC_FacturaProveedor")
                                        .FirstOrDefault();
-            estadoFACTURA_PROCESADA = this.dbContext.SAPC_Estados
+            estadoFACTURA_PROCESADA = this.context.SAPC_Estados
                                        .Where(e => e.Codigo == FACTURA_PROCESADA &&
                                                    e.EntityName == "SAPC_FacturaProveedor")
                                        .FirstOrDefault();
-            estadoFACTURA_RECHAZADA = this.dbContext.SAPC_Estados
+            estadoFACTURA_RECHAZADA = this.context.SAPC_Estados
                                        .Where(e => e.Codigo == FACTURA_RECHAZADA &&
                                                    e.EntityName == "SAPC_FacturaProveedor")
                                        .FirstOrDefault();
 
-            estadoRENDICION_APROBADA = this.dbContext.SAPC_Estados
+            estadoRENDICION_APROBADA = this.context.SAPC_Estados
                                        .Where(e => e.Codigo == RENDICION_APROBADA &&
                                                    e.EntityName == "SAPC_Rendicion")
                                        .FirstOrDefault();
-            estadoRENDICION_A_PROCESAR = this.dbContext.SAPC_Estados
+            estadoRENDICION_A_PROCESAR = this.context.SAPC_Estados
                                          .Where(e => e.Codigo == RENDICION_A_PROCESAR &&
                                                    e.EntityName == "SAPC_Rendicion")
                                        .FirstOrDefault();
-            estadoRENDICION_PROCESADA = this.dbContext.SAPC_Estados
+            estadoRENDICION_PROCESADA = this.context.SAPC_Estados
                                         .Where(e => e.Codigo == RENDICION_PROCESADA &&
                                                     e.EntityName == "SAPC_Rendicion")
                                         .FirstOrDefault();
-            estadoRENDICION_RECHAZADA = this.dbContext.SAPC_Estados
+            estadoRENDICION_RECHAZADA = this.context.SAPC_Estados
                                         .Where(e => e.Codigo == RENDICION_RECHAZADA &&
                                                     e.EntityName == "SAPC_Rendicion")
                                         .FirstOrDefault();
 
-            estadoCOMPROBANTES_A_PROCESAR = this.dbContext.SAPC_Estados
+            estadoCOMPROBANTES_A_PROCESAR = this.context.SAPC_Estados
                                        .Where(e => e.Codigo == RENDICION_A_PROCESAR &&
                                                    e.EntityName == "SAPC_Comprobantes")
                                        .FirstOrDefault();
-            estadoCOMPROBANTES_PROCESADA = this.dbContext.SAPC_Estados
+            estadoCOMPROBANTES_PROCESADA = this.context.SAPC_Estados
                                         .Where(e => e.Codigo == RENDICION_PROCESADA &&
                                                     e.EntityName == "SAPC_Comprobantes")
                                         .FirstOrDefault();
-            estadoCOMPROBANTES_RECHAZADA = this.dbContext.SAPC_Estados
+            estadoCOMPROBANTES_RECHAZADA = this.context.SAPC_Estados
                                         .Where(e => e.Codigo == RENDICION_RECHAZADA &&
                                                     e.EntityName == "SAPC_Comprobantes")
                                         .FirstOrDefault();
@@ -205,7 +205,7 @@ namespace SAPConnectorLibrary
             }
             finally
             {
-                this.dbContext.SAPC_SAPRPCCall.Add(call);
+                this.context.SAPC_SAPRPCCall.Add(call);
             }
         }
 
@@ -308,7 +308,7 @@ namespace SAPConnectorLibrary
             }
             finally
             {
-                this.dbContext.SAPC_SAPRPCCall.Add(call);
+                this.context.SAPC_SAPRPCCall.Add(call);
             }
         }
 
@@ -455,9 +455,15 @@ namespace SAPConnectorLibrary
                     FECHACONT = rendicion.Comprobante.FechaCont,
                     FECHADOCUMENTO = rendicion.Comprobante.FechaDocumento,
                     REFERENCIA = rendicion.Comprobante.Referencia,
-                    CLASE_DOC = rendicion.Comprobante.ClaseDoc.Codigo,
-                    SOCIEDAD = rendicion.Comprobante.Sociedad.Codigo,
-                    MONEDA = rendicion.Comprobante.Moneda.Codigo,
+                    CLASE_DOC = rendicion.Comprobante.ClaseDoc != null ? 
+                                    rendicion.Comprobante.ClaseDoc.Codigo:
+                                    "AB",
+                    SOCIEDAD = rendicion.Comprobante.Sociedad != null ? 
+                                    rendicion.Comprobante.Sociedad.Codigo:
+                                    "ESTR",
+                    MONEDA = rendicion.Comprobante.Moneda != null ?
+                                    rendicion.Comprobante.Moneda.Codigo:
+                                    "ARS",
                     TIENDA = rendicion.Comprobante.Tienda,
                     DOC_COMP1 = rendicion.Comprobante.DocComp1,
                     DOC_COMP2 = rendicion.Comprobante.DocComp2,
@@ -513,7 +519,7 @@ namespace SAPConnectorLibrary
             }
             finally
             {
-                this.dbContext.SAPC_SAPRPCCall.Add(call);
+                this.context.SAPC_SAPRPCCall.Add(call);
             }
         }
 
@@ -526,7 +532,7 @@ namespace SAPConnectorLibrary
 
                 Datos_Proveedores.ZWS_DATOS_PROVEEDORES client = new Datos_Proveedores.ZWS_DATOS_PROVEEDORESClient(binding, address);
 
-                DateTime lastUpdate = dbContext.SAPC_Proveedores.Max(p => p.UltimaActualizacion);
+                DateTime lastUpdate = context.SAPC_Proveedores.Max(p => p.UltimaActualizacion);
                 DateTime now = new DateTime();
 
                 Datos_Proveedores.ZFI_RFC_DATOS_PROVEEDORESRequest request = new Datos_Proveedores.ZFI_RFC_DATOS_PROVEEDORESRequest
@@ -550,40 +556,40 @@ namespace SAPConnectorLibrary
                             Models.SAPC_Paises country;
                             Models.SAPC_Poblaciones city;
 
-                            var countries = from a in dbContext.SAPC_Paises
+                            var countries = from a in context.SAPC_Paises
                                             where a.Codigo == vendor.PAIS
                                             select a;
                             if (countries.Count() == 0)
                             {
-                                dbContext.SAPC_Paises.Add(new Models.SAPC_Paises
+                                context.SAPC_Paises.Add(new Models.SAPC_Paises
                                 {
                                     Codigo = vendor.PAIS,
                                     Nombre = vendor.PAIS
                                 });
-                                countries = from a in dbContext.SAPC_Paises
+                                countries = from a in context.SAPC_Paises
                                             where a.Codigo == vendor.PAIS
                                             select a;
                             }
 
                             country = countries.ElementAt(0);
-                            var cities = from a in dbContext.SAPC_Poblaciones
+                            var cities = from a in context.SAPC_Poblaciones
                                          where a.Codigo == vendor.POBLACION && a.Pais == country
                                          select a;
                             if (cities.Count() == 0)
                             {
-                                dbContext.SAPC_Poblaciones.Add(new Models.SAPC_Poblaciones
+                                context.SAPC_Poblaciones.Add(new Models.SAPC_Poblaciones
                                 {
                                     Codigo = vendor.POBLACION,
                                     Nombre = vendor.POBLACION
                                 });
-                                cities = from a in dbContext.SAPC_Poblaciones
+                                cities = from a in context.SAPC_Poblaciones
                                          where a.Codigo == vendor.POBLACION
                                          select a;
                             }
 
                             city = cities.ElementAt(0);
 
-                            var vendors = from a in dbContext.SAPC_Proveedores
+                            var vendors = from a in context.SAPC_Proveedores
                                           where a.SAPId == vendor.PROVEEDOR
                                           select a;
                             if (vendors.Count() != 0)
@@ -601,7 +607,7 @@ namespace SAPConnectorLibrary
                             }
                             else
                             {
-                                dbContext.SAPC_Proveedores.Add(new Models.SAPC_Proveedores
+                                context.SAPC_Proveedores.Add(new Models.SAPC_Proveedores
                                 {
                                     SAPId = vendor.PROVEEDOR,
                                     Calle = vendor.CALLE,
@@ -619,7 +625,7 @@ namespace SAPConnectorLibrary
                         else
                         {
                             // Es un empleado
-                            var employees = from a in dbContext.SAPC_Empleado
+                            var employees = from a in context.SAPC_Empleado
                                             where a.NroEmpleado == vendor.PERNR
                                             select a;
                             if (employees.Count() != 0)
@@ -630,7 +636,7 @@ namespace SAPConnectorLibrary
                             }
                             else
                             {
-                                dbContext.SAPC_Empleado.Add(new Models.SAPC_Empleado
+                                context.SAPC_Empleado.Add(new Models.SAPC_Empleado
                                 {
                                     NroEmpleado = vendor.PERNR,
                                     DNI = vendor.CUIT,
@@ -642,7 +648,7 @@ namespace SAPConnectorLibrary
                     }
                 }
 
-                dbContext.SaveChanges();
+                context.SaveChanges();
             }
             catch (Exception e)
             {
@@ -660,7 +666,7 @@ namespace SAPConnectorLibrary
             {
                 using (var context = new Models.EstradaSAPConnectorContainer())
                 {
-                    this.dbContext = context;
+                    this.context = context;
 
                     // Tomar adelantos a procesar
                     var adelantos = from a in context.SAPC_Adelantos
@@ -840,8 +846,8 @@ namespace SAPConnectorLibrary
             }
             finally
             {
-                if (this.dbContext != null)
-                    this.dbContext.SaveChanges();
+                if (this.context != null)
+                    this.context.SaveChanges();
             }
 
         }

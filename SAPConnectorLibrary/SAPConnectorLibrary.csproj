@@ -304,6 +304,7 @@
       <LastGenOutput>EstradaSAPConnector.Context.cs</LastGenOutput>
       <DependentUpon>EstradaSAPConnector.edmx</DependentUpon>
     </Content>
+    <Content Include="Models\EstradaSAPConnector.edmx.sql" />
     <Content Include="Models\EstradaSAPConnector.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EstradaSAPConnector.cs</LastGenOutput>
@@ -332,7 +333,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Models\EstradaSAPConnector.edmx.sql" />
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>

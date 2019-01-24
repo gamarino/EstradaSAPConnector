@@ -75,63 +75,64 @@ namespace SAPConnectorLibrary
                 Comienzo = DateTime.UtcNow
             };
 
-            this.context.SAPC_Session.Add(newSession);
+            if (estadoADELANTO_A_PROCESAR == null)
+            {
+                estadoADELANTO_A_PROCESAR = this.context.SAPC_Estados
+                                           .Where(e => e.Codigo == ADELANTO_A_PROCESAR &&
+                                                       e.EntityName == "SAPC_Adelantos")
+                                           .FirstOrDefault();
+                estadoADELANTO_PROCESADO = this.context.SAPC_Estados
+                                           .Where(e => e.Codigo == ADELANTO_PROCESADO &&
+                                                       e.EntityName == "SAPC_Adelantos")
+                                           .FirstOrDefault();
+                estadoADELANTO_RECHAZADO = this.context.SAPC_Estados
+                                           .Where(e => e.Codigo == ADELANTO_RECHAZADO &&
+                                                       e.EntityName == "SAPC_Adelantos")
+                                           .FirstOrDefault();
 
-            estadoADELANTO_A_PROCESAR = this.context.SAPC_Estados
-                                       .Where(e => e.Codigo == ADELANTO_A_PROCESAR &&
-                                                   e.EntityName == "SAPC_Adelantos")
-                                       .FirstOrDefault();
-            estadoADELANTO_PROCESADO = this.context.SAPC_Estados
-                                       .Where(e => e.Codigo == ADELANTO_PROCESADO &&
-                                                   e.EntityName == "SAPC_Adelantos")
-                                       .FirstOrDefault();
-            estadoADELANTO_RECHAZADO = this.context.SAPC_Estados
-                                       .Where(e => e.Codigo == ADELANTO_RECHAZADO &&
-                                                   e.EntityName == "SAPC_Adelantos")
-                                       .FirstOrDefault();
+                estadoFACTURA_A_PROCESAR = this.context.SAPC_Estados
+                                           .Where(e => e.Codigo == FACTURA_A_PROCESAR &&
+                                                       e.EntityName == "SAPC_FacturaProveedor")
+                                           .FirstOrDefault();
+                estadoFACTURA_PROCESADA = this.context.SAPC_Estados
+                                           .Where(e => e.Codigo == FACTURA_PROCESADA &&
+                                                       e.EntityName == "SAPC_FacturaProveedor")
+                                           .FirstOrDefault();
+                estadoFACTURA_RECHAZADA = this.context.SAPC_Estados
+                                           .Where(e => e.Codigo == FACTURA_RECHAZADA &&
+                                                       e.EntityName == "SAPC_FacturaProveedor")
+                                           .FirstOrDefault();
 
-            estadoFACTURA_A_PROCESAR = this.context.SAPC_Estados
-                                       .Where(e => e.Codigo == FACTURA_A_PROCESAR &&
-                                                   e.EntityName == "SAPC_FacturaProveedor")
-                                       .FirstOrDefault();
-            estadoFACTURA_PROCESADA = this.context.SAPC_Estados
-                                       .Where(e => e.Codigo == FACTURA_PROCESADA &&
-                                                   e.EntityName == "SAPC_FacturaProveedor")
-                                       .FirstOrDefault();
-            estadoFACTURA_RECHAZADA = this.context.SAPC_Estados
-                                       .Where(e => e.Codigo == FACTURA_RECHAZADA &&
-                                                   e.EntityName == "SAPC_FacturaProveedor")
-                                       .FirstOrDefault();
+                estadoRENDICION_APROBADA = this.context.SAPC_Estados
+                                           .Where(e => e.Codigo == RENDICION_APROBADA &&
+                                                       e.EntityName == "SAPC_Rendicion")
+                                           .FirstOrDefault();
+                estadoRENDICION_A_PROCESAR = this.context.SAPC_Estados
+                                             .Where(e => e.Codigo == RENDICION_A_PROCESAR &&
+                                                       e.EntityName == "SAPC_Rendicion")
+                                           .FirstOrDefault();
+                estadoRENDICION_PROCESADA = this.context.SAPC_Estados
+                                            .Where(e => e.Codigo == RENDICION_PROCESADA &&
+                                                        e.EntityName == "SAPC_Rendicion")
+                                            .FirstOrDefault();
+                estadoRENDICION_RECHAZADA = this.context.SAPC_Estados
+                                            .Where(e => e.Codigo == RENDICION_RECHAZADA &&
+                                                        e.EntityName == "SAPC_Rendicion")
+                                            .FirstOrDefault();
 
-            estadoRENDICION_APROBADA = this.context.SAPC_Estados
-                                       .Where(e => e.Codigo == RENDICION_APROBADA &&
-                                                   e.EntityName == "SAPC_Rendicion")
-                                       .FirstOrDefault();
-            estadoRENDICION_A_PROCESAR = this.context.SAPC_Estados
-                                         .Where(e => e.Codigo == RENDICION_A_PROCESAR &&
-                                                   e.EntityName == "SAPC_Rendicion")
-                                       .FirstOrDefault();
-            estadoRENDICION_PROCESADA = this.context.SAPC_Estados
-                                        .Where(e => e.Codigo == RENDICION_PROCESADA &&
-                                                    e.EntityName == "SAPC_Rendicion")
-                                        .FirstOrDefault();
-            estadoRENDICION_RECHAZADA = this.context.SAPC_Estados
-                                        .Where(e => e.Codigo == RENDICION_RECHAZADA &&
-                                                    e.EntityName == "SAPC_Rendicion")
-                                        .FirstOrDefault();
-
-            estadoCOMPROBANTES_A_PROCESAR = this.context.SAPC_Estados
-                                       .Where(e => e.Codigo == RENDICION_A_PROCESAR &&
-                                                   e.EntityName == "SAPC_Comprobantes")
-                                       .FirstOrDefault();
-            estadoCOMPROBANTES_PROCESADA = this.context.SAPC_Estados
-                                        .Where(e => e.Codigo == RENDICION_PROCESADA &&
-                                                    e.EntityName == "SAPC_Comprobantes")
-                                        .FirstOrDefault();
-            estadoCOMPROBANTES_RECHAZADA = this.context.SAPC_Estados
-                                        .Where(e => e.Codigo == RENDICION_RECHAZADA &&
-                                                    e.EntityName == "SAPC_Comprobantes")
-                                        .FirstOrDefault();
+                estadoCOMPROBANTES_A_PROCESAR = this.context.SAPC_Estados
+                                           .Where(e => e.Codigo == RENDICION_A_PROCESAR &&
+                                                       e.EntityName == "SAPC_Comprobantes")
+                                           .FirstOrDefault();
+                estadoCOMPROBANTES_PROCESADA = this.context.SAPC_Estados
+                                            .Where(e => e.Codigo == RENDICION_PROCESADA &&
+                                                        e.EntityName == "SAPC_Comprobantes")
+                                            .FirstOrDefault();
+                estadoCOMPROBANTES_RECHAZADA = this.context.SAPC_Estados
+                                            .Where(e => e.Codigo == RENDICION_RECHAZADA &&
+                                                        e.EntityName == "SAPC_Comprobantes")
+                                            .FirstOrDefault();
+            }
 
             return new SessionContext
             {
@@ -549,8 +550,8 @@ namespace SAPConnectorLibrary
                 {
                     ZFI_RFC_DATOS_PROVEEDORES = new Datos_Proveedores.ZFI_RFC_DATOS_PROVEEDORES
                     {
-                        FECHA_CREACION = lastUpdate != DateTime.MinValue ? lastUpdate : new DateTime(0),
-                        FECHA_CREACIONSpecified = (lastUpdate != DateTime.MinValue ? true : false),
+                        FECHA_CREACION = lastUpdate != DateTime.MinValue ? lastUpdate : new DateTime(2015, 1, 1),
+                        FECHA_CREACIONSpecified = true,
                     }
                 };
 
@@ -732,41 +733,22 @@ namespace SAPConnectorLibrary
 
                             foreach (int endPointId in endPoints)
                             {
-                                try
-                                {
-                                    session = this.CreateSession(endPointId);
+                                session = this.CreateSession(endPointId);
 
-                                    session.SAPLogin();
+                                session.SAPLogin();
 
-                                    foreach (var adelanto in adelantosPorEndpoint.ElementAt(endPointId))
-                                        if (adelanto.FondoFijo.EndPoint.Id == endPointId)
-                                            this.SAPPushAdelanto(adelanto);
+                                foreach (var adelanto in adelantosPorEndpoint.ElementAt(endPointId))
+                                    if (adelanto.FondoFijo.EndPoint.Id == endPointId)
+                                        this.SAPPushAdelanto(adelanto);
 
-                                    foreach (var adelanto in adelantosPorEmpleadoPorEndpoint.ElementAt(endPointId))
-                                        if (adelanto.PedidoPorEmpleado.EndPoint.Id == endPointId)
-                                            this.SAPPushAdelanto(adelanto);
+                                foreach (var adelanto in adelantosPorEmpleadoPorEndpoint.ElementAt(endPointId))
+                                    if (adelanto.PedidoPorEmpleado.EndPoint.Id == endPointId)
+                                        this.SAPPushAdelanto(adelanto);
 
-                                    foreach (var factura in facturasPorEndpoint.ElementAt(endPointId))
-                                        if (factura.Rendicion.FondoFijo.EndPoint.Id == endPointId)
-                                            this.SAPPushFactura(factura);
+                                foreach (var factura in facturasPorEndpoint.ElementAt(endPointId))
+                                    if (factura.Rendicion.FondoFijo.EndPoint.Id == endPointId)
+                                        this.SAPPushFactura(factura);
 
-                                }
-                                catch (Exception e)
-                                {
-                                    if (session != null)
-                                    {
-                                        session.Session.ErrorCode = "Unexpected exception";
-                                        session.Session.ErrorMessage = string.Format("Unexpected exception: {0}", e);
-                                    }
-                                }
-                                finally
-                                {
-                                    if (session != null)
-                                        session.Session.Final = DateTime.UtcNow;
-                                    session.Close();
-                                    session = null;
-                                    dbContextTransaction.Commit();
-                                }
                             }
                         }
 
@@ -814,43 +796,21 @@ namespace SAPConnectorLibrary
                         {
                             foreach (int endPoint in endPoints)
                             {
-                                session = null;
-                                try
-                                {
-                                    session = this.CreateSession(endPoint);
+                                session = this.CreateSession(endPoint);
 
-                                    session.SAPLogin();
+                                session.SAPLogin();
 
-                                    foreach (var r in rendicionesPorEndpoint.ElementAt(endPoint))
-                                        if (r.FondoFijo.EndPoint.Id == endPoint)
-                                            this.SAPPushRendicion(r);
+                                foreach (var r in rendicionesPorEndpoint.ElementAt(endPoint))
+                                    if (r.FondoFijo.EndPoint.Id == endPoint)
+                                        this.SAPPushRendicion(r);
 
-                                    foreach (var r in rendicionesPorEmpleadoPorEndpoint.ElementAt(endPoint))
-                                        if (r.RendidoPor.EndPoint.Id == endPoint)
-                                            this.SAPPushRendicion(r);
+                                foreach (var r in rendicionesPorEmpleadoPorEndpoint.ElementAt(endPoint))
+                                    if (r.RendidoPor.EndPoint.Id == endPoint)
+                                        this.SAPPushRendicion(r);
 
-                                    session.Session.ErrorCode = "";
-                                    session.Session.ErrorMessage = "";
+                                session.Session.ErrorCode = "";
+                                session.Session.ErrorMessage = "";
 
-                                    this.SAPSynchVendors();
-
-                                }
-                                catch (Exception e)
-                                {
-                                    if (session != null)
-                                    {
-                                        session.Session.ErrorCode = "Unexpected exception";
-                                        session.Session.ErrorMessage = string.Format("Unexpected exception: {0}", e);
-                                    }
-                                }
-                                finally
-                                {
-                                    if (session != null)
-                                        session.Session.Final = DateTime.UtcNow;
-                                    session.Close();
-                                    session = null;
-                                    dbContextTransaction.Commit();
-                                }
                             }
                         }
 
@@ -858,38 +818,21 @@ namespace SAPConnectorLibrary
 
                         foreach (var endPoint in allEndPoints)
                         {
-                            session = null;
-                            try
-                            {
-                                session = this.CreateSession(endPoint.Id);
+                            session = this.CreateSession(endPoint.Id);
 
-                                session.SAPLogin();
+                            session.SAPLogin();
 
-                                this.SAPSynchVendors();
+                            this.SAPSynchVendors();
 
-                            }
-                            catch (Exception e)
-                            {
-                                if (session != null)
-                                {
-                                    session.Session.ErrorCode = "Unexpected exception";
-                                    session.Session.ErrorMessage = string.Format("Unexpected exception: {0}", e);
-                                }
-                            }
-                            finally
-                            {
-                                if (session != null)
-                                    session.Session.Final = DateTime.UtcNow;
-                                session.Close();
-                                session = null;
-
-                                dbContextTransaction.Commit();
-                            }
                         }
+
+                        context.SaveChanges();
+                        dbContextTransaction.Commit();
                     }
                     catch (Exception e)
                     {
-                        throw e;
+                            dbContextTransaction.Rollback();
+                            throw e;
                     }
                     finally
                     {

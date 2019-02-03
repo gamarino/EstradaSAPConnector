@@ -322,9 +322,9 @@ namespace SAPConnectorLibrary
                 return;
 
             bool AllAproved = true;
-            foreach (var factura in rendicion.FacturasProveedor)
+            foreach (var adelanto in rendicion.Adelantos)
             {
-                if (factura.Estado != estadoFACTURA_PROCESADA)
+                if (adelanto.Estado != estadoADELANTO_PROCESADO)
                 {
                     AllAproved = false;
                     break;
@@ -334,9 +334,9 @@ namespace SAPConnectorLibrary
                 return;
 
             AllAproved = true;
-            foreach (var adelanto in rendicion.Adelantos)
+            foreach (var factura in rendicion.FacturasProveedor)
             {
-                if (adelanto.Estado != estadoADELANTO_PROCESADO)
+                if (factura.Estado != estadoFACTURA_PROCESADA)
                 {
                     AllAproved = false;
                     break;
@@ -380,9 +380,6 @@ namespace SAPConnectorLibrary
                 // Asume que las facturas tienen lugar
                 foreach (var factura in rendicion.FacturasProveedor)
                     comprobantesSAP.Add(factura.SAPNroDoc);
-
-                foreach (var adelanto in rendicion.Adelantos)
-                    comprobantesSAP.Add(adelanto.SAPNroDoc);
 
                 foreach (var otroComprobante in rendicion.OtrosComprobantes)
                     comprobantesSAP.Add(otroComprobante.SAPNroDoc);

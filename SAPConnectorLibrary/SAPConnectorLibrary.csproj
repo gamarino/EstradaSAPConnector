@@ -62,6 +62,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\Consulta_Id\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\Datos_Proveedores\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -187,9 +192,6 @@
     <Compile Include="Models\SAPC_Comprobante.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SAPC_Credentials.cs">
-      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\SAPC_CuentasContables.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
@@ -227,6 +229,9 @@
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SAPC_Monedas.cs">
+      <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAPC_OtrosComprobantes.cs">
       <DependentUpon>EstradaSAPConnector.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SAPC_Paises.cs">
@@ -280,6 +285,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\Consulta_Id\SAPConnectorLibrary.Consulta_Id.ZfiRfcManIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Consulta_Id\SAPConnectorLibrary.Consulta_Id.ZfiRfcManIdResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Consulta_Id\ZWS_Consulta_id.wsdl" />
     <None Include="Connected Services\Datos_Proveedores\SAPConnectorLibrary.Datos_Proveedores.ZFI_RFC_DATOS_PROVEEDORESResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -299,6 +311,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Connected Services\Consulta_Id\configuration91.svcinfo" />
+    <None Include="Connected Services\Consulta_Id\configuration.svcinfo" />
+    <None Include="Connected Services\Consulta_Id\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Models\EstradaSAPConnector.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EstradaSAPConnector.Context.cs</LastGenOutput>
@@ -312,6 +330,7 @@
     </Content>
     <Content Include="ServiceDescriptors\ZWS_COMPROBANTES_ABC.xml" />
     <Content Include="ServiceDescriptors\ZWS_COMPROBANTES_NO_ABC.xml" />
+    <Content Include="ServiceDescriptors\ZWS_CONSULTA_ID.xml" />
     <Content Include="ServiceDescriptors\ZWS_DATOS_PROVEEDORES.xml" />
     <Content Include="ServiceDescriptors\ZWS_SOLICITUD_ANTICIPO.xml" />
     <None Include="Connected Services\Comprobantes_ABC\SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCResponse.datasource">
@@ -374,6 +393,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\Comprobantes_ABC\" />
     <WCFMetadataStorage Include="Connected Services\Comprobantes_NO_ABC\" />
+    <WCFMetadataStorage Include="Connected Services\Consulta_Id\" />
     <WCFMetadataStorage Include="Connected Services\Datos_Proveedores\" />
     <WCFMetadataStorage Include="Connected Services\Solicitud_Anticipo\" />
   </ItemGroup>

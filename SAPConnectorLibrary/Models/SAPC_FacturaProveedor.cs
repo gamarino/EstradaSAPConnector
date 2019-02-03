@@ -31,6 +31,7 @@ namespace SAPConnectorLibrary.Models
         public System.DateTime CAEVto { get; set; }
         public string SAPNroDoc { get; set; }
         public string Tienda { get; set; }
+        public string Error { get; set; }
     
         public virtual SAPC_Rendicion Rendicion { get; set; }
         public virtual SAPC_Proveedores Proveedor { get; set; }

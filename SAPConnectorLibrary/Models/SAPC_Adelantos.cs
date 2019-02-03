@@ -34,6 +34,7 @@ namespace SAPConnectorLibrary.Models
         public string TextoPOS { get; set; }
         public string SAPId { get; set; }
         public System.DateTime PedidoEl { get; set; }
+        public string Error { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SAPC_SAPRPCCall> RPCCalls { get; set; }
@@ -45,5 +46,6 @@ namespace SAPConnectorLibrary.Models
         public virtual SAPC_Monedas Moneda { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SAPC_SAPRPCCall> SAPC_SAPRPCCall { get; set; }
+        public virtual SAPC_Rendicion Rendicion { get; set; }
     }
 }

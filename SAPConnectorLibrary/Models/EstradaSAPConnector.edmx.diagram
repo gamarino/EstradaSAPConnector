@@ -52,7 +52,7 @@
         <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Poblaciones" Width="2.625" PointX="20.75" PointY="10.375" />
         <AssociationConnector Association="EstradaSAPConnector.SAPC_PaisesSAPC_Poblaciones" />
         <AssociationConnector Association="EstradaSAPConnector.SAPC_PoblacionesSAPC_Proveedores" />
-        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Comprobante" Width="2.5" PointX="10.5" PointY="6.375" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Comprobante" Width="2.5" PointX="12.125" PointY="6.375" />
         <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_InputacionesComprobantes" Width="2.375" PointX="11.375" PointY="13" />
         <AssociationConnector Association="EstradaSAPConnector.SAPC_ClaseDocSAPC_Comprobantes" />
         <AssociationConnector Association="EstradaSAPConnector.SAPC_SociedadesSAPC_Comprobantes" />
@@ -69,7 +69,7 @@
         <EntityTypeShape EntityType="EstradaSAPConnector.InnovActionWFAccionEstado" Width="1.5" PointX="3" PointY="34.375" />
         <EntityTypeShape EntityType="EstradaSAPConnector.InnovActionWFAnticipoDeGasto" Width="1.5" PointX="0.75" PointY="3.75" />
         <EntityTypeShape EntityType="EstradaSAPConnector.InnovActionWFAntiRendRelationship" Width="1.5" PointX="2.75" PointY="3.75" />
-        <EntityTypeShape EntityType="EstradaSAPConnector.InnovActionWFAprobadore" Width="1.5" PointX="7.75" PointY="9.75" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.InnovActionWFAprobadore" Width="1.5" PointX="7.875" PointY="10.25" />
         <EntityTypeShape EntityType="EstradaSAPConnector.InnovActionWFCaso" Width="1.5" PointX="0.75" PointY="27" />
         <EntityTypeShape EntityType="EstradaSAPConnector.InnovActionWFCCAprobadore" Width="1.5" PointX="12.75" PointY="0.75" />
         <EntityTypeShape EntityType="EstradaSAPConnector.InnovActionWFEmailAccount" Width="1.5" PointX="12.75" PointY="3.75" />
@@ -96,7 +96,6 @@
         <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Aprobadores" Width="1.5" PointX="13.75" PointY="22.75" />
         <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_BotonesWFTipos" Width="1.5" PointX="0.75" PointY="30.375" />
         <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_CeCo_UserID" Width="1.5" PointX="3.75" PointY="0.75" />
-        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Credentials" Width="1.5" PointX="7" PointY="1.375" />
         <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_CuentasContables" Width="1.5" PointX="15.75" PointY="23.75" />
         <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_EmailTemplates" Width="1.5" PointX="23.75" PointY="20.75" />
         <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_Facturas" Width="1.5" PointX="21.75" PointY="21.125" />
@@ -121,7 +120,6 @@
         <AssociationConnector Association="EstradaSAPConnector.FK_SAPC_AnticipoGastos_SAPC_Rechazos" />
         <AssociationConnector Association="EstradaSAPConnector.FK_SAPC_BotonesWF_SAPC_BotonesWFTipos" />
         <AssociationConnector Association="EstradaSAPConnector.FK_SAPC_CeCo_Username_SAPC_CeCo_Username" />
-        <AssociationConnector Association="EstradaSAPConnector.FK_SAPC_CredentialsSAPC_FondoFijo" />
         <AssociationConnector Association="EstradaSAPConnector.FK_SAPC_HistFacturas_SAPC_FacturaRendicion" />
         <AssociationConnector Association="EstradaSAPConnector.FK_SAPC_RendicionGastos_SAPC_FondoFijo" />
         <AssociationConnector Association="EstradaSAPConnector.FK_SAPC_ReintegroGastos_SAPC_Rechazos" />
@@ -130,6 +128,9 @@
         <AssociationConnector Association="EstradaSAPConnector.FK_SAPC_RendicionGastosSAPC_SAPRPCCall_SAPC_SAPRPCCall" />
         <AssociationConnector Association="EstradaSAPConnector.SAPC_AdelantosSAPC_SAPRPCCall1" />
         <AssociationConnector Association="EstradaSAPConnector.SAPC_ComprobantesSAPC_Rendicion" />
+        <EntityTypeShape EntityType="EstradaSAPConnector.SAPC_OtrosComprobantes" Width="1.5" PointX="9.875" PointY="8.25" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPC_RendicionSAPC_OtrosComprobantes" />
+        <AssociationConnector Association="EstradaSAPConnector.SAPC_RendicionSAPC_Adelantos" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -75,7 +75,6 @@ namespace SAPConnectorLibrary.Models
         public virtual DbSet<SAPC_Aprobadores> SAPC_Aprobadores { get; set; }
         public virtual DbSet<SAPC_BotonesWFTipos> SAPC_BotonesWFTipos { get; set; }
         public virtual DbSet<SAPC_CeCo_UserID> SAPC_CeCo_UserID { get; set; }
-        public virtual DbSet<SAPC_Credentials> SAPC_Credentials { get; set; }
         public virtual DbSet<SAPC_CuentasContables> SAPC_CuentasContables { get; set; }
         public virtual DbSet<SAPC_EmailTemplates> SAPC_EmailTemplates { get; set; }
         public virtual DbSet<SAPC_Facturas> SAPC_Facturas { get; set; }
@@ -88,5 +87,6 @@ namespace SAPConnectorLibrary.Models
         public virtual DbSet<SAPC_RendicionGastosSAPC_SAPRPCCall1> SAPC_RendicionGastosSAPC_SAPRPCCall1 { get; set; }
         public virtual DbSet<SAPC_TipoFacturas> SAPC_TipoFacturas { get; set; }
         public virtual DbSet<SAPC_BotonesWF> SAPC_BotonesWF { get; set; }
+        public virtual DbSet<SAPC_OtrosComprobantes> SAPC_OtrosComprobantes { get; set; }
     }
 }

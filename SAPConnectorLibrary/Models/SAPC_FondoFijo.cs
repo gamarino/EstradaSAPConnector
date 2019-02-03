@@ -36,7 +36,6 @@ namespace SAPConnectorLibrary.Models
         public virtual SAPC_EndPoint EndPoint { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SAPC_Adelantos> Adelantos { get; set; }
-        public virtual SAPC_Credentials SAPC_Credentials { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SAPC_RendicionFF> SAPC_RendicionFF { get; set; }
     }

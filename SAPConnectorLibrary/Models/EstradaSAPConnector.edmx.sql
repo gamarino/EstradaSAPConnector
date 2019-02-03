@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/21/2018 10:41:44
+-- Date Created: 02/02/2019 23:12:56
 -- Generated from EDMX file: C:\Users\GustavoMarino\Documents\Visual Studio 2017\Projects\EstradaSAPConnector\SAPConnectorLibrary\Models\EstradaSAPConnector.edmx
 -- --------------------------------------------------
 
@@ -170,9 +170,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_SAPC_CeCo_Username_SAPC_CeCo_Username]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SAPC_CeCo_UserID] DROP CONSTRAINT [FK_SAPC_CeCo_Username_SAPC_CeCo_Username];
 GO
-IF OBJECT_ID(N'[dbo].[FK_SAPC_CredentialsSAPC_FondoFijo]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SAPC_FondoFijo] DROP CONSTRAINT [FK_SAPC_CredentialsSAPC_FondoFijo];
-GO
 IF OBJECT_ID(N'[dbo].[FK_SAPC_HistFacturas_SAPC_FacturaRendicion]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SAPC_HistFacturas] DROP CONSTRAINT [FK_SAPC_HistFacturas_SAPC_FacturaRendicion];
 GO
@@ -199,6 +196,12 @@ IF OBJECT_ID(N'[dbo].[FK_SAPC_AdelantosSAPC_SAPRPCCall1_SAPC_SAPRPCCall]', 'F') 
 GO
 IF OBJECT_ID(N'[dbo].[FK_SAPC_ComprobantesSAPC_Rendicion]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SAPC_Comprobante] DROP CONSTRAINT [FK_SAPC_ComprobantesSAPC_Rendicion];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SAPC_RendicionSAPC_OtrosComprobantes]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SAPC_OtrosComprobantes] DROP CONSTRAINT [FK_SAPC_RendicionSAPC_OtrosComprobantes];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SAPC_RendicionSAPC_Adelantos]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SAPC_Adelantos] DROP CONSTRAINT [FK_SAPC_RendicionSAPC_Adelantos];
 GO
 
 -- --------------------------------------------------
@@ -355,9 +358,6 @@ GO
 IF OBJECT_ID(N'[dbo].[SAPC_CeCo_UserID]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SAPC_CeCo_UserID];
 GO
-IF OBJECT_ID(N'[dbo].[SAPC_Credentials]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SAPC_Credentials];
-GO
 IF OBJECT_ID(N'[dbo].[SAPC_CuentasContables]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SAPC_CuentasContables];
 GO
@@ -394,6 +394,9 @@ GO
 IF OBJECT_ID(N'[dbo].[SAPC_BotonesWF]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SAPC_BotonesWF];
 GO
+IF OBJECT_ID(N'[dbo].[SAPC_OtrosComprobantes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SAPC_OtrosComprobantes];
+GO
 IF OBJECT_ID(N'[dbo].[SAPC_SAPRPCCallSAPC_Comprobantes]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SAPC_SAPRPCCallSAPC_Comprobantes];
 GO
@@ -429,6 +432,7 @@ CREATE TABLE [dbo].[SAPC_FacturaProveedor] (
     [CAEVto] datetime  NOT NULL,
     [SAPNroDoc] nvarchar(max)  NOT NULL,
     [Tienda] nvarchar(max)  NOT NULL,
+    [Error] nvarchar(max)  NOT NULL,
     [Rendicion_Id] int  NOT NULL,
     [Proveedor_Id] int  NOT NULL,
     [Estado_Id] int  NOT NULL,
@@ -492,7 +496,8 @@ CREATE TABLE [dbo].[SAPC_EndPoint] (
     [URLRendicionNoABC] nvarchar(max)  NOT NULL,
     [LoginName] nvarchar(max)  NOT NULL,
     [LoginPassword] nvarchar(max)  NOT NULL,
-    [URLProveedores] nvarchar(max)  NOT NULL
+    [URLProveedores] nvarchar(max)  NOT NULL,
+    [URLConsultaID] nvarchar(max)  NULL
 );
 GO
 
@@ -511,12 +516,14 @@ CREATE TABLE [dbo].[SAPC_Adelantos] (
     [TextoPOS] nvarchar(max)  NOT NULL,
     [SAPId] nvarchar(max)  NOT NULL,
     [PedidoEl] datetime  NOT NULL,
+    [Error] nvarchar(max)  NOT NULL,
     [FondoFijo_Id] int  NULL,
     [Estado_Id] int  NOT NULL,
     [PedidoPorEmpleado_Id] int  NULL,
     [ClaseDoc_Id] int  NOT NULL,
     [Sociedad_Id] int  NOT NULL,
-    [Moneda_Id] int  NOT NULL
+    [Moneda_Id] int  NOT NULL,
+    [Rendicion_Id] int  NOT NULL
 );
 GO
 
@@ -938,15 +945,6 @@ CREATE TABLE [dbo].[SAPC_CeCo_UserID] (
 );
 GO
 
--- Creating table 'SAPC_Credentials'
-CREATE TABLE [dbo].[SAPC_Credentials] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Name] nvarchar(max)  NOT NULL,
-    [SAPLoginName] nvarchar(max)  NOT NULL,
-    [SAPLoginPassword] nvarchar(max)  NOT NULL
-);
-GO
-
 -- Creating table 'SAPC_CuentasContables'
 CREATE TABLE [dbo].[SAPC_CuentasContables] (
     [CuentaID] int IDENTITY(1,1) NOT NULL,
@@ -1118,6 +1116,16 @@ CREATE TABLE [dbo].[SAPC_BotonesWF] (
     [FontAwesome] varchar(50)  NULL,
     [Estilo] varchar(150)  NULL,
     [TipoBotonID] int  NULL
+);
+GO
+
+-- Creating table 'SAPC_OtrosComprobantes'
+CREATE TABLE [dbo].[SAPC_OtrosComprobantes] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [SAPNroDoc] nvarchar(max)  NOT NULL,
+    [FechaDocumento] datetime  NOT NULL,
+    [Importe] decimal(18,0)  NOT NULL,
+    [Rendicion_Id] int  NOT NULL
 );
 GO
 
@@ -1439,12 +1447,6 @@ ADD CONSTRAINT [PK_SAPC_CeCo_UserID]
     PRIMARY KEY CLUSTERED ([UsernameCeCoID] ASC);
 GO
 
--- Creating primary key on [Id] in table 'SAPC_Credentials'
-ALTER TABLE [dbo].[SAPC_Credentials]
-ADD CONSTRAINT [PK_SAPC_Credentials]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
 -- Creating primary key on [CuentaID] in table 'SAPC_CuentasContables'
 ALTER TABLE [dbo].[SAPC_CuentasContables]
 ADD CONSTRAINT [PK_SAPC_CuentasContables]
@@ -1515,6 +1517,12 @@ GO
 ALTER TABLE [dbo].[SAPC_BotonesWF]
 ADD CONSTRAINT [PK_SAPC_BotonesWF]
     PRIMARY KEY CLUSTERED ([BotonID], [CasoID], [Texto] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'SAPC_OtrosComprobantes'
+ALTER TABLE [dbo].[SAPC_OtrosComprobantes]
+ADD CONSTRAINT [PK_SAPC_OtrosComprobantes]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- Creating primary key on [RPCCalls_Id], [Comprobantes_Id] in table 'SAPC_SAPRPCCallSAPC_Comprobantes'
@@ -2274,21 +2282,6 @@ ADD CONSTRAINT [FK_SAPC_CeCo_Username_SAPC_CeCo_Username]
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating foreign key on [Credentials_Id] in table 'SAPC_FondoFijo'
-ALTER TABLE [dbo].[SAPC_FondoFijo]
-ADD CONSTRAINT [FK_SAPC_CredentialsSAPC_FondoFijo]
-    FOREIGN KEY ([Credentials_Id])
-    REFERENCES [dbo].[SAPC_Credentials]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_CredentialsSAPC_FondoFijo'
-CREATE INDEX [IX_FK_SAPC_CredentialsSAPC_FondoFijo]
-ON [dbo].[SAPC_FondoFijo]
-    ([Credentials_Id]);
-GO
-
 -- Creating foreign key on [FacturaID] in table 'SAPC_HistFacturas'
 ALTER TABLE [dbo].[SAPC_HistFacturas]
 ADD CONSTRAINT [FK_SAPC_HistFacturas_SAPC_FacturaRendicion]
@@ -2415,6 +2408,36 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_ComprobantesSAPC_Rendicion'
 CREATE INDEX [IX_FK_SAPC_ComprobantesSAPC_Rendicion]
 ON [dbo].[SAPC_Comprobante]
+    ([Rendicion_Id]);
+GO
+
+-- Creating foreign key on [Rendicion_Id] in table 'SAPC_OtrosComprobantes'
+ALTER TABLE [dbo].[SAPC_OtrosComprobantes]
+ADD CONSTRAINT [FK_SAPC_RendicionSAPC_OtrosComprobantes]
+    FOREIGN KEY ([Rendicion_Id])
+    REFERENCES [dbo].[SAPC_Rendicion]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_RendicionSAPC_OtrosComprobantes'
+CREATE INDEX [IX_FK_SAPC_RendicionSAPC_OtrosComprobantes]
+ON [dbo].[SAPC_OtrosComprobantes]
+    ([Rendicion_Id]);
+GO
+
+-- Creating foreign key on [Rendicion_Id] in table 'SAPC_Adelantos'
+ALTER TABLE [dbo].[SAPC_Adelantos]
+ADD CONSTRAINT [FK_SAPC_RendicionSAPC_Adelantos]
+    FOREIGN KEY ([Rendicion_Id])
+    REFERENCES [dbo].[SAPC_Rendicion]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SAPC_RendicionSAPC_Adelantos'
+CREATE INDEX [IX_FK_SAPC_RendicionSAPC_Adelantos]
+ON [dbo].[SAPC_Adelantos]
     ([Rendicion_Id]);
 GO
 

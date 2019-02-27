@@ -36,6 +36,27 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFrameworkViewMigrations, Version=0.0.7.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFrameworkViewMigrations.0.0.7.8\lib\net452\EntityFrameworkViewMigrations.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFrameworkViewMigrations.PowerShellCommands, Version=0.0.7.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFrameworkViewMigrations.0.0.7.8\lib\net452\EntityFrameworkViewMigrations.PowerShellCommands.dll</HintPath>
+    </Reference>
+    <Reference Include="envdte, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\VSSDK.DTE.7.0.4\lib\net20\envdte.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="envdte80, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\VSSDK.DTE.8.8.0.4\lib\net20\envdte80.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\VSSDK.DTE.7.0.4\lib\net20\stdole.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -328,6 +349,7 @@
       <LastGenOutput>EstradaSAPConnector.cs</LastGenOutput>
       <DependentUpon>EstradaSAPConnector.edmx</DependentUpon>
     </Content>
+    <Content Include="POCOGenerators\Generate.sql" />
     <Content Include="ServiceDescriptors\ZWS_COMPROBANTES_ABC.xml" />
     <Content Include="ServiceDescriptors\ZWS_COMPROBANTES_NO_ABC.xml" />
     <Content Include="ServiceDescriptors\ZWS_CONSULTA_ID.xml" />

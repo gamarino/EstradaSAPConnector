@@ -16,16 +16,20 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
     public interface ZWS_COMPROBANTES_NO_ABC {
         
         // CODEGEN: Generating message contract since the operation ZFI_RFC_COMPROBANTES_NO_ABC is neither RPC nor document wrapped.
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="urn:sap-com:document:sap:rfc:functions:ZWS_COMPROBANTES_NO_ABC:ZFI_RFC_COMPROBANT" +
+            "ES_NO_ABCRequest", ReplyAction="urn:sap-com:document:sap:rfc:functions:ZWS_COMPROBANTES_NO_ABC:ZFI_RFC_COMPROBANT" +
+            "ES_NO_ABCResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         SAPConnectorLibrary.Comprobantes_NO_ABC.ZFI_RFC_COMPROBANTES_NO_ABCResponse1 ZFI_RFC_COMPROBANTES_NO_ABC(SAPConnectorLibrary.Comprobantes_NO_ABC.ZFI_RFC_COMPROBANTES_NO_ABCRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="urn:sap-com:document:sap:rfc:functions:ZWS_COMPROBANTES_NO_ABC:ZFI_RFC_COMPROBANT" +
+            "ES_NO_ABCRequest", ReplyAction="urn:sap-com:document:sap:rfc:functions:ZWS_COMPROBANTES_NO_ABC:ZFI_RFC_COMPROBANT" +
+            "ES_NO_ABCResponse")]
         System.Threading.Tasks.Task<SAPConnectorLibrary.Comprobantes_NO_ABC.ZFI_RFC_COMPROBANTES_NO_ABCResponse1> ZFI_RFC_COMPROBANTES_NO_ABCAsync(SAPConnectorLibrary.Comprobantes_NO_ABC.ZFI_RFC_COMPROBANTES_NO_ABCRequest request);
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -73,7 +77,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         private string tIENDAField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public string CLASE_DOC {
             get {
                 return this.cLASE_DOCField;
@@ -85,8 +89,8 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("item", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
+        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("item", IsNullable=false)]
         public ZFI_RFC_COMPROBANTES_NO_ABC[] CUENTAS {
             get {
                 return this.cUENTASField;
@@ -98,7 +102,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
         public string DOC_COMP1 {
             get {
                 return this.dOC_COMP1Field;
@@ -110,7 +114,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
         public string DOC_COMP10 {
             get {
                 return this.dOC_COMP10Field;
@@ -122,7 +126,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
         public string DOC_COMP11 {
             get {
                 return this.dOC_COMP11Field;
@@ -134,7 +138,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
         public string DOC_COMP2 {
             get {
                 return this.dOC_COMP2Field;
@@ -146,7 +150,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
         public string DOC_COMP3 {
             get {
                 return this.dOC_COMP3Field;
@@ -158,7 +162,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
         public string DOC_COMP4 {
             get {
                 return this.dOC_COMP4Field;
@@ -170,7 +174,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=8)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
         public string DOC_COMP5 {
             get {
                 return this.dOC_COMP5Field;
@@ -182,7 +186,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=9)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
         public string DOC_COMP6 {
             get {
                 return this.dOC_COMP6Field;
@@ -194,7 +198,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=10)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=10)]
         public string DOC_COMP7 {
             get {
                 return this.dOC_COMP7Field;
@@ -206,7 +210,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=11)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=11)]
         public string DOC_COMP8 {
             get {
                 return this.dOC_COMP8Field;
@@ -218,7 +222,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=12)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=12)]
         public string DOC_COMP9 {
             get {
                 return this.dOC_COMP9Field;
@@ -230,7 +234,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=13)]
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date", Order=13)]
         public System.DateTime FECHACONT {
             get {
                 return this.fECHACONTField;
@@ -254,7 +258,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=14)]
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date", Order=14)]
         public System.DateTime FECHADOCUMENTO {
             get {
                 return this.fECHADOCUMENTOField;
@@ -266,7 +270,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=15)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=15)]
         public string MONEDA {
             get {
                 return this.mONEDAField;
@@ -278,7 +282,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=16)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=16)]
         public string REFERENCIA {
             get {
                 return this.rEFERENCIAField;
@@ -290,7 +294,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=17)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=17)]
         public string SOCIEDAD {
             get {
                 return this.sOCIEDADField;
@@ -302,7 +306,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=18)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=18)]
         public string TIENDA {
             get {
                 return this.tIENDAField;
@@ -324,7 +328,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -346,7 +350,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         private string tEXTOField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public string CLAVE_CT {
             get {
                 return this.cLAVE_CTField;
@@ -358,7 +362,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
         public string CTA_CONTABLE1 {
             get {
                 return this.cTA_CONTABLE1Field;
@@ -370,7 +374,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
         public decimal IMPORTE {
             get {
                 return this.iMPORTEField;
@@ -382,7 +386,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
         public string TEXTOS {
             get {
                 return this.tEXTOSField;
@@ -394,7 +398,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
         public string IND_IMP {
             get {
                 return this.iND_IMPField;
@@ -406,7 +410,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
         public string CECO {
             get {
                 return this.cECOField;
@@ -418,7 +422,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
         public string TEXTO {
             get {
                 return this.tEXTOField;
@@ -440,7 +444,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -456,8 +460,8 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         private string rESULTADOField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("item", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("item", IsNullable=false)]
         public ZFI_RFC_COMPROBANTES_NO_ABC[] CUENTAS {
             get {
                 return this.cUENTASField;
@@ -469,7 +473,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
         public string MENSAJE {
             get {
                 return this.mENSAJEField;
@@ -481,7 +485,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
         public string NRO_DOC {
             get {
                 return this.nRO_DOCField;
@@ -493,7 +497,7 @@ namespace SAPConnectorLibrary.Comprobantes_NO_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
         public string RESULTADO {
             get {
                 return this.rESULTADOField;

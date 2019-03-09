@@ -83,7 +83,7 @@
         </xsd:restriction>
       </xsd:simpleType>
     </xsd:schema>
-    <xsd:schema xmlns:n0="urn:sap-com:document:sap:rfc:functions" attributeFormDefault="qualified" targetNamespace="urn:sap-com:document:sap:soap:functions:mc-style">
+    <xsd:schema xmlns:n0="urn:sap-com:document:sap:rfc:functions" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:sap-com:document:sap:soap:functions:mc-style">
       <xsd:import namespace="urn:sap-com:document:sap:rfc:functions" />
       <xsd:element name="ZfiRfcManId">
         <xsd:complexType>

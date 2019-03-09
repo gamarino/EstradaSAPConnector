@@ -161,7 +161,7 @@ namespace SAPConnectorLibrary
                     new Solicitud_Anticipo.ZFI_RFC_ANTICIPOS
                     {
                         FECHA_DOC = adelanto.Fecha,
-                        FECHA_CONT = adelanto.FechaCont,
+                        // FECHA_CONT = adelanto.FechaCont,
                         CLASE_DOC = adelanto.ClaseDoc.Codigo,
                         SOCIEDAD = adelanto.Sociedad.Codigo,
                         MONEDA = adelanto.Moneda.Codigo,
@@ -169,7 +169,7 @@ namespace SAPConnectorLibrary
                         TIENDA = "",
                         TEXTO_CAB = adelanto.TextoCab,
                         // CTA_CONTABLE1 = "1105021",
-                        CTA_CONTABLE1 = "500019",
+                        CTA_CONTABLE1 = adelanto.CtaContable,
                         IND_CME = "B",
                         IMPORTE = adelanto.Importe,
                         FECHA_VTO = fvto, // Fecha hoy + 3 días
@@ -180,7 +180,7 @@ namespace SAPConnectorLibrary
                 Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPO request = new Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPO
                 {
                     T_DETALLE = comp.ToArray(),
-                    RESULTS = new Solicitud_Anticipo.T100[0],
+                    // RESULTS = new Solicitud_Anticipo.T100[0],
                 };
 
                 Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse response = client.ZFI_RFC_SOLICITUD_ANTICIPO(request);

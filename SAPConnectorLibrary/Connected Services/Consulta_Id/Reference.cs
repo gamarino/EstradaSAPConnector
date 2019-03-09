@@ -37,7 +37,7 @@ namespace SAPConnectorLibrary.Consulta_Id {
         private string rindeField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public string Documento {
             get {
                 return this.documentoField;
@@ -49,7 +49,7 @@ namespace SAPConnectorLibrary.Consulta_Id {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
         public string Rinde {
             get {
                 return this.rindeField;
@@ -103,7 +103,7 @@ namespace SAPConnectorLibrary.Consulta_Id {
         private decimal tipocambioField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date", Order=0)]
         public System.DateTime Fechadoc {
             get {
                 return this.fechadocField;
@@ -115,7 +115,7 @@ namespace SAPConnectorLibrary.Consulta_Id {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date", Order=1)]
         public System.DateTime Fechaing {
             get {
                 return this.fechaingField;
@@ -127,7 +127,7 @@ namespace SAPConnectorLibrary.Consulta_Id {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
         public string Id {
             get {
                 return this.idField;
@@ -139,7 +139,7 @@ namespace SAPConnectorLibrary.Consulta_Id {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
         public decimal Importelocal {
             get {
                 return this.importelocalField;
@@ -151,7 +151,7 @@ namespace SAPConnectorLibrary.Consulta_Id {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
         public decimal Importerendido {
             get {
                 return this.importerendidoField;
@@ -163,7 +163,7 @@ namespace SAPConnectorLibrary.Consulta_Id {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
         public string Mensaje {
             get {
                 return this.mensajeField;
@@ -175,7 +175,7 @@ namespace SAPConnectorLibrary.Consulta_Id {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
         public string Moneda {
             get {
                 return this.monedaField;
@@ -187,7 +187,7 @@ namespace SAPConnectorLibrary.Consulta_Id {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
         public string Nombre {
             get {
                 return this.nombreField;
@@ -199,7 +199,7 @@ namespace SAPConnectorLibrary.Consulta_Id {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=8)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
         public string Referencia {
             get {
                 return this.referenciaField;
@@ -211,7 +211,7 @@ namespace SAPConnectorLibrary.Consulta_Id {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=9)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
         public string Resultado {
             get {
                 return this.resultadoField;
@@ -223,7 +223,7 @@ namespace SAPConnectorLibrary.Consulta_Id {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=10)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=10)]
         public string Rindio {
             get {
                 return this.rindioField;
@@ -235,7 +235,7 @@ namespace SAPConnectorLibrary.Consulta_Id {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=11)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=11)]
         public decimal Tipocambio {
             get {
                 return this.tipocambioField;

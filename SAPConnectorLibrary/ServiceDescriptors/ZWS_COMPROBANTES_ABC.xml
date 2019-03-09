@@ -193,9 +193,6 @@
     <wsdl:part name="parameter" element="tns:ZFI_RFC_COMPROBANTES_ABCResponse"/>
   </wsdl:message>
   <wsdl:portType name="ZWS_COMPROBANTES_ABC">
-    <wsp:Policy>
-      <wsp:PolicyReference URI="#IF_IF_ZWS_COMPROBANTES_ABC"/>
-    </wsp:Policy>
     <wsdl:operation name="ZFI_RFC_COMPROBANTES_ABC">
       <wsp:Policy>
         <wsp:PolicyReference URI="#OP_IF_OP_ZFI_RFC_COMPROBANTES_ABC"/>

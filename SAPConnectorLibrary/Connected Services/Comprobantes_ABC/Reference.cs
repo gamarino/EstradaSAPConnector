@@ -16,15 +16,11 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
     public interface ZWS_COMPROBANTES_ABC {
         
         // CODEGEN: Generating message contract since the operation ZFI_RFC_COMPROBANTES_ABC is neither RPC nor document wrapped.
-        [System.ServiceModel.OperationContractAttribute(Action="urn:sap-com:document:sap:rfc:functions:ZWS_COMPROBANTES_ABC:ZFI_RFC_COMPROBANTES_" +
-            "ABCRequest", ReplyAction="urn:sap-com:document:sap:rfc:functions:ZWS_COMPROBANTES_ABC:ZFI_RFC_COMPROBANTES_" +
-            "ABCResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCResponse1 ZFI_RFC_COMPROBANTES_ABC(SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="urn:sap-com:document:sap:rfc:functions:ZWS_COMPROBANTES_ABC:ZFI_RFC_COMPROBANTES_" +
-            "ABCRequest", ReplyAction="urn:sap-com:document:sap:rfc:functions:ZWS_COMPROBANTES_ABC:ZFI_RFC_COMPROBANTES_" +
-            "ABCResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         System.Threading.Tasks.Task<SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCResponse1> ZFI_RFC_COMPROBANTES_ABCAsync(SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCRequest request);
     }
     
@@ -67,6 +63,8 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         private string pOBLACIONField;
         
         private string rEFERENCIAField;
+        
+        private T100[] rESULTSField;
         
         private string sOCIEDADField;
         
@@ -269,7 +267,20 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=15)]
+        [System.Xml.Serialization.XmlArrayAttribute(Order=15)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("item", IsNullable=false)]
+        public T100[] RESULTS {
+            get {
+                return this.rESULTSField;
+            }
+            set {
+                this.rESULTSField = value;
+                this.RaisePropertyChanged("RESULTS");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=16)]
         public string SOCIEDAD {
             get {
                 return this.sOCIEDADField;
@@ -281,7 +292,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=16)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=17)]
         public string TEXTO {
             get {
                 return this.tEXTOField;
@@ -293,7 +304,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=17)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=18)]
         public string TIENDA {
             get {
                 return this.tIENDAField;
@@ -305,7 +316,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=18)]
+        [System.Xml.Serialization.XmlArrayAttribute(Order=19)]
         [System.Xml.Serialization.XmlArrayItemAttribute("item", IsNullable=false)]
         public ZFI_RFC_COMPROBANTES_ABC[] T_DETALLE {
             get {
@@ -314,6 +325,80 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
             set {
                 this.t_DETALLEField = value;
                 this.RaisePropertyChanged("T_DETALLE");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="urn:sap-com:document:sap:rfc:functions")]
+    public partial class T100 : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string sPRSLField;
+        
+        private string aRBGBField;
+        
+        private string mSGNRField;
+        
+        private string tEXTField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string SPRSL {
+            get {
+                return this.sPRSLField;
+            }
+            set {
+                this.sPRSLField = value;
+                this.RaisePropertyChanged("SPRSL");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string ARBGB {
+            get {
+                return this.aRBGBField;
+            }
+            set {
+                this.aRBGBField = value;
+                this.RaisePropertyChanged("ARBGB");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string MSGNR {
+            get {
+                return this.mSGNRField;
+            }
+            set {
+                this.mSGNRField = value;
+                this.RaisePropertyChanged("MSGNR");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string TEXT {
+            get {
+                return this.tEXTField;
+            }
+            set {
+                this.tEXTField = value;
+                this.RaisePropertyChanged("TEXT");
             }
         }
         
@@ -415,6 +500,8 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         
         private string rESULTADOField;
         
+        private T100[] rESULTSField;
+        
         private ZFI_RFC_COMPROBANTES_ABC[] t_DETALLEField;
         
         /// <remarks/>
@@ -455,6 +542,19 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Order=3)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("item", IsNullable=false)]
+        public T100[] RESULTS {
+            get {
+                return this.rESULTSField;
+            }
+            set {
+                this.rESULTSField = value;
+                this.RaisePropertyChanged("RESULTS");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=4)]
         [System.Xml.Serialization.XmlArrayItemAttribute("item", IsNullable=false)]
         public ZFI_RFC_COMPROBANTES_ABC[] T_DETALLE {
             get {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3680eb04-5a3a-460d-b079-ab196fadc213" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="530a0d7b-8ba9-4f6b-9f40-99067c07b3b7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,10 +19,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="C:\Users\GustavoMarino\Documents\Visual Studio 2017\Projects\EstradaSAPConnector\SAPConnectorLibrary\ServiceDescriptors\DOC_3I_ZWS_COMPROBANTES_ABC.xml" Protocol="file" SourceId="1" />
+    <MetadataSource Address="C:\Users\GustavoMarino\Documents\Visual Studio 2017\Projects\EstradaSAPConnector\SAPConnectorLibrary\ServiceDescriptors\ZWS_COMPROBANTES_ABC (1).xml" Protocol="file" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="DOC_3I_ZWS_COMPROBANTES_ABC.wsdl" MetadataType="Wsdl" ID="100bd0cf-8a6f-452c-80b5-28139c4e721c" SourceId="1" SourceUrl="file:///C:/Users/GustavoMarino/Documents/Visual Studio 2017/Projects/EstradaSAPConnector/SAPConnectorLibrary/ServiceDescriptors/DOC_3I_ZWS_COMPROBANTES_ABC.xml" />
+    <MetadataFile FileName="ZWS_COMPROBANTES_ABC (1).wsdl" MetadataType="Wsdl" ID="c7277d76-8e68-4222-bac4-f565751ef58d" SourceId="1" SourceUrl="file:///C:/Users/GustavoMarino/Documents/Visual Studio 2017/Projects/EstradaSAPConnector/SAPConnectorLibrary/ServiceDescriptors/ZWS_COMPROBANTES_ABC (1).xml" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -287,6 +287,7 @@ namespace SAPConnectorLibrary
                 }
 
                 request.T_DETALLE = comp.ToArray();
+                request.RESULTS = new Comprobantes_ABC.T100[0];
 
                 Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCResponse response = client.ZFI_RFC_COMPROBANTES_ABC(request);
 
@@ -546,9 +547,10 @@ namespace SAPConnectorLibrary
                     {
                         Console.WriteLine("Tomando proveedor {0}", ++n);
 
-                        if (vendor.PERNR == "00000000")
-                        {
-                            Models.SAPC_Paises country;
+                        // if (vendor.PERNR == "00000000")
+                        if (true)
+                            {
+                                Models.SAPC_Paises country;
                             Models.SAPC_Poblaciones city;
 
                             var countries = from a in context.SAPC_Paises
@@ -620,29 +622,29 @@ namespace SAPConnectorLibrary
                                 });
                             }
                         }
-                        else
-                        {
-                            // Es un empleado
-                            var employees = from a in context.SAPC_Empleado
-                                            where a.NroEmpleado == vendor.PERNR
-                                            select a;
-                            if (employees.Count() != 0)
-                            {
-                                Models.SAPC_Empleado existingEmployee = employees.First();
-                                existingEmployee.Nombre = vendor.NOMBRE;
-                                existingEmployee.CtaContable = vendor.PROVEEDOR;
-                            }
-                            else
-                            {
-                                context.SAPC_Empleado.Add(new Models.SAPC_Empleado
-                                {
-                                    NroEmpleado = vendor.PERNR,
-                                    DNI = vendor.CUIT,
-                                    CtaContable = vendor.PROVEEDOR,
-                                    Nombre = vendor.NOMBRE
-                                });
-                            }
-                        }
+                        //else
+                        //{
+                        //    // Es un empleado
+                        //    var employees = from a in context.SAPC_Empleado
+                        //                    where a.NroEmpleado == vendor.PERNR
+                        //                    select a;
+                        //    if (employees.Count() != 0)
+                        //    {
+                        //        Models.SAPC_Empleado existingEmployee = employees.First();
+                        //        existingEmployee.Nombre = vendor.NOMBRE;
+                        //        existingEmployee.CtaContable = vendor.PROVEEDOR;
+                        //    }
+                        //    else
+                        //    {
+                        //        context.SAPC_Empleado.Add(new Models.SAPC_Empleado
+                        //        {
+                        //            NroEmpleado = vendor.PERNR,
+                        //            DNI = vendor.CUIT,
+                        //            CtaContable = vendor.PROVEEDOR,
+                        //            Nombre = vendor.NOMBRE
+                        //        });
+                        //    }
+                        //}
                     }
                 }
 

@@ -16,15 +16,11 @@ namespace SAPConnectorLibrary.Datos_Proveedores {
     public interface ZWS_DATOS_PROVEEDORES {
         
         // CODEGEN: Generating message contract since the operation ZFI_RFC_DATOS_PROVEEDORES is neither RPC nor document wrapped.
-        [System.ServiceModel.OperationContractAttribute(Action="urn:sap-com:document:sap:rfc:functions:ZWS_DATOS_PROVEEDORES:ZFI_RFC_DATOS_PROVEE" +
-            "DORESRequest", ReplyAction="urn:sap-com:document:sap:rfc:functions:ZWS_DATOS_PROVEEDORES:ZFI_RFC_DATOS_PROVEE" +
-            "DORESResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         SAPConnectorLibrary.Datos_Proveedores.ZFI_RFC_DATOS_PROVEEDORESResponse1 ZFI_RFC_DATOS_PROVEEDORES(SAPConnectorLibrary.Datos_Proveedores.ZFI_RFC_DATOS_PROVEEDORESRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="urn:sap-com:document:sap:rfc:functions:ZWS_DATOS_PROVEEDORES:ZFI_RFC_DATOS_PROVEE" +
-            "DORESRequest", ReplyAction="urn:sap-com:document:sap:rfc:functions:ZWS_DATOS_PROVEEDORES:ZFI_RFC_DATOS_PROVEE" +
-            "DORESResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         System.Threading.Tasks.Task<SAPConnectorLibrary.Datos_Proveedores.ZFI_RFC_DATOS_PROVEEDORESResponse1> ZFI_RFC_DATOS_PROVEEDORESAsync(SAPConnectorLibrary.Datos_Proveedores.ZFI_RFC_DATOS_PROVEEDORESRequest request);
     }
     
@@ -116,6 +112,8 @@ namespace SAPConnectorLibrary.Datos_Proveedores {
         private string pAISField;
         
         private string fLAGField;
+        
+        private string pERNRField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
@@ -234,6 +232,18 @@ namespace SAPConnectorLibrary.Datos_Proveedores {
             set {
                 this.fLAGField = value;
                 this.RaisePropertyChanged("FLAG");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=10)]
+        public string PERNR {
+            get {
+                return this.pERNRField;
+            }
+            set {
+                this.pERNRField = value;
+                this.RaisePropertyChanged("PERNR");
             }
         }
         

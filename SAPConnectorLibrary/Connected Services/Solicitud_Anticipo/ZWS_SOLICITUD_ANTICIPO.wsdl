@@ -33,7 +33,7 @@
     <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
   </wsp:Policy>
   <wsdl:types>
-    <xsd:schema attributeFormDefault="qualified" targetNamespace="urn:sap-com:document:sap:rfc:functions">
+    <xsd:schema elementFormDefault="qualified" targetNamespace="urn:sap-com:document:sap:rfc:functions">
       <xsd:simpleType name="char1">
         <xsd:restriction base="xsd:string">
           <xsd:maxLength value="1" />
@@ -201,9 +201,6 @@
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="zws_solicitud_anticipo_SOAP12" type="tns:ZWS_SOLICITUD_ANTICIPO">
-    <wsp:Policy>
-      <wsp:PolicyReference URI="#BN_BN_zws_solicitud_anticipo_SOAP12" />
-    </wsp:Policy>
     <wsoap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="ZFI_RFC_SOLICITUD_ANTICIPO">
       <wsoap12:operation soapAction="" style="document" />

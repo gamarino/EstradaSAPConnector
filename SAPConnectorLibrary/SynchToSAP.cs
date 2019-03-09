@@ -287,8 +287,7 @@ namespace SAPConnectorLibrary
                 }
 
                 request.T_DETALLE = comp.ToArray();
-                request.RESULTS = new Comprobantes_ABC.T100[0];
-                
+
                 Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCResponse response = client.ZFI_RFC_COMPROBANTES_ABC(request);
 
                 call.InputParameters = request.ToString();

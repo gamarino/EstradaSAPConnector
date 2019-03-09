@@ -16,11 +16,15 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
     public interface ZWS_COMPROBANTES_ABC {
         
         // CODEGEN: Generating message contract since the operation ZFI_RFC_COMPROBANTES_ABC is neither RPC nor document wrapped.
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="urn:sap-com:document:sap:rfc:functions:ZWS_COMPROBANTES_ABC:ZFI_RFC_COMPROBANTES_" +
+            "ABCRequest", ReplyAction="urn:sap-com:document:sap:rfc:functions:ZWS_COMPROBANTES_ABC:ZFI_RFC_COMPROBANTES_" +
+            "ABCResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCResponse1 ZFI_RFC_COMPROBANTES_ABC(SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="urn:sap-com:document:sap:rfc:functions:ZWS_COMPROBANTES_ABC:ZFI_RFC_COMPROBANTES_" +
+            "ABCRequest", ReplyAction="urn:sap-com:document:sap:rfc:functions:ZWS_COMPROBANTES_ABC:ZFI_RFC_COMPROBANTES_" +
+            "ABCResponse")]
         System.Threading.Tasks.Task<SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCResponse1> ZFI_RFC_COMPROBANTES_ABCAsync(SAPConnectorLibrary.Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCRequest request);
     }
     
@@ -64,8 +68,6 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         
         private string rEFERENCIAField;
         
-        private T100[] rESULTSField;
-        
         private string sOCIEDADField;
         
         private string tEXTOField;
@@ -75,7 +77,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         private ZFI_RFC_COMPROBANTES_ABC[] t_DETALLEField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public string ACREEDOR {
             get {
                 return this.aCREEDORField;
@@ -87,7 +89,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
         public string CAE {
             get {
                 return this.cAEField;
@@ -99,7 +101,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date", Order=2)]
         public System.DateTime CAE_VTO {
             get {
                 return this.cAE_VTOField;
@@ -111,7 +113,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
         public string CALLE {
             get {
                 return this.cALLEField;
@@ -123,7 +125,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
         public string CLASE_DOC {
             get {
                 return this.cLASE_DOCField;
@@ -135,7 +137,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
         public string CPOSTAL {
             get {
                 return this.cPOSTALField;
@@ -147,7 +149,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
         public string CUIT {
             get {
                 return this.cUITField;
@@ -159,7 +161,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=7)]
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date", Order=7)]
         public System.DateTime FECHACONT {
             get {
                 return this.fECHACONTField;
@@ -183,7 +185,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=8)]
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date", Order=8)]
         public System.DateTime FECHAFACTURA {
             get {
                 return this.fECHAFACTURAField;
@@ -195,7 +197,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=9)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
         public decimal IMPORTE {
             get {
                 return this.iMPORTEField;
@@ -207,7 +209,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=10)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=10)]
         public string MONEDA {
             get {
                 return this.mONEDAField;
@@ -219,7 +221,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=11)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=11)]
         public string NOMBRE {
             get {
                 return this.nOMBREField;
@@ -231,7 +233,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=12)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=12)]
         public string PAIS {
             get {
                 return this.pAISField;
@@ -243,7 +245,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=13)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=13)]
         public string POBLACION {
             get {
                 return this.pOBLACIONField;
@@ -255,7 +257,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=14)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=14)]
         public string REFERENCIA {
             get {
                 return this.rEFERENCIAField;
@@ -267,20 +269,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=15)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("item", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
-        public T100[] RESULTS {
-            get {
-                return this.rESULTSField;
-            }
-            set {
-                this.rESULTSField = value;
-                this.RaisePropertyChanged("RESULTS");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=16)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=15)]
         public string SOCIEDAD {
             get {
                 return this.sOCIEDADField;
@@ -292,7 +281,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=17)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=16)]
         public string TEXTO {
             get {
                 return this.tEXTOField;
@@ -304,7 +293,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=18)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=17)]
         public string TIENDA {
             get {
                 return this.tIENDAField;
@@ -316,8 +305,8 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=19)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("item", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
+        [System.Xml.Serialization.XmlArrayAttribute(Order=18)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("item", IsNullable=false)]
         public ZFI_RFC_COMPROBANTES_ABC[] T_DETALLE {
             get {
                 return this.t_DETALLEField;
@@ -325,80 +314,6 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
             set {
                 this.t_DETALLEField = value;
                 this.RaisePropertyChanged("T_DETALLE");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="urn:sap-com:document:sap:rfc:functions")]
-    public partial class T100 : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string sPRSLField;
-        
-        private string aRBGBField;
-        
-        private string mSGNRField;
-        
-        private string tEXTField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string SPRSL {
-            get {
-                return this.sPRSLField;
-            }
-            set {
-                this.sPRSLField = value;
-                this.RaisePropertyChanged("SPRSL");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public string ARBGB {
-            get {
-                return this.aRBGBField;
-            }
-            set {
-                this.aRBGBField = value;
-                this.RaisePropertyChanged("ARBGB");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public string MSGNR {
-            get {
-                return this.mSGNRField;
-            }
-            set {
-                this.mSGNRField = value;
-                this.RaisePropertyChanged("MSGNR");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
-        public string TEXT {
-            get {
-                return this.tEXTField;
-            }
-            set {
-                this.tEXTField = value;
-                this.RaisePropertyChanged("TEXT");
             }
         }
         
@@ -429,7 +344,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         private decimal iMPORTEField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public string CTA_CONTABLE {
             get {
                 return this.cTA_CONTABLEField;
@@ -441,7 +356,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
         public string IND_IMP {
             get {
                 return this.iND_IMPField;
@@ -453,7 +368,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
         public string CECO {
             get {
                 return this.cECOField;
@@ -465,7 +380,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
         public decimal IMPORTE {
             get {
                 return this.iMPORTEField;
@@ -500,12 +415,10 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         
         private string rESULTADOField;
         
-        private T100[] rESULTSField;
-        
         private ZFI_RFC_COMPROBANTES_ABC[] t_DETALLEField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public string MENSAJE {
             get {
                 return this.mENSAJEField;
@@ -517,7 +430,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
         public string NRO_DOC {
             get {
                 return this.nRO_DOCField;
@@ -529,7 +442,7 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
         public string RESULTADO {
             get {
                 return this.rESULTADOField;
@@ -541,21 +454,8 @@ namespace SAPConnectorLibrary.Comprobantes_ABC {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("item", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
-        public T100[] RESULTS {
-            get {
-                return this.rESULTSField;
-            }
-            set {
-                this.rESULTSField = value;
-                this.RaisePropertyChanged("RESULTS");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("item", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
+        [System.Xml.Serialization.XmlArrayAttribute(Order=3)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("item", IsNullable=false)]
         public ZFI_RFC_COMPROBANTES_ABC[] T_DETALLE {
             get {
                 return this.t_DETALLEField;

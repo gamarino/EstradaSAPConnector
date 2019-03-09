@@ -83,7 +83,10 @@ namespace SAPConnectorLibrary
             Models.SAPC_Session newSession = new Models.SAPC_Session
             {
                 EndPoint = endPoint,
-                Comienzo = DateTime.UtcNow,
+                Comienzo = DateTime.Now,
+                Final = DateTime.Now,
+                ErrorCode = "OK",
+                ErrorMessage = "OK",
             };
 
             if (estadoADELANTO_A_PROCESAR == null)
@@ -143,8 +146,12 @@ namespace SAPConnectorLibrary
             Models.SAPC_SAPRPCCall call = new Models.SAPC_SAPRPCCall
             {
                 Method = "Adelanto",
-                ErrorCode = "",
-                ErrorMsg = ""
+                ErrorCode = "OK",
+                ErrorMsg = "OK",
+                Results1 = "OK",
+                Adelanto = adelanto,
+                Session = this.session.Session,
+                EndPoint = this.session.Session.EndPoint,
             };
 
             try
@@ -180,14 +187,17 @@ namespace SAPConnectorLibrary
                 Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPO request = new Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPO
                 {
                     T_DETALLE = comp.ToArray(),
-                    // RESULTS = new Solicitud_Anticipo.T100[0],
+                    RESULTS = new Solicitud_Anticipo.T100[0],
                 };
+
+                call.InputParameters = request.ToString();
+                call.StartedOn = DateTime.Now;
 
                 Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse response = client.ZFI_RFC_SOLICITUD_ANTICIPO(request);
 
-                call.InputParameters = request.ToString();
+                call.FinishedOn = DateTime.Now;
+                call.ErrorCode = response.RESULTADO;
                 call.ErrorMsg = response.MENSAJE;
-
 
                 if (response.RESULTADO != "001")
                 {
@@ -202,13 +212,14 @@ namespace SAPConnectorLibrary
             }
             catch (Exception e)
             {
+                call.FinishedOn = DateTime.Now;
                 call.ErrorCode = "Unexpected exception";
                 call.ErrorMsg = e.ToString();
-                throw e;
             }
             finally
             {
                 this.context.SAPC_SAPRPCCall.Add(call);
+                this.context.SaveChanges();
             }
         }
 
@@ -218,7 +229,11 @@ namespace SAPConnectorLibrary
             {
                 Method = "Factura",
                 ErrorCode = "",
-                ErrorMsg = ""
+                ErrorMsg = "",
+                Results1 = "OK",
+                FacturaProveedor = factura,
+                Session = this.session.Session,
+                EndPoint = this.session.Session.EndPoint,
             };
 
             try
@@ -289,9 +304,13 @@ namespace SAPConnectorLibrary
                 request.T_DETALLE = comp.ToArray();
                 request.RESULTS = new Comprobantes_ABC.T100[0];
 
+                call.InputParameters = request.ToString();
+                call.StartedOn = DateTime.Now;
+
                 Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCResponse response = client.ZFI_RFC_COMPROBANTES_ABC(request);
 
-                call.InputParameters = request.ToString();
+                call.FinishedOn = DateTime.Now;
+                call.ErrorCode = response.RESULTADO;
                 call.ErrorMsg = response.MENSAJE;
 
                 if (response.RESULTADO != "001")
@@ -304,19 +323,17 @@ namespace SAPConnectorLibrary
                     factura.SAPNroDoc = response.NRO_DOC;
                     factura.Estado = estadoFACTURA_PROCESADA;
                 }
-
-                this.context.SaveChanges();
-
             }
             catch (Exception e)
             {
+                call.FinishedOn = DateTime.Now;
                 call.ErrorCode = "Unexpected exception";
                 call.ErrorMsg = e.ToString();
-                throw e;
             }
             finally
             {
                 this.context.SAPC_SAPRPCCall.Add(call);
+                this.context.SaveChanges();
             }
         }
 
@@ -354,14 +371,20 @@ namespace SAPConnectorLibrary
         }
         void SAPPushRendicion(Models.SAPC_Rendicion rendicion)
         {
+            DateTime now = DateTime.Now;
+
             Models.SAPC_SAPRPCCall call = new Models.SAPC_SAPRPCCall
             {
                 Method = "Rendiciones",
                 ErrorCode = "",
-                ErrorMsg = ""
+                ErrorMsg = "",
+                Results1 = "OK",
+                RendicionGastos = rendicion,
+                Session = this.session.Session,
+                EndPoint = this.session.Session.EndPoint,
+                StartedOn = now,
+                FinishedOn = now,
             };
-
-            DateTime now = DateTime.Now;
 
             try
             {
@@ -476,9 +499,13 @@ namespace SAPConnectorLibrary
 
                     request.CUENTAS = comp.ToArray();
 
+                    call.InputParameters = request.ToString();
+                    call.StartedOn = DateTime.Now;
+
                     Comprobantes_NO_ABC.ZFI_RFC_COMPROBANTES_NO_ABCResponse response = client.ZFI_RFC_COMPROBANTES_NO_ABC(request);
 
-                    call.InputParameters = request.ToString();
+                    call.FinishedOn = DateTime.Now;
+                    call.ErrorCode = response.RESULTADO;
                     call.ErrorMsg = response.MENSAJE;
 
                     if (response.RESULTADO != "001")
@@ -496,9 +523,9 @@ namespace SAPConnectorLibrary
             }
             catch (Exception e)
             {
+                call.FinishedOn = DateTime.Now;
                 call.ErrorCode = "Unexpected exception";
                 call.ErrorMsg = e.ToString();
-                throw e;
             }
             finally
             {
@@ -547,10 +574,9 @@ namespace SAPConnectorLibrary
                     {
                         Console.WriteLine("Tomando proveedor {0}", ++n);
 
-                        // if (vendor.PERNR == "00000000")
-                        if (true)
-                            {
-                                Models.SAPC_Paises country;
+                        if (vendor.PERNR == "00000000")
+                        {
+                            Models.SAPC_Paises country;
                             Models.SAPC_Poblaciones city;
 
                             var countries = from a in context.SAPC_Paises
@@ -622,41 +648,39 @@ namespace SAPConnectorLibrary
                                 });
                             }
                         }
-                        //else
-                        //{
-                        //    // Es un empleado
-                        //    var employees = from a in context.SAPC_Empleado
-                        //                    where a.NroEmpleado == vendor.PERNR
-                        //                    select a;
-                        //    if (employees.Count() != 0)
-                        //    {
-                        //        Models.SAPC_Empleado existingEmployee = employees.First();
-                        //        existingEmployee.Nombre = vendor.NOMBRE;
-                        //        existingEmployee.CtaContable = vendor.PROVEEDOR;
-                        //    }
-                        //    else
-                        //    {
-                        //        context.SAPC_Empleado.Add(new Models.SAPC_Empleado
-                        //        {
-                        //            NroEmpleado = vendor.PERNR,
-                        //            DNI = vendor.CUIT,
-                        //            CtaContable = vendor.PROVEEDOR,
-                        //            Nombre = vendor.NOMBRE
-                        //        });
-                        //    }
-                        //}
+                        else
+                        {
+                            // Es un empleado
+                            var employees = from a in context.SAPC_Empleado
+                                            where a.NroEmpleado == vendor.PERNR
+                                            select a;
+                            if (employees.Count() != 0)
+                            {
+                                Models.SAPC_Empleado existingEmployee = employees.First();
+                                existingEmployee.Nombre = vendor.NOMBRE;
+                                existingEmployee.CtaContable = vendor.PROVEEDOR;
+                            }
+                            else
+                            {
+                                context.SAPC_Empleado.Add(new Models.SAPC_Empleado
+                                {
+                                    NroEmpleado = vendor.PERNR,
+                                    DNI = vendor.CUIT,
+                                    CtaContable = vendor.PROVEEDOR,
+                                    Nombre = vendor.NOMBRE
+                                });
+                            }
+                        }
                     }
                 }
-
-                context.SaveChanges();
             }
             catch (Exception e)
             {
-                throw e;
+                Console.WriteLine("Excepción inesperada {0}", e.ToString());
             }
             finally
             {
-
+                context.SaveChanges();
             }
         }
 
@@ -664,197 +688,188 @@ namespace SAPConnectorLibrary
         {
             using (var context = new Models.EstradaSAPConnectorContainer())
             {
-                using (var dbContextTransaction = context.Database.BeginTransaction())
+                try
                 {
-                    try
+                    this.context = context;
+
+                    // Tomar adelantos de fondos a procesar
+                    var adelantos = from a in context.SAPC_Adelantos
+                                    where a.Estado.Codigo == ADELANTO_A_PROCESAR
+                                    select a;
+
+                    var adelantosPorEndpoint = from aep in adelantos
+                                                group aep by aep.FondoFijo.EndPoint.Id
+                                                into g
+                                                select g;
+
+                    var adelantosPorEmpleado = from a in context.SAPC_Adelantos
+                                                where a.Estado.Codigo == ADELANTO_A_PROCESAR &&
+                                                        a.PedidoPorEmpleado != null
+                                                select a;
+
+                    var adelantosPorEmpleadoPorEndpoint = from aeep in adelantosPorEmpleado
+                                                            group aeep by aeep.PedidoPorEmpleado.EndPoint.Id
+                                                            into g
+                                                            select g;
+
+                    // Tomar facturas a procesar
+                    var facturas = from a in context.SAPC_FacturaProveedor
+                                    where a.Estado.Codigo == FACTURA_A_PROCESAR
+                                    select a;
+
+                    var facturasPorEndpoint = from aep in facturas
+                                                group aep by aep.Rendicion.FondoFijo.EndPoint.Id
+                                                into g
+                                                select g;
+
+                    ISet<int> endPoints = new HashSet<int> { };
+                    foreach (var endPointGroup in adelantosPorEndpoint)
                     {
-                        this.context = context;
+                        endPoints.Add(endPointGroup.Key);
+                    }
+                    foreach (var endPointGroup in facturasPorEndpoint)
+                    {
+                        endPoints.Add(endPointGroup.Key);
+                    }
+                    foreach (var endPointGroup in adelantosPorEmpleadoPorEndpoint)
+                    {
+                        endPoints.Add(endPointGroup.Key);
+                    }
 
-                        // Tomar adelantos de fondos a procesar
-                        var adelantos = from a in context.SAPC_Adelantos
-                                        where a.Estado.Codigo == ADELANTO_A_PROCESAR
-                                        select a;
+                    if (endPoints.Count > 0)
+                    {
+                        session = null;
 
-                        var adelantosPorEndpoint = from aep in adelantos
-                                                   group aep by aep.FondoFijo.EndPoint.Id
-                                                   into g
-                                                   select g;
+                        foreach (int endPointId in endPoints)
+                        {
+                            session = this.CreateSession(endPointId);
 
-                        var adelantosPorEmpleado = from a in context.SAPC_Adelantos
-                                                   where a.Estado.Codigo == ADELANTO_A_PROCESAR &&
-                                                         a.PedidoPorEmpleado != null
-                                                   select a;
+                            session.SAPLogin();
 
-                        var adelantosPorEmpleadoPorEndpoint = from aeep in adelantosPorEmpleado
-                                                              group aeep by aeep.PedidoPorEmpleado.EndPoint.Id
-                                                               into g
-                                                              select g;
+                            foreach (var a1Element in adelantosPorEndpoint.ToList())
+                            {
+                                if (a1Element.Key == endPointId)
+                                {
+                                    foreach (var adelanto in a1Element.ToList())
+                                    {
+                                        this.SAPPushAdelanto(adelanto);
+                                    }
+                                }
+                            }
 
-                        // Tomar facturas a procesar
-                        var facturas = from a in context.SAPC_FacturaProveedor
-                                       where a.Estado.Codigo == FACTURA_A_PROCESAR
-                                       select a;
+                            foreach (var a2Element in adelantosPorEmpleadoPorEndpoint.ToList())
+                            {
+                                if (a2Element.Key == endPointId)
+                                {
+                                    foreach (var adelanto in a2Element.ToList())
+                                        this.SAPPushAdelanto(adelanto);
+                                }
+                            }
 
-                        var facturasPorEndpoint = from aep in facturas
-                                                  group aep by aep.Rendicion.FondoFijo.EndPoint.Id
-                                                   into g
-                                                  select g;
+                            foreach (var felement in facturasPorEndpoint.ToList())
+                            {
+                                if (felement.Key == endPointId)
+                                {
+                                    foreach (var factura in felement.ToList())
+                                        this.SAPPushFactura(factura);
+                                }
+                            }
+                        }
 
-                        ISet<int> endPoints = new HashSet<int> { };
-                        foreach (var endPointGroup in adelantosPorEndpoint)
+                        var rendicionesAprobadas = from r in context.SAPC_Rendicion
+                                                    where r.Estado.Codigo == RENDICION_APROBADA &&
+                                                            r.FondoFijo != null &&
+                                                            r.FondoFijo.Estado.Codigo == FONDO_ACTIVO
+                                                    select r;
+
+                        foreach (var r in rendicionesAprobadas)
+                            this.SAPCheckRendicion(r);
+
+                        // Tomar rendiciones ABC a procesar, luego de procesar las facturas y adelantos
+                        var rendiciones = from r in context.SAPC_Rendicion
+                                            where r.Estado.Codigo == RENDICION_A_PROCESAR &&
+                                                r.FondoFijo != null &&
+                                                r.FondoFijo.Estado.Codigo == FONDO_ACTIVO
+                                            select r;
+
+                        var rendicionesPorEndpoint = from r in rendiciones
+                                                        group r by r.FondoFijo.EndPoint.Id
+                                                        into g
+                                                        select g;
+
+                        var rendicionesPorEmpleado = from r in context.SAPC_Rendicion
+                                                        where r.Estado.Codigo == RENDICION_A_PROCESAR &&
+                                                            r.RendidoPor != null
+                                                        select r;
+
+                        var rendicionesPorEmpleadoPorEndpoint = from rabc in rendicionesPorEmpleado
+                                                                group rabc by rabc.RendidoPor.EndPoint.Id
+                                                                    into g
+                                                                select g;
+
+                        foreach (var endPointGroup in rendicionesPorEndpoint)
                         {
                             endPoints.Add(endPointGroup.Key);
                         }
-                        foreach (var endPointGroup in facturasPorEndpoint)
-                        {
-                            endPoints.Add(endPointGroup.Key);
-                        }
-                        foreach (var endPointGroup in adelantosPorEmpleadoPorEndpoint)
+                        foreach (var endPointGroup in rendicionesPorEmpleadoPorEndpoint)
                         {
                             endPoints.Add(endPointGroup.Key);
                         }
 
                         if (endPoints.Count > 0)
                         {
-                            session = null;
-
                             foreach (int endPointId in endPoints)
                             {
                                 session = this.CreateSession(endPointId);
 
                                 session.SAPLogin();
 
-                                foreach (var a1Element in adelantosPorEndpoint.ToList())
+                                foreach (var a1Element in rendicionesPorEndpoint.ToList())
                                 {
                                     if (a1Element.Key == endPointId)
                                     {
-                                        foreach (var adelanto in a1Element.ToList())
+                                        foreach (var r in a1Element.ToList())
                                         {
-                                            this.SAPPushAdelanto(adelanto);
+                                            this.SAPPushRendicion(r);
                                         }
                                     }
-                                }
 
-                                foreach (var a2Element in adelantosPorEmpleadoPorEndpoint.ToList())
-                                {
-                                    if (a2Element.Key == endPointId)
+                                    foreach (var a2Element in rendicionesPorEmpleadoPorEndpoint.ToList())
                                     {
-                                        foreach (var adelanto in a2Element.ToList())
-                                            this.SAPPushAdelanto(adelanto);
-                                    }
-                                }
-
-                                foreach (var felement in facturasPorEndpoint.ToList())
-                                {
-                                    if (felement.Key == endPointId)
-                                    {
-                                        foreach (var factura in felement.ToList())
-                                            this.SAPPushFactura(factura);
-                                    }
-                                }
-                            }
-
-                            var rendicionesAprobadas = from r in context.SAPC_Rendicion
-                                                       where r.Estado.Codigo == RENDICION_APROBADA &&
-                                                             r.FondoFijo != null &&
-                                                             r.FondoFijo.Estado.Codigo == FONDO_ACTIVO
-                                                       select r;
-
-                            foreach (var r in rendicionesAprobadas)
-                                this.SAPCheckRendicion(r);
-
-                            // Tomar rendiciones ABC a procesar, luego de procesar las facturas y adelantos
-                            var rendiciones = from r in context.SAPC_Rendicion
-                                              where r.Estado.Codigo == RENDICION_A_PROCESAR &&
-                                                    r.FondoFijo != null &&
-                                                    r.FondoFijo.Estado.Codigo == FONDO_ACTIVO
-                                              select r;
-
-                            var rendicionesPorEndpoint = from r in rendiciones
-                                                         group r by r.FondoFijo.EndPoint.Id
-                                                         into g
-                                                         select g;
-
-                            var rendicionesPorEmpleado = from r in context.SAPC_Rendicion
-                                                         where r.Estado.Codigo == RENDICION_A_PROCESAR &&
-                                                               r.RendidoPor != null
-                                                         select r;
-
-                            var rendicionesPorEmpleadoPorEndpoint = from rabc in rendicionesPorEmpleado
-                                                                    group rabc by rabc.RendidoPor.EndPoint.Id
-                                                                        into g
-                                                                    select g;
-
-                            foreach (var endPointGroup in rendicionesPorEndpoint)
-                            {
-                                endPoints.Add(endPointGroup.Key);
-                            }
-                            foreach (var endPointGroup in rendicionesPorEmpleadoPorEndpoint)
-                            {
-                                endPoints.Add(endPointGroup.Key);
-                            }
-
-                            if (endPoints.Count > 0)
-                            {
-                                foreach (int endPointId in endPoints)
-                                {
-                                    session = this.CreateSession(endPointId);
-
-                                    session.SAPLogin();
-
-                                    foreach (var a1Element in rendicionesPorEndpoint.ToList())
-                                    {
-                                        if (a1Element.Key == endPointId)
+                                        if (a2Element.Key == endPointId)
                                         {
-                                            foreach (var r in a1Element.ToList())
+                                            foreach (var r in a2Element.ToList())
                                             {
                                                 this.SAPPushRendicion(r);
                                             }
                                         }
-
-                                        foreach (var a2Element in rendicionesPorEmpleadoPorEndpoint.ToList())
-                                        {
-                                            if (a2Element.Key == endPointId)
-                                            {
-                                                foreach (var r in a2Element.ToList())
-                                                {
-                                                    this.SAPPushRendicion(r);
-                                                }
-                                            }
-                                        }
-
-                                        session.Session.ErrorCode = "";
-                                        session.Session.ErrorMessage = "";
-
                                     }
                                 }
+                            }
 
-                                var allEndPoints = context.SAPC_EndPoint;
+                            var allEndPoints = context.SAPC_EndPoint;
 
-                                foreach (var endPoint in allEndPoints)
-                                {
-                                    session = this.CreateSession(endPoint.Id);
+                            foreach (var endPoint in allEndPoints)
+                            {
+                                session = this.CreateSession(endPoint.Id);
 
-                                    session.SAPLogin();
+                                session.SAPLogin();
 
-                                    try
-                                    {
-                                        this.SAPSynchVendors();
-                                        context.SaveChanges();
-                                        dbContextTransaction.Commit();
-                                    }
-                                    catch
-                                    {
-
-                                    }
-                                }
-
-                                context.SaveChanges();
-                                dbContextTransaction.Commit();
+                                this.SAPSynchVendors();
                             }
                         }
                     }
-                    catch { }
+                }
+                catch (Exception e)
+                {
+                    this.session.Session.ErrorCode = "Excepción";
+                    this.session.Session.ErrorMessage = e.ToString();
+                        
+                    Console.WriteLine("Excepción inesperada {0}", e.ToString());
+                }
+                finally
+                {
+                    context.SaveChanges();
                 }
             }
         }

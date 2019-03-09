@@ -333,25 +333,19 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Connected Services\Datos_Proveedores\SAPConnectorLibrary.Datos_Proveedores.ZFI_RFC_DATOS_PROVEEDORESResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\Datos_Proveedores\SAPConnectorLibrary.Datos_Proveedores.ZFI_RFC_DATOS_PROVEEDORESResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\Datos_Proveedores\ZWS_DATOS_PROVEEDORES.wsdl" />
-    <None Include="Connected Services\Datos_Proveedores\configuration91.svcinfo" />
-    <None Include="Connected Services\Datos_Proveedores\configuration.svcinfo" />
-    <None Include="Connected Services\Datos_Proveedores\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <None Include="Connected Services\Comprobantes_ABC\configuration91.svcinfo" />
     <None Include="Connected Services\Comprobantes_ABC\configuration.svcinfo" />
     <None Include="Connected Services\Comprobantes_ABC\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Connected Services\Datos_Proveedores\SAPConnectorLibrary.Datos_Proveedores.ZFI_RFC_DATOS_PROVEEDORESResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Datos_Proveedores\SAPConnectorLibrary.Datos_Proveedores.ZFI_RFC_DATOS_PROVEEDORESResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Datos_Proveedores\ZWS_DATOS_PROVEEDORES %281%29.wsdl" />
     <None Include="Connected Services\Solicitud_Anticipo\configuration91.svcinfo" />
     <None Include="Connected Services\Solicitud_Anticipo\configuration.svcinfo" />
     <None Include="Connected Services\Solicitud_Anticipo\Reference.svcmap">
@@ -361,6 +355,12 @@
     <None Include="Connected Services\Comprobantes_NO_ABC\configuration91.svcinfo" />
     <None Include="Connected Services\Comprobantes_NO_ABC\configuration.svcinfo" />
     <None Include="Connected Services\Comprobantes_NO_ABC\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\Datos_Proveedores\configuration91.svcinfo" />
+    <None Include="Connected Services\Datos_Proveedores\configuration.svcinfo" />
+    <None Include="Connected Services\Datos_Proveedores\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

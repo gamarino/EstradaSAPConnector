@@ -205,7 +205,12 @@ namespace SAPConnectorLibrary
 
                 call.FinishedOn = DateTime.Now;
                 call.ErrorCode = response.RESULTADO;
-                call.ErrorMsg = response.MENSAJE;
+                call.Results1 = "OK";
+                using (var writer = new System.IO.StringWriter())
+                {
+                    ObjectDumper.Dumper.Dump(request, "Anticipo response", writer);
+                    call.ErrorMsg = writer.ToString();
+                }
 
                 if (response.RESULTADO != "001")
                 {
@@ -217,12 +222,14 @@ namespace SAPConnectorLibrary
                     adelanto.SAPNroDoc = response.NRO_DOC;
                     adelanto.Estado = estadoADELANTO_PROCESADO;
                 }
+                context.Entry(adelanto).State = System.Data.Entity.EntityState.Modified;
             }
             catch (Exception e)
             {
                 call.FinishedOn = DateTime.Now;
                 call.ErrorCode = "Unexpected exception";
                 call.ErrorMsg = e.ToString();
+                call.Results1 = "Exception";
             }
             finally
             {
@@ -323,7 +330,12 @@ namespace SAPConnectorLibrary
 
                 call.FinishedOn = DateTime.Now;
                 call.ErrorCode = response.RESULTADO;
-                call.ErrorMsg = response.MENSAJE;
+                call.Results1 = "OK";
+                using (var writer = new System.IO.StringWriter())
+                {
+                    ObjectDumper.Dumper.Dump(request, "Comprobante_ABC response", writer);
+                    call.ErrorMsg = writer.ToString();
+                }
 
                 if (response.RESULTADO != "001")
                 {
@@ -335,12 +347,15 @@ namespace SAPConnectorLibrary
                     factura.SAPNroDoc = response.NRO_DOC;
                     factura.Estado = estadoFACTURA_PROCESADA;
                 }
+                context.Entry(factura).State = System.Data.Entity.EntityState.Modified;
+
             }
             catch (Exception e)
             {
                 call.FinishedOn = DateTime.Now;
                 call.ErrorCode = "Unexpected exception";
                 call.ErrorMsg = e.ToString();
+                call.Results1 = "Exception";
             }
             finally
             {
@@ -513,7 +528,7 @@ namespace SAPConnectorLibrary
 
                     using (var writer = new System.IO.StringWriter())
                     {
-                        ObjectDumper.Dumper.Dump(request, "Comprobante NO ABC request", writer);
+                        ObjectDumper.Dumper.Dump(request, "Comprobante_NO_ABC request", writer);
                         call.InputParameters = writer.ToString();
                     }
                     call.StartedOn = DateTime.Now;
@@ -522,7 +537,12 @@ namespace SAPConnectorLibrary
 
                     call.FinishedOn = DateTime.Now;
                     call.ErrorCode = response.RESULTADO;
-                    call.ErrorMsg = response.MENSAJE;
+                    call.Results1 = "OK";
+                    using (var writer = new System.IO.StringWriter())
+                    {
+                        ObjectDumper.Dumper.Dump(request, "Comprobante_NO_ABC response", writer);
+                        call.ErrorMsg = writer.ToString();
+                    }
 
                     if (response.RESULTADO != "001")
                     {
@@ -535,6 +555,8 @@ namespace SAPConnectorLibrary
                         rendicion.SAPNroDoc = response.NRO_DOC;
                         rendicion.Estado = estadoRENDICION_PROCESADA;
                     }
+                    context.Entry(rendicion).State = System.Data.Entity.EntityState.Modified;
+
                 }
             }
             catch (Exception e)
@@ -542,6 +564,7 @@ namespace SAPConnectorLibrary
                 call.FinishedOn = DateTime.Now;
                 call.ErrorCode = "Unexpected exception";
                 call.ErrorMsg = e.ToString();
+                call.Results1 = "Exception";
             }
             finally
             {
@@ -554,10 +577,12 @@ namespace SAPConnectorLibrary
         {
             try
             {
-                BasicHttpBinding binding = new BasicHttpBinding();
-                binding.MaxReceivedMessageSize = 9999999;
-                binding.MaxBufferPoolSize = 9999999;
-                binding.MaxBufferSize = 9999999;
+                BasicHttpBinding binding = new BasicHttpBinding
+                {
+                    MaxReceivedMessageSize = 9999999,
+                    MaxBufferPoolSize = 9999999,
+                    MaxBufferSize = 9999999
+                };
 
                 EndpointAddress address = new EndpointAddress(session.Session.EndPoint.URLProveedores);
 
@@ -912,11 +937,13 @@ namespace SAPConnectorLibrary
 
                     Consulta_Id.ZWS_CONSULTA_ID client = new Consulta_Id.ZWS_CONSULTA_IDClient(binding, address);
 
-                    Consulta_Id.ZfiRfcManIdRequest request = new Consulta_Id.ZfiRfcManIdRequest();
-                    request.ZfiRfcManId = new Consulta_Id.ZfiRfcManId
+                    Consulta_Id.ZfiRfcManIdRequest request = new Consulta_Id.ZfiRfcManIdRequest
                     {
-                        Documento = sapDocNbr,
-                        Rinde = rinde,
+                        ZfiRfcManId = new Consulta_Id.ZfiRfcManId
+                        {
+                            Documento = sapDocNbr,
+                            Rinde = rinde,
+                        }
                     };
 
                     Consulta_Id.ZfiRfcManIdResponse1 response = client.ZfiRfcManId(request);

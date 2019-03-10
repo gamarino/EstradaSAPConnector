@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
+using ObjectDumper;
 
 namespace SAPConnectorLibrary
 {
@@ -85,9 +86,12 @@ namespace SAPConnectorLibrary
                 EndPoint = endPoint,
                 Comienzo = DateTime.Now,
                 Final = DateTime.Now,
-                ErrorCode = "OK",
-                ErrorMessage = "OK",
+                ErrorCode = "In progress",
+                ErrorMessage = "In progress",
             };
+
+            this.context.SAPC_Session.Add(newSession);
+            this.context.SaveChanges();
 
             if (estadoADELANTO_A_PROCESAR == null)
             {
@@ -146,9 +150,9 @@ namespace SAPConnectorLibrary
             Models.SAPC_SAPRPCCall call = new Models.SAPC_SAPRPCCall
             {
                 Method = "Adelanto",
-                ErrorCode = "OK",
-                ErrorMsg = "OK",
-                Results1 = "OK",
+                ErrorCode = "In progress",
+                ErrorMsg = "In progress",
+                Results1 = "In progress",
                 Adelanto = adelanto,
                 Session = this.session.Session,
                 EndPoint = this.session.Session.EndPoint,
@@ -190,7 +194,11 @@ namespace SAPConnectorLibrary
                     RESULTS = new Solicitud_Anticipo.T100[0],
                 };
 
-                call.InputParameters = request.ToString();
+                using (var writer = new System.IO.StringWriter())
+                {
+                    ObjectDumper.Dumper.Dump(request, "Anticipo request", writer);
+                    call.InputParameters = writer.ToString();
+                }
                 call.StartedOn = DateTime.Now;
 
                 Solicitud_Anticipo.ZFI_RFC_SOLICITUD_ANTICIPOResponse response = client.ZFI_RFC_SOLICITUD_ANTICIPO(request);
@@ -228,9 +236,9 @@ namespace SAPConnectorLibrary
             Models.SAPC_SAPRPCCall call = new Models.SAPC_SAPRPCCall
             {
                 Method = "Factura",
-                ErrorCode = "",
-                ErrorMsg = "",
-                Results1 = "OK",
+                ErrorCode = "In progress",
+                ErrorMsg = "In progress",
+                Results1 = "In progress",
                 FacturaProveedor = factura,
                 Session = this.session.Session,
                 EndPoint = this.session.Session.EndPoint,
@@ -304,7 +312,11 @@ namespace SAPConnectorLibrary
                 request.T_DETALLE = comp.ToArray();
                 request.RESULTS = new Comprobantes_ABC.T100[0];
 
-                call.InputParameters = request.ToString();
+                using (var writer = new System.IO.StringWriter())
+                {
+                    ObjectDumper.Dumper.Dump(request, "Comprobante_ABC request", writer);
+                    call.InputParameters = writer.ToString();
+                }
                 call.StartedOn = DateTime.Now;
 
                 Comprobantes_ABC.ZFI_RFC_COMPROBANTES_ABCResponse response = client.ZFI_RFC_COMPROBANTES_ABC(request);
@@ -376,9 +388,9 @@ namespace SAPConnectorLibrary
             Models.SAPC_SAPRPCCall call = new Models.SAPC_SAPRPCCall
             {
                 Method = "Rendiciones",
-                ErrorCode = "",
-                ErrorMsg = "",
-                Results1 = "OK",
+                ErrorCode = "In progress",
+                ErrorMsg = "In progress",
+                Results1 = "In progress",
                 RendicionGastos = rendicion,
                 Session = this.session.Session,
                 EndPoint = this.session.Session.EndPoint,
@@ -499,7 +511,11 @@ namespace SAPConnectorLibrary
 
                     request.CUENTAS = comp.ToArray();
 
-                    call.InputParameters = request.ToString();
+                    using (var writer = new System.IO.StringWriter())
+                    {
+                        ObjectDumper.Dumper.Dump(request, "Comprobante NO ABC request", writer);
+                        call.InputParameters = writer.ToString();
+                    }
                     call.StartedOn = DateTime.Now;
 
                     Comprobantes_NO_ABC.ZFI_RFC_COMPROBANTES_NO_ABCResponse response = client.ZFI_RFC_COMPROBANTES_NO_ABC(request);
@@ -845,30 +861,35 @@ namespace SAPConnectorLibrary
                                         }
                                     }
                                 }
+
+                                this.session.Session.ErrorCode = "OK";
+                                this.session.Session.ErrorMessage = "Normal ending";
+                                context.SAPC_Session.Attach(session.Session);
+                                session.Session.Final = DateTime.Now;
+                                context.SaveChanges();
                             }
 
                             var allEndPoints = context.SAPC_EndPoint;
 
                             foreach (var endPoint in allEndPoints)
                             {
-                                session = this.CreateSession(endPoint.Id);
-
-                                session.SAPLogin();
-
                                 this.SAPSynchVendors();
                             }
                         }
                     }
+                    this.session.Session.ErrorCode = "OK";
+                    this.session.Session.ErrorMessage = "Normal ending";
                 }
                 catch (Exception e)
                 {
-                    this.session.Session.ErrorCode = "Excepción";
+                    this.session.Session.ErrorCode = "Unexpected exception";
                     this.session.Session.ErrorMessage = e.ToString();
-                        
                     Console.WriteLine("Excepción inesperada {0}", e.ToString());
                 }
                 finally
                 {
+                    this.session.Session.Final = DateTime.Now;
+                    context.Entry(this.session.Session).State = System.Data.Entity.EntityState.Modified;
                     context.SaveChanges();
                 }
             }

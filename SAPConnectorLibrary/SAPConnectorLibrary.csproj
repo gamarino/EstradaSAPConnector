@@ -343,12 +343,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Connected Services\Comprobantes_ABC\configuration91.svcinfo" />
-    <None Include="Connected Services\Comprobantes_ABC\configuration.svcinfo" />
-    <None Include="Connected Services\Comprobantes_ABC\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <None Include="Connected Services\Comprobantes_NO_ABC\configuration91.svcinfo" />
     <None Include="Connected Services\Comprobantes_NO_ABC\configuration.svcinfo" />
     <None Include="Connected Services\Comprobantes_NO_ABC\Reference.svcmap">
@@ -364,6 +358,12 @@
     <None Include="Connected Services\Solicitud_Anticipo\configuration91.svcinfo" />
     <None Include="Connected Services\Solicitud_Anticipo\configuration.svcinfo" />
     <None Include="Connected Services\Solicitud_Anticipo\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\Comprobantes_ABC\configuration91.svcinfo" />
+    <None Include="Connected Services\Comprobantes_ABC\configuration.svcinfo" />
+    <None Include="Connected Services\Comprobantes_ABC\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

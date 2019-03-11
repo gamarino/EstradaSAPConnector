@@ -244,7 +244,7 @@ namespace SAPConnectorLibrary
             try
             {
                 BasicHttpBinding binding = new BasicHttpBinding();
-                EndpointAddress address = new EndpointAddress(session.Session.EndPoint.URLAdelantos);
+                EndpointAddress address = new EndpointAddress(session.Session.EndPoint.URLRendicionABC);
                 Comprobantes_ABC.ZWS_COMPROBANTES_ABCClient client = new Comprobantes_ABC.ZWS_COMPROBANTES_ABCClient(binding, address);
 
 
@@ -406,7 +406,7 @@ namespace SAPConnectorLibrary
             try
             {
                 BasicHttpBinding binding = new BasicHttpBinding();
-                EndpointAddress address = new EndpointAddress(session.Session.EndPoint.URLAdelantos);
+                EndpointAddress address = new EndpointAddress(session.Session.EndPoint.URLRendicionNoABC);
                 Comprobantes_NO_ABC.ZWS_COMPROBANTES_NO_ABCClient client = new Comprobantes_NO_ABC.ZWS_COMPROBANTES_NO_ABCClient(binding, address);
 
                 if (rendicion.Comprobante == null)

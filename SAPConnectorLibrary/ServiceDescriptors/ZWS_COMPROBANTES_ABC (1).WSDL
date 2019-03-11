@@ -33,7 +33,7 @@
     <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
   </wsp:Policy>
   <wsdl:types>
-    <xsd:schema attributeFormDefault="qualified" targetNamespace="urn:sap-com:document:sap:rfc:functions">
+    <xsd:schema elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="urn:sap-com:document:sap:rfc:functions">
       <xsd:simpleType name="char10">
         <xsd:restriction base="xsd:string">
           <xsd:maxLength value="10"/>

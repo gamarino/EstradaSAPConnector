@@ -33,7 +33,7 @@
 		<saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
 	</wsp:Policy>
 	<wsdl:types>
-		<xsd:schema elementFormDefault="qualified" attributeFormDefault="qualified" targetNamespace="urn:sap-com:document:sap:rfc:functions">
+		<xsd:schema attributeFormDefault="qualified" targetNamespace="urn:sap-com:document:sap:rfc:functions">
 			<xsd:simpleType name="char1">
 				<xsd:restriction base="xsd:string">
 					<xsd:maxLength value="1"/>
@@ -132,6 +132,9 @@
 		<wsdl:part name="parameter" element="tns:ZFI_RFC_DATOS_PROVEEDORESResponse"/>
 	</wsdl:message>
 	<wsdl:portType name="ZWS_DATOS_PROVEEDORES">
+		<wsp:Policy>
+			<wsp:PolicyReference URI="#IF_IF_ZWS_DATOS_PROVEEDORES"/>
+		</wsp:Policy>
 		<wsdl:operation name="ZFI_RFC_DATOS_PROVEEDORES">
 			<wsp:Policy>
 				<wsp:PolicyReference URI="#OP_IF_OP_ZFI_RFC_DATOS_PROVEEDORES"/>

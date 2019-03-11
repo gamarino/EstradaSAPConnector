@@ -37,8 +37,8 @@ namespace SAPConnectorLibrary.Solicitud_Anticipo {
         private ZFI_RFC_ANTICIPOS[] t_DETALLEField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("item", IsNullable=false)]
+        [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("item", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
         public T100[] RESULTS {
             get {
                 return this.rESULTSField;
@@ -50,8 +50,8 @@ namespace SAPConnectorLibrary.Solicitud_Anticipo {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("item", IsNullable=false)]
+        [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("item", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
         public ZFI_RFC_ANTICIPOS[] T_DETALLE {
             get {
                 return this.t_DETALLEField;
@@ -89,7 +89,7 @@ namespace SAPConnectorLibrary.Solicitud_Anticipo {
         private string tEXTField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
         public string SPRSL {
             get {
                 return this.sPRSLField;
@@ -101,7 +101,7 @@ namespace SAPConnectorLibrary.Solicitud_Anticipo {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
         public string ARBGB {
             get {
                 return this.aRBGBField;
@@ -113,7 +113,7 @@ namespace SAPConnectorLibrary.Solicitud_Anticipo {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
         public string MSGNR {
             get {
                 return this.mSGNRField;
@@ -125,7 +125,7 @@ namespace SAPConnectorLibrary.Solicitud_Anticipo {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
         public string TEXT {
             get {
                 return this.tEXTField;
@@ -181,7 +181,7 @@ namespace SAPConnectorLibrary.Solicitud_Anticipo {
         private string tEXTO_POSField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="date", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=0)]
         public System.DateTime FECHA_DOC {
             get {
                 return this.fECHA_DOCField;
@@ -193,7 +193,7 @@ namespace SAPConnectorLibrary.Solicitud_Anticipo {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="date", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=1)]
         public System.DateTime FECHA_CONT {
             get {
                 return this.fECHA_CONTField;
@@ -205,7 +205,7 @@ namespace SAPConnectorLibrary.Solicitud_Anticipo {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
         public string CLASE_DOC {
             get {
                 return this.cLASE_DOCField;
@@ -217,7 +217,7 @@ namespace SAPConnectorLibrary.Solicitud_Anticipo {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
         public string SOCIEDAD {
             get {
                 return this.sOCIEDADField;
@@ -229,7 +229,7 @@ namespace SAPConnectorLibrary.Solicitud_Anticipo {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
         public string MONEDA {
             get {
                 return this.mONEDAField;
@@ -241,7 +241,7 @@ namespace SAPConnectorLibrary.Solicitud_Anticipo {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
         public string REFERENCIA {
             get {
                 return this.rEFERENCIAField;
@@ -253,7 +253,7 @@ namespace SAPConnectorLibrary.Solicitud_Anticipo {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
         public string TIENDA {
             get {
                 return this.tIENDAField;
@@ -265,7 +265,7 @@ namespace SAPConnectorLibrary.Solicitud_Anticipo {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
         public string TEXTO_CAB {
             get {
                 return this.tEXTO_CABField;
@@ -277,7 +277,7 @@ namespace SAPConnectorLibrary.Solicitud_Anticipo {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=8)]
         public string CTA_CONTABLE1 {
             get {
                 return this.cTA_CONTABLE1Field;
@@ -289,7 +289,7 @@ namespace SAPConnectorLibrary.Solicitud_Anticipo {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=9)]
         public string IND_CME {
             get {
                 return this.iND_CMEField;
@@ -301,7 +301,7 @@ namespace SAPConnectorLibrary.Solicitud_Anticipo {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=10)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=10)]
         public decimal IMPORTE {
             get {
                 return this.iMPORTEField;
@@ -313,7 +313,7 @@ namespace SAPConnectorLibrary.Solicitud_Anticipo {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="date", Order=11)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=11)]
         public System.DateTime FECHA_VTO {
             get {
                 return this.fECHA_VTOField;
@@ -325,7 +325,7 @@ namespace SAPConnectorLibrary.Solicitud_Anticipo {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=12)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=12)]
         public string TEXTO_POS {
             get {
                 return this.tEXTO_POSField;
@@ -365,7 +365,7 @@ namespace SAPConnectorLibrary.Solicitud_Anticipo {
         private ZFI_RFC_ANTICIPOS[] t_DETALLEField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
         public string MENSAJE {
             get {
                 return this.mENSAJEField;
@@ -377,7 +377,7 @@ namespace SAPConnectorLibrary.Solicitud_Anticipo {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
         public string NRO_DOC {
             get {
                 return this.nRO_DOCField;
@@ -389,7 +389,7 @@ namespace SAPConnectorLibrary.Solicitud_Anticipo {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
         public string RESULTADO {
             get {
                 return this.rESULTADOField;
@@ -401,8 +401,8 @@ namespace SAPConnectorLibrary.Solicitud_Anticipo {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=3)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("item", IsNullable=false)]
+        [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("item", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
         public T100[] RESULTS {
             get {
                 return this.rESULTSField;
@@ -414,8 +414,8 @@ namespace SAPConnectorLibrary.Solicitud_Anticipo {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=4)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("item", IsNullable=false)]
+        [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("item", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
         public ZFI_RFC_ANTICIPOS[] T_DETALLE {
             get {
                 return this.t_DETALLEField;

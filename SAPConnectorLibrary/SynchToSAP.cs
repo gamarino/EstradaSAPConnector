@@ -28,17 +28,6 @@ namespace SAPConnectorLibrary
     class SessionContext
     {
         public Models.SAPC_Session Session;
-
-        public void SAPLogin()
-        {
-            // TODO Login SAP  
-        }
-
-
-        public void Close()
-        {
-            // Clean up
-        }
     }
 
     class SynchException : Exception
@@ -91,7 +80,6 @@ namespace SAPConnectorLibrary
             };
 
             this.context.SAPC_Session.Add(newSession);
-            this.context.SaveChanges();
 
             if (estadoADELANTO_A_PROCESAR == null)
             {
@@ -138,6 +126,8 @@ namespace SAPConnectorLibrary
                                                         e.EntityName == "SAPC_Rendicion")
                                             .FirstOrDefault();
             }
+
+            this.context.SaveChanges();
 
             return new SessionContext
             {
@@ -208,7 +198,7 @@ namespace SAPConnectorLibrary
                 call.Results1 = "OK";
                 using (var writer = new System.IO.StringWriter())
                 {
-                    ObjectDumper.Dumper.Dump(request, "Anticipo response", writer);
+                    ObjectDumper.Dumper.Dump(response, "Anticipo response", writer);
                     call.ErrorMsg = writer.ToString();
                 }
 
@@ -333,7 +323,7 @@ namespace SAPConnectorLibrary
                 call.Results1 = "OK";
                 using (var writer = new System.IO.StringWriter())
                 {
-                    ObjectDumper.Dumper.Dump(request, "Comprobante_ABC response", writer);
+                    ObjectDumper.Dumper.Dump(response, "Comprobante_ABC response", writer);
                     call.ErrorMsg = writer.ToString();
                 }
 
@@ -427,7 +417,6 @@ namespace SAPConnectorLibrary
                         FechaDocumento = now.Date,
                         Referencia = "",
                     };
-                    context.SaveChanges();
                 }
 
                 List<string> comprobantesSAP = new List<string>();
@@ -540,7 +529,7 @@ namespace SAPConnectorLibrary
                     call.Results1 = "OK";
                     using (var writer = new System.IO.StringWriter())
                     {
-                        ObjectDumper.Dumper.Dump(request, "Comprobante_NO_ABC response", writer);
+                        ObjectDumper.Dumper.Dump(response, "Comprobante_NO_ABC response", writer);
                         call.ErrorMsg = writer.ToString();
                     }
 
@@ -632,7 +621,6 @@ namespace SAPConnectorLibrary
                                     Nombre = vendor.PAIS
                                 };
                                 context.SAPC_Paises.Add(country);
-                                context.SaveChanges();
                             }
                             else
                                 country = countries.First();
@@ -649,7 +637,6 @@ namespace SAPConnectorLibrary
                                     Pais = country,
                                 };
                                 context.SAPC_Poblaciones.Add(city);
-                                context.SaveChanges();
                             }
                             else
                                 city = cities.First();
@@ -785,8 +772,6 @@ namespace SAPConnectorLibrary
                         {
                             session = this.CreateSession(endPointId);
 
-                            session.SAPLogin();
-
                             foreach (var a1Element in adelantosPorEndpoint.ToList())
                             {
                                 if (a1Element.Key == endPointId)
@@ -815,6 +800,12 @@ namespace SAPConnectorLibrary
                                         this.SAPPushFactura(factura);
                                 }
                             }
+
+                            this.session.Session.ErrorCode = "OK";
+                            this.session.Session.ErrorMessage = "Normal ending - Documents";
+                            session.Session.Final = DateTime.Now;
+                            context.Entry(session.Session).State = System.Data.Entity.EntityState.Modified;
+                            context.SaveChanges();
                         }
 
                         var rendicionesAprobadas = from r in context.SAPC_Rendicion
@@ -863,8 +854,6 @@ namespace SAPConnectorLibrary
                             {
                                 session = this.CreateSession(endPointId);
 
-                                session.SAPLogin();
-
                                 foreach (var a1Element in rendicionesPorEndpoint.ToList())
                                 {
                                     if (a1Element.Key == endPointId)
@@ -888,17 +877,25 @@ namespace SAPConnectorLibrary
                                 }
 
                                 this.session.Session.ErrorCode = "OK";
-                                this.session.Session.ErrorMessage = "Normal ending";
-                                context.SAPC_Session.Attach(session.Session);
+                                this.session.Session.ErrorMessage = "Normal ending - Renditions";
                                 session.Session.Final = DateTime.Now;
+                                context.Entry(session.Session).State = System.Data.Entity.EntityState.Modified;
                                 context.SaveChanges();
                             }
 
                             var allEndPoints = context.SAPC_EndPoint;
 
-                            foreach (var endPoint in allEndPoints)
+                            foreach (var endPoint in allEndPoints.ToList())
                             {
+                                session = this.CreateSession(endPoint.Id);
+
                                 this.SAPSynchVendors();
+
+                                this.session.Session.ErrorCode = "OK";
+                                this.session.Session.ErrorMessage = "Normal ending - Vendor synch";
+                                session.Session.Final = DateTime.Now;
+                                context.Entry(session.Session).State = System.Data.Entity.EntityState.Modified;
+                                context.SaveChanges();
                             }
                         }
                     }

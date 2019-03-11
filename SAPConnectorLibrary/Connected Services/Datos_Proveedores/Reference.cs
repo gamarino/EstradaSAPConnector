@@ -39,7 +39,7 @@ namespace SAPConnectorLibrary.Datos_Proveedores {
         private ZFI_RFC_PROVEEDORES[] t_DETALLEField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="date", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=0)]
         public System.DateTime FECHA_CREACION {
             get {
                 return this.fECHA_CREACIONField;
@@ -63,8 +63,8 @@ namespace SAPConnectorLibrary.Datos_Proveedores {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("item", IsNullable=false)]
+        [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("item", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
         public ZFI_RFC_PROVEEDORES[] T_DETALLE {
             get {
                 return this.t_DETALLEField;
@@ -116,7 +116,7 @@ namespace SAPConnectorLibrary.Datos_Proveedores {
         private string pERNRField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
         public string PROVEEDOR {
             get {
                 return this.pROVEEDORField;
@@ -128,7 +128,7 @@ namespace SAPConnectorLibrary.Datos_Proveedores {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
         public string NOMBRE {
             get {
                 return this.nOMBREField;
@@ -140,7 +140,7 @@ namespace SAPConnectorLibrary.Datos_Proveedores {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
         public string CUIT {
             get {
                 return this.cUITField;
@@ -152,7 +152,7 @@ namespace SAPConnectorLibrary.Datos_Proveedores {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
         public string TELEFONO {
             get {
                 return this.tELEFONOField;
@@ -164,7 +164,7 @@ namespace SAPConnectorLibrary.Datos_Proveedores {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
         public string MAIL {
             get {
                 return this.mAILField;
@@ -176,7 +176,7 @@ namespace SAPConnectorLibrary.Datos_Proveedores {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
         public string POBLACION {
             get {
                 return this.pOBLACIONField;
@@ -188,7 +188,7 @@ namespace SAPConnectorLibrary.Datos_Proveedores {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
         public string CALLE {
             get {
                 return this.cALLEField;
@@ -200,7 +200,7 @@ namespace SAPConnectorLibrary.Datos_Proveedores {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
         public string CPOSTAL {
             get {
                 return this.cPOSTALField;
@@ -212,7 +212,7 @@ namespace SAPConnectorLibrary.Datos_Proveedores {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=8)]
         public string PAIS {
             get {
                 return this.pAISField;
@@ -224,7 +224,7 @@ namespace SAPConnectorLibrary.Datos_Proveedores {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=9)]
         public string FLAG {
             get {
                 return this.fLAGField;
@@ -236,7 +236,7 @@ namespace SAPConnectorLibrary.Datos_Proveedores {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=10)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=10)]
         public string PERNR {
             get {
                 return this.pERNRField;
@@ -272,7 +272,7 @@ namespace SAPConnectorLibrary.Datos_Proveedores {
         private ZFI_RFC_PROVEEDORES[] t_DETALLEField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
         public string MENSAJE {
             get {
                 return this.mENSAJEField;
@@ -284,7 +284,7 @@ namespace SAPConnectorLibrary.Datos_Proveedores {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
         public string RESULTADO {
             get {
                 return this.rESULTADOField;
@@ -296,8 +296,8 @@ namespace SAPConnectorLibrary.Datos_Proveedores {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("item", IsNullable=false)]
+        [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("item", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
         public ZFI_RFC_PROVEEDORES[] T_DETALLE {
             get {
                 return this.t_DETALLEField;

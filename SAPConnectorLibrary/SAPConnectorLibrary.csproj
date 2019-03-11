@@ -330,9 +330,16 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\Consulta_Id\ZWS_Consulta_id.wsdl" />
-    <None Include="Connected Services\Consulta_Id\configuration91.svcinfo" />
-    <None Include="Connected Services\Consulta_Id\configuration.svcinfo" />
-    <None Include="Connected Services\Consulta_Id\Reference.svcmap">
+    <None Include="Connected Services\Datos_Proveedores\SAPConnectorLibrary.Datos_Proveedores.ZFI_RFC_DATOS_PROVEEDORESResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Datos_Proveedores\SAPConnectorLibrary.Datos_Proveedores.ZFI_RFC_DATOS_PROVEEDORESResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Datos_Proveedores\ZWS_DATOS_PROVEEDORES %281%29.wsdl" />
+    <None Include="Connected Services\Datos_Proveedores\configuration91.svcinfo" />
+    <None Include="Connected Services\Datos_Proveedores\configuration.svcinfo" />
+    <None Include="Connected Services\Datos_Proveedores\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -342,28 +349,21 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Connected Services\Datos_Proveedores\SAPConnectorLibrary.Datos_Proveedores.ZFI_RFC_DATOS_PROVEEDORESResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\Datos_Proveedores\SAPConnectorLibrary.Datos_Proveedores.ZFI_RFC_DATOS_PROVEEDORESResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\Datos_Proveedores\ZWS_DATOS_PROVEEDORES %281%29.wsdl" />
-    <None Include="Connected Services\Solicitud_Anticipo\configuration91.svcinfo" />
-    <None Include="Connected Services\Solicitud_Anticipo\configuration.svcinfo" />
-    <None Include="Connected Services\Solicitud_Anticipo\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <None Include="Connected Services\Comprobantes_NO_ABC\configuration91.svcinfo" />
     <None Include="Connected Services\Comprobantes_NO_ABC\configuration.svcinfo" />
     <None Include="Connected Services\Comprobantes_NO_ABC\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Connected Services\Datos_Proveedores\configuration91.svcinfo" />
-    <None Include="Connected Services\Datos_Proveedores\configuration.svcinfo" />
-    <None Include="Connected Services\Datos_Proveedores\Reference.svcmap">
+    <None Include="Connected Services\Consulta_Id\configuration91.svcinfo" />
+    <None Include="Connected Services\Consulta_Id\configuration.svcinfo" />
+    <None Include="Connected Services\Consulta_Id\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\Solicitud_Anticipo\configuration91.svcinfo" />
+    <None Include="Connected Services\Solicitud_Anticipo\configuration.svcinfo" />
+    <None Include="Connected Services\Solicitud_Anticipo\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -379,19 +379,6 @@
       <DependentUpon>EstradaSAPConnector.edmx</DependentUpon>
     </Content>
     <Content Include="POCOGenerators\Generate.sql" />
-    <Content Include="ServiceDescriptors\DOC_3I_ZWS_COMPROBANTES_ABC.xml" />
-    <Content Include="ServiceDescriptors\DOC_3I_ZWS_COMPROBANTES_NO_ABC.xml" />
-    <Content Include="ServiceDescriptors\DOC_3I_ZWS_DATOS_PROVEEDORES.xml" />
-    <Content Include="ServiceDescriptors\DOC_3I_ZWS_SOLICITUD_ANTICIPO.xml" />
-    <Content Include="ServiceDescriptors\ZWS_COMPROBANTES_ABC %281%29.xml" />
-    <Content Include="ServiceDescriptors\ZWS_COMPROBANTES_ABC.xml" />
-    <Content Include="ServiceDescriptors\ZWS_COMPROBANTES_NO_ABC %281%29.xml" />
-    <Content Include="ServiceDescriptors\ZWS_COMPROBANTES_NO_ABC.xml" />
-    <Content Include="ServiceDescriptors\ZWS_CONSULTA_ID.xml" />
-    <Content Include="ServiceDescriptors\ZWS_DATOS_PROVEEDORES %281%29.xml" />
-    <Content Include="ServiceDescriptors\ZWS_DATOS_PROVEEDORES.xml" />
-    <Content Include="ServiceDescriptors\ZWS_SOLICITUD_ANTICIPO %281%29.xml" />
-    <Content Include="ServiceDescriptors\ZWS_SOLICITUD_ANTICIPO.xml" />
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
@@ -413,6 +400,15 @@
     <None Include="Documentación\ANE042203-Script_de_prueba.doc" />
     <None Include="Documentación\Diseño_WS.xlsx" />
     <None Include="packages.config" />
+    <None Include="ServiceDescriptors\ZWS_COMPROBANTES_ABC %281%29.WSDL" />
+    <None Include="ServiceDescriptors\ZWS_COMPROBANTES_ABC.wsdl" />
+    <None Include="ServiceDescriptors\ZWS_COMPROBANTES_NO_ABC %281%29.WSDL" />
+    <None Include="ServiceDescriptors\ZWS_COMPROBANTES_NO_ABC.wsdl" />
+    <None Include="ServiceDescriptors\ZWS_CONSULTA_ID.wsdl" />
+    <None Include="ServiceDescriptors\ZWS_DATOS_PROVEEDORES %281%29.WSDL" />
+    <None Include="ServiceDescriptors\ZWS_DATOS_PROVEEDORES.WSDL" />
+    <None Include="ServiceDescriptors\ZWS_SOLICITUD_ANTICIPO %281%29.WSDL" />
+    <None Include="ServiceDescriptors\ZWS_SOLICITUD_ANTICIPO.WSDL" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

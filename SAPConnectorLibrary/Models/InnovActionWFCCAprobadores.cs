@@ -15,28 +15,14 @@ namespace SAPConnectorLibrary.Models
 using System;
     using System.Collections.Generic;
     
-public partial class SAPC_InputacionesComprobantes
+public partial class InnovActionWFCCAprobadores
 {
 
-    public int Id { get; set; }
+    public int ID { get; set; }
 
-    public string ClaveCT { get; set; }
+    public Nullable<int> UserID { get; set; }
 
-    public string CtaContable { get; set; }
-
-    public decimal Importe { get; set; }
-
-    public string Textos { get; set; }
-
-    public string IndImp { get; set; }
-
-    public string Texto { get; set; }
-
-
-
-    public virtual SAPC_Comprobante Comprobante { get; set; }
-
-    public virtual SAPC_CECO CECO { get; set; }
+    public string CentroDeCostos { get; set; }
 
 }
 

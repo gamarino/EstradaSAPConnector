@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0d1acd73-95d9-427f-aba6-c5438fcac8ca" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a4cb0c3b-0ac0-490f-81f8-cbfd1977cb74" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,10 +19,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="C:\Users\GustavoMarino\Documents\Visual Studio 2017\Projects\EstradaSAPConnector\SAPConnectorLibrary\ServiceDescriptors\ZWS_DATOS_PROVEEDORES (1).wsdl" Protocol="file" SourceId="1" />
+    <MetadataSource Address="C:\Users\Complex\Desktop\GitRepo\EstradaSAPConnector\SAPConnectorLibrary\ServiceDescriptors\ZWS_DATOS_PROVEEDORES (1).WSDL" Protocol="file" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ZWS_DATOS_PROVEEDORES (1).wsdl" MetadataType="Wsdl" ID="1dd160c9-1aa4-405e-8cf7-273b4f549783" SourceId="1" SourceUrl="file:///C:/Users/GustavoMarino/Documents/Visual Studio 2017/Projects/EstradaSAPConnector/SAPConnectorLibrary/ServiceDescriptors/ZWS_DATOS_PROVEEDORES (1).wsdl" />
+    <MetadataFile FileName="ZWS_DATOS_PROVEEDORES (1).wsdl" MetadataType="Wsdl" ID="bae3d136-6428-446a-81a9-c0caa7612880" SourceId="1" SourceUrl="file:///C:/Users/Complex/Desktop/GitRepo/EstradaSAPConnector/SAPConnectorLibrary/ServiceDescriptors/ZWS_DATOS_PROVEEDORES (1).WSDL" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

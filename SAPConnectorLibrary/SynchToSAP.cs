@@ -162,7 +162,7 @@ namespace SAPConnectorLibrary
                     new Solicitud_Anticipo.ZFI_RFC_ANTICIPOS
                     {
                         FECHA_DOC = adelanto.Fecha,
-                        // FECHA_CONT = adelanto.FechaCont,
+                        FECHA_CONT = adelanto.FechaCont,
                         CLASE_DOC = adelanto.ClaseDoc.Codigo,
                         SOCIEDAD = adelanto.Sociedad.Codigo,
                         MONEDA = adelanto.Moneda.Codigo,
@@ -608,114 +608,112 @@ namespace SAPConnectorLibrary
 
             
               
-                if (response.RESULTADO == "001")
-                {
-                    // synch datos recibidos en tabla de proveedores
+            if (response.RESULTADO == "001")
+            {
+                // synch datos recibidos en tabla de proveedores
                 
-                    foreach (var vendor in response.T_DETALLE)
+                foreach (var vendor in response.T_DETALLE)
+                {
+                       
+                    if (vendor.PERNR == "00000000")
                     {
-                       
-                        if (vendor.PERNR == "00000000")
+                        Models.SAPC_Paises country;
+                        Models.SAPC_Poblaciones city;
+
+                        var countries = from a in context.SAPC_Paises
+                                        where a.Codigo == vendor.PAIS
+                                        select a;
+
+                        if (countries.Count() == 0)
                         {
-                            Models.SAPC_Paises country;
-                            Models.SAPC_Poblaciones city;
-
-                            var countries = from a in context.SAPC_Paises
-                                            where a.Codigo == vendor.PAIS
-                                            select a;
-
-                            if (countries.Count() == 0)
+                            country = new Models.SAPC_Paises
                             {
-                                country = new Models.SAPC_Paises
-                                {
-                                    Codigo = vendor.PAIS,
-                                    Nombre = vendor.PAIS
-                                };
-                                context.SAPC_Paises.Add(country);
-                            }
-                            else
-                                country = countries.First();
+                                Codigo = vendor.PAIS,
+                                Nombre = vendor.PAIS
+                            };
+                            context.SAPC_Paises.Add(country);
+                        }
+                        else
+                            country = countries.First();
 
-                            var cities = from a in context.SAPC_Poblaciones
-                                         where a.Codigo == vendor.POBLACION && a.Pais.Id == country.Id
-                                         select a;
-                            if (cities.Count() == 0)
+                        var cities = from a in context.SAPC_Poblaciones
+                                        where a.Codigo == vendor.POBLACION && a.Pais.Id == country.Id
+                                        select a;
+                        if (cities.Count() == 0)
+                        {
+                            city = new Models.SAPC_Poblaciones
                             {
-                                city = new Models.SAPC_Poblaciones
-                                {
-                                    Codigo = vendor.POBLACION,
-                                    Nombre = vendor.POBLACION,
-                                    Pais = country,
-                                };
-                                context.SAPC_Poblaciones.Add(city);
-                            }
-                            else
-                                city = cities.First();
+                                Codigo = vendor.POBLACION,
+                                Nombre = vendor.POBLACION,
+                                Pais = country,
+                            };
+                            context.SAPC_Poblaciones.Add(city);
+                        }
+                        else
+                            city = cities.First();
 
 
-                            var vendors = from a in context.SAPC_Proveedores
-                                          where a.SAPId == vendor.PROVEEDOR
-                                          select a;
-                            if (vendors.Count() != 0)
-                            {
-                                Models.SAPC_Proveedores existingVendor = vendors.First();
-                                existingVendor.Calle = vendor.CALLE;
-                                existingVendor.CPostal = vendor.CPOSTAL;
-                                existingVendor.CUIT = vendor.CUIT;
-                                existingVendor.Flag = vendor.FLAG != " ";
-                                existingVendor.Mail = vendor.MAIL;
-                                existingVendor.Nombre = vendor.NOMBRE;
-                                existingVendor.Poblacion = city;
-                                existingVendor.Telefono = vendor.TELEFONO;
-                                existingVendor.UltimaActualizacion = DateTime.Now;
-                            }
-                            else
-                            {
-
-                       
-                                context.SAPC_Proveedores.Add(new Models.SAPC_Proveedores
-                                {
-                                    SAPId = vendor.PROVEEDOR,
-                                    Calle = vendor.CALLE,
-                                    CPostal = vendor.CPOSTAL,
-                                    CUIT = vendor.CUIT,
-                                    Flag = vendor.FLAG != " ",
-                                    Mail = vendor.MAIL,
-                                    Nombre = vendor.NOMBRE,
-                                    Poblacion = city,
-                                    Telefono = vendor.TELEFONO,
-                                    CtaContable = vendor.PROVEEDOR,
-                                    UltimaActualizacion = DateTime.Now,
-                                });
-                            }
+                        var vendors = from a in context.SAPC_Proveedores
+                                        where a.SAPId == vendor.PROVEEDOR
+                                        select a;
+                        if (vendors.Count() != 0)
+                        {
+                            Models.SAPC_Proveedores existingVendor = vendors.First();
+                            existingVendor.Calle = vendor.CALLE;
+                            existingVendor.CPostal = vendor.CPOSTAL;
+                            existingVendor.CUIT = vendor.CUIT;
+                            existingVendor.Flag = vendor.FLAG != " ";
+                            existingVendor.Mail = vendor.MAIL;
+                            existingVendor.Nombre = vendor.NOMBRE;
+                            existingVendor.Poblacion = city;
+                            existingVendor.Telefono = vendor.TELEFONO;
+                            existingVendor.UltimaActualizacion = DateTime.Now;
                         }
                         else
                         {
-                            // Es un empleado
-                            var employees = from a in context.SAPC_Empleado
-                                            where a.NroEmpleado == vendor.PERNR
-                                            select a;
-                            if (employees.Count() != 0)
+
+                       
+                            context.SAPC_Proveedores.Add(new Models.SAPC_Proveedores
                             {
-                                Models.SAPC_Empleado existingEmployee = employees.First();
-                                existingEmployee.Nombre = vendor.NOMBRE;
-                                existingEmployee.CtaContable = vendor.PROVEEDOR;
-                            }
-                            else
+                                SAPId = vendor.PROVEEDOR,
+                                Calle = vendor.CALLE,
+                                CPostal = vendor.CPOSTAL,
+                                CUIT = vendor.CUIT,
+                                Flag = vendor.FLAG != " ",
+                                Mail = vendor.MAIL,
+                                Nombre = vendor.NOMBRE,
+                                Poblacion = city,
+                                Telefono = vendor.TELEFONO,
+                                CtaContable = vendor.PROVEEDOR,
+                                UltimaActualizacion = DateTime.Now,
+                            });
+                        }
+                    }
+                    else
+                    {
+                        // Es un empleado
+                        var employees = from a in context.SAPC_Empleado
+                                        where a.NroEmpleado == vendor.PERNR
+                                        select a;
+                        if (employees.Count() != 0)
+                        {
+                            Models.SAPC_Empleado existingEmployee = employees.First();
+                            existingEmployee.Nombre = vendor.NOMBRE;
+                            existingEmployee.CtaContable = vendor.PROVEEDOR;
+                        }
+                        else
+                        {
+                            context.SAPC_Empleado.Add(new Models.SAPC_Empleado
                             {
-                                context.SAPC_Empleado.Add(new Models.SAPC_Empleado
-                                {
-                                    NroEmpleado = vendor.PERNR,
-                                    DNI = vendor.CUIT,
-                                    CtaContable = vendor.PROVEEDOR,
-                                    Nombre = vendor.NOMBRE
-                                });
-                            }
+                                NroEmpleado = vendor.PERNR,
+                                DNI = vendor.CUIT,
+                                CtaContable = vendor.PROVEEDOR,
+                                Nombre = vendor.NOMBRE
+                            });
                         }
                     }
                 }
-
-        
+            }
         }
 
         public void SynchNow()
@@ -746,9 +744,9 @@ namespace SAPConnectorLibrary
                             session = null;
 
                           
-                          //  ProcesarDocumentos(context, endPoints, adelantosPorEndpoint, adelantosPorEmpleadoPorEndpoint, facturasPorEndpoint);
+                            ProcesarDocumentos(context, endPoints, adelantosPorEndpoint, adelantosPorEmpleadoPorEndpoint, facturasPorEndpoint);
 
-                          //  ProcesarRendiciones(context, endPoints);
+                            ProcesarRendiciones(context, endPoints);
 
                           
                         }

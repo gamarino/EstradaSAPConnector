@@ -355,15 +355,15 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Connected Services\Comprobantes_ABC\configuration91.svcinfo" />
-    <None Include="Connected Services\Comprobantes_ABC\configuration.svcinfo" />
-    <None Include="Connected Services\Comprobantes_ABC\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <None Include="Connected Services\Datos_Proveedores\configuration91.svcinfo" />
     <None Include="Connected Services\Datos_Proveedores\configuration.svcinfo" />
     <None Include="Connected Services\Datos_Proveedores\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\Comprobantes_ABC\configuration91.svcinfo" />
+    <None Include="Connected Services\Comprobantes_ABC\configuration.svcinfo" />
+    <None Include="Connected Services\Comprobantes_ABC\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

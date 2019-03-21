@@ -37,6 +37,9 @@ namespace SAPConnectorLibrary
 
     public class SynchToSAP
     {
+
+
+
         static readonly string FONDO_ACTIVO = "Activo";
 
         static readonly string ADELANTO_A_PROCESAR = "SAPC_Adelanto_A_Procesar";
@@ -252,6 +255,7 @@ namespace SAPConnectorLibrary
                 {
                     ACREEDOR = factura.Proveedor.SAPId,
                     FECHACONT = factura.FechaContable,
+                    FECHACONTSpecified = true,
                     FECHAFACTURA = factura.FechaFactura,
                     REFERENCIA = factura.Referencia,
                     CLASE_DOC = factura.ClaseDoc.Codigo,
@@ -714,207 +718,211 @@ namespace SAPConnectorLibrary
 
         public void SynchNow()
         {
-            using (var context = new Models.EstradaSAPConnectorContainer())
-            {
-                try
+           
+                using (var context = new Models.EstradaSAPConnectorContainer())
                 {
-                    this.context = context;
-
-                    // Tomar adelantos de fondos a procesar
-                    var adelantos = from a in context.SAPC_Adelantos
-                                    where a.Estado.Codigo == ADELANTO_A_PROCESAR
-                                    select a;
-
-                    var adelantosPorEndpoint = from aep in adelantos
-                                                group aep by aep.FondoFijo.EndPoint.Id
-                                                into g
-                                                select g;
-
-                    var adelantosPorEmpleado = from a in context.SAPC_Adelantos
-                                                where a.Estado.Codigo == ADELANTO_A_PROCESAR &&
-                                                        a.PedidoPorEmpleado != null
-                                                select a;
-
-                    var adelantosPorEmpleadoPorEndpoint = from aeep in adelantosPorEmpleado
-                                                            group aeep by aeep.PedidoPorEmpleado.EndPoint.Id
-                                                            into g
-                                                            select g;
-
-                    // Tomar facturas a procesar
-                    var facturas = from a in context.SAPC_FacturaProveedor
-                                    where a.Estado.Codigo == FACTURA_A_PROCESAR
-                                    select a;
-
-                    var facturasPorEndpoint = from aep in facturas
-                                                group aep by aep.Rendicion.FondoFijo.EndPoint.Id
-                                                into g
-                                                select g;
-
-                    ISet<int> endPoints = new HashSet<int> { };
-                    foreach (var endPointGroup in adelantosPorEndpoint)
+                    try
                     {
-                        endPoints.Add(endPointGroup.Key);
-                    }
-                    foreach (var endPointGroup in facturasPorEndpoint)
-                    {
-                        endPoints.Add(endPointGroup.Key);
-                    }
-                    foreach (var endPointGroup in adelantosPorEmpleadoPorEndpoint)
-                    {
-                        endPoints.Add(endPointGroup.Key);
-                    }
+                        this.context = context;
 
-                    if (endPoints.Count > 0)
-                    {
-                        session = null;
+                        // Tomar adelantos de fondos a procesar
+                        var adelantos = from a in context.SAPC_Adelantos
+                                        where a.Estado.Codigo == ADELANTO_A_PROCESAR
+                                        select a;
 
-                        foreach (int endPointId in endPoints)
-                        {
-                            session = this.CreateSession(endPointId);
+                        var adelantosPorEndpoint = from aep in adelantos
+                                                   group aep by aep.FondoFijo.EndPoint.Id
+                                                    into g
+                                                   select g;
 
-                            foreach (var a1Element in adelantosPorEndpoint.ToList())
-                            {
-                                if (a1Element.Key == endPointId)
-                                {
-                                    foreach (var adelanto in a1Element.ToList())
-                                    {
-                                        this.SAPPushAdelanto(adelanto);
-                                    }
-                                }
-                            }
+                        var adelantosPorEmpleado = from a in context.SAPC_Adelantos
+                                                   where a.Estado.Codigo == ADELANTO_A_PROCESAR &&
+                                                           a.PedidoPorEmpleado != null
+                                                   select a;
 
-                            foreach (var a2Element in adelantosPorEmpleadoPorEndpoint.ToList())
-                            {
-                                if (a2Element.Key == endPointId)
-                                {
-                                    foreach (var adelanto in a2Element.ToList())
-                                        this.SAPPushAdelanto(adelanto);
-                                }
-                            }
+                        var adelantosPorEmpleadoPorEndpoint = from aeep in adelantosPorEmpleado
+                                                              group aeep by aeep.PedidoPorEmpleado.EndPoint.Id
+                                                                into g
+                                                              select g;
 
-                            foreach (var felement in facturasPorEndpoint.ToList())
-                            {
-                                if (felement.Key == endPointId)
-                                {
-                                    foreach (var factura in felement.ToList())
-                                        this.SAPPushFactura(factura);
-                                }
-                            }
+                        // Tomar facturas a procesar
+                        var facturas = from a in context.SAPC_FacturaProveedor
+                                       where a.Estado.Codigo == FACTURA_A_PROCESAR
+                                       select a;
 
-                            this.session.Session.ErrorCode = "OK";
-                            this.session.Session.ErrorMessage = "Normal ending - Documents";
-                            session.Session.Final = DateTime.Now;
-                            context.Entry(session.Session).State = System.Data.Entity.EntityState.Modified;
-                            context.SaveChanges();
-                        }
+                        var facturasPorEndpoint = from aep in facturas
+                                                  group aep by aep.Rendicion.FondoFijo.EndPoint.Id
+                                                    into g
+                                                  select g;
 
-                        var rendicionesAprobadas = from r in context.SAPC_Rendicion
-                                                    where r.Estado.Codigo == RENDICION_APROBADA &&
-                                                            r.FondoFijo != null &&
-                                                            r.FondoFijo.Estado.Codigo == FONDO_ACTIVO
-                                                    select r;
-
-                        foreach (var r in rendicionesAprobadas)
-                            this.SAPCheckRendicion(r);
-
-                        // Tomar rendiciones ABC a procesar, luego de procesar las facturas y adelantos
-                        var rendiciones = from r in context.SAPC_Rendicion
-                                            where r.Estado.Codigo == RENDICION_A_PROCESAR &&
-                                                r.FondoFijo != null &&
-                                                r.FondoFijo.Estado.Codigo == FONDO_ACTIVO
-                                            select r;
-
-                        var rendicionesPorEndpoint = from r in rendiciones
-                                                        group r by r.FondoFijo.EndPoint.Id
-                                                        into g
-                                                        select g;
-
-                        var rendicionesPorEmpleado = from r in context.SAPC_Rendicion
-                                                        where r.Estado.Codigo == RENDICION_A_PROCESAR &&
-                                                            r.RendidoPor != null
-                                                        select r;
-
-                        var rendicionesPorEmpleadoPorEndpoint = from rabc in rendicionesPorEmpleado
-                                                                group rabc by rabc.RendidoPor.EndPoint.Id
-                                                                    into g
-                                                                select g;
-
-                        foreach (var endPointGroup in rendicionesPorEndpoint)
+                        ISet<int> endPoints = new HashSet<int> { };
+                        foreach (var endPointGroup in adelantosPorEndpoint)
                         {
                             endPoints.Add(endPointGroup.Key);
                         }
-                        foreach (var endPointGroup in rendicionesPorEmpleadoPorEndpoint)
+                        foreach (var endPointGroup in facturasPorEndpoint)
+                        {
+                            endPoints.Add(endPointGroup.Key);
+                        }
+                        foreach (var endPointGroup in adelantosPorEmpleadoPorEndpoint)
                         {
                             endPoints.Add(endPointGroup.Key);
                         }
 
                         if (endPoints.Count > 0)
                         {
+                            session = null;
+
                             foreach (int endPointId in endPoints)
                             {
                                 session = this.CreateSession(endPointId);
 
-                                foreach (var a1Element in rendicionesPorEndpoint.ToList())
+                                foreach (var a1Element in adelantosPorEndpoint.ToList())
                                 {
                                     if (a1Element.Key == endPointId)
                                     {
-                                        foreach (var r in a1Element.ToList())
+                                        foreach (var adelanto in a1Element.ToList())
                                         {
-                                            this.SAPPushRendicion(r);
-                                        }
-                                    }
-
-                                    foreach (var a2Element in rendicionesPorEmpleadoPorEndpoint.ToList())
-                                    {
-                                        if (a2Element.Key == endPointId)
-                                        {
-                                            foreach (var r in a2Element.ToList())
-                                            {
-                                                this.SAPPushRendicion(r);
-                                            }
+                                            this.SAPPushAdelanto(adelanto);
                                         }
                                     }
                                 }
 
+                                foreach (var a2Element in adelantosPorEmpleadoPorEndpoint.ToList())
+                                {
+                                    if (a2Element.Key == endPointId)
+                                    {
+                                        foreach (var adelanto in a2Element.ToList())
+                                            this.SAPPushAdelanto(adelanto);
+                                    }
+                                }
+
+                                foreach (var felement in facturasPorEndpoint.ToList())
+                                {
+                                    if (felement.Key == endPointId)
+                                    {
+                                        foreach (var factura in felement.ToList())
+                                            this.SAPPushFactura(factura);
+                                    }
+                                }
+
                                 this.session.Session.ErrorCode = "OK";
-                                this.session.Session.ErrorMessage = "Normal ending - Renditions";
+                                this.session.Session.ErrorMessage = "Normal ending - Documents";
                                 session.Session.Final = DateTime.Now;
                                 context.Entry(session.Session).State = System.Data.Entity.EntityState.Modified;
                                 context.SaveChanges();
                             }
 
-                            var allEndPoints = context.SAPC_EndPoint;
+                            var rendicionesAprobadas = from r in context.SAPC_Rendicion
+                                                       where r.Estado.Codigo == RENDICION_APROBADA &&
+                                                               r.FondoFijo != null &&
+                                                               r.FondoFijo.Estado.Codigo == FONDO_ACTIVO
+                                                       select r;
 
-                            foreach (var endPoint in allEndPoints.ToList())
+                            foreach (var r in rendicionesAprobadas)
+                                this.SAPCheckRendicion(r);
+
+                            // Tomar rendiciones ABC a procesar, luego de procesar las facturas y adelantos
+                            var rendiciones = from r in context.SAPC_Rendicion
+                                              where r.Estado.Codigo == RENDICION_A_PROCESAR &&
+                                                  r.FondoFijo != null &&
+                                                  r.FondoFijo.Estado.Codigo == FONDO_ACTIVO
+                                              select r;
+
+                            var rendicionesPorEndpoint = from r in rendiciones
+                                                         group r by r.FondoFijo.EndPoint.Id
+                                                            into g
+                                                         select g;
+
+                            var rendicionesPorEmpleado = from r in context.SAPC_Rendicion
+                                                         where r.Estado.Codigo == RENDICION_A_PROCESAR &&
+                                                             r.RendidoPor != null
+                                                         select r;
+
+                            var rendicionesPorEmpleadoPorEndpoint = from rabc in rendicionesPorEmpleado
+                                                                    group rabc by rabc.RendidoPor.EndPoint.Id
+                                                                        into g
+                                                                    select g;
+
+                            foreach (var endPointGroup in rendicionesPorEndpoint)
                             {
-                                session = this.CreateSession(endPoint.Id);
+                                endPoints.Add(endPointGroup.Key);
+                            }
+                            foreach (var endPointGroup in rendicionesPorEmpleadoPorEndpoint)
+                            {
+                                endPoints.Add(endPointGroup.Key);
+                            }
 
-                                this.SAPSynchVendors();
+                            if (endPoints.Count > 0)
+                            {
+                                foreach (int endPointId in endPoints)
+                                {
+                                    session = this.CreateSession(endPointId);
 
-                                this.session.Session.ErrorCode = "OK";
-                                this.session.Session.ErrorMessage = "Normal ending - Vendor synch";
-                                session.Session.Final = DateTime.Now;
-                                context.Entry(session.Session).State = System.Data.Entity.EntityState.Modified;
-                                context.SaveChanges();
+                                    foreach (var a1Element in rendicionesPorEndpoint.ToList())
+                                    {
+                                        if (a1Element.Key == endPointId)
+                                        {
+                                            foreach (var r in a1Element.ToList())
+                                            {
+                                                this.SAPPushRendicion(r);
+                                            }
+                                        }
+
+                                        foreach (var a2Element in rendicionesPorEmpleadoPorEndpoint.ToList())
+                                        {
+                                            if (a2Element.Key == endPointId)
+                                            {
+                                                foreach (var r in a2Element.ToList())
+                                                {
+                                                    this.SAPPushRendicion(r);
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    this.session.Session.ErrorCode = "OK";
+                                    this.session.Session.ErrorMessage = "Normal ending - Renditions";
+                                    session.Session.Final = DateTime.Now;
+                                    context.Entry(session.Session).State = System.Data.Entity.EntityState.Modified;
+                                    context.SaveChanges();
+                                }
+
+                                var allEndPoints = context.SAPC_EndPoint;
+
+                                foreach (var endPoint in allEndPoints.ToList())
+                                {
+                                    session = this.CreateSession(endPoint.Id);
+
+                                    this.SAPSynchVendors();
+
+                                    this.session.Session.ErrorCode = "OK";
+                                    this.session.Session.ErrorMessage = "Normal ending - Vendor synch";
+                                    session.Session.Final = DateTime.Now;
+                                    context.Entry(session.Session).State = System.Data.Entity.EntityState.Modified;
+                                    context.SaveChanges();
+                                }
                             }
                         }
+                        this.session.Session.ErrorCode = "OK";
+                        this.session.Session.ErrorMessage = "Normal ending";
                     }
-                    this.session.Session.ErrorCode = "OK";
-                    this.session.Session.ErrorMessage = "Normal ending";
+                    catch (Exception e)
+                    {
+                        this.session.Session.ErrorCode = "Unexpected exception";
+                        this.session.Session.ErrorMessage = e.ToString();
+                        Console.WriteLine("Excepción inesperada {0}", e.ToString());
+                    }
+                    finally
+                    {
+                        this.session.Session.Final = DateTime.Now;
+                        context.Entry(this.session.Session).State = System.Data.Entity.EntityState.Modified;
+                        context.SaveChanges();
+                    }
                 }
-                catch (Exception e)
-                {
-                    this.session.Session.ErrorCode = "Unexpected exception";
-                    this.session.Session.ErrorMessage = e.ToString();
-                    Console.WriteLine("Excepción inesperada {0}", e.ToString());
-                }
-                finally
-                {
-                    this.session.Session.Final = DateTime.Now;
-                    context.Entry(this.session.Session).State = System.Data.Entity.EntityState.Modified;
-                    context.SaveChanges();
-                }
-            }
+
+     
+
         }
 
         public DocInfo getDocData(int endPointId, string sapDocNbr, string rinde)
